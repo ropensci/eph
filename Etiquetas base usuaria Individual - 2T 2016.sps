@@ -390,11 +390,10 @@
     *intensi - intensi.
     variable labels intensi 'INTENSI'.
     value labels intensi
-    1 "Subocupación horaria Demandante"
-    2 "Subocupación horaria No Demandante"
-    3 "Ocupación plena"
-    4 "Sobreocupación horaria"
-    5 "Ocupado que no trabajó en la semana"
+    1 "Subocupado por insuficiencia horaria"
+    2 "Ocupado pleno"
+    3 "Sobreocupado"
+    4 "Ocupado que no trabajó en la semana"
     9 "Ns./Nr.".
         
     *pp04a - El negocio / empresa / institución / actividad en la que trabaja es (se refiere al que trabaja más horas semanales)...
