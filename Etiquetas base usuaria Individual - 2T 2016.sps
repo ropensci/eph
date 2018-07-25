@@ -52,13 +52,14 @@
     
     *Aglomerados según tamaño.
     variable labels MAS_500 'Aglomerados según tamaño'.
+    N "Conjunto de Aglomerados de emenos de 500.000 hab."
+    S "Conjunto de Aglomerados de 500.000 y más hab.".
     
     ****Aglomerado.
     variable labels aglomerado 'Código de Aglomerado'.
     value labels aglomerado
-    01 "Gran Buenos Aires"
     02 "Gran La Plata"
-    03 "Bahía Blanca -Cerri"
+    03 "Bahía Blanca - Cerri"
     04 "Gran Rosario"
     05 "Gran Santa Fé"
     06 "Gran Panamá"
@@ -140,7 +141,7 @@
     12 "Obra social y Mutual / Prepaga / Servicio de Emergencia"
     13 "Obra social y Planes y Seguros Públicos"
     23 "Mutual / Prepaga / Servicio de Emergencia / Planes y Seguros Públicos"
-    123 "Obra social, mutual / prepaga / servicio de emergencia y planes y seguros p?bilcos".
+    123 "Obra social, mutual / prepaga / servicio de emergencia y planes y seguros púbilcos".
     
     *ch09 - ¿Sabe leer y escribir?.
     variable labels ch09 '¿Sabe leer y escribir?'.
@@ -213,7 +214,11 @@
     9 "Ns./Nr.".
     
     *ch15_cod - Especificar: contiene código que corresponde a:.
-    variable labels ch15_cod 'Especificar: contiene código que corresponde a: 3. En otra provincia 4. En un paìs limìtrofe 5. En otro país'.
+    variable labels ch15_cod 'Especificar'.
+    value labels ch15_cod
+    3 "En otra provincia"
+    4 "En un paìs limítrofe"
+    5 "En otro país".
     
     *Ch16 - ¿Dónde vivía hace 5 años?.
     variable labels ch16 '¿Dónde vivía hace 5 años?'.
@@ -227,7 +232,11 @@
     9 "Ns./Nr.".
     
     *ch16_cod - Especificar: contiene código que corresponde a:.
-    variable labels ch16_cod 'Especificar: contiene código que corresponde a: 3. En otra provincia 4. En un paìs limìtrofe 5. En otro país'.
+    variable labels ch16_cod 'Especificar'.
+    value labels ch16_cod
+    3 "En otra provincia"
+    4 "En un paìs limítrofe"
+    5 "En otro país".
     
     *Nivel_ed - Nivel educativo.
     variable labels nivel_ed 'Nivel Educativo'.
@@ -240,8 +249,7 @@
     6 "Superior universitaria completa"
     7 "Sin instrucción"
     9 "Ns./Nr.".
-    
-    
+        
     *Estado - Condición de Actividad.
     variable labels estado 'Condición de actividad'.
     value labels estado
@@ -346,7 +354,7 @@
     *pp03c - La semana pasada, ¿tenía...
     variable labels pp03c 'La semana pasada, ¿tenía...'.
     value labels pp03c
-    1 "...un Sólo empleo / ocupación / actividad?"
+    1 "...un sólo empleo / ocupación / actividad?"
     2 "...más de un empleo / ocupación / actividad?".
     
     *pp03d - Cantidad de ocupaciones.
@@ -411,8 +419,7 @@
     variable labels pp04b1 'Si presta servicio doméstico en hogares particulares'.
     value labels pp04b1
     1 "Casa de familia"
-    2 "No presta servicio doméstico en hogars particulares".
-        
+            
     *pp04b2 - ¿En cuántas casas trabaja?.
     variable labels pp04b2 '¿En cuántas casas trabaja?'.    
     
@@ -421,7 +428,6 @@
     
     *pp04b3_ANO - Antigüedad en AÑOS.
     variable labels PP04B3_ANO '¿Cuánto tiempo hace que trabaja allí? - AÑO'.
-    
     
     *pp04b3_DIA - Antigüedad en DÍAS.
     variable labels PP04B3_DIA '¿Cuánto tiempo hace que trabaja allí? - DÍAS'.
@@ -468,16 +474,13 @@
     9 "En la calle, espacios públicos, ambulante, de casa en casa, puesto móvil callejero"
     10 "En otro lugar (especificar)"
     99 "Ns./Nr.".
-    
-    
+        
     *pp05b2_MES - Ocupación Principal de los Trabajadores independientes - Antigüedad en meses.
     variable labels pp05b2_MES '¿Cuánto tiempo hace que trabaja en ese emppleo en forma contínua? - MES'.
-    
-    
+        
     *pp05b2_ANO - Ocupación Principal de los Trabajadores independientes - Antigüedad en años.
     variable labels pp05b2_ANO '¿Cuánto tiempo hace que trabaja en ese emppleo en forma contínua? - AÑO'.
-    
-    
+        
     *pp05b2_DIA - Ocupación Principal de los Trabajadores independientes - Antigüedad en días.
     variable labels pp05b2_DIA '¿Cuánto tiempo hace que trabaja en ese emppleo en forma contínua? - DIA'.
     
@@ -488,8 +491,7 @@
     2 "Prestado / alquilado"
     3 "No tiene"
     9 "Ns./Nr.".
-    
-    
+        
     *pp05c_2 - ¿En ese negocio / empresa / actividad, tiene local (incluye kiosko, puesto fijo)?.
     variable labels pp05c_2 '¿En ese negocio / empresa / actividad, tiene... local (incluye kiosko, puesto fijo)?'.
     value labels pp05c_2
@@ -497,8 +499,7 @@
     2 "Prestado / alquilado"
     3 "No tiene"
     9 "Ns./Nr.".
-    
-    
+        
     *pp05c_3 - ¿En ese negocio / empresa / actividad, tiene vehículo?.
     variable labels pp05c_3 '¿En ese negocio / empresa / actividad, tiene... vehículo?'.
     value labels pp05c_3
@@ -506,23 +507,20 @@
     2 "Prestado / alquilado"
     3 "No tiene"
     9 "Ns./Nr.".
-    
-    
+        
     *pp05E - ¿Para la actividad del negocio, en los últimos 3 meses, tuvo que gastar en la compra de materias primas, productos, pagar servicios u otros gastos?.
     variable labels pp05E '¿Para la actividad del negocio, en los últimos 3 meses, tuvo que gastar en la compra de materias primas, productos, pagar servicios u otros gastos?'.
     value labels pp05E
     1 "Si"
     2 "No"
     9 "Ns./Nr.".
-    
-    
+        
     *pp05f - Ese negocio / empresa / actividad, trabaja habitualmente para...
     variable labels pp05F '¿Ese negocio / empresa / actividad, trabaja habitualmente para...'.
     value labels pp05F
     6 "un sólo cliente? (persona, empresa)"
     7 "distintos clientes? (incluye público en general)"
-    9 "Ns./Nr.".
-    
+    9 "Ns./Nr.".    
     
     *pp05H - ¿Durante cuánto tiempo ha estado trabajando en ese empleo de forma contínua?.
     variable labels pp05H '¿Durante cuánto tiempo ha estado trabajando en ese empleo de forma contínua? (con interrupciones laborales no mayores a 15 días)'.
@@ -534,31 +532,25 @@
     5 "Más de 1 año a 5 años"
     6 "Más de 5 años"
     9 "Ns./Nr.".
-    
-    
+        
     *pp06A - ¿En ese negocio / empresa / actividad ¿tiene socios o familiares asociados?.
     variable labels pp06A '¿En ese negocio / empresa / actividad ¿tiene socios o familiares asociados?'.
     value labels pp06A
     1 "Sí"
     2 "No"
     9 "Ns./Nr.".
-    
-    
+        
     *pp06C - Monto de patrones y cuenta propia sin socios percibido este mes.
-    weight off.
-    use all.
     variable labels pp06C 'Monto de patrones y cuenta propia sin socios'.
     value labels pp06c
     -7 "No tenìa esa ocupaciòn"
-    -8 "No tuvo ingresos".
-    
+    -8 "No tuvo ingresos".    
     
     *pp06D - Monto de patrones y cuenta propia con socios percibidos en ese mes.
     variable labels pp06D 'Monto de patrones y cuenta propia con socios'.
     value labels pp06d
     -7 "No tenìa esa ocupaciòn"
-    -8 "No tuvo ingresos".
-    
+    -8 "No tuvo ingresos".    
     
     *pp06E - ¿Ese negocio / empresa / actividad...
     variable labels pp06E '¿Ese negocio / empresa / actividad...'.
@@ -566,16 +558,14 @@
     1 "...es una sociedad jurídicamente constituída? (SA, SRL, comandita por acciones, etc.)"
     2 "... es una sociedad de otra forma legal?"
     3 "...o es una sociedad convenida de palabra?"
-    9 "Ns./Nr.".
-    
+    9 "Ns./Nr.".    
     
     *pp06H - ¿Es una actividad familiar?.
     variable labels pp06H '¿Es una actividad familiar?'.
     value labels pp06H
     1 "Sí"
     2 "No".
-    
-    
+        
     *pp07A - ¿Cuánto tiempo hace que está trabajando en ese empleo en forma contínua?.
     variable labels pp07A '¿Cuánto tiempo hace que está trabajando en ese empleo en forma contínua? (sin interrupcción de la relación laboral en la misma empresa / negocio / institución)'.
     value labels pp07A
@@ -586,16 +576,14 @@
     5 "Más de 1 a 5 años"
     6 "Más de 5 años"
     9 "Ns./Nr.".
-    
-    
+        
     *pp07C - ¿Ese empleo tiene tiempo de finalización?.
     variable labels pp07C '¿Ese empleo tiene tiempo de finalización?'.
     value labels pp07C
     1 "Sí (incluye changa, trabajo transitorio, por tarea u obra, suplencia, etc.)"
     2 "No (incluye permanente, fijo. estable, de planta)"
     9 "Ns./Nr.".
-    
-    
+        
     *pp07D - ¿Por cuánto tiempo es ese trabajo?.
     variable labels pp07D '¿Por cuánto tiempo es ese trabajo?'.
     value labels pp07D
@@ -605,8 +593,7 @@
     4 "más de 6 a 12 meses"
     5 "más de 1 año"
     9 "Ns./Nr.".
-    
-    
+        
     *pp07E - ¿Ese trabajo es...?.
     variable labels pp07E '¿Ese trabajo es...?'.
     value labels pp07E
@@ -615,32 +602,28 @@
     3 "...una beca / pasantía / aprendizaje"
     4 "Ninguno de estos"
     9 "Ns./Nr.".
-    
-    
+        
     *pp07F1 - En ese trabajo le dan... de comer gratis en el lugar de trabajo.
     variable labels pp07F1 '¿En ese trabajo le dan... de comer gratis en el lugar de trabajo'.
     value labels pp07F1
     1 "Sí"
     2 "No"
     9 "Ns./Nr.".
-    
-    
+        
     *pp07F2 - ¿En ese trabajo le dan... vivienda?.
     variable labels pp07F2 '¿En ese trabajo le dan... vivienda?'.
     value labels pp07F2
     1 "Sí"
     2 "No"
     9 "Ns./Nr.".
-    
-    
+        
     *pp07F3 - ¿En ese trabajo le dan... algún producto o mercadería?.
     variable labels pp07F3 '¿En ese trabajo le dan... algún producto o mercadería?'.
     value labels pp07F3
     1 "Sí"
     2 "No"
     9 "Ns./Nr.".
-    
-    
+        
     *pp07F4 - ¿En ese trabajo le dan... algún producto o mercadería?.
     variable labels pp07F4 '¿En ese trabajo le dan... aglún otro beneficio? (automóvil, teléfono celular, pasajes, etc.)'.
     value labels pp07F4
@@ -653,8 +636,7 @@
     value labels pp07F5
     5 "No recibe ninguno"
     9 "Ns./Nr.".
-    
-    
+        
     *pp07G1 - ¿En ese trabajo tiene... vacaciones pagas?.
     variable labels pp07G1 '¿En ese trabajo tiene... vacaciones pagas?'.
     value labels pp07G1
@@ -689,8 +671,7 @@
     1 "Si"
     2 "No"
     9 "Ns./Nr.".
-    
-    
+        
     *pp07H - ¿Por ese trabajo tiene descuento jubilatorio?.
     variable labels pp07H '¿Por ese trabajo tiene descuento jubilatorio?'.
     value labels pp07H
