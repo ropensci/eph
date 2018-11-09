@@ -56,7 +56,7 @@ value labels aglomerado
 03 "Bahía Blanca - Cerri"
 04 "Gran Rosario"
 05 "Gran Santa Fé"
-06 "Gran Panamá"
+06 "Gran Paraná"
 07 "Posadas"
 08 "Gran Resistencia"
 09 "Cdro. Rivadavia - R.Tilly"
