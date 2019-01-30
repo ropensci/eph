@@ -15,12 +15,12 @@ descarga_ultima_base <- function(base = 'EPH_usu_2_Trim_2017_txt.zip', individua
   
   if (individual) {
     base_individual <<- read.table(unz(temp,base_individual_name), sep=";", dec=",", header = TRUE, fill = TRUE)
-    source("https://github.com/pablinte/eph/raw/master/etiquetas_b_usu_IND_eph.r")
+    source("https://github.com/pablinte/eph/raw/master/R/etiquetas_eph_ind_2018.R")
     
   }
   if (hogar) {
     base_hogar <<- ?read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE)
-    source("https://github.com/pablinte/eph/raw/master/etiquetas_b_usu_HOG_eph_1t_18.R")
+    source("https://github.com/pablinte/eph/raw/master/R/etiquetas_eph_hog_2018.R")
   }
   unlink(temp)
 
