@@ -1,10 +1,7 @@
-# rm(list = ls())
-library(tidyverse)
-library(httr)
-library(stringr)
-library(haven)
-library(readxl)
 
+### El paquete 'pacman' carga e instala (si no está aún instalado) el paquete que indicamos en la función 'p_load'.
+require(pacman)
+p_load(tidyverse, expss)
 
 # Función que descarga bases de la página de indec, según el nombre que le pusieron al zip.
 descarga_ultima_base <- function(base = 'EPH_usu_2_Trim_2017_txt.zip', individual = FALSE, hogar = FALSE){
