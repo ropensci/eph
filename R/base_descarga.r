@@ -24,10 +24,10 @@ descarga_base <- function(base = 'EPH_usu_2_Trim_2017_txt.zip', individual = FAL
   
   if (hogar == TRUE) {
     if (etiqueta == TRUE) {
-    base_hogar <<- ?read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE)
+    base_hogar <<- read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE)
     source("https://github.com/pablinte/eph/raw/master/R/etiquetas_eph_hog_2018.R", encoding="UTF-8")
   } else {
-    base_hogar <<- ?read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE)
+    base_hogar <<- read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE)
   }
   }
   
