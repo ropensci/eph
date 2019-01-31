@@ -1,6 +1,6 @@
 
 tabulado2v <- function(base, var1, var2, ponderador,
-                       con_na=TRUE, pct_col, pct_row){
+                       con_na = FALSE, pct_col = TRUE, pct_fila = FALSE){
   
   ### Cargamos paquetes necesarios
   require(pacman)
@@ -14,7 +14,7 @@ tabulado2v <- function(base, var1, var2, ponderador,
     spread(., Var2, Freq)
   
   # Porcentaje por columnas
-  if(pct_col == TRUE & pct_row == FALSE){
+  if(pct_col == TRUE & pct_fila == FALSE){
     tabla_pond <- tabla_pond %>%
       adorn_totals("row") %>% 
       adorn_totals("col") %>% 
@@ -22,7 +22,7 @@ tabulado2v <- function(base, var1, var2, ponderador,
       adorn_pct_formatting()
   } else {
   # Porcentaje por fila
-  if(pct_col == FALSE & pct_row == TRUE){
+  if(pct_col == FALSE & pct_fila == TRUE){
     tabla_pond <- tabla_pond %>%
       adorn_totals("row") %>% 
       adorn_totals("col") %>% 
@@ -40,7 +40,7 @@ tabulado2v <- function(base, var1, var2, ponderador,
       spread(., Var2, Freq)
     
     # Porcentaje por columnas
-    if(pct_col == TRUE & pct_row == FALSE){
+    if(pct_col == TRUE & pct_fila == FALSE){
       tabla_pond <- tabla_pond %>%
         adorn_totals("row") %>% 
         adorn_totals("col") %>% 
@@ -49,7 +49,7 @@ tabulado2v <- function(base, var1, var2, ponderador,
     } else {
     
     # Porcentaje por fila
-    if(pct_col == FALSE & pct_row == TRUE){
+    if(pct_col == FALSE & pct_fila == TRUE){
       tabla_pond <- tabla_pond %>%
         adorn_totals("row") %>% 
         adorn_totals("col") %>% 
