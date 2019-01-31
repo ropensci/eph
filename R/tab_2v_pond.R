@@ -1,6 +1,6 @@
 
 tabulado2v <- function(base, var1, var2, ponderador,
-                       con_na, pct_col, pct_row){
+                       con_na=TRUE, pct_col=TRUE, pct_row=TRUE){
   
   ### Cargamos paquetes necesarios
   require(pacman)
