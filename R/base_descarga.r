@@ -1,7 +1,8 @@
 
 ### El paquete 'pacman' carga e instala (si no está aún instalado) el paquete que indicamos en la función 'p_load'.
 require(pacman)
-p_load(tidyverse, expss)
+p_load(tidyverse, expss, httr, stringr, haven, readxl)
+
 
 # Función que descarga bases de la página de indec, según el nombre que le pusieron al zip.
 descarga_base <- function(base = 'EPH_usu_2_Trim_2017_txt.zip', individual = FALSE, hogar = FALSE, etiqueta = FALSE){
@@ -14,26 +15,19 @@ descarga_base <- function(base = 'EPH_usu_2_Trim_2017_txt.zip', individual = FAL
   base_individual_name <- nombres[str_detect(nombres, 'ind')]
   
   if (individual == TRUE) {
+    base_individual <<- read.table(unz(temp,base_individual_name), sep=";", dec=",", header = TRUE, fill = TRUE)
     if (etiqueta == TRUE) {
-    base_individual <<- read.table(unz(temp,base_individual_name), sep=";", dec=",", header = TRUE, fill = TRUE)
-    source("https://github.com/pablinte/eph/raw/master/R/etiquetas_eph_ind_2018.R", encoding="UTF-8")
-  } else {
-    base_individual <<- read.table(unz(temp,base_individual_name), sep=";", dec=",", header = TRUE, fill = TRUE)
-  }
+      source("https://github.com/pablinte/eph/raw/master/R/etiquetas_eph_ind_2018.R", encoding="UTF-8")
+    } 
   }
   
   if (hogar == TRUE) {
+    base_hogar <<- read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE)
     if (etiqueta == TRUE) {
-    base_hogar <<- read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE)
-    source("https://github.com/pablinte/eph/raw/master/R/etiquetas_eph_hog_2018.R", encoding="UTF-8")
-  } else {
-    base_hogar <<- read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE)
-  }
+      source("https://github.com/pablinte/eph/raw/master/R/etiquetas_eph_hog_2018.R", encoding="UTF-8")
+    } 
   }
   
   unlink(temp)
   
 }
-
-
-
