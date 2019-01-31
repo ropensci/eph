@@ -4,7 +4,7 @@ require(pacman)
 p_load(tidyverse, expss)
 
 # Función que descarga bases de la página de indec, según el nombre que le pusieron al zip.
-descarga_base <- function(base = 'EPH_usu_2_Trim_2017_txt.zip', individual = FALSE, hogar = FALSE){
+descarga_base <- function(base = 'EPH_usu_2_Trim_2017_txt.zip', individual = FALSE, hogar = FALSE, etiqueta = FALSE){
   
   link = paste0('https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/', base)
   temp <- tempfile()
@@ -13,15 +13,20 @@ descarga_base <- function(base = 'EPH_usu_2_Trim_2017_txt.zip', individual = FAL
   base_hogar_name <- nombres[str_detect(nombres, 'hog')]
   base_individual_name <- nombres[str_detect(nombres, 'ind')]
   
-  if (individual) {
+  if (individual = TRUE & etiqueta = TRUE) {
     base_individual <<- read.table(unz(temp,base_individual_name), sep=";", dec=",", header = TRUE, fill = TRUE)
     source("https://github.com/pablinte/eph/raw/master/R/etiquetas_eph_ind_2018.R", encoding="UTF-8")
-    
-  }
-  if (hogar) {
+      } else {
+      base_individual <<- read.table(unz(temp,base_individual_name), sep=";", dec=",", header = TRUE, fill = TRUE)
+      }
+       
+  if (hogar = TRUE & etiqueta = TRUE) {
     base_hogar <<- ?read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE)
     source("https://github.com/pablinte/eph/raw/master/R/etiquetas_eph_hog_2018.R", encoding="UTF-8")
-  }
+  } else {
+    base_hogar <<- ?read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE)
+    }
+  
   unlink(temp)
 
 }
