@@ -9,11 +9,11 @@ tabulado2v <- function(base, var1, var2, ponderador,
   ######## CON NA
   if(con_na == TRUE){
   tabla_pond <- as.data.frame(wtd.table(var1, var2, 
-                                        weights = base$ponderador,
-                                        na.show = TRUE)) %>% 
+                                        weights = ponderador,
+                                        na.show = TRUE)) %>%
     spread(., Var2, Freq)
   
-  # Por columnas
+  # Porcentaje por columnas
   if(pct_col == TRUE & pct_row == FALSE){
     tabla_pond <- tabla_pond %>%
       adorn_totals("row") %>% 
@@ -21,7 +21,7 @@ tabulado2v <- function(base, var1, var2, ponderador,
       adorn_percentages("col") %>% 
       adorn_pct_formatting()
   } else {
-  # Por fila
+  # Porcentaje por fila
   if(pct_col == FALSE & pct_row == TRUE){
     tabla_pond <- tabla_pond %>%
       adorn_totals("row") %>% 
@@ -35,11 +35,11 @@ tabulado2v <- function(base, var1, var2, ponderador,
   ########  SIN NA
   if(con_na == FALSE){
     tabla_pond <- as.data.frame(wtd.table(var1, var2, 
-                                          weights = base$ponderador,
+                                          weights = ponderador,
                                           na.show = FALSE)) %>% 
       spread(., Var2, Freq)
     
-    # Por columnas
+    # Porcentaje por columnas
     if(pct_col == TRUE & pct_row == FALSE){
       tabla_pond <- tabla_pond %>%
         adorn_totals("row") %>% 
@@ -48,7 +48,7 @@ tabulado2v <- function(base, var1, var2, ponderador,
         adorn_pct_formatting()
     } else {
     
-    # Por fila
+    # Porcentaje por fila
     if(pct_col == FALSE & pct_row == TRUE){
       tabla_pond <- tabla_pond %>%
         adorn_totals("row") %>% 
