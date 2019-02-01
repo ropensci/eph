@@ -1,6 +1,6 @@
 # EPH
 
-## Herramientas varias destinadas a facilitar el procesamiento de los datos de la Encuesta Permanente de Hogares que el [INDEC](https://www.indec.gob.ar/) produce todos los trimestres, cada año.
+## Herramientas varias destinadas a facilitar el procesamiento de los datos producidos por la Encuesta Permanente de Hogares que el [INDEC](https://www.indec.gob.ar/) releva durante cada trimestre.
 
 
 
