@@ -7,9 +7,10 @@
 
 --> Scripts de [**R**](https://github.com/pablinte/eph/tree/master/R).
 
-Vas a poder encontrar algunas funciones como descargar la base de datos desde la página oficial, con o sin etiquetas, según lo que necesites.
+Funciones para descargar la base de datos desde R, con o sin etiquetas, según se necesite.
 
 
 
---> Sintaxis de [**SPSS**](https://github.com/pablinte/eph/tree/master/spss)
-Vas a poder encontrar algunas sintaxis para empezar a procesar los datos sin perder tiempo estructurando las variables.
+--> Sintaxis de [**SPSS**](https://github.com/pablinte/eph/tree/master/spss).
+
+Sintaxis para empezar a procesar los datos sin perder tiempo estructurando la base de datos.
