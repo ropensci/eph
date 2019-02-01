@@ -9,7 +9,7 @@ descargar de forma automática la base usuaria, sea la de individuos o la de hog
 A su vez, integramos en la misma función de descarga la opción del etiquetado de los nombres de las variables como también el de sus  categorías.
 
 ### Modo de uso
-Se puede copiar el script de la función desde el [repositorio](https://github.com/pablinte/eph/raw/master/R/base_descarga.r) o, mejor aún, podés simplemente pegar el siguiente código en R --> `source("https://github.com/pablinte/eph/raw/master/R/base_descarga.r")`. Al correrlo automaticamente cargamos la función.
+Se puede copiar el script de la función desde este [repositorio](https://github.com/pablinte/eph/raw/master/R/base_descarga.r) o, mejor aún, podés simplemente pegar el siguiente código en R --> `source("https://github.com/pablinte/eph/raw/master/R/base_descarga.r")`. Al correrlo automaticamente cargamos la función.
 
 Por último, para descargar la base tenemos que definir en la función los siguientes parámetros:
 `anio = `,
