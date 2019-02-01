@@ -6,7 +6,7 @@ Las bases usuarias de la EPH-INDEC son gratuiras y de libre acceso. Para dispone
 Con el objetivo de facilitar este procedimiento e integrarlo directamente al procesamiento desde R, creamos una función que permita
 descargar de forma automática la base usuaria, sea la de individuos o la de hogares.
 
-A su vez, integramos en la misma función de descarga la opción del etiquetado de los nombres de las variables como también el sus  categorías.
+A su vez, integramos en la misma función de descarga la opción del etiquetado de los nombres de las variables como también el de sus  categorías.
 
 ### Modo de uso
 Se puede copiar el script de la función desde [el repositorio](https://github.com/pablinte/eph/raw/master/R/base_descarga.r) o, mejor aún, podés simplemente pegar este código en tu script --> `source("https://github.com/pablinte/eph/raw/master/R/base_descarga.r")`. Al correrlo automaticamente cargamos la función en R.
