@@ -5,7 +5,7 @@
 
 
 
--->[** Scripts de R**](https://github.com/pablinte/eph/tree/master/R). Funciones para descargar la base de datos desde R, con o sin etiquetas, según se necesite.
+-->[**Scripts de R**](https://github.com/pablinte/eph/tree/master/R). Funciones para descargar la base de datos desde R, con o sin etiquetas, según se necesite.
 
 
 
