@@ -4,7 +4,7 @@ tabulado2v <- function(base, var1, var2, ponderador,
   
   ### Cargamos paquetes necesarios
   if(!require(pacman))install.packages("pacman")
-  require::p_load(tidyverse, questionr, janitor)
+  pacman::p_load(tidyverse, questionr, janitor)
   
   ######## CON NA
   if(con_na == TRUE){
