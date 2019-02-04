@@ -1,10 +1,14 @@
+### ADVERTENCIA: El script no es oficial, pero descarga las bases desde la página oficial (publicadas). 
+### El primer uso puede tomarse un tiempito (dependiendo tu compu / conexión) para instalar aquellos paquetes que aún no 
+# tengas instalados. El segundo uso apenas tomará unos segundos.
+
 # Función que descarga bases de la página de indec, según el nombre que le pusieron al zip.
 descarga_base_eph <- function(anio = 2018, trimestre = 1, individual = FALSE, hogar = FALSE,
                           etiqueta = FALSE){
   
-  ### El paquete 'pacman' carga e instala (si no está aún instalado) el paquete que indicamos en la función 'p_load'.
+### Chequea si el paquete pacman está instalado, en caso de no estarlo, lo instala.
 if(!require(pacman))install.packages("pacman")
-
+### El paquete 'pacman' carga e instala (si no está aún instalado) el paquete que indicamos en la función 'p_load'.
 pacman::p_load(tidyverse, expss, httr, stringr, haven, readxl)
   
   if (anio == 2016 | (anio == 2017 & trimestre ==1)){
