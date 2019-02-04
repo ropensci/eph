@@ -7,7 +7,7 @@ Con el objetivo de facilitar este procedimiento e integrarlo directamente al pro
 
 A su vez, integramos en la misma función de descarga la opción para etiquetar los nombres de las variables y también el de sus  categorías.
 
-### Modo de uso
+### Modo de uso.
 Se puede copiar el script de la función desde este [repositorio](https://github.com/pablinte/eph/raw/master/R/base_descarga.r) o, mejor aún, simplemente pegar el siguiente código en R --> `source("https://github.com/pablinte/eph/raw/master/R/base_descarga.r")`. 
 
 Al correrlo automaticamente queda cargada la función en tu ambiente de R. Para descargar la base hay que definir en la función los siguientes parámetros:
@@ -17,6 +17,7 @@ Al correrlo automaticamente queda cargada la función en tu ambiente de R. Para 
 `hogar = TRUE/FALSE`,
 `etiqueta = TRUE/FALSE`.
 
+### Ejemplos.
 Por ejemplo, si quiero descargar la base de individuos de la EPH, para el año 2018, trimestre 1, el código quedaría así:
 `descarga_base_eph(individual = TRUE, etiqueta = TRUE, anio = 2018, trimestre = 1)`
 
