@@ -3,8 +3,9 @@ descarga_base_eph <- function(anio = 2018, trimestre = 1, individual = FALSE, ho
                           etiqueta = FALSE){
   
   ### El paquete 'pacman' carga e instala (si no está aún instalado) el paquete que indicamos en la función 'p_load'.
-require(pacman)
-p_load(tidyverse, expss, httr, stringr, haven, readxl)
+if(!require(pacman))install.packages("pacman")
+
+pacman::p_load(tidyverse, expss, httr, stringr, haven, readxl)
   
   if (anio == 2016 | (anio == 2017 & trimestre ==1)){
     if (trimestre == 1){
