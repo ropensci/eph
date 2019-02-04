@@ -18,7 +18,7 @@ Al correrlo automaticamente queda cargada la función en tu ambiente de R. Para 
 `etiqueta = TRUE/FALSE`.
 
 ### Ejemplos.
-Por ejemplo, si quiero descargar la base de individuos de la EPH, para el año 2018, trimestre 1, el código quedaría así:
+Si quiero descargar la base de individuos de la EPH, para el año 2018, trimestre 1, el código quedaría así:
 `descarga_base_eph(individual = TRUE, etiqueta = TRUE, anio = 2018, trimestre = 1)`
 
 Si quiero descargar la base de hogares para el año 2017, trimestre 3, sin etiquetas, el código quedaría así:
