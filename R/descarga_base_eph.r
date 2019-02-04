@@ -1,5 +1,5 @@
 # Función que descarga bases de la página de indec, según el nombre que le pusieron al zip.
-descarga_base <- function(anio = 2018, trimestre = 1, individual = FALSE, hogar = FALSE,
+descarga_base_eph <- function(anio = 2018, trimestre = 1, individual = FALSE, hogar = FALSE,
                           etiqueta = FALSE){
   
   ### El paquete 'pacman' carga e instala (si no está aún instalado) el paquete que indicamos en la función 'p_load'.
