@@ -3,8 +3,8 @@ tabulado2v <- function(base, var1, var2, ponderador,
                        con_na = FALSE, pct_col = TRUE, pct_fila = FALSE){
   
   ### Cargamos paquetes necesarios
-  require(pacman)
-  p_load(tidyverse, questionr, janitor)
+  if(!require(pacman))install.packages("pacman")
+  require::p_load(tidyverse, questionr, janitor)
   
   ######## CON NA
   if(con_na == TRUE){
