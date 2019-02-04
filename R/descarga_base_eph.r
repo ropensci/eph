@@ -1,11 +1,11 @@
-### El paquete 'pacman' carga e instala (si no está aún instalado) el paquete que indicamos en la función 'p_load'.
-require(pacman)
-p_load(tidyverse, expss, httr, stringr, haven, readxl)
-
-EPH_usu_2doTrim_2016_txt.zip
 # Función que descarga bases de la página de indec, según el nombre que le pusieron al zip.
 descarga_base <- function(anio = 2018, trimestre = 1, individual = FALSE, hogar = FALSE,
                           etiqueta = FALSE){
+  
+  ### El paquete 'pacman' carga e instala (si no está aún instalado) el paquete que indicamos en la función 'p_load'.
+require(pacman)
+p_load(tidyverse, expss, httr, stringr, haven, readxl)
+  
   if (anio == 2016 | (anio == 2017 & trimestre ==1)){
     if (trimestre == 1){
       trimestre <- "1ro"}
@@ -15,12 +15,14 @@ descarga_base <- function(anio = 2018, trimestre = 1, individual = FALSE, hogar 
       trimestre <- "3er"}
     if (trimestre == 4){
       trimestre <- "4to"}
+    
   base = paste0("EPH_usu_", trimestre, "Trim_", anio, "_txt.zip")
   }
   
   if (anio >= 2018 | (anio == 2017 & trimestre >=2)){
   base = paste0("EPH_usu_", trimestre, "_Trim_", anio, "_txt.zip")
   }
+  
   link = paste0('https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/', base)
   temp <- tempfile()
   download.file(link,temp)
@@ -45,6 +47,3 @@ descarga_base <- function(anio = 2018, trimestre = 1, individual = FALSE, hogar 
   unlink(temp)
   
 }
-rm(base_individual)
-descarga_base(anio = 2016, trimestre = 1, individual = TRUE, etiqueta = TRUE)
-table(base_individual$ANO4, base_individual$TRIMESTRE)
