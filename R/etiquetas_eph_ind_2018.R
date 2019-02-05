@@ -1,9 +1,8 @@
 
-require(pacman)
-p_load(tidyverse, expss)
-
-#source("subir a github la funcion para descargar bases EPH")
-
+### Chequea si el paquete pacman está instalado, en caso de no estarlo, lo instala.
+if(!require(pacman))install.packages("pacman")
+### El paquete 'pacman' carga e instala (si no está aún instalado) el paquete que indicamos en la función 'p_load'.
+pacman::p_load(tidyverse, expss)
 ### ¿Cómo definir un objeto que aplique luego en todo el script?
 
 base_individual = apply_labels(base_individual,
