@@ -8,7 +8,7 @@ Con el objetivo de facilitar este procedimiento e integrarlo directamente al pro
 A su vez, integramos en la misma función de descarga la opción para etiquetar los nombres de las variables y también el de sus  categorías.
 
 ### Modo de uso.
-Se puede copiar el script de la función desde este [repositorio](https://github.com/pablinte/eph/raw/master/R/descarga_base_eph.r) o simplemente pegar el siguiente código en R --> `source("https://github.com/pablinte/eph/raw/master/R/base_descarga.r")`. 
+Se puede copiar el script de la función desde [este repositorio](https://github.com/pablinte/eph/raw/master/R/descarga_base_eph.r) o simplemente pegar el siguiente código en R --> `source("https://github.com/pablinte/eph/raw/master/R/base_descarga.r")`. 
 
 Al correrlo automaticamente queda cargada la función en tu ambiente de R. Para descargar la base hay que definir en la función los siguientes parámetros:
 `anio = `,
