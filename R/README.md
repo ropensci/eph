@@ -23,8 +23,8 @@ Si quiero descargar la base de individuos de la EPH, para el año 2018, trimestr
 
 ![alt text](https://raw.githubusercontent.com/pablinte/eph/master/R/imagenes/capt3.PNG)
 
+Con la función table chequeamos que se haya descargado el año, trimestre y las etiquetas:
+`table(base_individual$ANO4, base_individual$TRIMESTRE)`
+![alt text](https://raw.githubusercontent.com/pablinte/eph/master/R/imagenes/table.PNG)
 
-
-Si quiero descargar la base de hogares para el año 2017, trimestre 3, sin etiquetas, el código quedaría así:
-`descarga_base_eph(hogar = TRUE, etiqueta = FALSE, anio = 2017, trimestre = 3)`
 
