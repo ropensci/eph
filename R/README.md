@@ -1,4 +1,4 @@
-# Scripts para R
+# EPH en R
 
 ## Descarga de base usuaria EPH-INDEC
 Las bases usuarias de la EPH-INDEC son gratuiras y de libre acceso. Para disponer de las mismas hay que recurir a la [página del INDEC](https://www.indec.gob.ar/bases-de-datos.asp) y bajar, una por una, las bases que querramos.
