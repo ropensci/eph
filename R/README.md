@@ -29,3 +29,6 @@ Con la función table chequeamos que se haya descargado el año, trimestre y las
 ![alt text](https://raw.githubusercontent.com/pablinte/eph/master/R/imagenes/table.PNG)
 
 
+## Etiquetas
+Si ya dispones de una base de datos y sólo querés atiquetarla, podés correr el siguiente código:
+`table(base_individual$ANO4, base_individual$TRIMESTRE)`
