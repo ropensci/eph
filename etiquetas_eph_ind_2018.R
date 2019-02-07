@@ -3,7 +3,7 @@
 if(!require(pacman))install.packages("pacman")
 ### El paquete 'pacman' carga e instala (si no está aún instalado) el paquete que indicamos en la función 'p_load'.
 pacman::p_load(tidyverse, expss)
-### ¿Cómo definir un objeto que aplique luego en todo el script?
+
 
 base_individual = apply_labels(base_individual,
                                CODUSU = 'Código para distinguir VIVIENDAS, permite aparearlas con Hogares y Personas. Además permite hacer el seguimiento a través de los trimestres',
