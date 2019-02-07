@@ -1,57 +1,41 @@
-# EPH en R
+# Caja de Herramientas para el procesamiento de la Encuesta Permanente de Hogares
 
-## Descarga de base usuaria EPH-INDEC
-Las bases usuarias de la EPH-INDEC son gratuiras y de libre acceso. Para disponer de las mismas hay que recurir a la [página del INDEC](https://www.indec.gob.ar/bases-de-datos.asp) y bajar, una por una, las bases que querramos.
+## Overview
+La librería `eph` tiene por objecto facilitar el trabajo de aquellos usuarios de la [Encuesta Permanente de Hogares](https://www.indec.gob.ar/bases-de-datos.asp) de Argentina, que deseen procesarla mediante R
 
-Con el objetivo de facilitar este procedimiento e integrarlo directamente al procesamiento desde R, con [Natsu](https://rpubs.com/natsumi_shokida) y [@DiegoKoz](https://github.com/DiegoKoz) creamos una función que permita descargar de forma automática la base usuaria, sea la de individuos o la de hogares.
+Algunas de las funciones son:
 
-A su vez, integramos en la misma función de descarga la opción para etiquetar los nombres de las variables y también el de sus  categorías.
-<<<<<<< HEAD
+- `descarga_base_eph()`: permite descargar las bases directamente de la página de INDEC
+- `tagger_eph()`: etiqueta las bases siguiendo el último [diseño de registro](https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_registro_t218.pdf)
+- `Crea_Panel_Continua()`:Permite armar un pool de datos en panel de la EPH continua a partir de especificar una serie de bases, variables y el largo de la ventana de observación
 
-### Modo de uso.
-Se puede copiar el script de la función desde [este repositorio](https://github.com/pablinte/eph/raw/master/descarga_base_eph.r) o simplemente pegar el siguiente código en R --> `source("https://github.com/pablinte/eph/raw/master/descarga_base_eph.r")`. 
+## Instalación
 
-Al correrlo automaticamente queda cargada la función en tu ambiente de R. Para descargar la base hay que definir en la función los siguientes parámetros:
-`anio = `,
-`trimestre =`,
-`individual = TRUE/FALSE`,
-`hogar = TRUE/FALSE`,
-`etiqueta = TRUE/FALSE`.
+Desde Rstudio 
 
-### Ejemplos.
-Si quiero descargar la base de individuos de la EPH, para el año 2018, trimestre 1, el código quedaría así:
-`descarga_base_eph(individual = TRUE, etiqueta = TRUE, anio = 2018, trimestre = 1)`
+```
 
+# install.packages('devtools') si no tiene instalado devtools
 
+devtools::install_github("pablinte/eph")
 
-Con la función table chequeamos que se haya descargado el año, trimestre y las etiquetas:
-`table(base_individual$ANO4, base_individual$TRIMESTRE)`
-
-=======
+```
 
 ### Modo de uso.
-Se puede copiar el script de la función desde [este repositorio](https://github.com/pablinte/eph/raw/master/R/descarga_base_eph.r) o simplemente pegar el siguiente código en R --> `source("https://github.com/pablinte/eph/raw/master/R/base_descarga.r")`. 
 
-Al correrlo automaticamente queda cargada la función en tu ambiente de R. Para descargar la base hay que definir en la función los siguientes parámetros:
-`anio = `,
-`trimestre =`,
-`individual = TRUE/FALSE`,
-`hogar = TRUE/FALSE`,
-`etiqueta = TRUE/FALSE`.
+```
+# descargar la base del 2018, primer trimestre
 
-### Ejemplos.
-Si quiero descargar la base de individuos de la EPH, para el año 2018, trimestre 1, el código quedaría así:
-`descarga_base_eph(individual = TRUE, etiqueta = TRUE, anio = 2018, trimestre = 1)`
+df <- descarga_base_eph(anio = 2018, trimestre = 1, etiqueta = FALSE)
 
-![alt text](https://raw.githubusercontent.com/pablinte/eph/master/R/imagenes/capt3.PNG)
+# etiquetar la base hogar
 
-Con la función table chequeamos que se haya descargado el año, trimestre y las etiquetas:
-`table(base_individual$ANO4, base_individual$TRIMESTRE)`
-
-![alt text](https://raw.githubusercontent.com/pablinte/eph/master/R/imagenes/table.PNG)
+df_hogar <- tagger_eph(df$base_hogar, base='hogar')
+```
 
 
-## Etiquetas
-Si ya dispones de una base de datos y sólo querés atiquetarla, podés correr el siguiente código:
-`table(base_individual$ANO4, base_individual$TRIMESTRE)`
->>>>>>> e1faa62d381c1f418192d1d01d7696a4f3e7f693
+## Aportes de la comunidad
+
+Este paquete se propone incorporar cualquier función de propósitos generales que utilice como base los datos de la Encuesta Permanente de Hogares. Todos los aportes en este sentido son bienvenidos.
+
+Si trabajas con la EPH y querés agregar tu función, te recomendamos que leas el siguiente [issue](https://github.com/pablinte/eph/issues/5#issue-407890587) con consejos de como colaborar
