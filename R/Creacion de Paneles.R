@@ -11,7 +11,10 @@
 #' @export
 #'
 #' @examples
-#' Lista_Bases <- list(Base_4t_2017,Base_1t_2018,Base_2t_2018)
+#' Base_1t_2018 <- descarga_base_eph(anio = 2018,trimestre = 1)[[2]]
+#' Base_2t_2018 <- descarga_base_eph(anio = 2018,trimestre = 2)[[2]]
+#'
+#' Lista_Bases <- list(Base_1t_2018,Base_2t_2018)
 #' Crea_Panel_Continua(Bases = Lista_Bases,
 #'                     Variables =c("P21","ESTADO"),
 #'                     Ventana = "Trimestral")
