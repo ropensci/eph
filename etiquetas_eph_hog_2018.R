@@ -1,16 +1,7 @@
-
-
-require(pacman)
-p_load(expss)
-
-### Las etiquetas de los nombres de las variables y de los códigos de las mismas fueron cargadas 
-## con el paquete "expss". Este presenta algunas ventajas para trabajar tanto con los códigos 
-## obteniendo las salidas con etiquetas. 
-
-###Para más información sobre el paquete: https://github.com/gdemin/expss
-
-
-### Reemplazar "base_hogar" por el nombre del objeto en don
+### Chequea si el paquete pacman está instalado, en caso de no estarlo, lo instala.
+if(!require(pacman))install.packages("pacman")
+### El paquete 'pacman' carga e instala (si no está aún instalado) el paquete que indicamos en la función 'p_load'.
+pacman::p_load(tidyverse, expss)
 
 base_hogar = apply_labels(base_hogar,
                           CODUSU = 'Código para distinguir VIVIENDAS, permite aparearlas con Hogares y Personas. Además permite hacer el seguimiento a través de los trimestres',
