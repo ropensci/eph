@@ -38,14 +38,14 @@ pacman::p_load(tidyverse, expss, httr, stringr, haven, readxl)
   if (individual == TRUE) {
     base_individual <<- read.table(unz(temp,base_individual_name), sep=";", dec=",", header = TRUE, fill = TRUE)
     if (etiqueta == TRUE) {
-      source("https://github.com/pablinte/eph/raw/master/R/etiquetas_eph_ind_2018.R", encoding="UTF-8")
+      source("https://github.com/pablinte/eph/raw/master/etiquetas_eph_ind_2018.R", encoding="UTF-8")
     } 
   }
   
   if (hogar == TRUE) {
     base_hogar <<- read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE)
     if (etiqueta == TRUE) {
-      source("https://github.com/pablinte/eph/raw/master/R/etiquetas_eph_hog_2018.R", encoding="UTF-8")
+      source("https://github.com/pablinte/eph/raw/master/etiquetas_eph_hog_2018.R", encoding="UTF-8")
     } 
   }
   
