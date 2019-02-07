@@ -2,17 +2,19 @@
 % Please edit documentation in R/descarga_base_eph.r
 \name{descarga_base_eph}
 \alias{descarga_base_eph}
-\title{Función que descarga bases de la Encuesta Permanente de Hogares del INDEC.}
+\title{Descarga de Bases de EPH}
 \usage{
 descarga_base_eph(anio = 2018, trimestre = 1, etiqueta = FALSE)
 }
 \arguments{
-\item{anio:}{un integer entre 2016:2018
-trimestr: un integer con el numero de trimestre: 1,2,3,4
-etiqueta: TRUE/FALSE, opcion para etiquetar los datos}
+\item{anio:}{un integer entre 2016:2018}
+
+\item{trimestre:}{un integer con el numero de trimestre: 1,2,3,4}
+
+\item{etiqueta:}{TRUE/FALSE, opcion para etiquetar los datos}
 }
 \description{
-Función que descarga bases de la Encuesta Permanente de Hogares del INDEC.
+Función que descarga bases de la Encuesta Permanente de Hogares del INDEC a partir de 2016
 }
 \details{
 disclaimer: El script no es un producto oficial de INDEC.

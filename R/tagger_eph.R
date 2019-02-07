@@ -5,10 +5,10 @@
 #'base: string. aclaracion de si se quiere etiquetar una base 'individual' u 'hogar'
 #'@details
 #'disclaimer: El script no es un producto oficial de INDEC.
-#'@example
+#'@examples
 #'df <- descarga_base_eph(anio = 2018, trimestre = 1, etiqueta = FALSE)[['hogar']]
 #'df <- tagger_eph(df, base='hogar')
-#'
+#'@export
 
 
 tagger_eph <- function(df, base = "individual"){

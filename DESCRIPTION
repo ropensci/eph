@@ -1,5 +1,5 @@
 Package: eph
-Title: What the Package Does (One Line, Title Case)
+Title: EPH Tools
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "First",
@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "first.last@example.com")
 Description: What the package does (one paragraph).
-License: What license it uses
+License: MIT
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1

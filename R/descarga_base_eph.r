@@ -1,15 +1,18 @@
-#'Función que descarga bases de la Encuesta Permanente de Hogares del INDEC.
+#'Descarga de Bases de EPH
 #'@description
+#'Función que descarga bases de la Encuesta Permanente de Hogares del INDEC a partir de 2016
 #'@param
 #'anio: un integer entre 2016:2018
-#'trimestr: un integer con el numero de trimestre: 1,2,3,4
+#'@param
+#'trimestre: un integer con el numero de trimestre: 1,2,3,4
+#'@param
 #'etiqueta: TRUE/FALSE, opcion para etiquetar los datos
 #'@details
 #'disclaimer: El script no es un producto oficial de INDEC.
 #'
 #'@example
 #'descarga_base_eph(anio = 2018, trimestre = 1, etiqueta = FALSE)
-#'
+#'@export
 descarga_base_eph <- function(anio = 2018, trimestre = 1,etiqueta = FALSE){
 
   #controles de los parametros
@@ -42,19 +45,19 @@ descarga_base_eph <- function(anio = 2018, trimestre = 1,etiqueta = FALSE){
   temp <- tempfile()
 
   check <- NA
-  try(check <- download.file(link,temp),silent = TRUE)
+  try(check <- utils::download.file(link,temp),silent = TRUE)
   assertthat::assert_that(assertthat::noNA(check),msg = "problema con la descarga. Posiblemente un error de la conexion a internet")
 
-  nombres <- purrr::as_vector(unzip(temp, list = TRUE)['Name'])
-  base_hogar_name <- nombres[str_detect(nombres, 'hog')]
-  base_individual_name <- nombres[str_detect(nombres, 'ind')]
+  nombres <- purrr::as_vector(utils::unzip(temp, list = TRUE)['Name'])
+  base_hogar_name <- nombres[stringr::str_detect(nombres, 'hog')]
+  base_individual_name <- nombres[stringr::str_detect(nombres, 'ind')]
 
-  base_individual <- read.table(unz(temp,base_individual_name), sep=";", dec=",", header = TRUE, fill = TRUE)
+  base_individual <- utils::read.table(unz(temp,base_individual_name), sep=";", dec=",", header = TRUE, fill = TRUE)
   if (etiqueta == TRUE) {
     base_individual <- tagger_eph(base_individual, base = 'individual')
   }
 
-  base_hogar <- read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE)
+  base_hogar <- utils::read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE)
   if (etiqueta == TRUE) {
     base_hogar <- tagger_eph(base_hogar, base = 'hogar')
   }
