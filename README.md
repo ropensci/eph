@@ -5,8 +5,8 @@ La librería `eph` tiene por objecto facilitar el trabajo de aquellos usuarios d
 
 Algunas de las funciones son:
 
-- `descarga_base_eph()`: permite descargar las bases directamente de la página de INDEC
-- `tagger_eph()`: etiqueta las bases siguiendo el último [diseño de registro](https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_registro_t218.pdf)
+- `get_bases_eph()`: permite descargar las bases directamente de la página de INDEC
+- `put_labels_eph()`: etiqueta las bases siguiendo el último [diseño de registro](https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_registro_t218.pdf)
 - `Crea_Panel_Continua()`:Permite armar un pool de datos en panel de la EPH continua a partir de especificar una serie de bases, variables y el largo de la ventana de observación
 
 ## Instalación
@@ -26,11 +26,11 @@ devtools::install_github("pablinte/eph")
 ```
 # descargar la base del 2018, primer trimestre
 
-df <- descarga_base_eph(anio = 2018, trimestre = 1, etiqueta = FALSE)
+df <- get_bases_eph(anio = 2018, trimestre = 1, etiqueta = FALSE)
 
 # etiquetar la base hogar
 
-df_hogar <- tagger_eph(df$base_hogar, base='hogar')
+df_hogar <- put_labels_eph(df$base_hogar, base='hogar')
 ```
 
 
