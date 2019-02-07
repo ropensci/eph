@@ -17,6 +17,6 @@ Función para etiquetar las bases de la Encuesta Permanente de Hogares.
 disclaimer: El script no es un producto oficial de INDEC.
 }
 \examples{
-df <- descarga_base_eph(anio = 2018, trimestre = 1, etiqueta = FALSE)[['hogar']]
-df <- tagger_eph(df, base='hogar')
+df <- descarga_base_eph(anio = 2018, trimestre = 1, etiqueta = FALSE)
+df <- tagger_eph(df$base_hogar, base='hogar')
 }
