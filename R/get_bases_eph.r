@@ -11,9 +11,9 @@
 #'disclaimer: El script no es un producto oficial de INDEC.
 #'
 #'@example
-#'descarga_base_eph(anio = 2018, trimestre = 1, etiqueta = FALSE)
+#'get_bases_eph(anio = 2018, trimestre = 1, etiqueta = FALSE)
 #'@export
-descarga_base_eph <- function(anio = 2018, trimestre = 1,etiqueta = FALSE){
+get_bases_eph <- function(anio = 2018, trimestre = 1,etiqueta = FALSE){
 
   #controles de los parametros
   assertthat::assert_that(is.numeric(anio))

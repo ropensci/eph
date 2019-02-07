@@ -6,12 +6,12 @@
 #'@details
 #'disclaimer: El script no es un producto oficial de INDEC.
 #'@examples
-#'df <- descarga_base_eph(anio = 2018, trimestre = 1, etiqueta = FALSE)
-#'df <- tagger_eph(df$base_hogar, base='hogar')
+#'df <- get_bases_eph(anio = 2018, trimestre = 1, etiqueta = FALSE)
+#'df <- put_labels_eph(df$base_hogar, base='hogar')
 #'@export
 
 
-tagger_eph <- function(df, base = "individual"){
+put_labels_eph <- function(df, base = "individual"){
 
   assertthat::assert_that(is.data.frame(df))
   assertthat::assert_that(base %in% c("individual", "hogar"))
