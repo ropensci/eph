@@ -2,7 +2,7 @@
 % Please edit documentation in R/descarga_base_eph.r
 \name{descarga_base_eph}
 \alias{descarga_base_eph}
-\title{Función que descarga bases de la página de indec, según el nombre que le pusieron al zip.}
+\title{Función que descarga bases de la Encuesta Permanente de Hogares del INDEC.}
 \usage{
 descarga_base_eph(anio = 2018, trimestre = 1, etiqueta = FALSE)
 }
@@ -12,8 +12,7 @@ trimestr: un integer con el numero de trimestre: 1,2,3,4
 etiqueta: TRUE/FALSE, opcion para etiquetar los datos}
 }
 \description{
-El primer uso puede tomarse un tiempito (dependiendo tu compu / conexión) para instalar aquellos paquetes que aún no
-tengas instalados. El segundo uso apenas tomará unos segundos.
+Función que descarga bases de la Encuesta Permanente de Hogares del INDEC.
 }
 \details{
 disclaimer: El script no es un producto oficial de INDEC.

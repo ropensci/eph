@@ -1,8 +1,5 @@
-#'Función que descarga bases de la página de indec, según el nombre que le pusieron al zip.
+#'Función que descarga bases de la Encuesta Permanente de Hogares del INDEC.
 #'@description
-#' El primer uso puede tomarse un tiempito (dependiendo tu compu / conexión) para instalar aquellos paquetes que aún no
-#'tengas instalados. El segundo uso apenas tomará unos segundos.
-#'
 #'@param
 #'anio: un integer entre 2016:2018
 #'trimestr: un integer con el numero de trimestre: 1,2,3,4
@@ -54,12 +51,12 @@ descarga_base_eph <- function(anio = 2018, trimestre = 1,etiqueta = FALSE){
 
   base_individual <- read.table(unz(temp,base_individual_name), sep=";", dec=",", header = TRUE, fill = TRUE)
   if (etiqueta == TRUE) {
-    source("https://github.com/pablinte/eph/raw/master/R/etiquetas_eph_ind_2018.R", encoding="UTF-8")
+    base_individual <- tagger_eph(base_individual, base = 'individual')
   }
 
   base_hogar <- read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE)
   if (etiqueta == TRUE) {
-    source("https://github.com/pablinte/eph/raw/master/R/etiquetas_eph_hog_2018.R", encoding="UTF-8")
+    base_hogar <- tagger_eph(base_hogar, base = 'hogar')
   }
 
   unlink(temp)
