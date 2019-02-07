@@ -11,8 +11,8 @@
 #' @export
 #'
 #' @examples
-#' base_1t_2018 <- descarga_base_eph(anio = 2018,trimestre = 1)[[2]]
-#' base_2t_2018 <- descarga_base_eph(anio = 2018,trimestre = 2)[[2]]
+#' base_1t_2018 <- get_bases_eph(anio = 2018,trimestre = 1)[[2]]
+#' base_2t_2018 <- get_bases_eph(anio = 2018,trimestre = 2)[[2]]
 #'
 #' lista_bases <- list(base_1t_2018,base_2t_2018)
 #' pool_datapanel_eph(bases = lista_bases,
