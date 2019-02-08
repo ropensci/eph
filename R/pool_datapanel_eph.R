@@ -27,16 +27,12 @@ pool_datapanel_eph <- function(bases,variables,ventana = "anual"){
   assertthat::assert_that(ventana %in% c("anual", "trimestral"),
                           msg = "Las opciones para ventana son: anual y trimestral")
 
-  if(!require(pacman))install.packages("pacman")
-  ### El paquete 'pacman' carga e instala (si no está aún instalado) el paquete que indicamos en la función 'p_load'.
-  pacman::p_load(tidyverse)
-
-  bases_continua <<- bind_rows(bases)  %>%
-    select(CODUSU,NRO_HOGAR,COMPONENTE,ANO4,TRIMESTRE,CH04,CH06,variables) %>%
-    filter(ESTADO !=0) %>%
-    mutate(Trimestre = paste(ANO4, TRIMESTRE, sep="_"))%>%
-    arrange(Trimestre) %>%
-    mutate(Id_Trimestre = match(Trimestre,unique(Trimestre)))
+  bases_continua <- dplyr::bind_rows(bases)  %>%
+    dplyr::select(CODUSU,NRO_HOGAR,COMPONENTE,ANO4,TRIMESTRE,CH04,CH06,variables) %>%
+    dplyr::filter(ESTADO !=0) %>%
+    dplyr::mutate(Trimestre = paste(ANO4, TRIMESTRE, sep="_"))%>%
+    dplyr::arrange(Trimestre) %>%
+    dplyr::mutate(Id_Trimestre = match(Trimestre,unique(Trimestre)))
 
 
   ##Creo una Replica de la base, y le agrego (_t1) al nombre de cada
@@ -55,16 +51,18 @@ pool_datapanel_eph <- function(bases,variables,ventana = "anual"){
 
   bases_continua_join$Id_Trimestre <- bases_continua_join$Id_Trimestre - t
 
-  panel_continua <<- inner_join(bases_continua,bases_continua_join) %>%
-    mutate(consistencia = case_when(abs(CH06_t1-CH06) > 2 |
-                                    CH04 != CH04_t1 ~ FALSE,
-                                    TRUE ~ TRUE))
+  panel_continua <- dplyr::inner_join(bases_continua,bases_continua_join) %>%
+    dplyr::mutate(consistencia = dplyr::case_when(
+                                                  abs(CH06_t1-CH06) > 2 |
+                                                  CH04 != CH04_t1 ~ FALSE,
+                                                  TRUE ~ TRUE))
 
-  consistencias_continua <<- panel_continua %>%
-    group_by(Trimestre) %>%
-    summarise(sin_controles = n(),
+  consistencias_continua <- panel_continua %>%
+    dplyr::group_by(Trimestre) %>%
+    dplyr::summarise(sin_controles = n(),
               con_controles = sum(consistencia,na.rm = TRUE),
               perdida = 1 - (con_controles/sin_controles))
 
+  return(panel_continua)
 }
 
