@@ -18,7 +18,6 @@
 #' pool_trimestral <- pool_datapanel_eph(bases = lista_bases,
 #'                     variables =c("P21","ESTADO"),
 #'                     ventana = "trimestral")
-#' @importFrom magrittr "%>%"
 
 pool_datapanel_eph <- function(bases,variables,ventana = "anual"){
 
