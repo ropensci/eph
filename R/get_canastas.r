@@ -74,7 +74,7 @@ get_canastas <- function(update=F){
     all_data
   }
   if (update) {
-    update_canasta(canastas,save = F)
+    canastas <- update_canasta(canastas,save = F)
   }
   canastas
 }
