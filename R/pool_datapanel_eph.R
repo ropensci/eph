@@ -1,4 +1,4 @@
-#' Pool de Datos en Panel - Base Individudal EPH continua
+#'  Pool de Datos en Panel - Base Individudal EPH continua
 #'
 #'Permite armar un pool de datos en panel de la EPH continua a partir
 #'de especificar una serie de bases, variables y el largo de la ventana de observación
@@ -18,6 +18,7 @@
 #' pool_trimestral <- pool_datapanel_eph(bases = lista_bases,
 #'                     variables =c("P21","ESTADO"),
 #'                     ventana = "trimestral")
+#' @importFrom magrittr "%>%"
 
 pool_datapanel_eph <- function(bases,variables,ventana = "anual"){
 
@@ -45,7 +46,7 @@ pool_datapanel_eph <- function(bases,variables,ventana = "anual"){
 
   ##En Base a la amplitud del panel que especificaré al correr en la funcion resto en la Base
   ##Replica el identificador de Trimestre construido, para hacer un join  con la Base.
-  t <- case_when(ventana == "anual"      ~ 4,
+  t <- dplyr::case_when(ventana == "anual"      ~ 4,
                  ventana == "trimestral"~ 1)
 
   bases_continua_join$Id_Trimestre <- bases_continua_join$Id_Trimestre - t

@@ -3,3 +3,4 @@
 export(get_bases_eph)
 export(pool_datapanel_eph)
 export(put_labels_eph)
+importFrom(magrittr,"%>%")
