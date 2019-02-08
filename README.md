@@ -7,7 +7,7 @@ Algunas de las funciones son:
 
 - `get_bases_eph()`: permite descargar las bases directamente de la página de INDEC
 - `put_labels_eph()`: etiqueta las bases siguiendo el último [diseño de registro](https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_registro_t218.pdf)
-- `Crea_Panel_Continua()`:Permite armar un pool de datos en panel de la EPH continua a partir de especificar una serie de bases, variables y el largo de la ventana de observación
+- `pool_datapanel_eph()`:Permite armar un pool de datos en panel de la EPH continua a partir de especificar una serie de bases, variables y el largo de la ventana de observación
 
 ## Instalación
 
