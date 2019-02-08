@@ -12,7 +12,8 @@ Imports:
     expss,
     assertthat,
     purrr,
-    stringr
+    stringr,
+    magrittr
 License: MIT
 Encoding: UTF-8
 LazyData: true

@@ -15,10 +15,9 @@
 #' base_2t_2018 <- get_bases_eph(anio = 2018,trimestre = 2)[[2]]
 #'
 #' lista_bases <- list(base_1t_2018,base_2t_2018)
-#' pool_datapanel_eph(bases = lista_bases,
+#' pool_trimestral <- pool_datapanel_eph(bases = lista_bases,
 #'                     variables =c("P21","ESTADO"),
 #'                     ventana = "trimestral")
-
 
 pool_datapanel_eph <- function(bases,variables,ventana = "anual"){
 
@@ -27,7 +26,7 @@ pool_datapanel_eph <- function(bases,variables,ventana = "anual"){
   assertthat::assert_that(ventana %in% c("anual", "trimestral"),
                           msg = "Las opciones para ventana son: anual y trimestral")
 
-  bases_continua <- dplyr::bind_rows(bases)  %>%
+  bases_continua <- dplyr::bind_rows(bases) %>%
     dplyr::select(CODUSU,NRO_HOGAR,COMPONENTE,ANO4,TRIMESTRE,CH04,CH06,variables) %>%
     dplyr::filter(ESTADO !=0) %>%
     dplyr::mutate(Trimestre = paste(ANO4, TRIMESTRE, sep="_"))%>%
