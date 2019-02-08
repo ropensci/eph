@@ -6,14 +6,18 @@ Authors@R:
            family = "Last",
            role = c("aut", "cre"),
            email = "first.last@example.com")
-Description: What the package does (one paragraph).
+Description: La librería `eph` tiene por objecto facilitar el trabajo de aquellos usuarios de la Encuesta Permanente de Hogares de Argentina, que deseen procesarla mediante R
 Imports:
     dplyr,
     expss,
     assertthat,
     purrr,
     stringr,
-    magrittr
+    magrittr,
+    glue,
+    xml2,
+    rvest,
+    tabulizer
 License: MIT
 Encoding: UTF-8
 LazyData: true

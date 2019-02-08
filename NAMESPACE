@@ -2,6 +2,7 @@
 
 export("%>%")
 export(get_bases_eph)
+export(get_canastas)
 export(pool_datapanel_eph)
 export(put_labels_eph)
 importFrom(magrittr,"%>%")
