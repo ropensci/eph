@@ -10,6 +10,8 @@
 #'@examples
 #'
 #'base <- get_bases_eph(anio = 2018, trimestre = 1, etiqueta = FALSE)
+#'base_individual <- base[[base_individual]]
+#'base_hogar <- base[[base_hogar]]
 #'
 #'@export
 get_bases_eph <- function(anio = 2018, trimestre = 1,etiqueta = FALSE){
