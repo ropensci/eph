@@ -44,7 +44,7 @@ get_bases_eph <- function(anio = 2018, trimestre = 1,etiqueta = FALSE){
   temp <- tempfile()
 
   check <- NA
-  try(check <- utils::download.file(link,temp),silent = TRUE)
+  try(check <- utils::download.file(link,temp,method = 'libcurl'),silent = TRUE)
   assertthat::assert_that(assertthat::noNA(check),msg = "problema con la descarga. Posiblemente un error de la conexion a internet")
 
   nombres <- purrr::as_vector(utils::unzip(temp, list = TRUE)['Name'])
