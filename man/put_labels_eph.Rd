@@ -7,8 +7,9 @@
 put_labels_eph(df, base = "individual")
 }
 \arguments{
-\item{df:}{base de microdatos de la EPH
-base: string. aclaracion de si se quiere etiquetar una base 'individual' u 'hogar'}
+\item{df:}{base de microdatos de la EPH}
+
+\item{base:}{string. aclaracion de si se quiere etiquetar una base 'individual' u 'hogar'}
 }
 \description{
 Función para etiquetar las bases de la Encuesta Permanente de Hogares.

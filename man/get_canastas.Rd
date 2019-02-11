@@ -15,3 +15,8 @@ Función que descarga la CBA y CBT a partir de 2016
 \details{
 disclaimer: El script no es un producto oficial de INDEC.
 }
+\examples{
+
+canasta <- get_canastas(update=FALSE)
+
+}

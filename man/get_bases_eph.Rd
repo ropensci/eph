@@ -19,3 +19,8 @@ Función que descarga bases de la Encuesta Permanente de Hogares del INDEC a par
 \details{
 disclaimer: El script no es un producto oficial de INDEC.
 }
+\examples{
+
+base <- get_bases_eph(anio = 2018, trimestre = 1, etiqueta = FALSE)
+
+}

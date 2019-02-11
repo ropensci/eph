@@ -1,13 +1,14 @@
 #'Descarga de canasta basica alimentaria y canasta basica total
 #'@description
 #'Función que descarga la CBA y CBT a partir de 2016
-#'@param
-#'update: TRUE/FALSE, opcion actualizar las canastas con los ultimos informes publicados (lleva tiempo)
+#'@param update: TRUE/FALSE, opcion actualizar las canastas con los ultimos informes publicados (lleva tiempo)
 #'@details
 #'disclaimer: El script no es un producto oficial de INDEC.
 #'
-#'@example
-#'canasta <- get_canastas(update=F)
+#'@examples
+#'
+#'canasta <- get_canastas(update=FALSE)
+#'
 #'@export
 
 get_canastas <- function(update=F){

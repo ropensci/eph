@@ -1,8 +1,7 @@
 #'Función para etiquetar las bases de la Encuesta Permanente de Hogares.
 #'
-#'@param
-#'df: base de microdatos de la EPH
-#'base: string. aclaracion de si se quiere etiquetar una base 'individual' u 'hogar'
+#'@param df: base de microdatos de la EPH
+#'@param base: string. aclaracion de si se quiere etiquetar una base 'individual' u 'hogar'
 #'@details
 #'disclaimer: El script no es un producto oficial de INDEC.
 #'@examples
