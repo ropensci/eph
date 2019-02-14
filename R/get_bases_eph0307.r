@@ -93,13 +93,31 @@ get_bases_eph <- function(anio = 2003, trimestre = 3,etiqueta = FALSE){
                                   stringr::str_detect(nombres, 'USP')|
                                   stringr::str_detect(nombres, 'PER')]
 
+
+  if(anio >= 2016){
   base_individual <- utils::read.table(unz(temp,base_individual_name), sep=";", dec=",", header = TRUE, fill = TRUE)
-  if (etiqueta == TRUE) {
+  }
+
+  if(anio < 2016){
+  base_individual <- foreign::read.dbf(unz(temp,base_individual_name))
+  }
+
+
+if (etiqueta == TRUE) {
     base_individual <- put_labels_eph(base_individual, base = 'individual')
   }
 
+
+  if(anio >= 2016){
   base_hogar <- utils::read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE)
-  if (etiqueta == TRUE) {
+  }
+
+  if(anio < 2016){
+    base_hogar <- foreign::read.dbf(unz(temp,base_hogar_name))
+  }
+
+
+    if (etiqueta == TRUE) {
     base_hogar <- put_labels_eph(base_hogar, base = 'hogar')
   }
 
