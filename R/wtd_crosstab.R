@@ -4,9 +4,9 @@
 #'@param
 #'base: data.frame donde se alojan las variables.
 #'@param
-#'var1: Variable en fila.
+#'var_row: Variable en fila.
 #'@param
-#'var2: Variable en columnas.
+#'var_col: Variable en columnas.
 #'@param
 #'weight_var: Variable correspondiente al factor de ponderación.
 #'@param
@@ -18,10 +18,10 @@
 #'@details
 #'disclaimer: El script no es un producto oficial de INDEC.
 #'@examples
-#'wtd.crosstab(var1 = df$var1, var2 = df$var2, weight_var = df$weighted_var, total = "col", na.rm=TRUE)
+#'wtd.crosstab(var_row = df$var_row, var_col = df$var_col, weight_var = df$weighted_var, total = "col", na.rm=TRUE)
 #'@export
 
-wtd_crosstab <- function(base, var1, var2, weight_var, total = "col", na.rm = TRUE){
+wtd_crosstab <- function(base, var_row, var_col, weight_var, total = "col", na.rm = TRUE){
 
 # Controles de los parametros
   assertthat::assert_that(total %in% c("col", "row"), msg = "Por favor ingrese 'col' para total por columna o 'row' para total por fila")
@@ -29,11 +29,11 @@ wtd_crosstab <- function(base, var1, var2, weight_var, total = "col", na.rm = TR
 
 # Tabulado con valores NA inluídos
   if(na.rm == TRUE){
-    weighted_table <- as.data.frame(questionr::wtd.table(var1, var2,
+    weighted_table <- as.data.frame(questionr::wtd.table(var_row, var_col,
                                                          weights = weight_var,
                                                          na.rm = TRUE,
                                                          na.show = FALSE)) %>%
-      tidyr::spread(., Var2, Freq)
+      tidyr::spread(., var_col, Freq)
 
   # if Porcentaje por columna
   if(total == "col"){
@@ -57,11 +57,11 @@ wtd_crosstab <- function(base, var1, var2, weight_var, total = "col", na.rm = TR
 
     # Tabulado sin valores NA inluídos
   if(na.rm == FALSE){
-    weighted_table <- as.data.frame(questionr::wtd.table(var1, var2,
+    weighted_table <- as.data.frame(questionr::wtd.table(var_row, var_col,
                                                          weights = weight_var,
                                                          na.rm = FALSE,
                                                          na.show = TRUE)) %>%
-      tidyr::spread(., Var2, Freq)
+      tidyr::spread(., var_col, Freq)
 
     # Por columnas
     if(total == "col"){
