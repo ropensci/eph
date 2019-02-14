@@ -11,14 +11,17 @@ pool_datapanel_eph(bases, variables, ventana = "anual")
 
 \item{variables}{Vector con nombres de las variables de interés}
 
-\item{ventana}{Que tipo de distancia temporal entre las obseraciones. anual o trimestral}
+\item{ventana}{Especificar distancia temporal entre las observaciones. anual o trimestral}
 }
 \value{
-Devuelve el pool de datos de panel y un conteo de casos consistentes
+Devuelve el pool de datos de panel
 }
 \description{
 Permite armar un pool de datos en panel de la EPH continua a partir
-de especificar una serie de bases, variables y el largo de la ventana de observación
+de especificar una serie consecutiva de bases, variables y el largo de la ventana de observación
+}
+\details{
+disclaimer: El script no es un producto oficial de INDEC.
 }
 \examples{
 base_1t_2018 <- get_bases_eph(anio = 2018,trimestre = 1)[[2]]

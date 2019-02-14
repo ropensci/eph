@@ -3,6 +3,8 @@
 export("%>%")
 export(get_bases_eph)
 export(get_canastas)
+export(get_poverty)
 export(pool_datapanel_eph)
 export(put_labels_eph)
+export(wtd_crosstab)
 importFrom(magrittr,"%>%")

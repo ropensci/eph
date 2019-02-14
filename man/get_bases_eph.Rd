@@ -22,5 +22,7 @@ disclaimer: El script no es un producto oficial de INDEC.
 \examples{
 
 base <- get_bases_eph(anio = 2018, trimestre = 1, etiqueta = FALSE)
+base_individual <- base[['base_individual']]
+base_hogar <- base[['base_hogar']]
 
 }
