@@ -9,11 +9,13 @@ wtd_crosstab(base, x, y = NULL, weights = NULL, digits = 3,
   add.totals = "none", add.percentage = "none")
 }
 \arguments{
-\item{x}{un vector}
+\item{base}{Dataframe}
 
-\item{y}{otro vector (opcional) para una tabla de doble entrada. Tiene que ser de igual largo que x}
+\item{x}{string con el nombre de la variable a tabular}
 
-\item{weights}{vector de pesos, tiene que ser de igual largo que x}
+\item{y}{otro string (opcional) con el nombre de una segunda variable, para una tabla de doble entrada. Tiene que ser de igual largo que x}
+
+\item{weights}{string con el nombre de la variable con los pesos de pesos, tiene que ser de igual largo que x}
 
 \item{digits}{numero de digitos significativos}
 
@@ -33,20 +35,29 @@ wtd_crosstab(base, x, y = NULL, weights = NULL, digits = 3,
 Función para crear tabulados uni o bivariados con ponderacion, totales parciales y porcentajes.
 }
 \examples{
+
+### descargo la base para el ejemplo ###
+
 base_2016t3 <-  get_bases_eph(anio = 2016,trimestre = 3,etiqueta = FALSE)[['base_individual']]
 
-wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04', weights = 'PONDERA')
+### tabla simple ###
 
-# para ver los totales por fila
+wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04',
+            weights = 'PONDERA')
 
-wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04', weights = 'PONDERA', add.totals = 'row')
+### para ver los totales por fila ###
 
-# para ver los totales por columna
+wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04',
+            weights = 'PONDERA', add.totals = 'row')
 
-wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04', weights = 'PONDERA', add.totals = 'col')
+### para ver los totales por columna ###
 
-#para ver porcentajes por fila
+wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04',
+            weights = 'PONDERA', add.totals = 'col')
 
-wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04', weights = 'PONDERA', add.percentage ='row')
+### para ver porcentajes por fila ###
+
+wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04',
+            weights = 'PONDERA', add.percentage ='row')
 
 }

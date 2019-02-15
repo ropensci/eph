@@ -1,9 +1,10 @@
 #'Tabulado con ponderación
 #'@description
 #'Función para crear tabulados uni o bivariados con ponderacion, totales parciales y porcentajes.
-#'@param x un vector
-#'@param y otro vector (opcional) para una tabla de doble entrada. Tiene que ser de igual largo que x
-#'@param weights vector de pesos, tiene que ser de igual largo que x
+#'@param base Dataframe
+#'@param x string con el nombre de la variable a tabular
+#'@param y otro string (opcional) con el nombre de una segunda variable, para una tabla de doble entrada. Tiene que ser de igual largo que x
+#'@param weights string con el nombre de la variable con los pesos de pesos, tiene que ser de igual largo que x
 #'@param digits numero de digitos significativos
 #'@param normwt si es TRUE, normaliza los pesos de modo que el recuento ponderado total sea el mismo que el no ponderado
 #'@param na.rm Si es TRUE, elimina los NA antes del computo
@@ -12,21 +13,30 @@
 #'@param add.totals  toma los valores c('none','row','col','both'), para agregar totales por fila, columna o ambos
 #'@param add.percentage toma los valores c('none','row','col'), para agregar porcentajes por fila y columna
 #'@examples
+#'
+#'### descargo la base para el ejemplo ###
+#'
 #'base_2016t3 <-  get_bases_eph(anio = 2016,trimestre = 3,etiqueta = FALSE)[['base_individual']]
 #'
-#'wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04', weights = 'PONDERA')
+#'### tabla simple ###
 #'
-#'# para ver los totales por fila
+#'wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04',
+#'             weights = 'PONDERA')
 #'
-#'wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04', weights = 'PONDERA', add.totals = 'row')
+#'### para ver los totales por fila ###
 #'
-#'# para ver los totales por columna
+#'wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04',
+#'             weights = 'PONDERA', add.totals = 'row')
 #'
-#'wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04', weights = 'PONDERA', add.totals = 'col')
+#'### para ver los totales por columna ###
 #'
-#'#para ver porcentajes por fila
+#'wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04',
+#'             weights = 'PONDERA', add.totals = 'col')
 #'
-#'wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04', weights = 'PONDERA', add.percentage ='row')
+#'### para ver porcentajes por fila ###
+#'
+#'wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04',
+#'             weights = 'PONDERA', add.percentage ='row')
 #'
 #'@export
 
