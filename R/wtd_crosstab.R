@@ -1,87 +1,100 @@
-#'Tabulado bi-variado con ponderación
+#'Tabulado con ponderación
 #'@description
-#'Función que genera un cruce de variables ponderadas por una tercera.
-#'@param
-#'base: data.frame donde se alojan las variables.
-#'@param
-#'var_row: Variable en fila.
-#'@param
-#'var_col: Variable en columnas.
-#'@param
-#'weight_var: Variable correspondiente al factor de ponderación.
-#'@param
-#'na.rm: TRUE/FALSE, en caso de quere/eliminar los valores NA.
-#'@param
-#'pct_col: TRUE/FALSE si el 100% es por columnas.
-#'@param
-#'pct_row: TRUE/FALSE si el 100% es por filas.
-#'@details
-#'disclaimer: El script no es un producto oficial de INDEC.
+#'Función para crear tabulados uni o bivariados con ponderacion, totales parciales y porcentajes.
+#'@param x un vector
+#'@param y otro vector (opcional) para una tabla de doble entrada. Tiene que ser de igual largo que x
+#'@param weights vector de pesos, tiene que ser de igual largo que x
+#'@param digits numero de digitos significativos
+#'@param normwt si es TRUE, normaliza los pesos de modo que el recuento ponderado total sea el mismo que el no ponderado
+#'@param na.rm Si es TRUE, elimina los NA antes del computo
+#'@param na.show si TRUE, muestra el recuento de NA en la salida
+#'@param exclude valores a remover de x e y
+#'@param add.totals  toma los valores c('none','row','col','both'), para agregar totales por fila, columna o ambos
+#'@param add.percentage toma los valores c('none','row','col'), para agregar porcentajes por fila y columna
 #'@examples
-#'wtd.crosstab(var_row = df$var_row, var_col = df$var_col, weight_var = df$weighted_var, total = "col", na.rm=TRUE)
+#'base_2016t3 <-  get_bases_eph(anio = 2016,trimestre = 3,etiqueta = FALSE)[['base_individual']]
+#'
+#'wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04', weights = 'PONDERA')
+#'
+#'# para ver los totales por fila
+#'
+#'wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04', weights = 'PONDERA', add.totals = 'row')
+#'
+#'# para ver los totales por columna
+#'
+#'wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04', weights = 'PONDERA', add.totals = 'col')
+#'
+#'#para ver porcentajes por fila
+#'
+#'wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04', weights = 'PONDERA', add.percentage ='row')
+#'
 #'@export
 
-wtd_crosstab <- function(base, var_row, var_col, weight_var, total = "col", na.rm = TRUE){
+wtd_crosstab <- function(base, x, y = NULL, weights = NULL, digits = 3, normwt = FALSE,
+                         na.rm = TRUE, na.show = FALSE, exclude = NULL,
+                         add.totals = 'none',
+                         add.percentage = 'none'){
+
+x_vec <- base[[x]]
+if (!is.null(y)) {
+  y_vec <- base[[y]]
+} else {
+  y_vec = NULL
+}
+if (!is.null(weights)) {
+
+  weights_vec <- base[[weights]]
+} else {
+  weights_vec = NULL
+}
 
 # Controles de los parametros
-  assertthat::assert_that(total %in% c("col", "row"), msg = "Por favor ingrese 'col' para total por columna o 'row' para total por fila")
-  assertthat::assert_that(assertthat::is.flag(na.rm),   msg = "Por favor ingresa TRUE o FALSE")
+  assertthat::assert_that(is.vector(x))
+  assertthat::assert_that(add.totals %in% c('none','row','col','both'))
+  assertthat::assert_that(add.percentage %in% c('none','row','col'))
 
-# Tabulado con valores NA inluídos
-  if(na.rm == TRUE){
-    weighted_table <- as.data.frame(questionr::wtd.table(var_row, var_col,
-                                                         weights = weight_var,
-                                                         na.rm = TRUE,
-                                                         na.show = FALSE)) %>%
-      tidyr::spread(., var_col, Freq)
+    weighted_table <- as.data.frame(questionr::wtd.table(x = x_vec,
+                                                         y = y_vec,
+                                                         weights = weights_vec,
+                                                         digits = digits,
+                                                         normwt = normwt,
+                                                         na.rm = na.rm,
+                                                         na.show = na.show))
+    if (!is.null(y)) {
+      weighted_table <- weighted_table %>%
+        tidyr::spread(., Var2, Freq)
+      names(weighted_table) <- c(paste0(x,'/',y),names(weighted_table)[2:ncol(weighted_table)])
+    } else {
+      names(weighted_table) <- c(paste0(x),names(weighted_table)[2:ncol(weighted_table)])
+    }
 
-  # if Porcentaje por columna
-  if(total == "col"){
-    weighted_table %>%
-      janitor::adorn_totals("row") %>%
-      janitor::adorn_totals("col") %>%
+    if (add.totals=='row') {
+      weighted_table <- weighted_table %>%
+        janitor::adorn_totals("row")
+    } else{
+      if (add.totals=='col') {
+        weighted_table <- weighted_table %>%
+          janitor::adorn_totals("col")
+      } else{
+        if (add.totals =='both') {
+          weighted_table <- weighted_table %>%
+            janitor::adorn_totals("row") %>%
+            janitor::adorn_totals("col")
+        }
+      }
+    }
+    if (add.percentage == 'col') {
+      weighted_table <- weighted_table %>%
       janitor::adorn_percentages("col") %>%
-      janitor::adorn_pct_formatting()
-  } else {
-
-  # if Porcentaje por fila
-    if(total == "row"){
-    weighted_table %>%
-      janitor::adorn_totals("row") %>%
-      janitor::adorn_totals("col") %>%
-      janitor::adorn_percentages("row") %>%
-      janitor::adorn_pct_formatting()
-  }
-  }
-  } else {
-
-    # Tabulado sin valores NA inluídos
-  if(na.rm == FALSE){
-    weighted_table <- as.data.frame(questionr::wtd.table(var_row, var_col,
-                                                         weights = weight_var,
-                                                         na.rm = FALSE,
-                                                         na.show = TRUE)) %>%
-      tidyr::spread(., var_col, Freq)
-
-    # Por columnas
-    if(total == "col"){
-      weighted_table %>%
-        janitor::adorn_totals("row") %>%
-        janitor::adorn_totals("col") %>%
-        janitor::adorn_percentages("col") %>%
         janitor::adorn_pct_formatting()
     } else {
-
-    # Por fila
-      if(total == "row"){
-      weighted_table %>%
-        janitor::adorn_totals("row") %>%
-        janitor::adorn_totals("col") %>%
-        janitor::adorn_percentages("row") %>%
-        janitor::adorn_pct_formatting()
-    }
+      if (add.percentage == 'row') {
+        weighted_table <- weighted_table %>%
+          janitor::adorn_percentages("row") %>%
+          janitor::adorn_pct_formatting()
       }
-  }
-  }
+    }
+
+return(weighted_table)
 }
 

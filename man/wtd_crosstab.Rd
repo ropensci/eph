@@ -2,31 +2,51 @@
 % Please edit documentation in R/wtd_crosstab.R
 \name{wtd_crosstab}
 \alias{wtd_crosstab}
-\title{Tabulado bi-variado con ponderación}
+\title{Tabulado con ponderación}
 \usage{
-wtd_crosstab(base, var1, var2, weight_var, total = "col", na.rm = TRUE)
+wtd_crosstab(base, x, y = NULL, weights = NULL, digits = 3,
+  normwt = FALSE, na.rm = TRUE, na.show = FALSE, exclude = NULL,
+  add.totals = "none", add.percentage = "none")
 }
 \arguments{
-\item{base:}{data.frame donde se alojan las variables.}
+\item{x}{un vector}
 
-\item{var1:}{Variable en fila.}
+\item{y}{otro vector (opcional) para una tabla de doble entrada. Tiene que ser de igual largo que x}
 
-\item{var2:}{Variable en columnas.}
+\item{weights}{vector de pesos, tiene que ser de igual largo que x}
 
-\item{weight_var:}{Variable correspondiente al factor de ponderación.}
+\item{digits}{numero de digitos significativos}
 
-\item{na.rm:}{TRUE/FALSE, en caso de quere/eliminar los valores NA.}
+\item{normwt}{si es TRUE, normaliza los pesos de modo que el recuento ponderado total sea el mismo que el no ponderado}
 
-\item{pct_col:}{TRUE/FALSE si el 100% es por columnas.}
+\item{na.rm}{Si es TRUE, elimina los NA antes del computo}
 
-\item{pct_row:}{TRUE/FALSE si el 100% es por filas.}
+\item{na.show}{si TRUE, muestra el recuento de NA en la salida}
+
+\item{exclude}{valores a remover de x e y}
+
+\item{add.totals}{toma los valores c('none','row','col','both'), para agregar totales por fila, columna o ambos}
+
+\item{add.percentage}{toma los valores c('none','row','col'), para agregar porcentajes por fila y columna}
 }
 \description{
-Función que genera un cruce de variables ponderadas por una tercera.
-}
-\details{
-disclaimer: El script no es un producto oficial de INDEC.
+Función para crear tabulados uni o bivariados con ponderacion, totales parciales y porcentajes.
 }
 \examples{
-wtd.crosstab(var1 = df$var1, var2 = df$var2, weight_var = df$weighted_var, total = "col", na.rm=TRUE)
+base_2016t3 <-  get_bases_eph(anio = 2016,trimestre = 3,etiqueta = FALSE)[['base_individual']]
+
+wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04', weights = 'PONDERA')
+
+# para ver los totales por fila
+
+wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04', weights = 'PONDERA', add.totals = 'row')
+
+# para ver los totales por columna
+
+wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04', weights = 'PONDERA', add.totals = 'col')
+
+#para ver porcentajes por fila
+
+wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04', weights = 'PONDERA', add.percentage ='row')
+
 }
