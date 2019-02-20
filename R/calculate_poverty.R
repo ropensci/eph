@@ -1,8 +1,8 @@
 #'Calculo de Pobreza e Indigencia
 #'@description
 #'Función para calcular la pobreza e indigencia siguiendo la metodología de línea.
-#'@param base: Base individual de uno o más períodos
-#'@param canasta: Canasta basica alimentaria y total, con la siguiente estructura:
+#'@param base Base individual de uno o más períodos
+#'@param basket basket basica alimentaria y total, con la siguiente estructura:
 #'# A tibble: N x 5
 #'   region    periodo   CBA   CBT codigo
 #'   <chr>     <chr>   <dbl> <dbl>  <dbl>
@@ -10,16 +10,16 @@
 #' 2 Cuyo      2016.4  1570. 4030.     42
 #' 3 GBA       2016.3  1684. 4053.      1
 #' . ...      .....   .....   ....    ...
-#'@param get_resumen: TRUE/FALSE, opcion para imprimir las tasas de pobreza e indigencia
+#'@param print_summary TRUE/FALSE, opcion para imprimir las tasas de pobreza e indigencia
 #'@details #'disclaimer: El script no es un producto oficial de INDEC.
 #'
 #'@examples
 #'
-#'base_2016t3 <-  get_bases_eph(anio = 2016,trimestre = 3,etiqueta = FALSE)[['base_individual']]
-#'base_2016t4 <- get_bases_eph(anio = 2016,trimestre = 4,etiqueta = FALSE)[['base_individual']]
+#'base_2016t3 <-  get_microdata(year = 2016,trimester = 3,labels = FALSE)[['base_individual']]
+#'base_2016t4 <- get_microdata(year = 2016,trimester = 4,labels = FALSE)[['base_individual']]
 #'#'
 #'bases <- dplyr::bind_rows(base_2016t3,base_2016t4)
-#'base_pobreza <- get_poverty(base = bases, canastas_reg_example,print_resumen=TRUE)
+#'base_pobreza <- calculate_poverty(base = bases, basket = canastas_reg_example,print_summary=TRUE)
 #'
 #'#  # A tibble: 2 x 4
 #'#  #Groups:   ANO4 [?]
@@ -30,12 +30,12 @@
 #'
 #'@export
 
-get_poverty <- function(base,canasta,print_resumen=TRUE ){
+calculate_poverty <- function(base,basket,print_summary=TRUE ){
 
     base <- base %>%
       dplyr::mutate(periodo = paste(ANO4, TRIMESTRE, sep='.')) %>%
       dplyr::left_join(., adulto_equivalente, by = c("CH04", "CH06")) %>%
-      dplyr::left_join(., canasta, by = c('REGION'="codigo", "periodo")) %>%
+      dplyr::left_join(., basket, by = c('REGION'="codigo", "periodo")) %>%
       dplyr::group_by(CODUSU, NRO_HOGAR, periodo)                          %>%
       dplyr::mutate(adequi_hogar = sum(adequi))                            %>%
       dplyr::ungroup() %>%
@@ -46,7 +46,7 @@ get_poverty <- function(base,canasta,print_resumen=TRUE ){
                                    ITF>=CBT_hogar           ~ 'no_pobre')) %>%
       dplyr::select(-adequi,-periodo,-CBA, -CBT)
 
-    if (print_resumen) {
+    if (print_summary) {
       Pobreza_resumen <- base %>%
         dplyr::group_by(ANO4,TRIMESTRE) %>%
         dplyr::summarise(Tasa_pobreza    = sum(PONDIH[situacion %in% c('pobre', 'indigente')],na.rm = TRUE)/

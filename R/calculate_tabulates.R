@@ -16,31 +16,31 @@
 #'
 #'### descargo la base para el ejemplo ###
 #'
-#'base_2016t3 <-  get_bases_eph(anio = 2016,trimestre = 3,etiqueta = FALSE)[['base_individual']]
+#'base_2016t3 <-  get_microdata(year = 2016,trimester = 3,labels = FALSE)[['base_individual']]
 #'
 #'### tabla simple ###
 #'
-#'wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04',
+#'calculate_tabulates(base = base_2016t3,x = 'REGION', y = 'CH04',
 #'             weights = 'PONDERA')
 #'
 #'### para ver los totales por fila ###
 #'
-#'wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04',
+#'calculate_tabulates(base = base_2016t3,x = 'REGION', y = 'CH04',
 #'             weights = 'PONDERA', add.totals = 'row')
 #'
 #'### para ver los totales por columna ###
 #'
-#'wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04',
+#'calculate_tabulates(base = base_2016t3,x = 'REGION', y = 'CH04',
 #'             weights = 'PONDERA', add.totals = 'col')
 #'
 #'### para ver porcentajes por fila ###
 #'
-#'wtd_crosstab(base = base_2016t3,x = 'REGION', y = 'CH04',
+#'calculate_tabulates(base = base_2016t3,x = 'REGION', y = 'CH04',
 #'             weights = 'PONDERA', add.percentage ='row')
 #'
 #'@export
 
-wtd_crosstab <- function(base, x, y = NULL, weights = NULL, digits = 3, normwt = FALSE,
+calculate_tabulates <- function(base, x, y = NULL, weights = NULL, digits = 3, normwt = FALSE,
                          na.rm = TRUE, na.show = FALSE, exclude = NULL,
                          add.totals = 'none',
                          add.percentage = 'none'){

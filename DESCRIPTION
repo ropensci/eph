@@ -19,7 +19,9 @@ Imports:
     rvest,
     tabulizer,
     curl,
-    janitor
+    janitor,
+    questionr,
+    tidyr
 Depends: R (>= 2.10)
 License: MIT
 Encoding: UTF-8

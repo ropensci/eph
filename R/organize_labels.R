@@ -1,16 +1,16 @@
 #'Función para etiquetar las bases de la Encuesta Permanente de Hogares.
 #'
-#'@param df: base de microdatos de la EPH
-#'@param base: string. aclaracion de si se quiere etiquetar una base 'individual' u 'hogar'
+#'@param df base de microdatos de la EPH
+#'@param base string. aclaracion de si se quiere etiquetar una base 'individual' u 'hogar'
 #'@details
 #'disclaimer: El script no es un producto oficial de INDEC.
 #'@examples
-#'df <- get_bases_eph(anio = 2018, trimestre = 1, etiqueta = FALSE)
-#'df <- put_labels_eph(df$base_hogar, base='hogar')
+#'df <- get_microdata(year = 2018, trimester = 1, labels = FALSE)
+#'df <- organize_labels(df$base_hogar, base='hogar')
 #'@export
 
 
-put_labels_eph <- function(df, base = "individual"){
+organize_labels <- function(df, base = "individual"){
 
   assertthat::assert_that(is.data.frame(df))
   assertthat::assert_that(base %in% c("individual", "hogar"))

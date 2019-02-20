@@ -1,31 +1,31 @@
 #'  Pool de Datos en Panel - Base Individudal EPH continua
 #'
 #'Permite armar un pool de datos en panel de la EPH continua a partir
-#'de especificar una serie consecutiva de bases, variables y el largo de la ventana de observación
+#'de especificar una serie consecutiva de bases, variables y el largo de la window de observación
 #'
 #' @param bases Lista de bases de microdatos a utilizar para armar el pool de datos
 #' @param variables Vector con nombres de las variables de interés
-#' @param ventana Especificar distancia temporal entre las observaciones. anual o trimestral
+#' @param window Especificar distancia temporal entre las observaciones. anual o trimestral
 #' @details
 #'disclaimer: El script no es un producto oficial de INDEC.
 #' @return Devuelve el pool de datos de panel
 #' @export
 #'
 #' @examples
-#' base_1t_2018 <- get_bases_eph(anio = 2018,trimestre = 1)[[2]]
-#' base_2t_2018 <- get_bases_eph(anio = 2018,trimestre = 2)[[2]]
+#' base_1t_2018 <- get_microdata(year = 2018,trimester = 1)[[2]]
+#' base_2t_2018 <- get_microdata(year = 2018,trimester = 2)[[2]]
 #'
 #' lista_bases <- list(base_1t_2018,base_2t_2018)
-#' pool_trimestral <- pool_datapanel_eph(bases = lista_bases,
+#' pool_trimestral <- orgnize_panels(bases = lista_bases,
 #'                     variables =c("P21","ESTADO"),
-#'                     ventana = "trimestral")
+#'                     window = "trimestral")
 
-pool_datapanel_eph <- function(bases,variables,ventana = "anual"){
+orgnize_panels <- function(bases,variables,window = "anual"){
 
   assertthat::assert_that(is.list(bases),
                           msg = "El argumento bases requiere un objeto de tipo lista")
-  assertthat::assert_that(ventana %in% c("anual", "trimestral"),
-                          msg = "Las opciones para ventana son: anual y trimestral")
+  assertthat::assert_that(window %in% c("anual", "trimestral"),
+                          msg = "Las opciones para window son: anual y trimestral")
 
   bases_continua <- dplyr::bind_rows(bases) %>%
     dplyr::select(CODUSU,NRO_HOGAR,COMPONENTE,ANO4,TRIMESTRE,CH04,CH06,variables) %>%
@@ -46,8 +46,8 @@ pool_datapanel_eph <- function(bases,variables,ventana = "anual"){
 
   ##En Base a la amplitud del panel que especificaré al correr en la funcion resto en la Base
   ##Replica el identificador de Trimestre construido, para hacer un join  con la Base.
-  t <- dplyr::case_when(ventana == "anual"      ~ 4,
-                 ventana == "trimestral"~ 1)
+  t <- dplyr::case_when(window == "anual"      ~ 4,
+                 window == "trimestral"~ 1)
 
   bases_continua_join$Id_Trimestre <- bases_continua_join$Id_Trimestre - t
 

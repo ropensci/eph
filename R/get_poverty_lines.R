@@ -7,11 +7,11 @@
 #'
 #'@examples
 #'
-#'canasta <- get_canastas(update=FALSE)
+#'canasta <- get_poverty_lines(update=FALSE)
 #'
 #'@export
 
-get_canastas <- function(update=F){
+get_poverty_lines <- function(update=F){
   get_new_links <- function(mes='01', anio='19'){
     tryCatch({
 
