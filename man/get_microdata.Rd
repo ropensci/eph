@@ -12,29 +12,14 @@ get_microdata(year = 2018, trimester = 1, labels = FALSE)
 \item{trimester}{un integer con el numero de trimester: 1,2,3,4}
 
 \item{labels}{TRUE/FALSE, opcion para labelsr los datos}
-
-\item{year:}{un integer entre 2016:2018}
-
-\item{trimester:}{un integer con el numero de trimester: 1,2,3,4}
-
-\item{labels:}{TRUE/FALSE, opcion para labelsr los datos}
 }
 \description{
-Función que descarga bases de la Encuesta Permanente de Hogares del INDEC a partir de 2016
-
 Función que descarga bases de la Encuesta Permanente de Hogares del INDEC a partir de 2016
 }
 \details{
 disclaimer: El script no es un producto oficial de INDEC.
-
-disclaimer: El script no es un producto oficial de INDEC.
 }
 \examples{
-
-base <- get_microdata(year = 2018, trimester = 1, labels = FALSE)
-base_individual <- base[['base_individual']]
-base_hogar <- base[['base_hogar']]
-
 
 base <- get_microdata(year = 2018, trimester = 1, labels = FALSE)
 base_individual <- base[['base_individual']]

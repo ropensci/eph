@@ -7,7 +7,7 @@
 get_poverty_lines(update = F)
 }
 \arguments{
-\item{update:}{TRUE/FALSE, opcion actualizar las canastas con los ultimos informes publicados (lleva tiempo)}
+\item{update}{TRUE/FALSE, opcion actualizar las canastas con los ultimos informes publicados (lleva tiempo)}
 }
 \description{
 Función que descarga la CBA y CBT a partir de 2016

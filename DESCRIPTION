@@ -1,12 +1,11 @@
 Package: eph
 Title: EPH Tools
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com")
-Description: La librería `eph` tiene por objecto facilitar el trabajo de aquellos usuarios de la Encuesta Permanente de Hogares de Argentina, que deseen procesarla mediante R
+Authors@R: c(
+    person("Pablo", "Tiscornia", email = "pablotisco@gmail.com", role = "cre"),
+    person("Diego", "Kozlowski", email = "diegokoz92@gmail.com", role = "aut"))
+Description: La librería `eph` tiene por objecto facilitar el trabajo de aquellos usuarios
+    de la Encuesta Permanente de Hogares de Argentina, que deseen procesarla mediante R.
 Imports:
     dplyr,
     expss,
@@ -23,7 +22,7 @@ Imports:
     questionr,
     tidyr
 Depends: R (>= 2.10)
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
