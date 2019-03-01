@@ -8,7 +8,7 @@ get_microdata(year = 2018, trimester = 1, type = "individual",
   labels = FALSE)
 }
 \arguments{
-\item{year}{un integer entre 2016:2018}
+\item{year}{un integer a partir de 2003}
 
 \item{trimester}{un integer con el numero de trimester: 1,2,3,4}
 
@@ -17,7 +17,7 @@ get_microdata(year = 2018, trimester = 1, type = "individual",
 \item{labels}{TRUE/FALSE, opcion para labelsr los datos}
 }
 \description{
-Función que descarga bases de la Encuesta Permanente de Hogares del INDEC a partir de 2016
+Función que descarga bases de la Encuesta Permanente de Hogares del INDEC a partir de 2003
 }
 \details{
 disclaimer: El script no es un producto oficial de INDEC.
