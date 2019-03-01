@@ -24,8 +24,8 @@ de especificar una serie consecutiva de bases, variables y el largo de la window
 disclaimer: El script no es un producto oficial de INDEC.
 }
 \examples{
-base_1t_2018 <- get_microdata(year = 2018,trimester = 1)[[2]]
-base_2t_2018 <- get_microdata(year = 2018,trimester = 2)[[2]]
+base_1t_2018 <- get_microdata(year = 2018, trimester = 1,type='individual', labels = FALSE)
+base_2t_2018 <- get_microdata(year = 2018, trimester = 2,type='individual', labels = FALSE)
 
 lista_bases <- list(base_1t_2018,base_2t_2018)
 pool_trimestral <- orgnize_panels(bases = lista_bases,

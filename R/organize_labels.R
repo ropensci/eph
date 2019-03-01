@@ -5,8 +5,8 @@
 #'@details
 #'disclaimer: El script no es un producto oficial de INDEC.
 #'@examples
-#'df <- get_microdata(year = 2018, trimester = 1, labels = FALSE)
-#'df <- organize_labels(df$base_hogar, base='hogar')
+#'df <- get_microdata(year = 2018, trimester = 1,type='hogar', labels = FALSE)
+#'df <- organize_labels(df, base='hogar')
 #'@export
 
 

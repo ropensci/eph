@@ -4,12 +4,15 @@
 \alias{get_microdata}
 \title{Descarga de Bases de EPH}
 \usage{
-get_microdata(year = 2018, trimester = 1, labels = FALSE)
+get_microdata(year = 2018, trimester = 1, type = "individual",
+  labels = FALSE)
 }
 \arguments{
 \item{year}{un integer entre 2016:2018}
 
 \item{trimester}{un integer con el numero de trimester: 1,2,3,4}
+
+\item{type}{tipo de base a descargar: 'individual' ; 'hogar'}
 
 \item{labels}{TRUE/FALSE, opcion para labelsr los datos}
 }
@@ -21,8 +24,7 @@ disclaimer: El script no es un producto oficial de INDEC.
 }
 \examples{
 
-base <- get_microdata(year = 2018, trimester = 1, labels = FALSE)
-base_individual <- base[['base_individual']]
-base_hogar <- base[['base_hogar']]
+base_individual <- get_microdata(year = 2018, trimester = 1,type='individual', labels = FALSE)
+base_hogar <- get_microdata(year = 2018, trimester = 1,type='hogar', labels = FALSE)
 
 }
