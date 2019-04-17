@@ -38,7 +38,7 @@ Función para crear tabulados uni o bivariados con ponderacion, totales parciale
 
 ### descargo la base para el ejemplo ###
 
-base_2016t3 <-  get_microdata(year = 2016,trimester = 3,labels = FALSE)[['base_individual']]
+base_2016t3 <-  get_microdata(year = 2016, trimester = 3,type='individual', labels = FALSE)
 
 ### tabla simple ###
 
