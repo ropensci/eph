@@ -1,4 +1,4 @@
-#rindec
+# rindec
 
 [![Travis-CI Build
 Status](https://api.travis-ci.org/rindec/eph.svg?branch=master)](https://travis-ci.org/rindec/eph)
