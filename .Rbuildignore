@@ -2,3 +2,4 @@
 ^data-raw$
 ^eph\.Rproj$
 ^\.Rproj\.user$
+^codecov\.yml$

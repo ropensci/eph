@@ -1,6 +1,16 @@
-# Caja de Herramientas para el procesamiento de la Encuesta Permanente de Hogares
+#rindec
 
-## Overview
+[![Travis-CI Build
+Status](https://api.travis-ci.org/rindec/eph.svg?branch=master)](https://travis-ci.org/rindec/eph)
+[![Coverage
+status](https://codecov.io/gh/rindec/eph/branch/master/graph/badge.svg)](https://codecov.io/gh/rindec/eph?branch=master)
+
+
+
+
+## Caja de Herramientas para el procesamiento de la Encuesta Permanente de Hogares
+
+### Overview
 La librería `eph` tiene por objecto facilitar el trabajo de aquellos usuarios de la [Encuesta Permanente de Hogares](https://www.indec.gob.ar/bases-de-datos.asp) de Argentina, que deseen procesarla mediante R
 
 Algunas de las funciones son:
@@ -11,7 +21,7 @@ Algunas de las funciones son:
 - `calculate_tabulates()`: calcula tabulados ponderados
 - `calculate_poverty()`: replica el cálculo de pobreza e indigencia del INDEC, pero para las bases trimestrales^[el calculo oficial se realiza sobre bases semestrales no publicadas]
 
-## Instalación
+### Instalación
 
 Desde Rstudio 
 
@@ -23,7 +33,7 @@ devtools::install_github("rindec/eph")
 
 ```
 
-### Modo de uso.
+#### Modo de uso.
 
 ```
 base_2016t3 <-  get_microdata(year = 2016,trimester = 3,labels = FALSE)[['base_individual']]
@@ -41,7 +51,7 @@ base_pobreza <- calculate_poverty(base = bases, basket = canastas_reg_example,pr
 ```
 
 
-## Aportes de la comunidad
+### Aportes de la comunidad
 
 Este paquete se propone incorporar cualquier función de propósitos generales que utilice como base los datos de la Encuesta Permanente de Hogares. Todos los aportes en este sentido son bienvenidos.
 
