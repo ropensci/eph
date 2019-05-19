@@ -12,7 +12,7 @@
 #'@export
 
 get_poverty_lines <- function(update=F){
-  get_new_links <- function(mes='01', anio='19'){
+  get_new_links <- function(mes='04', anio='19'){
     tryCatch({
 
       base <- 'https://www.indec.gob.ar'
@@ -32,11 +32,12 @@ get_poverty_lines <- function(update=F){
       out <- tabulizer::extract_tables(link)
 
       out <- purrr::map(out, as.data.frame)
-      df <- out[[which(purrr::map(out, ncol)==5)]]
+      # df <- out[[which(purrr::map(out, ncol)==5)]]
+      df <- out[[1]]
 
       df <- df %>%
-        dplyr::slice(n()) %>%
-        dplyr::select(-2)
+        dplyr::slice(dplyr::n()) %>%
+        dplyr::select(-1)
       names(df) <- c('mes', 'cba', 'ice', 'cbt')
       df <- df %>%
         dplyr:: mutate(cba = as.numeric(gsub(",", ".", gsub("\\.", "", cba))),
@@ -67,10 +68,12 @@ get_poverty_lines <- function(update=F){
     links <- get_new_links()
     new_data <- purrr::map(links$link,get_last_data)
     new_data <- dplyr::bind_rows(new_data)
-    all_data <- dplyr::bind_rows(series_historica,new_data)
+    all_data <- dplyr::bind_rows(series_historica,new_data) %>%
+      dplyr::arrange(anio,mes)
 
     if (save) {
-      all_data %>% save('data/canastas.rda')
+      canastas <- all_data
+      save(canastas,file = "data/canastas.rda")
     }
     all_data
   }

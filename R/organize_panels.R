@@ -12,15 +12,15 @@
 #' @export
 #'
 #' @examples
-#' base_1t_2018 <- get_microdata(year = 2018, trimester = 1,type='individual', labels = FALSE)
-#' base_2t_2018 <- get_microdata(year = 2018, trimester = 2,type='individual', labels = FALSE)
+#' base_1t_2018 <- get_microdata(year = 2018, trimester = 1,type='individual')
+#' base_2t_2018 <- get_microdata(year = 2018, trimester = 2,type='individual')
 #'
 #' lista_bases <- list(base_1t_2018,base_2t_2018)
-#' pool_trimestral <- orgnize_panels(bases = lista_bases,
+#' pool_trimestral <- organize_panels(bases = lista_bases,
 #'                     variables =c("P21","ESTADO"),
 #'                     window = "trimestral")
 
-orgnize_panels <- function(bases,variables,window = "anual"){
+organize_panels <- function(bases,variables,window = "anual"){
 
   assertthat::assert_that(is.list(bases),
                           msg = "El argumento bases requiere un objeto de tipo lista")

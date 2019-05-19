@@ -28,8 +28,8 @@ Función para calcular la pobreza e indigencia siguiendo la metodología de lín
 }
 \examples{
 
-base_2016t3 <-  get_microdata(year = 2016, trimester = 3,type='individual', labels = FALSE)
-base_2016t4 <- get_microdata(year = 2016, trimester = 4,type='individual', labels = FALSE)
+base_2016t3 <-  get_microdata(year = 2016, trimester = 3,type='individual')
+base_2016t4 <- get_microdata(year = 2016, trimester = 4,type='individual')
 #'
 bases <- dplyr::bind_rows(base_2016t3,base_2016t4)
 base_pobreza <- calculate_poverty(base = bases, basket = canastas_reg_example,print_summary=TRUE)

@@ -5,26 +5,31 @@
 \title{Descarga de Bases de EPH}
 \usage{
 get_microdata(year = 2018, trimester = NA, wave = NA,
-  type = "individual", labels = FALSE)
+  type = "individual")
 }
 \arguments{
 \item{year}{un integer a partir de 2003}
 
-\item{trimester}{un integer con el numero de trimester: 1,2,3,4}
+\item{trimester}{un integer con el numero de trimester: 1,2,3,4, para la EPH continua}
 
-\item{type}{tipo de base a descargar: 'individual' ; 'hogar'}
+\item{wave}{un integer con el numero de onda, 1 o 2, para la EPH puntual}
 
-\item{labels}{TRUE/FALSE, opcion para labelsr los datos}
+\item{type}{tipo de base a descargar: 'individual' ; 'hogar', default individual}
 }
 \description{
-Función que descarga bases de la Encuesta Permanente de Hogares del INDEC a partir de 2003
+Funcion que descarga bases de la Encuesta Permanente de Hogares del INDEC a partir de 1996
 }
 \details{
+Las bases de la EPH puntual utilizan el parametro wave, para referirse a las ondas.
+Su alcance es entre la onda 1 de 1996 y a onda 1 de 2003.
+
+Las bases de la EPH continua utiliza el parametro trimester, para referirse a los trimestres.
+Su alcance es entre tercer trimestre de 2003 a la actualidad
 disclaimer: El script no es un producto oficial de INDEC.
 }
 \examples{
 
-base_individual <- get_microdata(year = 2018, trimester = 1,type='individual', labels = FALSE)
-base_hogar <- get_microdata(year = 2018, trimester = 1,type='hogar', labels = FALSE)
+base_individual <- get_microdata(year = 2018, trimester = 1,type='individual')
+base_hogar <- get_microdata(year = 2018, trimester = 1,type='hogar')
 
 }
