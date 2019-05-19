@@ -3,3 +3,4 @@
 ^eph\.Rproj$
 ^\.Rproj\.user$
 ^codecov\.yml$
+.travis.yml
