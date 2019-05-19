@@ -1,6 +1,6 @@
 #'Canastas básicas alimentarias y Totales disponibles desde enero-2015 para GBA
 #'
-#' @format  A data frame with 37 rows and 5 variables
+#' @format  A data frame with 40 rows and 5 variables
 #'
 #'
 #'\describe{

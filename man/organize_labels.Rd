@@ -2,22 +2,22 @@
 % Please edit documentation in R/organize_labels.R
 \name{organize_labels}
 \alias{organize_labels}
-\title{Función para etiquetar las bases de la Encuesta Permanente de Hogares.}
+\title{Funcion para etiquetar las bases de la Encuesta Permanente de Hogares.}
 \usage{
-organize_labels(df, base = "individual")
+organize_labels(df, type = "individual")
 }
 \arguments{
-\item{df}{base de microdatos de la EPH}
+\item{df}{type de microdatos de la EPH}
 
-\item{base}{string. aclaracion de si se quiere etiquetar una base 'individual' u 'hogar'}
+\item{type}{string. aclaracion de si se quiere etiquetar una type 'individual' u 'hogar'}
 }
 \description{
-Función para etiquetar las bases de la Encuesta Permanente de Hogares.
+Funcion para etiquetar las bases de la Encuesta Permanente de Hogares.
 }
 \details{
 disclaimer: El script no es un producto oficial de INDEC.
 }
 \examples{
-df <- get_microdata(year = 2018, trimester = 1,type='hogar', labels = FALSE)
-df <- organize_labels(df, base='hogar')
+df <- get_microdata(year = 2018, trimester = 1,type='hogar')
+df <- organize_labels(df, type='hogar')
 }

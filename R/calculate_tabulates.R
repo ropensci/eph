@@ -16,7 +16,7 @@
 #'
 #'### descargo la base para el ejemplo ###
 #'
-#'base_2016t3 <-  get_microdata(year = 2016, trimester = 3,type='individual', labels = FALSE)
+#'base_2016t3 <-  get_microdata(year = 2016, trimester = 3,type='individual')
 #'
 #'### tabla simple ###
 #'

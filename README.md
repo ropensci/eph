@@ -19,7 +19,7 @@ Desde Rstudio
 
 # install.packages('devtools') si no tiene instalado devtools
 
-devtools::install_github("pablinte/eph")
+devtools::install_github("rindec/eph")
 
 ```
 
