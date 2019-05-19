@@ -1,0 +1,16 @@
+language: r
+env: _R_CHECK_CRAN_INCOMING_=FALSE
+sudo: required
+
+r:
+  - release
+
+r_packages:
+  - covr
+  - devtools
+
+r_github_packages:
+  - rindec/eph
+
+after_success:
+- Rscript -e 'library(covr);codecov()'
