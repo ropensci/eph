@@ -8,20 +8,28 @@ status](https://codecov.io/gh/rindec/eph/branch/master/graph/badge.svg)](https:/
 
 
 
-## Caja de Herramientas para el procesamiento de la Encuesta Permanente de Hogares
+# Caja de Herramientas para el procesamiento de la Encuesta Permanente de Hogares
 
-### Overview
-La librería `eph` tiene por objecto facilitar el trabajo de aquellos usuarios de la [Encuesta Permanente de Hogares](https://www.indec.gob.ar/bases-de-datos.asp) de Argentina, que deseen procesarla mediante R
+## Descripción
+La librería `eph` tiene por objecto facilitar el trabajo de aquellos usuarios y usuarias de la [Encuesta Permanente de Hogares - INDEC](https://www.indec.gob.ar/bases-de-datos.asp) que deseen procesar datos de la misma mediante [R](https://www.r-project.org/).
 
-Algunas de las funciones son:
 
-- `get_microdata()`: permite descargar las bases directamente de la página de INDEC
-- `organize_labels()`: etiqueta las bases siguiendo el último [diseño de registro](https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_registro_t218.pdf)
-- `organize_panels()`:Permite armar un pool de datos en panel de la EPH continua a partir de especificar una serie de bases, variables y el largo de la ventana de observación
-- `calculate_tabulates()`: calcula tabulados ponderados
-- `calculate_poverty()`: replica el cálculo de pobreza e indigencia del INDEC, pero para las bases trimestrales^[el calculo oficial se realiza sobre bases semestrales no publicadas]
+Sus principales funciones son:
 
-### Instalación
+- **`get_microdata()`**: Descarga las bases de microdatos directamente de la página de INDEC
+
+- **`organize_labels()`**: Etiqueta las bases siguiendo el último [diseño de registro](https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_registro_t218.pdf)
+
+- **`calculate_tabulates()`**: Crea tabulados uni o bivariados con ponderacion, totales parciales y porcentajes.
+
+- **`calculate_poverty()`**: Replica el cálculo de pobreza e indigencia del INDEC, pero para las bases trimestrales^[el calculo oficial se realiza sobre bases semestrales no publicadas]
+
+- **`get_poverty_lines()`**: Descarga de canasta basica alimentaria y canasta basica total
+
+- **`orgnize_panels()`**: Arma un pool de datos para trabajar con panel en la EPH continua
+
+
+## Instalación
 
 Desde Rstudio 
 
@@ -33,23 +41,46 @@ devtools::install_github("rindec/eph")
 
 ```
 
-#### Modo de uso.
+## Modo de uso.
 
-```
-base_2016t3 <-  get_microdata(year = 2016,trimester = 3,labels = FALSE)[['base_individual']]
-base_2016t4 <- get_microdata(year = 2016,trimester = 4,labels = FALSE)[['base_individual']]
-
-bases <- dplyr::bind_rows(base_2016t3,base_2016t4)
-base_pobreza <- calculate_poverty(base = bases, basket = canastas_reg_example,print_summary=TRUE)
-
-#  # A tibble: 2 x 4
-#  #Groups:   ANO4 [?]
-#  ANO4 TRIMESTRE Tasa_pobreza Tasa_indigencia
-#  <int>     <int>        <dbl>           <dbl>
-#  1  2016         3        0.307          0.0662
-#  2  2016         4        0.300          0.0568
+### Descarga de microdatos -->
 ```
 
+base_2016t3 <- get_microdata(year = 2016, trimester = 3)
+
+```
+
+### Tabulados uni / bivariados con ponderacion, totales parciales y porcentajes -->
+
+```
+calculate_tabulates(base_2016t3, "ANO4", "TRIMESTRE", add.totals = "row")
+
+ ANO4/TRIMESTRE     3
+           2018 56879
+          Total 56879
+
+```
+
+### Etiquetas [labels] de microdatos -->
+```
+base_2016t3 <- organize_labels(base_2016t3, type='individual')
+
+# Ejemplo 1:
+calculate_tabulates(base_2016t3, "ANO4", "TRIMESTRE", add.totals = "row")
+
+ ANO4/TRIMESTRE 3er Trimestre
+           2018         56879
+          Total         56879
+          
+# Ejemplo 2:
+calculate_tabulates(base_2016t3, "CH04", add.totals = "row")
+
+  CH04  Freq
+ Varon 27219
+ Mujer 29660
+ Total 56879
+ 
+```
 
 ### Aportes de la comunidad
 
