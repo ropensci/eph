@@ -46,14 +46,18 @@ devtools::install_github("rindec/eph")
 ### Descarga de microdatos -->
 ```
 
-base_2016t3 <- get_microdata(year = 2016, trimester = 3)
+### Base de individuos
+base_2016t3_ind <- get_microdata(year = 2016, trimester = 3, type = 'individual')
+
+### Base de hogares
+base_2016t3_hog <- get_microdata(year = 2016, trimester = 3, type = 'hogar')
 
 ```
 
 ### Tabulados uni / bivariados con ponderacion, totales parciales y porcentajes -->
 
 ```
-calculate_tabulates(base_2016t3, "ANO4", "TRIMESTRE", add.totals = "row")
+calculate_tabulates(base_2016t3_ind, "ANO4", "TRIMESTRE", add.totals = "row")
 
  ANO4/TRIMESTRE     3
            2018 56879
@@ -63,17 +67,17 @@ calculate_tabulates(base_2016t3, "ANO4", "TRIMESTRE", add.totals = "row")
 
 ### Etiquetas [labels] de microdatos -->
 ```
-base_2016t3 <- organize_labels(base_2016t3, type='individual')
+base_2016t3 <- organize_labels(base_2016t3_ind, type='individual')
 
 # Ejemplo 1:
-calculate_tabulates(base_2016t3, "ANO4", "TRIMESTRE", add.totals = "row")
+calculate_tabulates(base_2016t3_ind, "ANO4", "TRIMESTRE", add.totals = "row")
 
  ANO4/TRIMESTRE 3er Trimestre
            2018         56879
           Total         56879
           
 # Ejemplo 2:
-calculate_tabulates(base_2016t3, "CH04", add.totals = "row")
+calculate_tabulates(base_2016t3_ind, "CH04", add.totals = "row")
 
   CH04  Freq
  Varon 27219
