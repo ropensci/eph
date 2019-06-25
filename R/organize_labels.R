@@ -10,7 +10,7 @@
 #'@export
 
 
-organize_labels_2 <- function(df, type = "individual"){
+organize_labels <- function(df, type = "individual"){
   
   assertthat::assert_that(is.data.frame(df))
   assertthat::assert_that(type %in% c("individual", "hogar"))
