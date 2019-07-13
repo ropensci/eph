@@ -11,10 +11,10 @@
 
 
 organize_labels <- function(df, type = "individual"){
-  
+
   assertthat::assert_that(is.data.frame(df))
   assertthat::assert_that(type %in% c("individual", "hogar"))
-  
+
   if(type == "hogar"){
     df = expss::apply_labels(df,
                              CODUSU = 'Codigo para distinguir VIVIENDAS, permite aparearlas con Hogares y Personas. Ademas permite hacer el seguimiento a traves de los trimestres',
@@ -282,7 +282,7 @@ organize_labels <- function(df, type = "individual"){
                                         "Otra persona que no vive en el hogar" = 97,
                                         "Ninguna." = 98))
   }
-  
+
   else if(type == "individual"){
     df = expss::apply_labels(df,
                              CODUSU = 'Codigo para distinguir VIVIENDAS, permite aparearlas con Hogares y Personas. Ademas permite hacer el seguimiento a traves de los trimestres',
@@ -436,7 +436,7 @@ organize_labels <- function(df, type = "individual"){
                                           "LA RIOJA" = 46,
                                           "MENDOZA" = 50,
                                           "MISIONES" = 54,
-                                          "NEUQUÉN" = 58,
+                                          "NEUQUEN" = 58,
                                           "RIO NEGRO" = 62,
                                           "SALTA" = 66,
                                           "SAN JUAN" = 70,
@@ -473,7 +473,7 @@ organize_labels <- function(df, type = "individual"){
                                           "MARRUECOS" = 127,
                                           "MAURICIO" = 128,
                                           "MAURITANIA" = 129,
-                                          "NÍGER" = 130,
+                                          "NiGER" = 130,
                                           "NIGERIA" = 131,
                                           "ZIMBABWE" = 132,
                                           "RWANDA" = 133,
@@ -488,7 +488,7 @@ organize_labels <- function(df, type = "individual"){
                                           "UGANDA" = 142,
                                           "ZAMBIA" = 144,
                                           "TERRITORIOS VINCULADOS AL REINO UNIDO" = 145,
-                                          "TERRITORIOS VINCULADOS A ESPAÑA" = 146,
+                                          "TERRITORIOS VINCULADOS A ESPANA" = 146,
                                           "TERRITORIOS VINCULADOS A FRANCIA" = 147,
                                           "ANGOLA" = 149,
                                           "CABO VERDE" = 150,
@@ -606,7 +606,7 @@ organize_labels <- function(df, type = "individual"){
                                           "BELGICA" = 406,
                                           "BULGARIA" = 407,
                                           "DINAMARCA" = 409,
-                                          "ESPAÑA" = 410,
+                                          "ESPANA" = 410,
                                           "FINLANDIA" = 411,
                                           "FRANCIA" = 412,
                                           "GRECIA" = 413,
@@ -674,7 +674,7 @@ organize_labels <- function(df, type = "individual"){
                                           "SIN DECLARAR-DESCONOCIDO-IGNORADO (OCEANIA)" = 599,
                                           "RESTO" = 997,
                                           "INDETERMINADO (CONTINENTE)" = 998,
-                                          "No Sabe País / Provincia / Sin declarar-desconocido-ignorado (continente)" = 999),
+                                          "No Sabe Pais / Provincia / Sin declarar-desconocido-ignorado (continente)" = 999),
                              CH16 = 'Donde vivia hace 5 anos?',
                              CH16 = c("En esta localidad" = 1,
                                       "En otra localidad de esta provincia" = 2,
@@ -1088,5 +1088,5 @@ organize_labels <- function(df, type = "individual"){
   else{
     stop("couldn't tagg")
   }
-  
+
 }
