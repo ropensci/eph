@@ -80,5 +80,5 @@ get_poverty_lines <- function(update=F){
   if (update) {
     canastas <- update_canasta(canastas,save = F)
   }
-  canastas
+  canastas %>% dplyr::arrange(anio,mes)
 }
