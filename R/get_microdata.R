@@ -56,7 +56,9 @@ Se advierte que las series estadisticas publicadas con posterioridad a enero 200
 mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_eph_23_08_16.pdf
 ")
       }
-      link = glue::glue('https://github.com/rindec/data/raw/master/eph/{type}/base_{type}_{year}T{trimester}.RDS')
+      if(year %in% 2016:2018){
+        link = glue::glue('https://github.com/rindec/data/raw/master/eph/{type}/base_{type}_{year}T{trimester}.RDS')
+      }
     }else
     if (year==2003) {
       if (!is.na(wave)) {
@@ -69,9 +71,33 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
         }
     }
 
+    if (year<2018| year==2018& trimester %in% 1:3) {
     base <- emptyenv()
     try(base <- readRDS(gzcon(url(link))),silent = TRUE)
 
     assertthat::assert_that(assertthat::not_empty(base),msg = "problema con la descarga. Posiblemente un error de la conexion a internet")
+    }
+    if (year>2018 |year==2018 & trimester==4) {
+
+      link= glue::glue('https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_usu_{trimester}_Trim_{year}_txt.zip')
+
+      temp <- tempfile(pattern = glue::glue('microdatos_{trimester}_{year}'))
+
+
+      check <- NA
+      try(check <- utils::download.file(link,temp),silent = TRUE)
+      assertthat::assert_that(assertthat::noNA(check),msg = "problema con la descarga. Posiblemente un error de la conexion a internet")
+      nombres <- purrr::as_vector(utils::unzip(temp, list = TRUE)['Name'])
+      base_hogar_name <- nombres[stringr::str_detect(nombres, 'hog')]
+      base_individual_name <- nombres[stringr::str_detect(nombres, 'ind')]
+
+      if (type=='individual') {
+        base <- utils::read.table(unz(temp,base_individual_name), sep=";", dec=",", header = TRUE, fill = TRUE)
+      }
+      if (type=='hogar') {
+        base <- utils::read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE)
+      }
+      unlink(temp)
+    }
     base
   }

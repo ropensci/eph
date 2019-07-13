@@ -21,7 +21,8 @@ Imports:
     janitor,
     questionr,
     tidyr,
-    readr
+    readr,
+    utils
 Depends: R (>= 2.10)
 License: MIT + file LICENSE
 Encoding: UTF-8
