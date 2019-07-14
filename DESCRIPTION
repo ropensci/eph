@@ -2,8 +2,8 @@ Package: eph
 Title: EPH Tools
 Version: 0.0.0.9000
 Authors@R: c(
-    person("Pablo", "Tiscornia", email = "pablotisco@gmail.com", role = "cre"),
-    person("Diego", "Kozlowski", email = "diegokoz92@gmail.com", role = "aut"))
+    person("Diego", "Kozlowski", email = "diegokoz92@gmail.com", role = c("aut", "cre")),
+    person("Pablo", "Tiscornia", email = "pablotisco@gmail.com", role = "aut"))
 Description: La librería `eph` tiene por objecto facilitar el trabajo de aquellos usuarios
     de la Encuesta Permanente de Hogares de Argentina, que deseen procesarla mediante R.
 Imports:
