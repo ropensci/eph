@@ -1,4 +1,4 @@
-# rindec
+# eph
 
 <!-- badges: start -->
 [![Travis-CI Build
