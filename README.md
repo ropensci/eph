@@ -48,10 +48,13 @@ devtools::install_github("rindec/eph")
 ### Descarga de microdatos -->
 ```
 
-### Base de individuos
+# Cargo la libreria
+library(eph )
+
+# Obtengo la base de microdatos para individuos
 base_2016t3_ind <- get_microdata(year = 2016, trimester = 3, type = 'individual')
 
-### Base de hogares
+# Obtengo la base de microdatos para hogares
 base_2016t3_hog <- get_microdata(year = 2016, trimester = 3, type = 'hogar')
 
 ```
@@ -59,32 +62,47 @@ base_2016t3_hog <- get_microdata(year = 2016, trimester = 3, type = 'hogar')
 ### Tabulados uni / bivariados con ponderacion, totales parciales y porcentajes -->
 
 ```
-calculate_tabulates(base_2016t3_ind, "ANO4", "TRIMESTRE", add.totals = "row")
 
- ANO4/TRIMESTRE     3
-           2018 56879
-          Total 56879
+# Cargo la libreria
+library(eph)
+
+# Obtengo el tabulado con el cruce de variables entre Condición de actividad (`ESTADO`) y Sexo (`CH04`):
+calculate_tabulates(base, x = "ESTADO", y = "CH04", add.totals = "row", add.percentage = "col")
+
+ ESTADO/CH04      1      2
+           0   0.1%   0.1%
+           1  48.9%  34.4%
+           2   3.7%   3.2%
+           3  31.7%  48.5%
+           4  15.6%  13.8%
+       Total 100.0% 100.0%
 
 ```
 
-### Etiquetas [labels] de microdatos -->
+### Etiquetas [labels] para base de microdatos -->
 ```
-base_2016t3 <- organize_labels(base_2016t3_ind, type='individual')
+
+# Cargo la librería
+library(eph)
+
+# Obtengo la base de microdatos para individuos
+base_2016t3_ind <- get_microdata(year = 2016, trimester = 3, type = 'individual')
+
+# Agrego las etiquetas a las variables y sus valores
+base_2016t3_ind <- organize_labels(base_2016t3_ind, type='individual')
 
 # Ejemplo 1:
-calculate_tabulates(base_2016t3_ind, "ANO4", "TRIMESTRE", add.totals = "row")
+# Obtengo el tabulado con el cruce de variables entre Condición de actividad (`ESTADO`) y Sexo (`CH04`), con etiquetas:
+calculate_tabulates(base, x = "ESTADO", y = "CH04", add.totals = "row", add.percentage = "col")
 
- ANO4/TRIMESTRE 3er Trimestre
-           2018         56879
-          Total         56879
+                                                                  ESTADO/CH04  Varon  Mujer
+ Entrevista individual no realizada (no respuesta al cuestionario individual)   0.1%   0.1%
+                                                                      Ocupado  48.9%  34.4%
+                                                                   Desocupado   3.7%   3.2%
+                                                                     Inactivo  31.7%  48.5%
+                                                            Menor de 10 años.  15.6%  13.8%
+                                                                        Total 100.0% 100.0%
           
-# Ejemplo 2:
-calculate_tabulates(base_2016t3_ind, "CH04", add.totals = "row")
-
-  CH04  Freq
- Varon 27219
- Mujer 29660
- Total 56879
  
 ```
 
