@@ -4,8 +4,7 @@ Version: 0.0.0.9000
 Authors@R: c(
     person("Diego", "Kozlowski", email = "diegokoz92@gmail.com", role = c("aut", "cre")),
     person("Pablo", "Tiscornia", email = "pablotisco@gmail.com", role = "aut"))
-Description: La librería `eph` tiene por objecto facilitar el trabajo de aquellos usuarios
-    de la Encuesta Permanente de Hogares de Argentina, que deseen procesarla mediante R.
+Description: The library aims to facilitate the work of the Permanent Households Survey of Argentina users.
 Imports:
     dplyr,
     expss,
