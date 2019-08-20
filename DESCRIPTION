@@ -1,6 +1,6 @@
 Package: eph
 Title: EPH Tools
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: c(
     person("Diego", "Kozlowski", email = "diegokoz92@gmail.com", role = c("aut", "cre")),
     person("Pablo", "Tiscornia", email = "pablotisco@gmail.com", role = "aut"))
