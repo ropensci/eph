@@ -1,10 +1,10 @@
 Package: eph
-Title: Tools for argentina's Permanent Household Survey 
+Title: Argentina's Permanent Household Survey 
 Version: 0.1.0
 Authors@R: c(
     person("Diego", "Kozlowski", email = "diegokoz92@gmail.com", role = c("aut", "cre")),
     person("Pablo", "Tiscornia", email = "pablotisco@gmail.com", role = "aut"))
-Description: A set of functions to facilitate the use of the Permanent Household Survey from Argentina
+Description: Tools to download and manipulate the Permanent Household Survey from Argentina
     (EPH is the Spanish acronym for Permanent Household Survey).
     e.g: get_microdata() for downloading the datasets, get_poverty_lines() for downloading the official poverty baskets,
     calculate_poverty() for the calculation of stating if a household is in poverty or not, following the official methodology.
