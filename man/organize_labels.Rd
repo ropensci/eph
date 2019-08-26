@@ -18,6 +18,5 @@ Funcion para etiquetar las bases de la Encuesta Permanente de Hogares.
 disclaimer: El script no es un producto oficial de INDEC.
 }
 \examples{
-df <- get_microdata(year = 2018, trimester = 1,type='hogar')
-df <- organize_labels(df, type='hogar')
+df <- organize_labels(toybase_individual_2016_04, type='individual')
 }

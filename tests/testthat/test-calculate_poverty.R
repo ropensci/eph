@@ -1,8 +1,7 @@
 context("test-calculate_poverty")
 
 
-df <- get_microdata(year = 2016, trimester = 3)
-base_pobreza <- calculate_poverty(base = df,basket = canastas_reg_example,print_summary = FALSE)
+base_pobreza <- calculate_poverty(base = toybase_individual_2016_03,basket = canastas_reg_example,print_summary = FALSE)
 
 
 Pobreza_resumen <- base_pobreza %>%
@@ -13,10 +12,10 @@ Pobreza_resumen <- base_pobreza %>%
                      sum(PONDIH,na.rm = TRUE))
 
 test_that("Test pobreza", {
-  expect_equal(round(Pobreza_resumen$Tasa_pobreza, 2), 0.31)
+  expect_equal(round(Pobreza_resumen$Tasa_pobreza, 2), 0.03)
 })
 
 
 test_that("Test indigencia", {
-  expect_equal(round(Pobreza_resumen$Tasa_indigencia, 2), 0.07)
+  expect_equal(round(Pobreza_resumen$Tasa_indigencia, 2), 0.01)
 })

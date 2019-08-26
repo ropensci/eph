@@ -5,8 +5,7 @@
 #'@details
 #'disclaimer: El script no es un producto oficial de INDEC.
 #'@examples
-#'df <- get_microdata(year = 2018, trimester = 1,type='hogar')
-#'df <- organize_labels(df, type='hogar')
+#'df <- organize_labels(toybase_individual_2016_04, type='individual')
 #'@export
 
 
@@ -1076,7 +1075,7 @@ organize_labels <- function(df, type = "individual"){
                              GDECIFR = 'Nro de decil de ingreso total familiar del CONJUNTO DE AGLOMERADOS DE 500 MIL Y MAS HABITANTES.',
                              PDECIFR = 'Nro de decil de ingreso total familiar del CONJUNTO DE AGLOMERADOS DE MENOS DE 500 MIL HABITANTES.',
                              ADECIFR = 'Nro de decil de ingreso total familiar del AGLOMERADO (ver Anexo I).',
-                             IPCF = 'MONTO DEL INGRESO PER CaPITA FAMILIAR.',
+                             IPCF = 'MONTO DEL INGRESO PER CAPITA FAMILIAR.',
                              DECCFR = 'Nro de decil de ingreso per capita familiar del TOTAL EPH (ver Anexo I).',
                              IDECCFR = 'Nro de decil de ingreso per capita familiar del  INTERIOR EPH (ver Anexo I).',
                              RDECCFR = 'Nro de decil de ingreso per capita familiar de la REGION.',

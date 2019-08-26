@@ -16,7 +16,6 @@
 #'@examples
 #'
 #'base_individual <- get_microdata(year = 2018, trimester = 1,type='individual')
-#'base_hogar <- get_microdata(year = 2018, trimester = 1,type='hogar')
 #'
 #'@export
 

@@ -14,28 +14,25 @@
 #'@param add.percentage toma los valores c('none','row','col'), para agregar porcentajes por fila y columna
 #'@examples
 #'
-#'### descargo la base para el ejemplo ###
-#'
-#'base_2016t3 <-  get_microdata(year = 2016, trimester = 3,type='individual')
 #'
 #'### tabla simple ###
 #'
-#'calculate_tabulates(base = base_2016t3,x = 'REGION', y = 'CH04',
+#'calculate_tabulates(base = toybase_individual_2016_04,x = 'REGION', y = 'CH04',
 #'             weights = 'PONDERA')
 #'
 #'### para ver los totales por fila ###
 #'
-#'calculate_tabulates(base = base_2016t3,x = 'REGION', y = 'CH04',
+#'calculate_tabulates(base = toybase_individual_2016_04,x = 'REGION', y = 'CH04',
 #'             weights = 'PONDERA', add.totals = 'row')
 #'
 #'### para ver los totales por columna ###
 #'
-#'calculate_tabulates(base = base_2016t3,x = 'REGION', y = 'CH04',
+#'calculate_tabulates(base = toybase_individual_2016_04,x = 'REGION', y = 'CH04',
 #'             weights = 'PONDERA', add.totals = 'col')
 #'
 #'### para ver porcentajes por fila ###
 #'
-#'calculate_tabulates(base = base_2016t3,x = 'REGION', y = 'CH04',
+#'calculate_tabulates(base = toybase_individual_2016_04,x = 'REGION', y = 'CH04',
 #'             weights = 'PONDERA', add.percentage ='row')
 #'
 #'@export

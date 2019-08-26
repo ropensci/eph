@@ -28,17 +28,8 @@ Función para calcular la pobreza e indigencia siguiendo la metodología de lín
 }
 \examples{
 
-base_2016t3 <-  get_microdata(year = 2016, trimester = 3,type='individual')
-base_2016t4 <- get_microdata(year = 2016, trimester = 4,type='individual')
 #'
-bases <- dplyr::bind_rows(base_2016t3,base_2016t4)
+bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)
 base_pobreza <- calculate_poverty(base = bases, basket = canastas_reg_example,print_summary=TRUE)
-
-#  # A tibble: 2 x 4
-#  #Groups:   ANO4 [?]
-#  ANO4 TRIMESTRE Tasa_pobreza Tasa_indigencia
-#  <int>     <int>        <dbl>           <dbl>
-#  1  2016         3        0.307          0.0662
-#  2  2016         4        0.300          0.0568
 
 }
