@@ -4,19 +4,18 @@
 \alias{get_poverty_lines}
 \title{Descarga de canasta basica alimentaria y canasta basica total}
 \usage{
-get_poverty_lines(update = F)
-}
-\arguments{
-\item{update}{TRUE/FALSE, opcion actualizar las canastas con los ultimos informes publicados (lleva tiempo)}
+get_poverty_lines()
 }
 \description{
-Función que descarga la CBA y CBT a partir de 2016
+Función que descarga la CBA y CBT a partir de abril 2016
 }
 \details{
 disclaimer: El script no es un producto oficial de INDEC.
+
+La función descarga la serie provista por indec en https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149
 }
 \examples{
 
-canasta <- get_poverty_lines(update=FALSE)
+canasta <- get_poverty_lines()
 
 }

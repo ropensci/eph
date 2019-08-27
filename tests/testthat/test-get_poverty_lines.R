@@ -1,9 +1,9 @@
 context("test-get_poverty_lines")
 
 test_that("test canasta", {
-  canasta <- get_poverty_lines(update=TRUE)
-  expect_equal(canasta$cba[1], 1367.11)
-  expect_equal(round(canasta$ice[1],2), 2.27)
-  expect_equal(canasta$cbt[1], 3103.34)
+  canasta <- get_poverty_lines()
+  expect_equal(canasta$CBA[1], 1514.53)
+  expect_equal(canasta$ICE[1], 2.42)
+  expect_equal(canasta$CBT[1], 3663.66)
 })
 

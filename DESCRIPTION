@@ -3,7 +3,10 @@ Title: Argentina's Permanent Household Survey Data and Manipulation Utilities
 Version: 0.1.0
 Authors@R: c(
     person("Diego", "Kozlowski", email = "diegokoz92@gmail.com", role = c("aut", "cre")),
-    person("Pablo", "Tiscornia", email = "pablotisco@gmail.com", role = "aut"))
+    person("Pablo", "Tiscornia", email = "pablotisco@gmail.com", role = "aut"),
+    person("Guido", "Weksler", email = "guidowe45@gmail.com", role = "aut"),
+    person("Natsumi", "Shokida", email = "natsumi.shokida@gmail.com", role = "aut"),
+    person("German", "Rosati", email = "german.rosati@gmail.com", role = "aut"))
 Description: Tools to download and manipulate the Permanent Household Survey from Argentina
     (EPH is the Spanish acronym for Permanent Household Survey).
     e.g: get_microdata() for downloading the datasets, get_poverty_lines() for downloading the official poverty baskets,
@@ -18,10 +21,7 @@ Imports:
     stringr,
     magrittr,
     glue,
-    xml2,
-    rvest,
-    tabulizer,
-    curl,
+    readxl,
     janitor,
     questionr,
     tidyr,
@@ -30,6 +30,7 @@ Imports:
 Depends: R (>= 2.10)
 License: MIT + file LICENSE
 Encoding: UTF-8
+Language: es
 LazyData: true
 RoxygenNote: 6.1.1
 Suggests: 
