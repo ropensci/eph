@@ -12,8 +12,8 @@ Description: Tools to download and manipulate the Permanent Household Survey fro
     e.g: get_microdata() for downloading the datasets, get_poverty_lines() for downloading the official poverty baskets,
     calculate_poverty() for the calculation of stating if a household is in poverty or not, following the official methodology.
     organize_panels() is used to concatenate observations from different periods, and organize_labels()
-    adds the official labels to the data. The implemented methods are based on INDEC (2016)<http://www.estadistica.ec.gba.gov.ar/dpe/images/SOCIEDAD/EPH_metodologia_22_pobreza.pdf>.
-    As This package works with the argentinian Permanent Household Survey and its main audience is from this country,
+    adds the official labels to the data. The implemented methods are based on INDEC (2016) <http://www.estadistica.ec.gba.gov.ar/dpe/images/SOCIEDAD/EPH_metodologia_22_pobreza.pdf>.
+    As this package works with the argentinian Permanent Household Survey and its main audience is from this country,
     the documentation was written in Spanish.
 Imports:
     dplyr,
