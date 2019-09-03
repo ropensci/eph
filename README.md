@@ -36,13 +36,15 @@ Sus principales funciones son:
 
 Para la versión estable
 
-```
+```r
+
 install.packages('eph')
+
 ```
 
 Para la versión en desarrollo. 
 
-```
+```r
 
 # install.packages('devtools') si no tiene instalado devtools
 
@@ -53,7 +55,7 @@ devtools::install_github("rindec/eph")
 ## Modo de uso.
 
 ### Descarga de microdatos -->
-```
+```r
 
 # Cargo la libreria
 library(eph )
@@ -68,7 +70,7 @@ base_2016t3_hog <- get_microdata(year = 2016, trimester = 3, type = 'hogar')
 
 ### Tabulados uni / bivariados con ponderacion, totales parciales y porcentajes -->
 
-```
+```r
 
 # Cargo la libreria
 library(eph)
@@ -87,7 +89,7 @@ calculate_tabulates(base, x = "ESTADO", y = "CH04", add.totals = "row", add.perc
 ```
 
 ### Etiquetas [labels] para base de microdatos -->
-```
+```r
 
 # Cargo la librería
 library(eph)
