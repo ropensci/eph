@@ -33,7 +33,14 @@ Sus principales funciones son:
 
 ## Instalación
 
-Desde Rstudio 
+
+Para la versión estable
+
+```
+install.packages('eph')
+```
+
+Para la versión en desarrollo. 
 
 ```
 
