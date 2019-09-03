@@ -54,6 +54,7 @@ Se advierte que las series estadisticas publicadas con posterioridad a enero 200
 '''
 mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_eph_23_08_16.pdf
 ")
+        link = glue::glue('https://github.com/rindec/data/raw/master/eph/{type}/base_{type}_{year}T{trimester}.RDS')
       }
       if(year %in% 2016:2018){
         link = glue::glue('https://github.com/rindec/data/raw/master/eph/{type}/base_{type}_{year}T{trimester}.RDS')
@@ -70,7 +71,7 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
         }
     }
 
-    if (year<2018| year==2018& trimester %in% 1:3) {
+    if (year<2018| (year==2018& trimester %in% 1:3)) {
     base <- emptyenv()
     try(base <- readRDS(gzcon(url(link))),silent = TRUE)
 
