@@ -15,6 +15,7 @@ Description: Tools to download and manipulate the Permanent Household Survey fro
     adds the official labels to the data. The implemented methods are based on INDEC (2016) <http://www.estadistica.ec.gba.gov.ar/dpe/images/SOCIEDAD/EPH_metodologia_22_pobreza.pdf>.
     As this package works with the argentinian Permanent Household Survey and its main audience is from this country,
     the documentation was written in Spanish.
+BugReports: https://github.com/rindec/eph/issues
 Imports:
     dplyr,
     expss,
