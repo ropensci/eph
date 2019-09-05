@@ -6,6 +6,7 @@ Status](https://api.travis-ci.org/rindec/eph.svg?branch=master)](https://travis-
 [![Coverage
 status](https://codecov.io/gh/rindec/eph/branch/master/graph/badge.svg)](https://codecov.io/gh/rindec/eph?branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/eph)](https://cran.r-project.org/package=eph)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/eph?color=blue)](https://cran.r-project.org/package=eph)
   <!-- badges: end -->
 
 
