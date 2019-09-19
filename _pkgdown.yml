@@ -2,19 +2,13 @@ url: https://rindec.github.io/eph/
 home:
   title: Paquete de herramientas para la Encuesta Permanente de Hogares
 
-authors:
-  Diego Kozlowski:
-    href: https://sites.google.com/view/diego-kozlowski/home
-  Pablo Tiscornia
-  Guido Weksler
-  German Rosati
-  Natsumi Shokida
-
 destination: docs
 
 toc:
   depth: 2
 template:
   params:
-    bootswatch: journal
+    bootswatch: united
     ganalytics: UA-122515754-3
+navbar:
+  type: inverse

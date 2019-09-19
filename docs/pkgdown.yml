@@ -2,4 +2,7 @@ pandoc: 2.3.1
 pkgdown: 1.4.0
 pkgdown_sha: ~
 articles: []
+urls:
+  reference: https://rindec.github.io/eph//reference
+  article: https://rindec.github.io/eph//articles
 
