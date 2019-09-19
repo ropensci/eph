@@ -1,5 +1,0 @@
-destination: docs
-template:
-  params:
-    bootswatch: journal
-    ganalytics: UA-122515754-3
