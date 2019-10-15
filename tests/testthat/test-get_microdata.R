@@ -10,18 +10,24 @@ test_that("EPH punutal", {
 
 test_that("EPH continua", {
   skip_if_offline()
-  df <- get_microdata(year = 2018, trimester = 2)
+  expect_warning(df <- get_microdata(year = 2015, trimester = 2))
   dimensiones <- dim(df)
-  expect_equal(dimensiones, c(57835,177))
+  expect_equal(dimensiones, c(60028,173))
 })
 
 
-test_that("nuevas bases", {
+test_that("Sin data", {
   skip_if_offline()
-  df_indiv <- get_microdata(year = 2018, trimester = 4,type = 'individual')
-  expect_equal(dim(df_indiv), c(57418,177))
-  df_hogar <- get_microdata(year = 2018, trimester = 4,type = 'hogar')
-  expect_equal(dim(df_hogar), c(18616,88))
-
+  expect_warning(df <- get_microdata(year = 2015, trimester = 4))
+  dimensiones <- dim(df)
+  expect_equal(dimensiones, c(0,0))
 })
 
+test_that("muchas bases", {
+  skip_if_offline()
+  df <- get_microdata(year = 2017:2018, trimester = 4,type = c('individual','hogar'))
+  expect_equal(dim(df$microdata[[1]]), c(58181,177))
+  expect_equal(dim(df$microdata[[2]]), c(57418,177))
+  expect_equal(dim(df$microdata[[3]]), c(18793,88))
+  expect_equal(dim(df$microdata[[4]]), c(18616,88))
+})

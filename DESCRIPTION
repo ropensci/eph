@@ -21,6 +21,7 @@ Imports:
     expss,
     assertthat,
     purrr,
+    tibble,
     stringr,
     magrittr,
     glue,
