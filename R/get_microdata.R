@@ -52,10 +52,16 @@ get_microdata <- function(year = 2018,
                                       type=type))
 
   df <- df %>%
-    dplyr::mutate(microdata= purrr::pmap(list('year' = year,
-                                              'trimester' = trimester,
-                                              'wave' = wave,
-                                              'type' = type),get_microdata_internal))
+    dplyr::mutate(microdata=
+      purrr::pmap(list('year' = year,
+                       'trimester' = trimester,
+                       'wave' = wave,
+                       'type' = type),
+                  purrr::possibly(get_microdata_internal,
+                                  otherwise = tibble::tibble(),
+                                  quiet = FALSE)
+                  )
+      )
 
   if (nrow(df)==1) {
     df$microdata[[1]]
