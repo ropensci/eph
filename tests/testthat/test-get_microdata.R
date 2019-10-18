@@ -25,6 +25,7 @@ test_that("Sin data", {
 
 test_that("muchas bases", {
   skip_if_offline()
+  skip_on_cran()
   df <- get_microdata(year = 2017:2018, trimester = 4,type = c('individual','hogar'))
   expect_equal(dim(df$microdata[[1]]), c(58181,177))
   expect_equal(dim(df$microdata[[2]]), c(57418,177))
