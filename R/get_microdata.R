@@ -42,14 +42,22 @@ get_microdata <- function(year = 2018,
                           wave = NA,
                           type='individual'){
 
-
-
-
-
   df <- tibble::as_tibble(expand.grid(year=year,
                                       trimester=trimester,
                                       wave=wave,
                                       type=type))
+
+  # df <- df %>%
+  #   dplyr::mutate(microdata=
+  #     purrr::pmap(list('year' = year,
+  #                      'trimester' = trimester,
+  #                      'wave' = wave,
+  #                      'type' = type),
+  #                 purrr::possibly(get_microdata_internal,
+  #                                 otherwise = tibble::tibble(),
+  #                                 quiet = FALSE)
+  #                 )
+  #     )
 
   df <- df %>%
     dplyr::mutate(microdata=
@@ -57,11 +65,31 @@ get_microdata <- function(year = 2018,
                        'trimester' = trimester,
                        'wave' = wave,
                        'type' = type),
-                  purrr::possibly(get_microdata_internal,
+                  purrr::safely(get_microdata_internal,
                                   otherwise = tibble::tibble(),
-                                  quiet = FALSE)
+                                  quiet = TRUE)
                   )
       )
+
+
+  df <- df %>%
+    dplyr::mutate(error = purrr::map(microdata,purrr::pluck,'error'),
+                  microdata = purrr::map(microdata,purrr::pluck,'result'))
+
+  errors <- df %>%
+    dplyr::mutate(filter_col = purrr::map_lgl(error, ~ !is.null(.x))) %>%
+    dplyr::filter(filter_col) %>%
+    dplyr::mutate(error_message = purrr::map(error, ~purrr::pluck(.x,1))) %>%
+    dplyr::select(-microdata,-error) %>%
+    tidyr::unnest(cols = c(error_message))
+
+  warning(glue::glue('No se pudo descargar la base de year {errors$year},trimester {errors$trimester}, wave {errors$wave}, type {errors$type}.
+  Mensaje: {errors$error_message}
+
+                     '))
+
+  df <- df %>%
+    dplyr::select(-error)
 
   if (nrow(df)==1) {
     df$microdata[[1]]
