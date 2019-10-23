@@ -42,6 +42,9 @@ get_microdata <- function(year = 2018,
                           wave = NA,
                           type='individual'){
 
+  attempt::stop_if_not(.x = curl::has_internet(),
+                       msg = "No se detecto acceso a internet. Por favor checkea tu conexion.")
+
   df <- tibble::as_tibble(expand.grid(year=year,
                                       trimester=trimester,
                                       wave=wave,
@@ -65,16 +68,17 @@ get_microdata <- function(year = 2018,
                        'trimester' = trimester,
                        'wave' = wave,
                        'type' = type),
-                  purrr::safely(get_microdata_internal,
+                  purrr::safely(.f = get_microdata_internal,
                                   otherwise = tibble::tibble(),
                                   quiet = TRUE)
                   )
       )
 
 
+
   df <- df %>%
-    dplyr::mutate(error = purrr::map(microdata,purrr::pluck,'error'),
-                  microdata = purrr::map(microdata,purrr::pluck,'result'))
+    dplyr::mutate(error = purrr::map(microdata,~.x$error),
+                  microdata = purrr::map(microdata,~.x$result))
 
   errors <- df %>%
     dplyr::mutate(filter_col = purrr::map_lgl(error, ~ !is.null(.x))) %>%
@@ -83,10 +87,12 @@ get_microdata <- function(year = 2018,
     dplyr::select(-microdata,-error) %>%
     tidyr::unnest(cols = c(error_message))
 
-  warning(glue::glue('No se pudo descargar la base de year {errors$year},trimester {errors$trimester}, wave {errors$wave}, type {errors$type}.
+  if (nrow(errors)>0) {
+    warning(glue::glue('No se pudo descargar la base de year {errors$year},trimester {errors$trimester}, wave {errors$wave}, type {errors$type}.
   Mensaje: {errors$error_message}
 
                      '))
+  }
 
   df <- df %>%
     dplyr::select(-error)

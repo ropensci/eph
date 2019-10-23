@@ -19,7 +19,7 @@ test_that("EPH continua", {
 test_that("Sin data", {
   skip_if_offline()
   expect_warning(df <- get_microdata(year = 2015, trimester = 4))
-  expect_null(df)
+  expect_length(df,0)
   })
 
 test_that("muchas bases", {

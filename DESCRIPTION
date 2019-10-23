@@ -30,7 +30,9 @@ Imports:
     questionr,
     tidyr,
     readr,
-    utils
+    utils,
+    curl,
+    attempt
 Depends: R (>= 2.10)
 License: MIT + file LICENSE
 Encoding: UTF-8
