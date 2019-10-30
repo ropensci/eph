@@ -12,7 +12,7 @@ test_that("EPH continua", {
   skip_if_offline()
   expect_warning(df <- get_microdata(year = 2015, trimester = 2))
   dimensiones <- dim(df)
-  expect_equal(dimensiones, c(60028,173))
+  expect_equal(dimensiones, c(60028,175))
 })
 
 

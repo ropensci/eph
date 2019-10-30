@@ -91,7 +91,7 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
 
     check <- NA
     try(check <- utils::download.file(link,temp),silent = TRUE)
-    assertthat::assert_that(assertthat::noNA(check),msg = "problema con la descarga. Posiblemente un error de la conexion a internet")
+    assertthat::assert_that(assertthat::noNA(check),msg = glue::glue("problema con la descarga {year} trimester {trimester}, wave {wave}"))
     nombres <- purrr::as_vector(utils::unzip(temp, list = TRUE)['Name'])
     base_hogar_name <- nombres[stringr::str_detect(nombres, 'hog')]
     base_individual_name <- nombres[stringr::str_detect(nombres, 'ind')]
