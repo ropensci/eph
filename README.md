@@ -51,7 +51,7 @@ Para la versión en desarrollo.
 
 # install.packages('devtools') si no tiene instalado devtools
 
-devtools::install_github("rindec/eph")
+devtools::install_github("holatam/eph")
 
 ```
 
