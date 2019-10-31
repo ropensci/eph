@@ -98,9 +98,58 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
 
     if (type=='individual') {
       base <- utils::read.table(unz(temp,base_individual_name), sep=";", dec=",", header = TRUE, fill = TRUE)
+
+      base <- base %>% dplyr::mutate(CH14 = as.character(CH14),
+                                     PP04B_COD = as.character(PP04B_COD),
+                                     PP04D_COD = as.character(PP04D_COD),
+                                     PP11B_COD = as.character(PP11B_COD),
+                                     PP11D_COD = as.character(PP11D_COD),
+                                     DECOCUR   = as.character(DECOCUR),
+                                     IDECOCUR  = as.character(IDECOCUR),
+                                     RDECOCUR  = as.character(RDECOCUR),
+                                     GDECOCUR  = as.character(GDECOCUR),
+                                     PDECOCUR  = as.character(PDECOCUR),
+                                     ADECOCUR  = as.character(ADECOCUR),
+                                     DECINDR   = as.character(DECINDR),
+                                     IDECINDR   = as.character(IDECINDR),
+                                     RDECINDR   = as.character(RDECINDR),
+                                     GDECINDR   = as.character(GDECINDR),
+                                     PDECINDR   = as.character(PDECINDR),
+                                     ADECINDR   = as.character(ADECINDR),
+                                     DECIFR    = as.character(DECIFR),
+                                     IDECIFR   = as.character(IDECIFR),
+                                     RDECIFR   = as.character(RDECIFR),
+                                     GDECIFR   = as.character(GDECIFR),
+                                     PDECIFR   = as.character(PDECIFR),
+                                     ADECIFR   = as.character(ADECIFR),
+                                     DECCFR    = as.character(DECCFR),
+                                     IDECCFR   = as.character(IDECCFR),
+                                     RDECCFR   = as.character(RDECCFR),
+                                     GDECCFR   = as.character(GDECCFR),
+                                     PDECCFR   = as.character(PDECCFR),
+                                     ADECCFR   = as.character(ADECCFR)
+      )
+
+
     }
     if (type=='hogar') {
       base <- utils::read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE)
+
+      base <- base %>%
+        dplyr::mutate(DECIFR = as.character(DECIFR),
+                      IDECIFR = as.character(IDECIFR),
+                      GDECIFR = as.character(GDECIFR),
+                      PDECIFR = as.character(PDECIFR),
+                      ADECIFR = as.character(ADECIFR),
+                      DECCFR  = as.character(DECCFR),
+                      IDECCFR = as.character(IDECCFR),
+                      RDECCFR = as.character(RDECCFR),
+                      GDECCFR = as.character(GDECCFR),
+                      PDECCFR = as.character(PDECCFR),
+                      ADECCFR = as.character(ADECCFR),
+                      RDECIFR = as.character(RDECIFR))
+
+
     }
     unlink(temp)
   }
