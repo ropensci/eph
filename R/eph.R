@@ -44,7 +44,8 @@ if(getRversion() >= "2.15.1") utils::globalVariables(c(".",
                                                        "microdata",
                                                        "error",
                                                        "filter_col",
-                                                       "error_message"))
+                                                       "error_message",
+                                                       ".data"))
 
 
 
