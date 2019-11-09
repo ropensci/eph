@@ -47,5 +47,5 @@ base_2018 <- base_individual \%>\%
 
 bases_bind <- base_individual \%>\%
  dplyr::select(microdata) \%>\%
- tidyr::unnest()
+ tidyr::unnest(cols = c(microdata))
 }

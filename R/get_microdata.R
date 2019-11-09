@@ -34,7 +34,7 @@
 #'
 #'bases_bind <- base_individual %>%
 #'  dplyr::select(microdata) %>%
-#'  tidyr::unnest()
+#'  tidyr::unnest(cols = c(microdata))
 #'@export
 
 get_microdata <- function(year = 2018,
@@ -50,17 +50,6 @@ get_microdata <- function(year = 2018,
                                       wave=wave,
                                       type=type))
 
-  # df <- df %>%
-  #   dplyr::mutate(microdata=
-  #     purrr::pmap(list('year' = year,
-  #                      'trimester' = trimester,
-  #                      'wave' = wave,
-  #                      'type' = type),
-  #                 purrr::possibly(get_microdata_internal,
-  #                                 otherwise = tibble::tibble(),
-  #                                 quiet = FALSE)
-  #                 )
-  #     )
 
   df <- df %>%
     dplyr::mutate(microdata=
