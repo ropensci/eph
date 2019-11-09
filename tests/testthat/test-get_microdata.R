@@ -2,6 +2,7 @@ context("test-get_microdata")
 
 test_that("EPH punutal", {
   skip_if_offline()
+  skip_on_cran()
   df <- get_microdata(year = 1996, wave = 1)
   dimensiones <- dim(df)
   expect_equal(dimensiones, c(113209,166))
@@ -10,6 +11,7 @@ test_that("EPH punutal", {
 
 test_that("EPH continua", {
   skip_if_offline()
+  skip_on_cran()
   expect_warning(df <- get_microdata(year = 2015, trimester = 2))
   dimensiones <- dim(df)
   expect_equal(dimensiones, c(60028,175))
