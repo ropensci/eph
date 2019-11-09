@@ -76,13 +76,13 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
           }
       }
 
-  if (year<2018| (year==2018& trimester %in% 1:3)) {
+  if (year<2019| (year==2019 & trimester %in% 1:2)) { #Este if hay que modificarlo cuando agregamos bases nuevas a holatam/data
     base <- emptyenv()
     try(base <- readRDS(gzcon(url(link))),silent = TRUE)
 
     assertthat::assert_that(assertthat::not_empty(base),msg = "problema con la descarga. Posiblemente un error de la conexion a internet")
   }
-  if (year>2018 |year==2018 & trimester==4) {
+  if (year>2019 |year==2019 & trimester %in% 3:4) { #Este if hay que modificarlo cuando agregamos bases nuevas a holatam/data
 
     link= glue::glue('https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_usu_{trimester}_Trim_{year}_txt.zip')
 
@@ -128,7 +128,8 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
                                      GDECCFR   = as.character(.data$GDECCFR),
                                      PDECCFR   = as.character(.data$PDECCFR),
                                      ADECCFR   = as.character(.data$ADECCFR)
-      )
+                                     ) %>%
+        tidyr::as_tibble()
 
 
     }
@@ -147,7 +148,8 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
                       GDECCFR = as.character(.data$GDECCFR),
                       PDECCFR = as.character(.data$PDECCFR),
                       ADECCFR = as.character(.data$ADECCFR),
-                      RDECIFR = as.character(.data$RDECIFR))
+                      RDECIFR = as.character(.data$RDECIFR)) %>%
+        tidyr::as_tibble()
 
 
     }
