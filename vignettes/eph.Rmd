@@ -1,0 +1,158 @@
+---
+title: "Ejemplo de uso del paquete `eph`"
+author: 
+  - Germán Rosati
+  - Diego Koslowski
+  - Pablo Tiscornia
+  - Guido Weksler
+  - Natsumi Shokida
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+El paquete `eph` tiene como objetivo facilitar el trabajo de les usuaries que trabajen con los microdatos de la Encuesta Permanente de Hogares. Este tutorial busca ejemplificar un pipeline de trabajo más o menos típico para mostrar el uso de las funciones del paquete.
+
+## Instalación
+
+Para instalar la versión estable del paquete usar:
+
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+install.packages('eph')
+```
+
+Para la versión en desarrollo:
+
+```{r, eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+# install.packages('devtools') si no tiene instalado devtools
+
+devtools::install_github("holatam/eph")
+```
+
+
+## Ejemplo de flujo de trabajo
+
+### Descarga de datos
+
+```{r}
+library(eph)
+library(tidyverse)
+```
+
+Obtengamos la base de microdatos de individuos para el tercer trimestre de 2018:
+
+```{r}
+ind_3_18 <- get_microdata(year=2018, trimester=3, type='individual')
+```
+Puede verse que la función requiere tres argumentos básicos:
+
+- `year`: entero con el año de la encuesta que se desea descargar
+- `trimester`: entero con el trimestre (este argumento es válido para la EPH continua, 2004-actualidad)
+- `type`: character `"individual"`, para descargar la base de invidividuos y `"hogar"`, para la de hogar.
+
+Si se deseara descargar una base de la EPH puntual, será necesario reemplazar el argumento `trimester` por `wave` que define la onda de la EPH puntual que se desea descargar. Por ejemplo, si se buscara descargar la base individual de la segunda onda del año 2002, debería escribirse
+
+```{r}
+ind_2_02 <- get_microdata(year=2002, wave=2, type='individual')
+```
+
+
+### Etiquetado
+
+Es posible etiquetar de forma automática el dataset llamando a la función `organize_labels()`:
+
+```{r}
+ind_3_18 <- organize_labels(df=ind_3_18, type='individual')
+```
+
+La función toma dos argumentos:
+
+- `df`: el data.frame que se quiere etiquetar, debe ser producto de `get_microdata()`
+- `type`: string; cuál es el tipo de datatset que se quiere etiquetar, `"individual"` o `"hogar"`
+
+
+Descarguemos y etiquetemos la base de hogares del 3 trimestre de 2018. Podemos hacer uso de los `%>%` pipes de `magritte`:
+
+```{r}
+hog_3_18 <- get_microdata(year=2018, trimester=3, type='hogar') %>%
+              organize_labels(., type='hogar')
+```
+
+
+### Tabulados ponderados
+
+Uno de los problemas habituales en el trabajo con la EPH es la dificultad de los diferentes softwares comerciales para la construcción de tablas de contigencia y/o distribuciones de frecuencia ponderadas. El paquete lo resuelve mediante la función `calculate_tabulates()`:
+
+
+```{r}
+calculate_tabulates(base=ind_3_18, x='ESTADO', y='CH04', weights = 'PONDIH',
+                    add.totals='row', add.percentage='col')
+```
+
+Los argumentos principales de la función son:
+
+- `base`: un data.frame proveniente de `get_microdata()`
+- `x`: string con el nombre de la variable a tabular
+- `y`: otro string (opcional) con el nombre de una segunda variable, para una tabla de doble entrada. Tiene que ser de igual largo que `x`
+- `weights`: string con el nombre de la variable que contiene los pesos
+- `add.totals`: agrega valores por `row`, `col` o `both`
+- `add.percentage`: calcula porcentajes por `row`, `col` o `both`
+
+Así, si quisiéramos la misma tabla sin ponderar:
+
+```{r}
+calculate_tabulates(base=ind_3_18, x='ESTADO', y='CH04',
+                    add.totals='row', add.percentage='col')
+```
+
+
+s
+
+
+### La yapa: cálculo de pobreza
+
+Un objetivo del paquete `eph`, es lograr automatizar el cálculo de pobreza e indigencia del INDEC para las bases trimestrales^[El calculo oficial se realiza sobre bases semestrales no publicadas]. El gran problema es que no existe información publicada fuera de los informes de prensa en formato pdf sobre los valores de las canastas básicas y alimentarias. 
+
+No obstante, hemos desarrollado dos funciones que, de encontrarse disponibles dichos datos, podrían calcular de forma automática los valores de pobreza e indigencia. Mostraremos un ejemplo de juguete con dos datasets de la CABA y sus respectivos valores de canastas. 
+
+```{r}
+#bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)
+
+```
+
+
+Existen dos funciones núcleo:
+
+```{r}
+lineas <- get_poverty_lines()
+lineas %>% head()
+```
+
+Esta función descarga los valores de las canastas alimentaria, básica (CBA y CBT) y la inversa del coeficiente de Engels... perdón, Engel (ICE) de [la serie provista por INDEC](https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149).
+
+
+```{r}
+lineas %>%
+  select(-ICE) %>%
+  gather(canasta, valor, -periodo) %>%
+  ggplot() +
+    geom_line(aes(x=periodo, y=valor, col=canasta))
+```
+ 
+La segunda función calcula la pertenencia a situaciones de pobreza e indigencia a nivel de los individuos siguiendo la metodología de línea:
+
+```{r}
+#calculate_poverty(bases, basket=lineas)
+```
+
+
