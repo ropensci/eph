@@ -42,7 +42,7 @@ devtools::install_github("holatam/eph")
 
 ## Ejemplo de flujo de trabajo
 
-### Descarga de datos
+### Descarga de datos: `get_microdata()`
 
 ```{r}
 library(eph)
@@ -52,7 +52,7 @@ library(tidyverse)
 Obtengamos la base de microdatos de individuos para el tercer trimestre de 2018:
 
 ```{r}
-ind_3_18 <- get_microdata(year=2018, trimester=3, type='individual')
+ind_3_18 <- get_microdata(year=2018, trimester=2, type='individual')
 ```
 Puede verse que la función requiere tres argumentos básicos:
 
@@ -62,12 +62,12 @@ Puede verse que la función requiere tres argumentos básicos:
 
 Si se deseara descargar una base de la EPH puntual, será necesario reemplazar el argumento `trimester` por `wave` que define la onda de la EPH puntual que se desea descargar. Por ejemplo, si se buscara descargar la base individual de la segunda onda del año 2002, debería escribirse
 
-```{r}
-ind_2_02 <- get_microdata(year=2002, wave=2, type='individual')
+```{r message=FALSE, warning=FALSE}
+ind_2_02 <- get_microdata(year=2001, wave=2, type='individual')
 ```
 
 
-### Etiquetado
+### Etiquetado: `organize_labels()`
 
 Es posible etiquetar de forma automática el dataset llamando a la función `organize_labels()`:
 
@@ -89,7 +89,7 @@ hog_3_18 <- get_microdata(year=2018, trimester=3, type='hogar') %>%
 ```
 
 
-### Tabulados ponderados
+### Tabulados ponderados: `calculate_tabulates()`
 
 Uno de los problemas habituales en el trabajo con la EPH es la dificultad de los diferentes softwares comerciales para la construcción de tablas de contigencia y/o distribuciones de frecuencia ponderadas. El paquete lo resuelve mediante la función `calculate_tabulates()`:
 
@@ -116,17 +116,102 @@ calculate_tabulates(base=ind_3_18, x='ESTADO', y='CH04',
 ```
 
 
-s
+
+### Armando pools de datos: `organize_panels()`
+
+Otra práctica común y necesaria en el trabajo con microdatos de la EPH es la generación de paneles de datos, es decir, el seguimiento de los registros a lo largo de las diferentes bases de la encuesta. Esto puede generarse en `eph` con la  función `organize_panels()`
+
+```{r}
+bases <- list(i_2018_1=get_microdata(year=2018, trimester=1, type='individual'),
+              i_2018_2=get_microdata(year=2018, trimester=2, type='individual'),
+              i_2018_3=get_microdata(year=2018, trimester=3, type='individual'),
+              i_2018_4=get_microdata(year=2018, trimester=4, type='individual')
+)
+
+```
+
+```{r}
+pool <- organize_panels(bases=bases, variables=c('ESTADO'),
+                        window='trimestral')
+```
+
+```{r}
+pool
+```
+
+La función nos devuelve un data.frame en el cual cada fila es un registro y se agregan variables en formato `long` de las variables de interés. Lo que hace detrás de bambalinas es concatenar todas las bases espeficadas en el argumento `list=` y hacer un join, extrayendo aquellos registros que aparecen medidos en las diferentes bases. La columna `consistencia` evalúa si en cada observación cambia el sexo o la edad de la persona durante en las dos ondas previas o posteriores.
+
+Es sencillo formatear este dataset en formato `tidy`:
+
+```{r}
+
+```
+
+CHEQUEAR ESTO....
 
 
-### La yapa: cálculo de pobreza
+
+### Generando una serie de asalariazación
+
+Veamos ahora un ejemplo un poco más complejo. Queremos generar una serie completa acerca de la sobreocupación. Para ello, tenemos que iterar sobre los años y trimestres que querramos incluir en el cálculo y, para cada año-trimestre calcular la razón ponderada de sobreocupados sobre total de ocupados:
+
+$SO_{t} = \frac{\sum_{i=1}^n w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}$
+
+
+```{r}
+years <- 2011:2018
+trims <- 1:4
+
+indicator<-matrix(nrow=length(years) * length(trims), ncol=3)
+i<-0
+for (y in years){
+        for (t in trims){
+                i<-i+1
+                d<-get_microdata(year=y, trimester = t) %>%
+                  organize_labels(.)
+                
+                indicator[i,1]<-y
+                indicator[i,2]<-t
+                
+                if (nrow(d) == 0){ 
+                  indicator[i,3]<-NA
+                }
+                
+                if (y==2007 & (t ==2 | t == 4)) {
+                  indicator[i,3]<-sum(d[d$cat_ocup==2,]$pondera, na.rm=TRUE) /sum(d[d$estado==1,]$pondera, na.rm=TRUE)
+                }
+                
+                else {
+                indicator[i,3]<-sum(d[d$CAT_OCUP==2,]$PONDERA, na.rm=TRUE) /sum(d[d$ESTADO==1,]$PONDERA, na.rm=TRUE)
+                }                    
+      }
+}
+
+indicator<-as.data.frame(indicator)
+colnames(indicator)<-c('year', 'trim', 'ind')
+
+indicator <- indicator %>%
+  mutate(fecha = lubridate::parse_date_time(paste(indicator$year, indicator$trim, sep='-'), "%y%q"))
+
+
+ggplot(data=indicator) +
+        geom_line(aes(x=fecha,y=ind), color='red') +
+        scale_y_continuous(limits=c(0,0.35)) + 
+        labs(y='Tasa de TCP / Ocupados')
+
+```
+
+
+
+
+### La yapa: cálculo de pobreza:
 
 Un objetivo del paquete `eph`, es lograr automatizar el cálculo de pobreza e indigencia del INDEC para las bases trimestrales^[El calculo oficial se realiza sobre bases semestrales no publicadas]. El gran problema es que no existe información publicada fuera de los informes de prensa en formato pdf sobre los valores de las canastas básicas y alimentarias. 
 
 No obstante, hemos desarrollado dos funciones que, de encontrarse disponibles dichos datos, podrían calcular de forma automática los valores de pobreza e indigencia. Mostraremos un ejemplo de juguete con dos datasets de la CABA y sus respectivos valores de canastas. 
 
-```{r}
-#bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)
+```{r message=FALSE, warning=FALSE}
+bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)
 
 ```
 
