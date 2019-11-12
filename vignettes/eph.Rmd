@@ -132,7 +132,7 @@ bases <- list(i_2018_1=get_microdata(year=2018, trimester=1, type='individual'),
 
 ```{r}
 pool <- organize_panels(bases=bases, variables=c('ESTADO'),
-                        window='trimestral')
+                        window='anual')
 ```
 
 ```{r}
@@ -153,12 +153,78 @@ CHEQUEAR ESTO....
 
 ### Generando una serie de asalariazación
 
-Veamos ahora un ejemplo un poco más complejo. Queremos generar una serie completa acerca de la sobreocupación. Para ello, tenemos que iterar sobre los años y trimestres que querramos incluir en el cálculo y, para cada año-trimestre calcular la razón ponderada de sobreocupados sobre total de ocupados:
+Veamos ahora un ejemplo un poco más complejo. Queremos generar una serie completa acerca del peso de los TCP sobre los ocupados. Para ello, tenemos que iterar sobre los años y trimestres que querramos incluir en el cálculo y, para cada año-trimestre calcular la razón ponderada de los TPC sobre total de ocupados:
 
 $SO_{t} = \frac{\sum_{i=1}^n w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}$
 
 
+```{r message=FALSE, warning=FALSE}
+year <- 2004:2018
+trimester <- 1:4
+wave<-NA
+type<-'individual'
+
+df <- as_tibble(expand.grid(year, trimester, wave, type))
+colnames(df)<-c('year','trimester','wave', 'type')
+
+get_data <- function(year, trimester, wave=NA, type){
+  indicator<-list()  
+  d <- get_microdata(year=year, 
+                     trimester=trimester, 
+                     type=type, 
+                     wave=wave)
+
+  indicator$year<-year
+  indicator$trimester<-trimester
+
+  if (nrow(d) == 0){ 
+    indicator$indic<-NA
+  }
+                
+  if (year==2007 & (trimester ==2 | trimester == 4)) {
+    indicator$ind<-sum(d[d$cat_ocup==2,]$pondera, na.rm=TRUE) /sum(d[d$estado==1,]$pondera, na.rm=TRUE)
+  }
+                
+  else {
+    indicator$ind<-sum(d[d$CAT_OCUP==2,]$PONDERA, na.rm=TRUE) /sum(d[d$ESTADO==1,]$PONDERA, na.rm=TRUE)
+  }
+  return(indicator)
+}
+
+df <- df %>%
+    dplyr::mutate(microdata=
+      purrr::pmap(list('year' = year,
+                       'trimester' = trimester,
+                       'wave' = wave,
+                       'type' = type),
+                  .f = get_data) 
+                  )
+
+
+df
+```
+
+
+Esto nos devuelve una tibble que contiene los indicadores de año, trimestre y tipo de dataset. A su vez, el campo `microdata` contiene nuestros indicadores. Solamente, tenemos que iterar sobre cada fila con `map()` y pegarlos uno debajo de otro con `bind_rows()`. Luego, emprolijamos un poco el dataset y lo ploteamos.
+
+
 ```{r}
+df %>% 
+  select(microdata) %>% 
+  map_df(.,bind_rows) %>% 
+  select(-indic) %>%
+  mutate(date=lubridate::parse_date_time(paste(year, trimester,sep='-'), '%y%q')) %>%
+  ggplot() + 
+    geom_line(aes(x=date,y=ind), color='blue') +
+    scale_y_continuous(limits=c(0,0.3)) +
+    labs(y='% TCP sobre ocupados')
+
+```
+
+
+
+
+```{r eval=FALSE, include=FALSE}
 years <- 2011:2018
 trims <- 1:4
 
