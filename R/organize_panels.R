@@ -40,7 +40,7 @@ organize_panels <- function(bases,variables,window = "anual"){
   ##Replica el identificador de Trimestre construido, para hacer un join  con la Base.
 
   bases_continua_join <- bases_continua %>%
-    dplyr::rename_at(vars(-c(1:3,ncol(.))),Teuno) %>%
+    dplyr::rename_at(dplyr::vars(-c(1:3,ncol(.))),Teuno) %>%
     dplyr::mutate(Periodo = dplyr::case_when(
       window == "anual"     ~ Periodo-1,
       window == "trimestral"~ Periodo-0.25))
