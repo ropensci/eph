@@ -119,23 +119,35 @@ calculate_tabulates(base=ind_3_18, x='ESTADO', y='CH04',
 
 ### Armando pools de datos: `organize_panels()`
 
-Otra práctica común y necesaria en el trabajo con microdatos de la EPH es la generación de paneles de datos, es decir, el seguimiento de los registros a lo largo de las diferentes bases de la encuesta. Esto puede generarse en `eph` con la  función `organize_panels()`
-
-```{r}
-bases <- get_microdata(year=2018, trimester=1:4, type='individual')
-
-```
+Otra potencialidad del trabajo con microdatos de la EPH es la capacidad de generar un pool de observaciones de panel. Este procedimiento consta en identificar a una misma persona u hogar encuestado en distintos trimestres, y permite realizar estudios sobre la evolución de sus caracteristicas con el correr del tiempo. Esto puede generarse, para las bases individuales en `eph` con la función `organize_panels()`. Para ello es necesario contar previamente con las múltiples bases de datos que se deseen poolear.
 
 ```{r warning=FALSE}
+bases <- get_microdata(year=2018, trimester=1:4, type='individual')
+
 pool <- organize_panels(bases=bases$microdata, variables=c('ESTADO','PONDERA'),
                         window='trimestral')
 ```
 
+Los argumentos principales de la función `organize_panels`son:  
+
+- `bases`: una lista con las bases de datos a poolear
+- `variables`: string con los nombre de la variables de interés
+- `window`: un string que indique la ventana de distancia de las observaciones (`anual`) o  (`trimestral`)
 ```{r}
 pool
 ```
+La función nos devuelve un data.frame similar a la base original, en el cual cada fila es un registro individual, que consta de las observaciones de las variables de interés específicadas, en dos periodos de tiempo. En el período inicial las mismas conservan su nombre, y en el siguiente (año o trimestre) aparecen renombradas con el agregado del string `_t1`.             
 
-La función nos devuelve un data.frame en el cual cada fila es un registro y se agregan variables en formato `long` de las variables de interés. Lo que hace detrás de bambalinas es concatenar todas las bases espeficadas en el argumento `list=` y hacer un join, extrayendo aquellos registros que aparecen medidos en las diferentes bases. La columna `consistencia` evalúa si en cada observación cambia el sexo o la edad de la persona durante en las dos ondas previas o posteriores.
+Lo que hace la función detrás de bambalinas es concatenar todas las bases espeficadas en el argumento `list=` y hacer un join, conservando sólo aquellos individuos encuestados en los diferentes trimestres. La columna `consistencia` evalúa si entre ambas observaciones un mismo individuo figura con distinto sexo o con una difrencia absoluta de 2 años de edad.        
+
+```{r message=FALSE, warning=FALSE}
+pool %>% 
+organize_labels(.) %>% 
+calculate_tabulates(x='ESTADO', y='ESTADO_t1',
+                    weights = "PONDERA", add.percentage='row')
+```
+Un indicador frecuente construido con esta infomación es la Matriz de Transición. Ella refleja como los individuos que ocupaban una determinada categoría en el período inicial, se distribuyen en cada una de las categorías en el período siguiente. La misma puede construirse sencillamente utilizando la función `calculate_tabulates`. En este ejemplo, la información refleja que durante 2018, un 3.7% de los ocupados perdió su empleo en el trimestre siguiente. 
+
 
 ### Iterando en varias bases
 
