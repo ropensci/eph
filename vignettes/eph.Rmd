@@ -2,7 +2,7 @@
 title: "Ejemplo de uso del paquete `eph`"
 author: 
   - Germán Rosati
-  - Diego Koslowski
+  - Diego Kozlowski
   - Pablo Tiscornia
   - Guido Weksler
   - Natsumi Shokida
@@ -131,8 +131,8 @@ bases <- list(i_2018_1=get_microdata(year=2018, trimester=1, type='individual'),
 ```
 
 ```{r}
-pool <- organize_panels(bases=bases, variables=c('ESTADO'),
-                        window='anual')
+pool <- organize_panels(bases=bases, variables=c('ESTADO','PONDERA'),
+                        window='trimestral')
 ```
 
 ```{r}

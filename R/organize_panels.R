@@ -28,39 +28,35 @@ organize_panels <- function(bases,variables,window = "anual"){
   bases_continua <- dplyr::bind_rows(bases) %>%
     dplyr::select(CODUSU,NRO_HOGAR,COMPONENTE,ANO4,TRIMESTRE,CH04,CH06,variables) %>%
     dplyr::filter(ESTADO !=0) %>%
-    dplyr::mutate(Trimestre = paste(ANO4, TRIMESTRE, sep="_"))%>%
-    dplyr::arrange(Trimestre) %>%
-    dplyr::mutate(Id_Trimestre = match(Trimestre,unique(Trimestre)))
-
+    dplyr::mutate(Periodo = zoo::as.yearqtr(paste0(ANO4," Q",TRIMESTRE)))
 
   ##Creo una Replica de la base, y le agrego (_t1) al nombre de cada
   ##variable, excepto a las que voy a usar para "matchear".
-
-  bases_continua_join <- bases_continua
-  names(bases_continua_join)[!(names(bases_continua_join) %in%
-                                 c("CODUSU","COMPONENTE","NRO_HOGAR","Id_Trimestre"))] <- paste0(names(bases_continua_join)[
-                                   !(names(bases_continua_join) %in%
-                                       c("CODUSU","COMPONENTE","NRO_HOGAR","Id_Trimestre"))],"_t1")
+  Teuno <-  function(x) {
+    paste0(x,"_t1")
+  }
 
   ##En Base a la amplitud del panel que especificaré al correr en la funcion resto en la Base
   ##Replica el identificador de Trimestre construido, para hacer un join  con la Base.
-  t <- dplyr::case_when(window == "anual"      ~ 4,
-                 window == "trimestral"~ 1)
 
-  bases_continua_join$Id_Trimestre <- bases_continua_join$Id_Trimestre - t
+  bases_continua_join <- bases_continua %>%
+    dplyr::rename_at(vars(-c(1:3,ncol(.))),Teuno) %>%
+    dplyr::mutate(Periodo = dplyr::case_when(
+      window == "anual"     ~ Periodo-1,
+      window == "trimestral"~ Periodo-0.25))
 
-  panel_continua <- dplyr::inner_join(bases_continua,bases_continua_join) %>%
+  panel_continua <- dplyr::inner_join(bases_continua,
+                                      bases_continua_join) %>%
     dplyr::mutate(consistencia = dplyr::case_when(
-                                                  abs(CH06_t1-CH06) > 2 |
-                                                  CH04 != CH04_t1 ~ FALSE,
-                                                  TRUE ~ TRUE))
+      abs(CH06_t1-CH06) > 2 |
+        CH04 != CH04_t1 ~ FALSE,
+      TRUE ~ TRUE))
 
   consistencias_continua <- panel_continua %>%
-    dplyr::group_by(Trimestre) %>%
+    dplyr::group_by(Periodo) %>%
     dplyr::summarise(sin_controles = n(),
-              con_controles = sum(consistencia,na.rm = TRUE),
-              perdida = 1 - (con_controles/sin_controles))
+                     con_controles = sum(consistencia,na.rm = TRUE),
+                     perdida = 1 - (con_controles/sin_controles))
 
   return(panel_continua)
 }
-

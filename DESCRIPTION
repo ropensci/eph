@@ -32,6 +32,7 @@ Imports:
     readr,
     utils,
     curl,
+    zoo,
     attempt
 Depends: R (>= 2.10)
 License: MIT + file LICENSE
