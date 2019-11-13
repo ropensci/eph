@@ -3,7 +3,7 @@
 * add skip_if_offline and some skip_on_cran for time-consuming tests
 * add stop if there is no internet connection for get_microdata
 * add vignettes
-* improve internals in organize_panels
+* simplify output in organize_panels
 
 # eph 0.1.1
 
