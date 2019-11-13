@@ -14,7 +14,10 @@ knitr::opts_chunk$set(
 
 ## ------------------------------------------------------------------------
 library(eph)
-library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(ggplot2)
 
 ## ------------------------------------------------------------------------
 ind_3_18 <- get_microdata(year=2018, trimester=2, type='individual')
@@ -37,131 +40,63 @@ calculate_tabulates(base=ind_3_18, x='ESTADO', y='CH04', weights = 'PONDIH',
 calculate_tabulates(base=ind_3_18, x='ESTADO', y='CH04',
                     add.totals='row', add.percentage='col')
 
-## ------------------------------------------------------------------------
-bases <- list(i_2018_1=get_microdata(year=2018, trimester=1, type='individual'),
-              i_2018_2=get_microdata(year=2018, trimester=2, type='individual'),
-              i_2018_3=get_microdata(year=2018, trimester=3, type='individual'),
-              i_2018_4=get_microdata(year=2018, trimester=4, type='individual')
-)
+## ----warning=FALSE-------------------------------------------------------
+bases <- get_microdata(year=2018, trimester=1:4, type='individual')
 
-
-## ------------------------------------------------------------------------
-pool <- organize_panels(bases=bases, variables=c('ESTADO'),
-                        window='anual')
+pool <- organize_panels(bases=bases$microdata, variables=c('ESTADO','PONDERA'),
+                        window='trimestral')
 
 ## ------------------------------------------------------------------------
 pool
 
-## ------------------------------------------------------------------------
-
+## ----message=FALSE, warning=FALSE----------------------------------------
+pool %>% 
+organize_labels(.) %>% 
+calculate_tabulates(x='ESTADO', y='ESTADO_t1',
+                    weights = "PONDERA", add.percentage='row')
 
 ## ----message=FALSE, warning=FALSE----------------------------------------
-year <- 2004:2018
-trimester <- 1:4
-wave<-NA
+year <- 2017:2019
+trimester <- 1:2
 type<-'individual'
 
-df <- as_tibble(expand.grid(year, trimester, wave, type))
-colnames(df)<-c('year','trimester','wave', 'type')
 
-get_data <- function(year, trimester, wave=NA, type){
-  indicator<-list()  
-  d <- get_microdata(year=year, 
-                     trimester=trimester, 
-                     type=type, 
-                     wave=wave)
+df <- as_tibble(expand.grid(year=year, trimester=trimester,type=type))
 
-  indicator$year<-year
-  indicator$trimester<-trimester
-
-  if (nrow(d) == 0){ 
-    indicator$indic<-NA
-  }
-                
-  if (year==2007 & (trimester ==2 | trimester == 4)) {
-    indicator$ind<-sum(d[d$cat_ocup==2,]$pondera, na.rm=TRUE) /sum(d[d$estado==1,]$pondera, na.rm=TRUE)
-  }
-                
-  else {
-    indicator$ind<-sum(d[d$CAT_OCUP==2,]$PONDERA, na.rm=TRUE) /sum(d[d$ESTADO==1,]$PONDERA, na.rm=TRUE)
-  }
-  return(indicator)
+#defino una nueva función que haga el select
+get_select <- function(year,trimester,type,vars){
+  df <- get_microdata(year = year,trimester = trimester,type = type)
+  if (nrow(df)==0) { #cómo hay periodos que no hay base, agregamos esta condición
+    return(df)
+  }else{df %>% 
+      rename_all(tolower) %>%  #algunos años estan en mayúscula y otros en minúscula. Normalizamos
+      select(tolower(vars))} #hacemos el select para las demás bases
 }
 
-df <- df %>%
-    dplyr::mutate(microdata=
-      purrr::pmap(list('year' = year,
+df <- df %>% 
+  mutate(microdata = pmap(list('year' = year,
                        'trimester' = trimester,
-                       'wave' = wave,
-                       'type' = type),
-                  .f = get_data) 
-                  )
+                       'type' = type), get_select,c('PONDERA','ESTADO','CAT_OCUP'))) %>% 
+  unnest()
 
 
+df %>% 
+  sample_n(5)
 
 ## ------------------------------------------------------------------------
-df %>% 
-  select(microdata) %>% 
-  map_df(.,bind_rows) %>% 
-  select(-indic) %>%
-  mutate(date=lubridate::parse_date_time(paste(year, trimester,sep='-'), '%y%q')) %>%
-  ggplot() + 
-    geom_line(aes(x=date,y=ind), color='blue') +
-    scale_y_continuous(limits=c(0,0.3)) +
-    labs(y='% TCP sobre ocupados')
-
-
-## ----eval=FALSE, include=FALSE-------------------------------------------
-#  years <- 2011:2018
-#  trims <- 1:4
-#  
-#  indicator<-matrix(nrow=length(years) * length(trims), ncol=3)
-#  i<-0
-#  for (y in years){
-#          for (t in trims){
-#                  i<-i+1
-#                  d<-get_microdata(year=y, trimester = t) %>%
-#                    organize_labels(.)
-#  
-#                  indicator[i,1]<-y
-#                  indicator[i,2]<-t
-#  
-#                  if (nrow(d) == 0){
-#                    indicator[i,3]<-NA
-#                  }
-#  
-#                  if (y==2007 & (t ==2 | t == 4)) {
-#                    indicator[i,3]<-sum(d[d$cat_ocup==2,]$pondera, na.rm=TRUE) /sum(d[d$estado==1,]$pondera, na.rm=TRUE)
-#                  }
-#  
-#                  else {
-#                  indicator[i,3]<-sum(d[d$CAT_OCUP==2,]$PONDERA, na.rm=TRUE) /sum(d[d$ESTADO==1,]$PONDERA, na.rm=TRUE)
-#                  }
-#        }
-#  }
-#  
-#  indicator<-as.data.frame(indicator)
-#  colnames(indicator)<-c('year', 'trim', 'ind')
-#  
-#  indicator <- indicator %>%
-#    mutate(fecha = lubridate::parse_date_time(paste(indicator$year, indicator$trim, sep='-'), "%y%q"))
-#  
-#  
-#  ggplot(data=indicator) +
-#          geom_line(aes(x=fecha,y=ind), color='red') +
-#          scale_y_continuous(limits=c(0,0.35)) +
-#          labs(y='Tasa de TCP / Ocupados')
-#  
+df <- df %>% 
+  group_by(year,trimester) %>% 
+  summarise(indicador = sum(pondera[cat_ocup==2], na.rm = T) / sum(pondera[estado==1], na.rm = T)) 
+df
 
 ## ----message=FALSE, warning=FALSE----------------------------------------
 bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)
-
 
 ## ------------------------------------------------------------------------
 lineas <- get_poverty_lines()
 lineas %>% head()
 
-## ------------------------------------------------------------------------
+## ---- fig.width=7, fig.height=5------------------------------------------
 lineas %>%
   select(-ICE) %>%
   gather(canasta, valor, -periodo) %>%
@@ -169,16 +104,14 @@ lineas %>%
     geom_line(aes(x=periodo, y=valor, col=canasta))
 
 ## ------------------------------------------------------------------------
-canastas_reg_example
+canastas_reg_example %>% head()
 
 ## ------------------------------------------------------------------------
-adulto_equivalente
+adulto_equivalente %>% head()
 
 ## ----warning=FALSE-------------------------------------------------------
-
 bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)
 base_pobreza <- calculate_poverty(base = bases, basket = canastas_reg_example,print_summary=TRUE)
-
 
 ## ------------------------------------------------------------------------
 base_pobreza %>% 

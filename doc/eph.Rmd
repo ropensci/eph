@@ -2,7 +2,7 @@
 title: "Ejemplo de uso del paquete `eph`"
 author: 
   - Germán Rosati
-  - Diego Koslowski
+  - Diego Kozlowski
   - Pablo Tiscornia
   - Guido Weksler
   - Natsumi Shokida
@@ -46,7 +46,10 @@ devtools::install_github("holatam/eph")
 
 ```{r}
 library(eph)
-library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(ggplot2)
 ```
 
 Obtengamos la base de microdatos de individuos para el tercer trimestre de 2018:
@@ -119,157 +122,87 @@ calculate_tabulates(base=ind_3_18, x='ESTADO', y='CH04',
 
 ### Armando pools de datos: `organize_panels()`
 
-Otra práctica común y necesaria en el trabajo con microdatos de la EPH es la generación de paneles de datos, es decir, el seguimiento de los registros a lo largo de las diferentes bases de la encuesta. Esto puede generarse en `eph` con la  función `organize_panels()`
+Otra potencialidad del trabajo con microdatos de la EPH es la capacidad de generar un pool de observaciones de panel. Este procedimiento consta en identificar a una misma persona u hogar encuestado en distintos trimestres, y permite realizar estudios sobre la evolución de sus caracteristicas con el correr del tiempo. Esto puede generarse, para las bases individuales en `eph` con la función `organize_panels()`. Para ello es necesario contar previamente con las múltiples bases de datos que se deseen poolear.
 
-```{r}
-bases <- list(i_2018_1=get_microdata(year=2018, trimester=1, type='individual'),
-              i_2018_2=get_microdata(year=2018, trimester=2, type='individual'),
-              i_2018_3=get_microdata(year=2018, trimester=3, type='individual'),
-              i_2018_4=get_microdata(year=2018, trimester=4, type='individual')
-)
+```{r warning=FALSE}
+bases <- get_microdata(year=2018, trimester=1:4, type='individual')
 
+pool <- organize_panels(bases=bases$microdata, variables=c('ESTADO','PONDERA'),
+                        window='trimestral')
 ```
 
-```{r}
-pool <- organize_panels(bases=bases, variables=c('ESTADO'),
-                        window='anual')
-```
+Los argumentos principales de la función `organize_panels`son:  
 
+- `bases`: una lista con las bases de datos a poolear
+- `variables`: string con los nombre de la variables de interés
+- `window`: un string que indique la ventana de distancia de las observaciones (`anual`) o  (`trimestral`)
 ```{r}
 pool
 ```
+La función nos devuelve un data.frame similar a la base original, en el cual cada fila es un registro individual, que consta de las observaciones de las variables de interés específicadas, en dos periodos de tiempo. En el período inicial las mismas conservan su nombre, y en el siguiente (año o trimestre) aparecen renombradas con el agregado del string `_t1`.             
 
-La función nos devuelve un data.frame en el cual cada fila es un registro y se agregan variables en formato `long` de las variables de interés. Lo que hace detrás de bambalinas es concatenar todas las bases espeficadas en el argumento `list=` y hacer un join, extrayendo aquellos registros que aparecen medidos en las diferentes bases. La columna `consistencia` evalúa si en cada observación cambia el sexo o la edad de la persona durante en las dos ondas previas o posteriores.
+Lo que hace la función detrás de bambalinas es concatenar todas las bases espeficadas en el argumento `list=` y hacer un join, conservando sólo aquellos individuos encuestados en los diferentes trimestres. La columna `consistencia` evalúa si entre ambas observaciones un mismo individuo figura con distinto sexo o con una difrencia absoluta de 2 años de edad.        
 
-Es sencillo formatear este dataset en formato `tidy`:
+```{r message=FALSE, warning=FALSE}
+pool %>% 
+organize_labels(.) %>% 
+calculate_tabulates(x='ESTADO', y='ESTADO_t1',
+                    weights = "PONDERA", add.percentage='row')
+```
+Un indicador frecuente construido con esta infomación es la Matriz de Transición. Ella refleja como los individuos que ocupaban una determinada categoría en el período inicial, se distribuyen en cada una de las categorías en el período siguiente. La misma puede construirse sencillamente utilizando la función `calculate_tabulates`. En este ejemplo, la información refleja que durante 2018, un 3.7% de los ocupados perdió su empleo en el trimestre siguiente. 
 
-```{r}
 
+### Iterando en varias bases
+
+Lamentablemente al no poseer una API (aplication program interface) de INDEC, el proceso de recuperación de la información debe atravesar por las bases completas. Eso implica un costo desprocionado en términos de tiempo y memoria, y por ello no se incorpora como funcionalidad del paquete. Pero en caso de ser necesario construir una serie, se podría realizar de la siguiente manera:
+
+- crear una nueva función que descargue la información y haga un select
+- mapearla sobre todos los periodos
+
+
+```{r message=FALSE, warning=FALSE}
+year <- 2017:2019
+trimester <- 1:2
+type<-'individual'
+
+
+df <- as_tibble(expand.grid(year=year, trimester=trimester,type=type))
+
+#defino una nueva función que haga el select
+get_select <- function(year,trimester,type,vars){
+  df <- get_microdata(year = year,trimester = trimester,type = type)
+  if (nrow(df)==0) { #cómo hay periodos que no hay base, agregamos esta condición
+    return(df)
+  }else{df %>% 
+      rename_all(tolower) %>%  #algunos años estan en mayúscula y otros en minúscula. Normalizamos
+      select(tolower(vars))} #hacemos el select para las demás bases
+}
+
+df <- df %>% 
+  mutate(microdata = pmap(list('year' = year,
+                       'trimester' = trimester,
+                       'type' = type), get_select,c('PONDERA','ESTADO','CAT_OCUP'))) %>% 
+  unnest()
+
+
+df %>% 
+  sample_n(5)
 ```
 
-CHEQUEAR ESTO....
+Con estos datos podemos crear por ejemplo la serie de asalarización
 
-
-
-### Generando una serie de asalariazación
-
-Veamos ahora un ejemplo un poco más complejo. Queremos generar una serie completa acerca del peso de los TCP sobre los ocupados. Para ello, tenemos que iterar sobre los años y trimestres que querramos incluir en el cálculo y, para cada año-trimestre calcular la razón ponderada de los TPC sobre total de ocupados:
 
 $SO_{t} = \frac{\sum_{i=1}^n w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}$
 
 
-```{r message=FALSE, warning=FALSE}
-year <- 2004:2018
-trimester <- 1:4
-wave<-NA
-type<-'individual'
-
-df <- as_tibble(expand.grid(year, trimester, wave, type))
-colnames(df)<-c('year','trimester','wave', 'type')
-
-get_data <- function(year, trimester, wave=NA, type){
-  indicator<-list()  
-  d <- get_microdata(year=year, 
-                     trimester=trimester, 
-                     type=type, 
-                     wave=wave)
-
-  indicator$year<-year
-  indicator$trimester<-trimester
-
-  if (nrow(d) == 0){ 
-    indicator$indic<-NA
-  }
-                
-  if (year==2007 & (trimester ==2 | trimester == 4)) {
-    indicator$ind<-sum(d[d$cat_ocup==2,]$pondera, na.rm=TRUE) /sum(d[d$estado==1,]$pondera, na.rm=TRUE)
-  }
-                
-  else {
-    indicator$ind<-sum(d[d$CAT_OCUP==2,]$PONDERA, na.rm=TRUE) /sum(d[d$ESTADO==1,]$PONDERA, na.rm=TRUE)
-  }
-  return(indicator)
-}
-
-df <- df %>%
-    dplyr::mutate(microdata=
-      purrr::pmap(list('year' = year,
-                       'trimester' = trimester,
-                       'wave' = wave,
-                       'type' = type),
-                  .f = get_data) 
-                  )
-
-
-```
-
-
-Esto nos devuelve una tibble que contiene los indicadores de año, trimestre y tipo de dataset. A su vez, el campo `microdata` contiene nuestros indicadores. Solamente, tenemos que iterar sobre cada fila con `map()` y pegarlos uno debajo de otro con `bind_rows()`. Luego, emprolijamos un poco el dataset y lo ploteamos.
-
-
 ```{r}
-df %>% 
-  select(microdata) %>% 
-  map_df(.,bind_rows) %>% 
-  select(-indic) %>%
-  mutate(date=lubridate::parse_date_time(paste(year, trimester,sep='-'), '%y%q')) %>%
-  ggplot() + 
-    geom_line(aes(x=date,y=ind), color='blue') +
-    scale_y_continuous(limits=c(0,0.3)) +
-    labs(y='% TCP sobre ocupados')
-
+df <- df %>% 
+  group_by(year,trimester) %>% 
+  summarise(indicador = sum(pondera[cat_ocup==2], na.rm = T) / sum(pondera[estado==1], na.rm = T)) 
+df
 ```
 
-
-
-
-```{r eval=FALSE, include=FALSE}
-years <- 2011:2018
-trims <- 1:4
-
-indicator<-matrix(nrow=length(years) * length(trims), ncol=3)
-i<-0
-for (y in years){
-        for (t in trims){
-                i<-i+1
-                d<-get_microdata(year=y, trimester = t) %>%
-                  organize_labels(.)
-                
-                indicator[i,1]<-y
-                indicator[i,2]<-t
-                
-                if (nrow(d) == 0){ 
-                  indicator[i,3]<-NA
-                }
-                
-                if (y==2007 & (t ==2 | t == 4)) {
-                  indicator[i,3]<-sum(d[d$cat_ocup==2,]$pondera, na.rm=TRUE) /sum(d[d$estado==1,]$pondera, na.rm=TRUE)
-                }
-                
-                else {
-                indicator[i,3]<-sum(d[d$CAT_OCUP==2,]$PONDERA, na.rm=TRUE) /sum(d[d$ESTADO==1,]$PONDERA, na.rm=TRUE)
-                }                    
-      }
-}
-
-indicator<-as.data.frame(indicator)
-colnames(indicator)<-c('year', 'trim', 'ind')
-
-indicator <- indicator %>%
-  mutate(fecha = lubridate::parse_date_time(paste(indicator$year, indicator$trim, sep='-'), "%y%q"))
-
-
-ggplot(data=indicator) +
-        geom_line(aes(x=fecha,y=ind), color='red') +
-        scale_y_continuous(limits=c(0,0.35)) + 
-        labs(y='Tasa de TCP / Ocupados')
-
-```
-
-
-
-
-### La yapa: cálculo de pobreza:
+### Cálculo de pobreza:
 
 Un objetivo del paquete `eph`, es lograr automatizar el cálculo de pobreza e indigencia del INDEC para las bases trimestrales^[El calculo oficial se realiza sobre bases semestrales no publicadas]. El gran problema es que no existe información publicada fuera de los informes de prensa en formato pdf sobre los valores de las canastas básicas y alimentarias. 
 
@@ -277,7 +210,6 @@ No obstante, hemos desarrollado dos funciones que, de encontrarse disponibles di
 
 ```{r message=FALSE, warning=FALSE}
 bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)
-
 ```
 
 
@@ -290,7 +222,7 @@ lineas %>% head()
 
 Esta función descarga los valores de las canastas alimentaria, básica (CBA y CBT) y la inversa del coeficiente de Engels... perdón, Engel (ICE) de [la serie provista por INDEC](https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149). Esta es la serie para GBA, y es la que publica regularmente INDEC. 
 
-```{r}
+```{r, fig.width=7, fig.height=5}
 lineas %>%
   select(-ICE) %>%
   gather(canasta, valor, -periodo) %>%
@@ -305,23 +237,21 @@ Para el calculo de la Pobreza e Indigence se utilizan canastas regionales, que s
 A modo de ejemplo, en la librería `eph` se encuentra la base `canastas_reg_example` con la información necesaria para realizar el cálculo
 
 ```{r}
-canastas_reg_example
+canastas_reg_example %>% head()
 ```
 
 A su vez, también se encuentra la tabla de `adulto_equivalente` que permite construir la cantidad de adultos equivalentes a nivel hogar, para multiplicar al mismo por la canasta regional correspondiente, a fin de definir la línea a nivel hogar.
 
 ```{r}
-adulto_equivalente
+adulto_equivalente %>% head()
 ```
 
 
 La función `calculate_poverty` calcula la pertenencia a situaciones de pobreza e indigencia a nivel de los individuos siguiendo la metodología de línea:
 
 ```{r warning=FALSE}
-
 bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)
 base_pobreza <- calculate_poverty(base = bases, basket = canastas_reg_example,print_summary=TRUE)
-
 ```
 
 

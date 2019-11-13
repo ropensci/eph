@@ -46,7 +46,10 @@ devtools::install_github("holatam/eph")
 
 ```{r}
 library(eph)
-library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(ggplot2)
 ```
 
 Obtengamos la base de microdatos de individuos para el tercer trimestre de 2018:
@@ -158,8 +161,8 @@ Lamentablemente al no poseer una API (aplication program interface) de INDEC, el
 
 
 ```{r message=FALSE, warning=FALSE}
-year <- 2016:2018
-trimester <- 1:4
+year <- 2017:2019
+trimester <- 1:2
 type<-'individual'
 
 
@@ -195,7 +198,7 @@ $SO_{t} = \frac{\sum_{i=1}^n w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}$
 ```{r}
 df <- df %>% 
   group_by(year,trimester) %>% 
-  summarise(indicador = sum(pondcat_ocup==2,na.rm = T)/sum(estado==1,na.rm = T)) 
+  summarise(indicador = sum(pondera[cat_ocup==2], na.rm = T) / sum(pondera[estado==1], na.rm = T)) 
 df
 ```
 
@@ -207,7 +210,6 @@ No obstante, hemos desarrollado dos funciones que, de encontrarse disponibles di
 
 ```{r message=FALSE, warning=FALSE}
 bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)
-
 ```
 
 
@@ -220,7 +222,7 @@ lineas %>% head()
 
 Esta función descarga los valores de las canastas alimentaria, básica (CBA y CBT) y la inversa del coeficiente de Engels... perdón, Engel (ICE) de [la serie provista por INDEC](https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149). Esta es la serie para GBA, y es la que publica regularmente INDEC. 
 
-```{r}
+```{r, fig.width=7, fig.height=5}
 lineas %>%
   select(-ICE) %>%
   gather(canasta, valor, -periodo) %>%
@@ -248,10 +250,8 @@ adulto_equivalente %>% head()
 La función `calculate_poverty` calcula la pertenencia a situaciones de pobreza e indigencia a nivel de los individuos siguiendo la metodología de línea:
 
 ```{r warning=FALSE}
-
 bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)
 base_pobreza <- calculate_poverty(base = bases, basket = canastas_reg_example,print_summary=TRUE)
-
 ```
 
 
