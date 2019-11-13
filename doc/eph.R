@@ -86,7 +86,7 @@ df %>%
 ## ------------------------------------------------------------------------
 df <- df %>% 
   group_by(year,trimester) %>% 
-  summarise(indicador = sum(pondera[cat_ocup==2], na.rm = T) / sum(pondera[estado==1], na.rm = T)) 
+  summarise(indicador = sum(pondera[cat_ocup==3], na.rm = T) / sum(pondera[estado==1], na.rm = T)) 
 df
 
 ## ----message=FALSE, warning=FALSE----------------------------------------

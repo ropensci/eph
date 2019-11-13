@@ -198,7 +198,7 @@ $SO_{t} = \frac{\sum_{i=1}^n w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}$
 ```{r}
 df <- df %>% 
   group_by(year,trimester) %>% 
-  summarise(indicador = sum(pondera[cat_ocup==2], na.rm = T) / sum(pondera[estado==1], na.rm = T)) 
+  summarise(indicador = sum(pondera[cat_ocup==3], na.rm = T) / sum(pondera[estado==1], na.rm = T)) 
 df
 ```
 
