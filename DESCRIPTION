@@ -46,5 +46,5 @@ Suggests:
     covr,
     knitr,
     rmarkdown,
-	ggplot2
+    ggplot2
 VignetteBuilder: knitr
