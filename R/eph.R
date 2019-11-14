@@ -46,7 +46,8 @@ if(getRversion() >= "2.15.1") utils::globalVariables(c(".",
                                                        "filter_col",
                                                        "error_message",
                                                        ".data",
-                                                       "Periodo"))
+                                                       "Periodo",
+                                                       "vars"))
 
 
 

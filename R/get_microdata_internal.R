@@ -5,11 +5,13 @@
 #'@param trimester un integer con el numero de trimester: 1,2,3,4, para la EPH continua
 #'@param wave un integer con el numero de onda, 1 o 2, para la EPH puntual
 #'@param type tipo de base a descargar: 'individual' ; 'hogar', default individual
+#'@param vars variables a seleccionar. Default trae todas las variables
 
 get_microdata_internal <- function(year = 2018,
                           trimester = NA,
                           wave = NA,
-                          type='individual'){
+                          type='individual',
+                          vars = 'all'){
 
   #controles de los parametros
   assertthat::assert_that(is.numeric(year))
@@ -155,5 +157,14 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
     }
     unlink(temp)
   }
-  base
+
+  if (all(vars == 'all')) {
+    vars <- colnames(base)
+  }
+  if (nrow(base)>0) {
+    base %>%
+      dplyr::rename_all(toupper) %>%
+      dplyr::select(vars)
+  } else {base}
+
 }

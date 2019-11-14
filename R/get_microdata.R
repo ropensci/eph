@@ -5,6 +5,7 @@
 #'@param trimester un integer o vector de integers con el numero de trimester: 1,2,3,4, para la EPH continua
 #'@param wave un integer o vector de integers con el numero de onda, 1 o 2, para la EPH puntual
 #'@param type un character o vector de characters con el tipo de base a descargar: 'individual' ; 'hogar', default individual
+#'@param vars un vector de characters. variables a seleccionar. Default='all' trae todas las variables
 #'@details
 #'Las bases de la EPH puntual utilizan el parametro wave, para referirse a las ondas.
 #'Su alcance es entre la onda 1 de 1996 y a onda 1 de 2003.
@@ -24,7 +25,8 @@
 #'
 #'base_individual <- get_microdata(year = 2018:2019,
 #'                                  trimester = 1,
-#'                                  type='individual')
+#'                                  type='individual',
+#'                                  vars = c('PONDERA','ESTADO','CAT_OCUP'))
 #'
 #'base_2018 <- base_individual %>%
 #'  dplyr::filter(year==2018) %>%
@@ -40,7 +42,8 @@
 get_microdata <- function(year = 2018,
                           trimester = NA,
                           wave = NA,
-                          type='individual'){
+                          type='individual',
+                          vars = 'all'){
 
   attempt::stop_if_not(.x = curl::has_internet(),
                        msg = "No se detecto acceso a internet. Por favor checkea tu conexion.")
@@ -59,7 +62,7 @@ get_microdata <- function(year = 2018,
                        'type' = type),
                   purrr::safely(.f = get_microdata_internal,
                                   otherwise = tibble::tibble(),
-                                  quiet = TRUE)
+                                  quiet = TRUE), vars
                   )
       )
 
