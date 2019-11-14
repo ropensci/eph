@@ -46,7 +46,8 @@ organize_panels <- function(bases,variables,window = "anual"){
       window == "trimestral"~ Periodo-0.25))
 
   panel_continua <- dplyr::inner_join(bases_continua,
-                                      bases_continua_join) %>%
+                                      bases_continua_join,
+                                      by = c("CODUSU", "NRO_HOGAR", "COMPONENTE", "Periodo")) %>%
     dplyr::mutate(consistencia = dplyr::case_when(
       abs(CH06_t1-CH06) > 2 |
         CH04 != CH04_t1 ~ FALSE,
