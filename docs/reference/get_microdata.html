@@ -131,7 +131,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>get_microdata</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2018</span>, <span class='kw'>trimester</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>wave</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"individual"</span>)</pre>
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"individual"</span>, <span class='kw'>vars</span> <span class='kw'>=</span> <span class='st'>"all"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,6 +151,10 @@
     <tr>
       <th>type</th>
       <td><p>un character o vector de characters con el tipo de base a descargar: 'individual' ; 'hogar', default individual</p></td>
+    </tr>
+    <tr>
+      <th>vars</th>
+      <td><p>un vector de characters. variables a seleccionar. Default='all' trae todas las variables</p></td>
     </tr>
     </table>
     
@@ -174,7 +178,8 @@ disclaimer: El script no es un producto oficial de INDEC.</p>
     <pre class="examples"><div class='input'>
 <span class='no'>base_individual</span> <span class='kw'>&lt;-</span> <span class='fu'>get_microdata</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2018</span>:<span class='fl'>2019</span>,
                                  <span class='kw'>trimester</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-                                 <span class='kw'>type</span><span class='kw'>=</span><span class='st'>'individual'</span>)
+                                 <span class='kw'>type</span><span class='kw'>=</span><span class='st'>'individual'</span>,
+                                 <span class='kw'>vars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>'PONDERA'</span>,<span class='st'>'ESTADO'</span>,<span class='st'>'CAT_OCUP'</span>))
 
 <span class='no'>base_2018</span> <span class='kw'>&lt;-</span> <span class='no'>base_individual</span> <span class='kw'>%&gt;%</span>
  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>year</span><span class='kw'>==</span><span class='fl'>2018</span>) <span class='kw'>%&gt;%</span>

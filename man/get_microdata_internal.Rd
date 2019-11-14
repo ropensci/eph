@@ -5,7 +5,7 @@
 \title{Descarga de Bases de EPH}
 \usage{
 get_microdata_internal(year = 2018, trimester = NA, wave = NA,
-  type = "individual")
+  type = "individual", vars = "all")
 }
 \arguments{
 \item{year}{un integer a partir de 2003}
@@ -15,6 +15,8 @@ get_microdata_internal(year = 2018, trimester = NA, wave = NA,
 \item{wave}{un integer con el numero de onda, 1 o 2, para la EPH puntual}
 
 \item{type}{tipo de base a descargar: 'individual' ; 'hogar', default individual}
+
+\item{vars}{variables a seleccionar. Default trae todas las variables}
 }
 \description{
 Funcion que descarga bases de la Encuesta Permanente de Hogares del INDEC a partir de 1996

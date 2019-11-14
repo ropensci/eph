@@ -44,7 +44,7 @@ devtools::install_github("holatam/eph")
 
 ### Descarga de datos: `get_microdata()`
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(eph)
 library(dplyr)
 library(tidyr)
@@ -94,7 +94,7 @@ hog_3_18 <- get_microdata(year=2018, trimester=3, type='hogar') %>%
 
 ### Tabulados ponderados: `calculate_tabulates()`
 
-Uno de los problemas habituales en el trabajo con la EPH es la dificultad de los diferentes softwares comerciales para la construcción de tablas de contigencia y/o distribuciones de frecuencia ponderadas. El paquete lo resuelve mediante la función `calculate_tabulates()`:
+Una de las operaciones más usuales al trabajar con la EPH son los tabulados uni y bivariados. Para ello, el paquete cuenta con la función  `calculate_tabulates()`, la cual brinda la posibilidad de obtener tanto resultados en valores absolutos como relativos, como así también contar con la posibilidad de ponderar los datos:
 
 
 ```{r}
@@ -123,10 +123,15 @@ calculate_tabulates(base=ind_3_18, x='ESTADO', y='CH04',
 ### Armando pools de datos: `organize_panels()`
 
 Otra potencialidad del trabajo con microdatos de la EPH es la capacidad de generar un pool de observaciones de panel. Este procedimiento consta en identificar a una misma persona u hogar encuestado en distintos trimestres, y permite realizar estudios sobre la evolución de sus caracteristicas con el correr del tiempo. Esto puede generarse, para las bases individuales en `eph` con la función `organize_panels()`. Para ello es necesario contar previamente con las múltiples bases de datos que se deseen poolear.
+```{r}
+bases <- get_microdata(year=2018, trimester=1:4, type='individual', 
+                       vars = c('CODUSU','NRO_HOGAR','COMPONENTE','ANO4','TRIMESTRE','CH04','CH06', #variables necesarias para hacer el panel
+                                'ESTADO','PONDERA') ) #variables que nos interesan en nuestro análisis
+bases
+```
+
 
 ```{r warning=FALSE}
-bases <- get_microdata(year=2018, trimester=1:4, type='individual')
-
 pool <- organize_panels(bases=bases$microdata, variables=c('ESTADO','PONDERA'),
                         window='trimestral')
 ```
@@ -145,7 +150,7 @@ Lo que hace la función detrás de bambalinas es concatenar todas las bases espe
 
 ```{r message=FALSE, warning=FALSE}
 pool %>% 
-organize_labels(.) %>% 
+  organize_labels(.) %>% 
 calculate_tabulates(x='ESTADO', y='ESTADO_t1',
                     weights = "PONDERA", add.percentage='row')
 ```
@@ -154,36 +159,13 @@ Un indicador frecuente construido con esta infomación es la Matriz de Transici�
 
 ### Iterando en varias bases
 
-Lamentablemente al no poseer una API (aplication program interface) de INDEC, el proceso de recuperación de la información debe atravesar por las bases completas. Eso implica un costo desprocionado en términos de tiempo y memoria, y por ello no se incorpora como funcionalidad del paquete. Pero en caso de ser necesario construir una serie, se podría realizar de la siguiente manera:
-
-- crear una nueva función que descargue la información y haga un select
-- mapearla sobre todos los periodos
+Dado que levantar muchas bases al mismo tiempo puede superar el espacio disponible en memoria, es posible utilizar el parametro `vars` para hacer una selección de variables al mismo tiempo que se levantan las bases.
 
 
 ```{r message=FALSE, warning=FALSE}
-year <- 2017:2019
-trimester <- 1:2
-type<-'individual'
-
-
-df <- as_tibble(expand.grid(year=year, trimester=trimester,type=type))
-
-#defino una nueva función que haga el select
-get_select <- function(year,trimester,type,vars){
-  df <- get_microdata(year = year,trimester = trimester,type = type)
-  if (nrow(df)==0) { #cómo hay periodos que no hay base, agregamos esta condición
-    return(df)
-  }else{df %>% 
-      rename_all(tolower) %>%  #algunos años estan en mayúscula y otros en minúscula. Normalizamos
-      select(tolower(vars))} #hacemos el select para las demás bases
-}
-
-df <- df %>% 
-  mutate(microdata = pmap(list('year' = year,
-                       'trimester' = trimester,
-                       'type' = type), get_select,c('PONDERA','ESTADO','CAT_OCUP'))) %>% 
+df <- get_microdata(year = 2017:2019, trimester = 1:4,type = 'individual',
+                    vars = c('PONDERA','ESTADO','CAT_OCUP')) %>% 
   unnest()
-
 
 df %>% 
   sample_n(5)
@@ -198,7 +180,7 @@ $SO_{t} = \frac{\sum_{i=1}^n w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}$
 ```{r}
 df <- df %>% 
   group_by(year,trimester) %>% 
-  summarise(indicador = sum(pondera[cat_ocup==3], na.rm = T) / sum(pondera[estado==1], na.rm = T)) 
+  summarise(indicador = sum(PONDERA[CAT_OCUP==3 & ESTADO==1], na.rm = T) / sum(PONDERA[ESTADO==1], na.rm = T)) 
 df
 ```
 

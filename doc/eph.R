@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
 #  
 #  devtools::install_github("holatam/eph")
 
-## ------------------------------------------------------------------------
+## ----message=FALSE, warning=FALSE----------------------------------------
 library(eph)
 library(dplyr)
 library(tidyr)
@@ -40,9 +40,13 @@ calculate_tabulates(base=ind_3_18, x='ESTADO', y='CH04', weights = 'PONDIH',
 calculate_tabulates(base=ind_3_18, x='ESTADO', y='CH04',
                     add.totals='row', add.percentage='col')
 
-## ----warning=FALSE-------------------------------------------------------
-bases <- get_microdata(year=2018, trimester=1:4, type='individual')
+## ------------------------------------------------------------------------
+bases <- get_microdata(year=2018, trimester=1:4, type='individual', 
+                       vars = c('CODUSU','NRO_HOGAR','COMPONENTE','ANO4','TRIMESTRE','CH04','CH06', #variables necesarias para hacer el panel
+                                'ESTADO','PONDERA') ) #variables que nos interesan en nuestro análisis
+bases
 
+## ----warning=FALSE-------------------------------------------------------
 pool <- organize_panels(bases=bases$microdata, variables=c('ESTADO','PONDERA'),
                         window='trimestral')
 
@@ -51,34 +55,14 @@ pool
 
 ## ----message=FALSE, warning=FALSE----------------------------------------
 pool %>% 
-organize_labels(.) %>% 
+  organize_labels(.) %>% 
 calculate_tabulates(x='ESTADO', y='ESTADO_t1',
                     weights = "PONDERA", add.percentage='row')
 
 ## ----message=FALSE, warning=FALSE----------------------------------------
-year <- 2017:2019
-trimester <- 1:2
-type<-'individual'
-
-
-df <- as_tibble(expand.grid(year=year, trimester=trimester,type=type))
-
-#defino una nueva función que haga el select
-get_select <- function(year,trimester,type,vars){
-  df <- get_microdata(year = year,trimester = trimester,type = type)
-  if (nrow(df)==0) { #cómo hay periodos que no hay base, agregamos esta condición
-    return(df)
-  }else{df %>% 
-      rename_all(tolower) %>%  #algunos años estan en mayúscula y otros en minúscula. Normalizamos
-      select(tolower(vars))} #hacemos el select para las demás bases
-}
-
-df <- df %>% 
-  mutate(microdata = pmap(list('year' = year,
-                       'trimester' = trimester,
-                       'type' = type), get_select,c('PONDERA','ESTADO','CAT_OCUP'))) %>% 
+df <- get_microdata(year = 2017:2019, trimester = 1:4,type = 'individual',
+                    vars = c('PONDERA','ESTADO','CAT_OCUP')) %>% 
   unnest()
-
 
 df %>% 
   sample_n(5)
@@ -86,7 +70,7 @@ df %>%
 ## ------------------------------------------------------------------------
 df <- df %>% 
   group_by(year,trimester) %>% 
-  summarise(indicador = sum(pondera[cat_ocup==3], na.rm = T) / sum(pondera[estado==1], na.rm = T)) 
+  summarise(indicador = sum(PONDERA[CAT_OCUP==3 & ESTADO==1], na.rm = T) / sum(PONDERA[ESTADO==1], na.rm = T)) 
 df
 
 ## ----message=FALSE, warning=FALSE----------------------------------------

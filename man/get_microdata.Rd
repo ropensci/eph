@@ -5,7 +5,7 @@
 \title{Descarga de Bases de EPH}
 \usage{
 get_microdata(year = 2018, trimester = NA, wave = NA,
-  type = "individual")
+  type = "individual", vars = "all")
 }
 \arguments{
 \item{year}{un integer o vector de integers a partir de 2003}
@@ -15,6 +15,8 @@ get_microdata(year = 2018, trimester = NA, wave = NA,
 \item{wave}{un integer o vector de integers con el numero de onda, 1 o 2, para la EPH puntual}
 
 \item{type}{un character o vector de characters con el tipo de base a descargar: 'individual' ; 'hogar', default individual}
+
+\item{vars}{un vector de characters. variables a seleccionar. Default='all' trae todas las variables}
 }
 \value{
 En caso de una única base devuevle un dataframe.
@@ -37,7 +39,8 @@ disclaimer: El script no es un producto oficial de INDEC.
 
 base_individual <- get_microdata(year = 2018:2019,
                                  trimester = 1,
-                                 type='individual')
+                                 type='individual',
+                                 vars = c('PONDERA','ESTADO','CAT_OCUP'))
 
 base_2018 <- base_individual \%>\%
  dplyr::filter(year==2018) \%>\%
