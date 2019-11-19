@@ -47,7 +47,17 @@ if(getRversion() >= "2.15.1") utils::globalVariables(c(".",
                                                        "error_message",
                                                        ".data",
                                                        "Periodo",
-                                                       "vars"))
+                                                       "vars",
+                                                       "CNO",
+                                                       "digit",
+                                                       "value",
+                                                       "label",
+                                                       "PP04D_COD",
+                                                       "CLASIF_CNO",
+                                                       "DIGIT12",
+                                                       "DIGIT3",
+                                                       "DIGIT4",
+                                                       "DIGIT5"))
 
 
 
