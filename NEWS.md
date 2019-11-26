@@ -4,6 +4,8 @@
 * add stop if there is no internet connection for get_microdata
 * add vignettes
 * simplify output in organize_panels
+* add funciton organize_ocupations
+
 
 # eph 0.1.1
 
