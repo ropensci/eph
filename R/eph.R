@@ -57,7 +57,8 @@ if(getRversion() >= "2.15.1") utils::globalVariables(c(".",
                                                        "DIGIT12",
                                                        "DIGIT3",
                                                        "DIGIT4",
-                                                       "DIGIT5"))
+                                                       "DIGIT5",
+                                                       "centroides_aglomerados"))
 
 
 

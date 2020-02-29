@@ -9,13 +9,16 @@ aglos <- sf::st_read('../data/eph/georef/aglomerados_eph.json')
 centroides_aglomerados <-  aglos %>%
   filter(!st_is_empty(geometry)) %>%
   group_by(eph_codagl) %>%
-  summarise(AGLOMERADO = unique(eph_codagl),
+  summarise(AGLOMERADO = as.integer(paste(unique(eph_codagl))),
             nombre_aglomerado = unique(eph_aglome)[1]) %>%
   st_centroid() %>%
   select(AGLOMERADO, nombre_aglomerado, geometry)
 
-ggplot() +
-  geom_sf(data = centroides_aglomerados )
+# ggplot() +
+#   geom_sf(data = centroides_aglomerados )
+
+
+centroides_aglomerados <- centroides_aglomerados %>% st_transform('+proj=longlat +datum=WGS84')
 
 
 usethis::use_data(centroides_aglomerados, overwrite = TRUE)

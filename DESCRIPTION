@@ -34,7 +34,11 @@ Imports:
     curl,
     attempt,
     zoo,
-    tidyverse
+    tidyverse,
+    leaflet,
+    sf,
+    htmltools,
+    rlang
 Depends: R (>= 2.10)
 License: MIT + file LICENSE
 Encoding: UTF-8
