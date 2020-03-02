@@ -1,4 +1,8 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -y install libudunits2-dev
+
 language: R
 cache: packages
