@@ -21,22 +21,22 @@ organize_ocupations <- function(base){
   categoria <- CNO %>%
     dplyr::filter(digit==12) %>%
     dplyr::select(value,CATEGORIA = label) %>%
-    dplyr::add_row(value= 99, CATEGORIA = 'Ns.Nc')
+    dplyr::add_row(value= "99", CATEGORIA = 'Ns.Nc')
 
   tecnologia <- CNO %>%
     dplyr::filter(digit==3) %>%
     dplyr::select(value,TECNOLOGIA = label) %>%
-    dplyr::add_row(value= 9, TECNOLOGIA = 'Ns.Nc')
+    dplyr::add_row(value= "9", TECNOLOGIA = 'Ns.Nc')
 
   jerarquia <- CNO %>%
     dplyr::filter(digit==4) %>%
     dplyr::select(value,JERARQUIA = label) %>%
-    dplyr::add_row(value= 9, JERARQUIA = 'Ns.Nc')
+    dplyr::add_row(value= "9", JERARQUIA = 'Ns.Nc')
 
   calificacion <- CNO %>%
     dplyr::filter(digit==5) %>%
     dplyr::select(value,CALIFICACION = label) %>%
-    dplyr::add_row(value= c(6,7,8,9), CALIFICACION = c('mal codificado','falta informacion','otro','Ns.Nc'))
+    dplyr::add_row(value= c("6","7","8","9"), CALIFICACION = c('mal codificado','falta informacion','otro','Ns.Nc'))
 
     base <- base %>%
       dplyr::mutate(PP04D_COD = as.character(PP04D_COD),
