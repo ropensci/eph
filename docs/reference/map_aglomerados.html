@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Descarga de Bases de EPH — get_microdata • eph</title>
+<title>Mapa de indicadores por aglomerado — map_aglomerados • eph</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Descarga de Bases de EPH — get_microdata" />
-<meta property="og:description" content="Funcion que descarga bases de la Encuesta Permanente de Hogares del INDEC a partir de 1996" />
+<meta property="og:title" content="Mapa de indicadores por aglomerado — map_aglomerados" />
+<meta property="og:description" content="Mapa de indicadores por aglomerado" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -121,85 +121,60 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Descarga de Bases de EPH</h1>
-    <small class="dont-index">Source: <a href='https://github.com/holatam/eph/blob/master/R/get_microdata.R'><code>R/get_microdata.R</code></a></small>
-    <div class="hidden name"><code>get_microdata.Rd</code></div>
+    <h1>Mapa de indicadores por aglomerado</h1>
+    <small class="dont-index">Source: <a href='https://github.com/holatam/eph/blob/master/R/map_aglomerados.R'><code>R/map_aglomerados.R</code></a></small>
+    <div class="hidden name"><code>map_aglomerados.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Funcion que descarga bases de la Encuesta Permanente de Hogares del INDEC a partir de 1996</p>
+    <p>Mapa de indicadores por aglomerado</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_microdata</span>(
-  <span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2018</span>,
-  <span class='kw'>trimester</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>wave</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"individual"</span>,
-  <span class='kw'>vars</span> <span class='kw'>=</span> <span class='st'>"all"</span>
+    <pre class="usage"><span class='fu'>map_aglomerados</span>(
+  <span class='no'>.data</span>,
+  <span class='no'>aglomerados</span>,
+  <span class='no'>indicador</span>,
+  <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0.75</span>,
+  <span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"viridis"</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>year</th>
-      <td><p>un integer o vector de integers a partir de 2003</p></td>
+      <th>.data</th>
+      <td><p>Dataframe con los datos</p></td>
     </tr>
     <tr>
-      <th>trimester</th>
-      <td><p>un integer o vector de integers con el numero de trimester: 1,2,3,4, para la EPH continua</p></td>
+      <th>aglomerados</th>
+      <td><p>Variable con los códigos de aglomerados</p></td>
     </tr>
     <tr>
-      <th>wave</th>
-      <td><p>un integer o vector de integers con el numero de onda, 1 o 2, para la EPH puntual</p></td>
+      <th>indicador</th>
+      <td><p>Variable con los indicadores</p></td>
     </tr>
     <tr>
-      <th>type</th>
-      <td><p>un character o vector de characters con el tipo de base a descargar: 'individual' ; 'hogar', default individual</p></td>
+      <th>alpha</th>
+      <td><p>Opacidad de los puntos</p></td>
     </tr>
     <tr>
-      <th>vars</th>
-      <td><p>un vector de characters. variables a seleccionar. Default='all' trae todas las variables</p></td>
+      <th>palette</th>
+      <td><p>paleta de colores a utilizar, incluye "viridis", "magma", "inferno", or "plasma". Para más opciones, ver <a href='https://rdrr.io/pkg/leaflet/man/colorNumeric.html'>colorNumeric</a></p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>En caso de una única base devuevle un dataframe.
-En caso de una consulta múltiple devuelve un dataframe anidado, con
-la información de cada consulta y una columna `microdata` con la base
-correspondiente</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Las bases de la EPH puntual utilizan el parametro wave, para referirse a las ondas.
-Su alcance es entre la onda 1 de 1996 y a onda 1 de 2003.</p>
-<p>Las bases de la EPH continua utiliza el parametro trimester, para referirse a los trimestres.
-Su alcance es entre tercer trimestre de 2003 a la actualidad
-disclaimer: El script no es un producto oficial de INDEC.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>base_individual</span> <span class='kw'>&lt;-</span> <span class='fu'>get_microdata</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2018</span>:<span class='fl'>2019</span>,
-                                 <span class='kw'>trimester</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-                                 <span class='kw'>type</span><span class='kw'>=</span><span class='st'>'individual'</span>,
-                                 <span class='kw'>vars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>'PONDERA'</span>,<span class='st'>'ESTADO'</span>,<span class='st'>'CAT_OCUP'</span>))
-
-<span class='no'>base_2018</span> <span class='kw'>&lt;-</span> <span class='no'>base_individual</span> <span class='kw'>%&gt;%</span>
- <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>year</span><span class='kw'>==</span><span class='fl'>2018</span>) <span class='kw'>%&gt;%</span>
- <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>microdata</span>) <span class='kw'>%&gt;%</span>
- <span class='kw pkg'>tidyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/nest.html'>unnest</a></span>(<span class='no'>microdata</span>)
-
-
-<span class='no'>bases_bind</span> <span class='kw'>&lt;-</span> <span class='no'>base_individual</span> <span class='kw'>%&gt;%</span>
- <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>microdata</span>) <span class='kw'>%&gt;%</span>
- <span class='kw pkg'>tidyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/nest.html'>unnest</a></span>(<span class='kw'>cols</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>microdata</span>))</div></pre>
+<span class='no'>toybase_individual_2016_04</span> <span class='kw'>%&gt;%</span>
+<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>AGLOMERADO</span>) <span class='kw'>%&gt;%</span>
+<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span>(<span class='kw'>tasa_actividad</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span>(<span class='no'>PONDERA</span>[<span class='no'>ESTADO</span><span class='kw'>==</span><span class='fl'>1</span>])/<span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span>(<span class='no'>PONDERA</span>)) <span class='kw'>%&gt;%</span>
+<span class='fu'>map_aglomerados</span>(<span class='kw'>aglomerados</span> <span class='kw'>=</span> <span class='no'>AGLOMERADO</span>,<span class='kw'>indicador</span> <span class='kw'>=</span> <span class='no'>tasa_actividad</span>)</div><div class='output co'>#&gt; <span class='error'>Error in map_aglomerados(., aglomerados = AGLOMERADO, indicador = tasa_actividad): could not find function "map_aglomerados"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

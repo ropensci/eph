@@ -95,9 +95,9 @@
 <div id="caja-de-herramientas-para-el-procesamiento-de-la-encuesta-permanente-de-hogares" class="section level1">
 <h1 class="hasAnchor">
 <a href="#caja-de-herramientas-para-el-procesamiento-de-la-encuesta-permanente-de-hogares" class="anchor"></a>Caja de Herramientas para el procesamiento de la Encuesta Permanente de Hogares</h1>
-<div id="descripción" class="section level2">
+<div id="descripcion" class="section level2">
 <h2 class="hasAnchor">
-<a href="#descripci%C3%B3n" class="anchor"></a>Descripción</h2>
+<a href="#descripcion" class="anchor"></a>Descripción</h2>
 <p>La librería <code>eph</code> tiene por objecto facilitar el trabajo de aquellos usuarios y usuarias de la <a href="https://www.indec.gob.ar/bases-de-datos.asp">Encuesta Permanente de Hogares - INDEC</a> que deseen procesar datos de la misma mediante <a href="https://www.r-project.org/">R</a>.</p>
 <p>Sus principales funciones son:</p>
 <ul>
@@ -109,78 +109,78 @@
 <li><p><strong><code>orgnize_panels()</code></strong>: Arma un pool de datos para trabajar con panel en la EPH continua</p></li>
 </ul>
 </div>
-<div id="instalación" class="section level2">
+<div id="instalacion" class="section level2">
 <h2 class="hasAnchor">
-<a href="#instalaci%C3%B3n" class="anchor"></a>Instalación</h2>
+<a href="#instalacion" class="anchor"></a>Instalación</h2>
 <p>Para la versión estable</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">'eph'</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">'eph'</span>)</a></code></pre></div>
 <p>Para la versión en desarrollo.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"></a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="co"># install.packages('devtools') si no tiene instalado devtools</span></a>
-<a class="sourceLine" id="cb2-3" title="3"></a>
-<a class="sourceLine" id="cb2-4" title="4">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"holatam/eph"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co"># install.packages('devtools') si no tiene instalado devtools</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"holatam/eph"</span>)</a></code></pre></div>
 </div>
-<div id="modo-de-uso" class="section level2">
+<div id="modo-de-uso-" class="section level2">
 <h2 class="hasAnchor">
-<a href="#modo-de-uso" class="anchor"></a>Modo de uso.</h2>
-<div id="descarga-de-microdatos-" class="section level3">
+<a href="#modo-de-uso-" class="anchor"></a>Modo de uso.</h2>
+<div id="descarga-de-microdatos" class="section level3">
 <h3 class="hasAnchor">
-<a href="#descarga-de-microdatos-" class="anchor"></a>Descarga de microdatos –&gt;</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"></a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="co"># Cargo la libreria</span></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(eph )</a>
-<a class="sourceLine" id="cb3-4" title="4"></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="co"># Obtengo la base de microdatos para individuos</span></a>
-<a class="sourceLine" id="cb3-6" title="6">base_2016t3_ind &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_microdata.html">get_microdata</a></span>(<span class="dt">year =</span> <span class="dv">2016</span>, <span class="dt">trimester =</span> <span class="dv">3</span>, <span class="dt">type =</span> <span class="st">'individual'</span>)</a>
-<a class="sourceLine" id="cb3-7" title="7"></a>
-<a class="sourceLine" id="cb3-8" title="8"><span class="co"># Obtengo la base de microdatos para hogares</span></a>
-<a class="sourceLine" id="cb3-9" title="9">base_2016t3_hog &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_microdata.html">get_microdata</a></span>(<span class="dt">year =</span> <span class="dv">2016</span>, <span class="dt">trimester =</span> <span class="dv">3</span>, <span class="dt">type =</span> <span class="st">'hogar'</span>)</a></code></pre></div>
+<a href="#descarga-de-microdatos" class="anchor"></a>Descarga de microdatos –&gt;</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co"># Cargo la libreria</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(eph )</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co"># Obtengo la base de microdatos para individuos</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">base_2016t3_ind &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_microdata.html">get_microdata</a></span>(<span class="dt">year =</span> <span class="dv">2016</span>, <span class="dt">trimester =</span> <span class="dv">3</span>, <span class="dt">type =</span> <span class="st">'individual'</span>)</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co"># Obtengo la base de microdatos para hogares</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">base_2016t3_hog &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_microdata.html">get_microdata</a></span>(<span class="dt">year =</span> <span class="dv">2016</span>, <span class="dt">trimester =</span> <span class="dv">3</span>, <span class="dt">type =</span> <span class="st">'hogar'</span>)</a></code></pre></div>
 </div>
-<div id="tabulados-uni--bivariados-con-ponderacion-totales-parciales-y-porcentajes-" class="section level3">
+<div id="tabulados-uni-bivariados-con-ponderacion-totales-parciales-y-porcentajes" class="section level3">
 <h3 class="hasAnchor">
-<a href="#tabulados-uni--bivariados-con-ponderacion-totales-parciales-y-porcentajes-" class="anchor"></a>Tabulados uni / bivariados con ponderacion, totales parciales y porcentajes –&gt;</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"></a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="co"># Cargo la libreria</span></a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(eph)</a>
-<a class="sourceLine" id="cb4-4" title="4"></a>
-<a class="sourceLine" id="cb4-5" title="5"><span class="co"># Obtengo el tabulado con el cruce de variables entre Condición de actividad (`ESTADO`) y Sexo (`CH04`):</span></a>
-<a class="sourceLine" id="cb4-6" title="6"><span class="kw"><a href="reference/calculate_tabulates.html">calculate_tabulates</a></span>(base, <span class="dt">x =</span> <span class="st">"ESTADO"</span>, <span class="dt">y =</span> <span class="st">"CH04"</span>, <span class="dt">add.totals =</span> <span class="st">"row"</span>, <span class="dt">add.percentage =</span> <span class="st">"col"</span>)</a>
-<a class="sourceLine" id="cb4-7" title="7"></a>
-<a class="sourceLine" id="cb4-8" title="8"> ESTADO<span class="op">/</span>CH04      <span class="dv">1</span>      <span class="dv">2</span></a>
-<a class="sourceLine" id="cb4-9" title="9">           <span class="dv">0</span>   <span class="fl">0.1</span><span class="op">%   0.1%</span></a>
-<a class="sourceLine" id="cb4-10" title="10"><span class="st">           </span><span class="dv">1</span>  <span class="fl">48.9</span><span class="op">%  34.4%</span></a>
-<a class="sourceLine" id="cb4-11" title="11"><span class="st">           </span><span class="dv">2</span>   <span class="fl">3.7</span><span class="op">%   3.2%</span></a>
-<a class="sourceLine" id="cb4-12" title="12"><span class="st">           </span><span class="dv">3</span>  <span class="fl">31.7</span><span class="op">%  48.5%</span></a>
-<a class="sourceLine" id="cb4-13" title="13"><span class="st">           </span><span class="dv">4</span>  <span class="fl">15.6</span><span class="op">%  13.8%</span></a>
-<a class="sourceLine" id="cb4-14" title="14"><span class="st">       </span>Total <span class="fl">100.0</span><span class="op">% 100.0%</span></a></code></pre></div>
+<a href="#tabulados-uni-bivariados-con-ponderacion-totales-parciales-y-porcentajes" class="anchor"></a>Tabulados uni / bivariados con ponderacion, totales parciales y porcentajes –&gt;</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co"># Cargo la libreria</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(eph)</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co"># Obtengo el tabulado con el cruce de variables entre Condición de actividad (`ESTADO`) y Sexo (`CH04`):</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="kw"><a href="reference/calculate_tabulates.html">calculate_tabulates</a></span>(base, <span class="dt">x =</span> <span class="st">"ESTADO"</span>, <span class="dt">y =</span> <span class="st">"CH04"</span>, <span class="dt">add.totals =</span> <span class="st">"row"</span>, <span class="dt">add.percentage =</span> <span class="st">"col"</span>)</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"> ESTADO<span class="op">/</span>CH04      <span class="dv">1</span>      <span class="dv">2</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">           <span class="dv">0</span>   <span class="fl">0.1</span><span class="op">%   0.1%</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="st">           </span><span class="dv">1</span>  <span class="fl">48.9</span><span class="op">%  34.4%</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="st">           </span><span class="dv">2</span>   <span class="fl">3.7</span><span class="op">%   3.2%</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="st">           </span><span class="dv">3</span>  <span class="fl">31.7</span><span class="op">%  48.5%</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="st">           </span><span class="dv">4</span>  <span class="fl">15.6</span><span class="op">%  13.8%</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="st">       </span>Total <span class="fl">100.0</span><span class="op">% 100.0%</span></a></code></pre></div>
 </div>
-<div id="etiquetas-labels-para-base-de-microdatos-" class="section level3">
+<div id="etiquetas-labels-para-base-de-microdatos" class="section level3">
 <h3 class="hasAnchor">
-<a href="#etiquetas-labels-para-base-de-microdatos-" class="anchor"></a>Etiquetas [labels] para base de microdatos –&gt;</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="co"># Cargo la librería</span></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(eph)</a>
-<a class="sourceLine" id="cb5-4" title="4"></a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="co"># Obtengo la base de microdatos para individuos</span></a>
-<a class="sourceLine" id="cb5-6" title="6">base_2016t3_ind &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_microdata.html">get_microdata</a></span>(<span class="dt">year =</span> <span class="dv">2016</span>, <span class="dt">trimester =</span> <span class="dv">3</span>, <span class="dt">type =</span> <span class="st">'individual'</span>)</a>
-<a class="sourceLine" id="cb5-7" title="7"></a>
-<a class="sourceLine" id="cb5-8" title="8"><span class="co"># Agrego las etiquetas a las variables y sus valores</span></a>
-<a class="sourceLine" id="cb5-9" title="9">base_2016t3_ind &lt;-<span class="st"> </span><span class="kw"><a href="reference/organize_labels.html">organize_labels</a></span>(base_2016t3_ind, <span class="dt">type=</span><span class="st">'individual'</span>)</a>
-<a class="sourceLine" id="cb5-10" title="10"></a>
-<a class="sourceLine" id="cb5-11" title="11"><span class="co"># Ejemplo 1:</span></a>
-<a class="sourceLine" id="cb5-12" title="12"><span class="co"># Obtengo el tabulado con el cruce de variables entre Condición de actividad (`ESTADO`) y Sexo (`CH04`), con etiquetas:</span></a>
-<a class="sourceLine" id="cb5-13" title="13"><span class="kw"><a href="reference/calculate_tabulates.html">calculate_tabulates</a></span>(base, <span class="dt">x =</span> <span class="st">"ESTADO"</span>, <span class="dt">y =</span> <span class="st">"CH04"</span>, <span class="dt">add.totals =</span> <span class="st">"row"</span>, <span class="dt">add.percentage =</span> <span class="st">"col"</span>)</a>
-<a class="sourceLine" id="cb5-14" title="14"></a>
-<a class="sourceLine" id="cb5-15" title="15">                                                                  ESTADO<span class="op">/</span>CH04  Varon  Mujer</a>
-<a class="sourceLine" id="cb5-16" title="16"> Entrevista individual no <span class="kw">realizada</span> (no respuesta al cuestionario individual)   <span class="fl">0.1</span><span class="op">%   0.1%</span></a>
-<a class="sourceLine" id="cb5-17" title="17"><span class="st">                                                                      </span>Ocupado  <span class="fl">48.9</span><span class="op">%  34.4%</span></a>
-<a class="sourceLine" id="cb5-18" title="18"><span class="st">                                                                   </span>Desocupado   <span class="fl">3.7</span><span class="op">%   3.2%</span></a>
-<a class="sourceLine" id="cb5-19" title="19"><span class="st">                                                                     </span>Inactivo  <span class="fl">31.7</span><span class="op">%  48.5%</span></a>
-<a class="sourceLine" id="cb5-20" title="20"><span class="st">                                                            </span>Menor de <span class="dv">10</span> años.  <span class="fl">15.6</span><span class="op">%  13.8%</span></a>
-<a class="sourceLine" id="cb5-21" title="21"><span class="st">                                                                        </span>Total <span class="fl">100.0</span><span class="op">% 100.0%</span></a>
-<a class="sourceLine" id="cb5-22" title="22"><span class="st">          </span></a>
-<a class="sourceLine" id="cb5-23" title="23"><span class="st"> </span></a></code></pre></div>
+<a href="#etiquetas-labels-para-base-de-microdatos" class="anchor"></a>Etiquetas [labels] para base de microdatos –&gt;</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co"># Cargo la librería</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(eph)</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co"># Obtengo la base de microdatos para individuos</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">base_2016t3_ind &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_microdata.html">get_microdata</a></span>(<span class="dt">year =</span> <span class="dv">2016</span>, <span class="dt">trimester =</span> <span class="dv">3</span>, <span class="dt">type =</span> <span class="st">'individual'</span>)</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co"># Agrego las etiquetas a las variables y sus valores</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">base_2016t3_ind &lt;-<span class="st"> </span><span class="kw"><a href="reference/organize_labels.html">organize_labels</a></span>(base_2016t3_ind, <span class="dt">type=</span><span class="st">'individual'</span>)</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co"># Ejemplo 1:</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co"># Obtengo el tabulado con el cruce de variables entre Condición de actividad (`ESTADO`) y Sexo (`CH04`), con etiquetas:</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="kw"><a href="reference/calculate_tabulates.html">calculate_tabulates</a></span>(base, <span class="dt">x =</span> <span class="st">"ESTADO"</span>, <span class="dt">y =</span> <span class="st">"CH04"</span>, <span class="dt">add.totals =</span> <span class="st">"row"</span>, <span class="dt">add.percentage =</span> <span class="st">"col"</span>)</a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15">                                                                  ESTADO<span class="op">/</span>CH04  Varon  Mujer</a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"> Entrevista individual no <span class="kw">realizada</span> (no respuesta al cuestionario individual)   <span class="fl">0.1</span><span class="op">%   0.1%</span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="st">                                                                      </span>Ocupado  <span class="fl">48.9</span><span class="op">%  34.4%</span></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="st">                                                                   </span>Desocupado   <span class="fl">3.7</span><span class="op">%   3.2%</span></a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="st">                                                                     </span>Inactivo  <span class="fl">31.7</span><span class="op">%  48.5%</span></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="st">                                                            </span>Menor de <span class="dv">10</span> años.  <span class="fl">15.6</span><span class="op">%  13.8%</span></a>
+<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="st">                                                                        </span>Total <span class="fl">100.0</span><span class="op">% 100.0%</span></a>
+<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="st">          </span></a>
+<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="st"> </span></a></code></pre></div>
 </div>
 <div id="aportes-de-la-comunidad" class="section level3">
 <h3 class="hasAnchor">
@@ -201,7 +201,7 @@
 </li>
 <li>Browse source code at <br><a href="https://github.com/holatam/eph">https://​github.com/​holatam/​eph</a>
 </li>
-<li>Report a bug at <br><a href="https://github.com/rindec/eph/issues">https://​github.com/​rindec/​eph/​issues</a>
+<li>Report a bug at <br><a href="https://github.com/holatam/eph/issues">https://​github.com/​holatam/​eph/​issues</a>
 </li>
 </ul>
 </div>
@@ -226,8 +226,8 @@
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://travis-ci.org/rindec/eph"><img src="https://api.travis-ci.org/rindec/eph.svg?branch=master" alt="Travis-CI Build Status"></a></li>
-<li><a href="https://codecov.io/gh/rindec/eph?branch=master"><img src="https://codecov.io/gh/rindec/eph/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
+<li><a href="https://travis-ci.org/holatam/eph"><img src="https://api.travis-ci.org/holatam/eph.svg?branch=master" alt="Travis-CI Build Status"></a></li>
+<li><a href="https://codecov.io/gh/holatam/eph?branch=master"><img src="https://codecov.io/gh/holatam/eph/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
 <li><a href="https://cran.r-project.org/package=eph"><img src="https://www.r-pkg.org/badges/version/eph" alt="CRAN status"></a></li>
 <li><a href="https://cran.r-project.org/package=eph"><img src="http://cranlogs.r-pkg.org/badges/grand-total/eph?color=blue"></a></li>
 <li><a href="https://cran.r-project.org/package=eph"><img src="http://cranlogs.r-pkg.org/badges/last-month/eph?color=blue"></a></li>

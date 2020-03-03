@@ -163,7 +163,7 @@ Dado que levantar muchas bases al mismo tiempo puede superar el espacio disponib
 
 
 ```{r message=FALSE, warning=FALSE}
-df <- get_microdata(year = 2017:2019, trimester = 1:4,type = 'individual',
+df <- get_microdata(year = 2017:2018, trimester = 1:2,type = 'individual',
                     vars = c('PONDERA','ESTADO','CAT_OCUP')) %>% 
   unnest()
 

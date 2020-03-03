@@ -1,3 +1,9 @@
+# eph 0.2.1
+
+* fixed compatibility with tibble 3.0.0
+* add dataset on centroids of aglomerates of the survey
+* add function map_agglomerates for mapping indicators
+
 # eph 0.2.0
 * enhace get_microdata. Now downloads multiple datasets and allows to pre-select variables
 * add skip_if_offline and some skip_on_cran for time-consuming tests

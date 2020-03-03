@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title><code>eph</code> package — eph • eph</title>
+<title>centroides_aglomerados — centroides_aglomerados • eph</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="<code>eph</code> package — eph" />
-<meta property="og:description" content="Caja de Herramientas para el procesamiento de la Encuesta Permanente de Hogares" />
+<meta property="og:title" content="centroides_aglomerados — centroides_aglomerados" />
+<meta property="og:description" content="Base con centroides de los aglomerados de EPH. Basado en https://www.indec.gob.ar/indec/web/Nivel4-Tema-1-39-120" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -121,27 +121,32 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1><code>eph</code> package</h1>
-    <small class="dont-index">Source: <a href='https://github.com/holatam/eph/blob/master/R/eph.R'><code>R/eph.R</code></a></small>
-    <div class="hidden name"><code>eph.Rd</code></div>
+    <h1>centroides_aglomerados</h1>
+    <small class="dont-index">Source: <a href='https://github.com/holatam/eph/blob/master/R/centroides_aglomerados.R'><code>R/centroides_aglomerados.R</code></a></small>
+    <div class="hidden name"><code>centroides_aglomerados.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Caja de Herramientas para el procesamiento de la Encuesta Permanente de Hogares</p>
+    <p>Base con centroides de los aglomerados de EPH. Basado en https://www.indec.gob.ar/indec/web/Nivel4-Tema-1-39-120</p>
     </div>
 
+    <pre class="usage"><span class='no'>centroides_aglomerados</span></pre>
 
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>See the README on
-<a href='https://github.com/pablinte/eph/blob/master/README.md'>Github</a></p>
+    <p>A data frame with 32 rows and 4 variables:</p><dl class='dl-horizontal'>
+<dt><code>AGLOMERADO</code></dt><dd><p>Factor Código de aglomerado EPH</p></dd>
+<dt><code>nombre_aglomerado</code></dt><dd><p>Factor Nombre del aglomerado EPH</p></dd>
+<dt><code>geometry</code></dt><dd><p>geometry Geometría del aglomerado EPH</p></dd>
+
+</dl>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#details">Details</a></li>
+      <li><a href="#format">Format</a></li>
     </ul>
 
   </div>
