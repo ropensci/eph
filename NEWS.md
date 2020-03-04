@@ -1,5 +1,6 @@
 # eph 0.2.1
 
+* improve get_microdata_internal internals
 * fixed compatibility with tibble 3.0.0
 * add dataset on centroids of aglomerates of the survey
 * add function map_agglomerates for mapping indicators

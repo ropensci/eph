@@ -78,13 +78,14 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
           }
       }
 
-  if (year<2019| (year==2019 & trimester %in% 1:2)) { #Este if hay que modificarlo cuando agregamos bases nuevas a holatam/data
+  if (is_in_github(year = year, trimester = trimester,type = type)) {
     base <- emptyenv()
     try(base <- readRDS(gzcon(url(link))),silent = TRUE)
 
     assertthat::assert_that(assertthat::not_empty(base),msg = "problema con la descarga. Posiblemente un error de la conexion a internet")
   }
-  if (year>2019 |year==2019 & trimester %in% 3:4) { #Este if hay que modificarlo cuando agregamos bases nuevas a holatam/data
+  else{
+    if (!is_in_github(year = year, trimester = trimester,type = type)) {
 
     link= glue::glue('https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_usu_{trimester}_Trim_{year}_txt.zip')
 
@@ -156,7 +157,8 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
 
     }
     unlink(temp)
-  }
+    }
+    }
 
   if (all(vars == 'all')) {
     vars <- colnames(base)

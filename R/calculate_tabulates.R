@@ -69,8 +69,8 @@ if (!is.null(weights)) {
                                                          na.show = na.show))
     if (!is.null(y)) {
       weighted_table <- weighted_table %>%
-        tidyr::spread(., Var2, Freq)
-      names(weighted_table) <- c(paste0(x,'/',y),names(weighted_table)[2:ncol(weighted_table)])
+         tidyr::spread(., Var2,Freq)
+        names(weighted_table) <- c(paste0(x,'/',y),names(weighted_table)[2:ncol(weighted_table)])
     } else {
       names(weighted_table) <- c(paste0(x),names(weighted_table)[2:ncol(weighted_table)])
     }
