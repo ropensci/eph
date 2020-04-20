@@ -49,22 +49,22 @@ get_microdata_internal <- function(year = 2018,
                  mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_eph_23_08_16.pdf")
 
         return(tibble::tibble())
-      }
+      }else
       #
       # assertthat::assert_that(!is.na(trimester), msg='para despues de 2003, es necesario definir el trimestre de la EPH continua')
       # assertthat::assert_that(!(year==2007 & trimester==3), msg="INDEC advierte: La informacion correspondiente al tercer trimestre 2007 no esta disponible ya que los aglomerados Mar del Plata-Batan, Bahia Blanca-Cerri y Gran La Plata no fueron relevados por causas de orden administrativo, mientras que los datos correspondientes al Aglomerado Gran Buenos Aires no fueron relevados por paro del personal de la EPH.")
-      assertthat::assert_that(!((year==2015 & trimester %in% 3:4)|(year==2016 & trimester ==1)), msg="En el marco de la emergencia estadistica el INDEC no publico la base solicitada.
+        assertthat::assert_that(!((year==2015 & trimester %in% 3:4)|(year==2016 & trimester ==1)), msg="En el marco de la emergencia estadistica el INDEC no publico la base solicitada.
                             mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_eph_23_08_16.pdf")
-      link = glue::glue('https://github.com/holatam/data/raw/master/eph/{type}/base_{type}_{year}T{trimester}.RDS')
-      if (year %in% 2007:2015) {
-        warning("INDEC advierte:
-'''
+        link = glue::glue('https://github.com/holatam/data/raw/master/eph/{type}/base_{type}_{year}T{trimester}.RDS')
+        if (year %in% 2007:2015) {
+          warning("INDEC advierte:
+  '''
               Advertencia sobre el uso de series estadisticas
 
-Se advierte que las series estadisticas publicadas con posterioridad a enero 2007 y hasta diciembre 2015 deben ser consideradas con reservas, excepto las que ya hayan sido revisadas en 2016 y su difusion lo consigne expresamente. El INDEC, en el marco de las atribuciones conferidas por los decretos 181/15 y 55/16, dispuso las investigaciones requeridas para establecer la regularidad de procedimientos de obtencion de datos, su procesamiento, elaboracion de indicadores y difusion.
-'''
-mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_eph_23_08_16.pdf
-")
+    Se advierte que las series estadisticas publicadas con posterioridad a enero 2007 y hasta diciembre 2015 deben ser consideradas con reservas, excepto las que ya hayan sido revisadas en 2016 y su difusion lo consigne expresamente. El INDEC, en el marco de las atribuciones conferidas por los decretos 181/15 y 55/16, dispuso las investigaciones requeridas para establecer la regularidad de procedimientos de obtencion de datos, su procesamiento, elaboracion de indicadores y difusion.
+  '''
+  mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_eph_23_08_16.pdf
+  ")
       }
     }else
       if (year==2003) {
