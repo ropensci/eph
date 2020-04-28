@@ -3,6 +3,7 @@
 \docType{package}
 \name{eph}
 \alias{eph}
+\alias{eph-package}
 \title{\code{eph} package}
 \description{
 Caja de Herramientas para el procesamiento de la Encuesta Permanente de Hogares

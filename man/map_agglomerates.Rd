@@ -4,13 +4,8 @@
 \alias{map_agglomerates}
 \title{Mapa de indicadores por aglomerado}
 \usage{
-map_agglomerates(
-  .data,
-  agglomerates,
-  indicator,
-  alpha = 0.75,
-  palette = "viridis"
-)
+map_agglomerates(.data, agglomerates, indicator, alpha = 0.75,
+  palette = "viridis")
 }
 \arguments{
 \item{.data}{Dataframe con los datos}

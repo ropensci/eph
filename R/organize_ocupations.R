@@ -18,20 +18,20 @@ organize_ocupations <- function(base){
 ##que, si bien condensa toda la info,  está en un formato que mucho no ayuda
 ##La otra opción es definir las categorías a mano con case_when
 
-  categoria <- CNO %>%
+  caracter <- CNO %>%
     dplyr::filter(digit==12) %>%
     dplyr::select(value,CATEGORIA = label) %>%
     dplyr::add_row(value= "99", CATEGORIA = 'Ns.Nc')
 
-  tecnologia <- CNO %>%
-    dplyr::filter(digit==3) %>%
-    dplyr::select(value,TECNOLOGIA = label) %>%
-    dplyr::add_row(value= "9", TECNOLOGIA = 'Ns.Nc')
-
   jerarquia <- CNO %>%
-    dplyr::filter(digit==4) %>%
+    dplyr::filter(digit==3) %>%
     dplyr::select(value,JERARQUIA = label) %>%
     dplyr::add_row(value= "9", JERARQUIA = 'Ns.Nc')
+
+  tecnologia <- CNO %>%
+    dplyr::filter(digit==4) %>%
+    dplyr::select(value,TECNOLOGIA = label) %>%
+    dplyr::add_row(value= "9", TECNOLOGIA = 'Ns.Nc')
 
   calificacion <- CNO %>%
     dplyr::filter(digit==5) %>%
@@ -45,11 +45,11 @@ organize_ocupations <- function(base){
                     DIGIT3 = substr(CLASIF_CNO,3,3),
                     DIGIT4 = substr(CLASIF_CNO,4,4),
                     DIGIT5 = substr(CLASIF_CNO,5,5)) %>%
-      dplyr::left_join(.,categoria,
+      dplyr::left_join(.,caracter,
                        by = c("DIGIT12" = "value")) %>%
-      dplyr::left_join(.,tecnologia,
-                       by = c("DIGIT3" = "value")) %>%
       dplyr::left_join(.,jerarquia,
+                       by = c("DIGIT3" = "value")) %>%
+      dplyr::left_join(.,tecnologia,
                        by = c("DIGIT4" = "value")) %>%
       dplyr::left_join(.,calificacion,
                        by = c("DIGIT5" = "value")) %>%
