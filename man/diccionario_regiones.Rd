@@ -4,13 +4,15 @@
 \name{diccionario_regiones}
 \alias{diccionario_regiones}
 \title{Diccionario de aglomerados según diseño de registro de la EPH}
-\format{A data frame with 6 rows and 2 variables
+\format{
+A data frame with 6 rows and 2 variables
 
 \describe{
 \item{codigo}{código de región}
 \item{region}{Nombre de región}
 ...
-}}
+}
+}
 \usage{
 diccionario_regiones
 }

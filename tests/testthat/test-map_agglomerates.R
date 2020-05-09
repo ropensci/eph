@@ -9,5 +9,3 @@ test_that("tabla simple", {
     map_agglomerates(agglomerates = AGLOMERADO,indicator = tasa_actividad)
   expect_equal(class(mapa), c("leaflet", "htmlwidget"))
 })
-
-

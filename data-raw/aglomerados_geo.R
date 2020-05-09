@@ -20,6 +20,14 @@ centroides_aglomerados <-  aglos %>%
 
 centroides_aglomerados <- centroides_aglomerados %>% st_transform('+proj=longlat +datum=WGS84')
 
+#remove geometry because of incompatibility with dplyr 1.0
+centroides_aglomerados <- centroides_aglomerados %>%
+  bind_cols(
+sf::st_coordinates(centroides_aglomerados) %>%
+  as_tibble() %>%
+  rename(lon=X, lat=Y)) %>%
+  as_tibble() %>%
+  select(-geometry)
 
 usethis::use_data(centroides_aglomerados, overwrite = TRUE)
 

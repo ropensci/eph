@@ -4,8 +4,13 @@
 \alias{get_microdata_internal}
 \title{Descarga de Bases de EPH}
 \usage{
-get_microdata_internal(year = 2018, trimester = NA, wave = NA,
-  type = "individual", vars = "all")
+get_microdata_internal(
+  year = 2018,
+  trimester = NA,
+  wave = NA,
+  type = "individual",
+  vars = "all"
+)
 }
 \arguments{
 \item{year}{un integer a partir de 2003}

@@ -1,6 +1,6 @@
 Package: eph
 Title: Argentina's Permanent Household Survey Data and Manipulation Utilities
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: c(
     person("Diego", "Kozlowski", email = "diegokoz92@gmail.com", role = c("aut","cre"), comment = c(ORCID = "0000-0002-5396-3471")),
     person("Pablo", "Tiscornia", email = "pablotisco@gmail.com", role = "aut"),
@@ -36,7 +36,6 @@ Imports:
     zoo,
     tidyverse,
     leaflet,
-    sf,
     htmltools,
     rlang,
     rvest,
@@ -48,7 +47,7 @@ Encoding: UTF-8
 Language: es
 URL: https://github.com/holatam/eph
 LazyData: true
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Suggests: 
     testthat,
     covr,

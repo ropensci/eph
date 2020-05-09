@@ -4,7 +4,8 @@
 \name{toybase_individual_2016_04}
 \alias{toybase_individual_2016_04}
 \title{Selección aleatoria de casos de la base 2016 trimestre 4 para la base individual}
-\format{A data frame with 2000 rows and 177 variables
+\format{
+A data frame with 2000 rows and 177 variables
 
 \describe{
 \item{CODUSU}{'Codigo para distinguir VIVIENDAS, permite aparearlas con Hogares y Personas. Ademas permite hacer el seguimiento a traves de los trimestres'}
@@ -185,7 +186,8 @@
 \item{ADECCFR}{'Nro de decil de ingreso per capita familiar del AGLOMERADO.'}
 \item{PONDIH}{'Ponderador del ingreso total familiar y del ingreso per capita familiar, para hogares.}
 ...
-}}
+}
+}
 \usage{
 toybase_individual_2016_04
 }

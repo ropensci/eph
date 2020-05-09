@@ -4,13 +4,15 @@
 \name{diccionario_aglomerados}
 \alias{diccionario_aglomerados}
 \title{Diccionario de aglomerados según diseño de registro de la EPH}
-\format{A data frame with 32 rows and 2 variables
+\format{
+A data frame with 32 rows and 2 variables
 
 \describe{
 \item{codigo}{código de aglomerado}
 \item{aglo}{Nombre del aglomerado}
 ...
-}}
+}
+}
 \usage{
 diccionario_aglomerados
 }

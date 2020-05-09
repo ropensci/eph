@@ -4,7 +4,8 @@
 \name{toybase_hogar_2016_04}
 \alias{toybase_hogar_2016_04}
 \title{Selección aleatoria de casos de la base 2016 trimestre 4 para la base hogar}
-\format{A data frame with 2000 rows and 177 variables
+\format{
+A data frame with 2000 rows and 177 variables
 
 \describe{
 \item{CODUSU}{'Codigo para distinguir VIVIENDAS, permite aparearlas con Hogares y Personas. Ademas permite hacer el seguimiento a traves de los trimestres'}
@@ -96,7 +97,8 @@
 \item{VII2_3}{  'Otras personas que ayudan en las tareas de la casa - Numero de componente del hogar'}
 \item{VII2_4}{  'Otras personas que ayudan en las tareas de la casa - Numero de componente del hogar'}
 ...
-}}
+}
+}
 \usage{
 toybase_hogar_2016_04
 }

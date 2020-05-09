@@ -4,9 +4,19 @@
 \alias{calculate_tabulates}
 \title{Tabulado con ponderación}
 \usage{
-calculate_tabulates(base, x, y = NULL, weights = NULL, digits = 3,
-  normwt = FALSE, na.rm = TRUE, na.show = FALSE, exclude = NULL,
-  add.totals = "none", add.percentage = "none")
+calculate_tabulates(
+  base,
+  x,
+  y = NULL,
+  weights = NULL,
+  digits = 3,
+  normwt = FALSE,
+  na.rm = TRUE,
+  na.show = FALSE,
+  exclude = NULL,
+  add.totals = "none",
+  add.percentage = "none"
+)
 }
 \arguments{
 \item{base}{Dataframe}

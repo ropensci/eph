@@ -4,7 +4,8 @@
 #' \describe{
 #'\item{\code{AGLOMERADO}}{Factor Código de aglomerado EPH}
 #'\item{\code{nombre_aglomerado}}{Factor Nombre del aglomerado EPH}
-#'\item{\code{geometry}}{geometry Geometría del aglomerado EPH}
+#'\item{\code{lat}}{latitud del aglomerado EPH}
+#'\item{\code{lon}}{longitud del aglomerado EPH}
 #'}
 
 "centroides_aglomerados"

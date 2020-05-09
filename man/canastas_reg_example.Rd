@@ -4,7 +4,8 @@
 \name{canastas_reg_example}
 \alias{canastas_reg_example}
 \title{Canastas Básicas Alimentarias y Cavnastas Básicas Totales según región y trimestre}
-\format{A data frame with 12 rows and 5 variables
+\format{
+A data frame with 12 rows and 5 variables
 
 \describe{
 \item{region}{Nombre de región}
@@ -13,7 +14,8 @@
 \item{CBT}{inversa del coeficiente de engels}
 \item{codigo}{código de región}
 ...
-}}
+}
+}
 \usage{
 canastas_reg_example
 }

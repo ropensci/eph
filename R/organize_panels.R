@@ -55,7 +55,7 @@ organize_panels <- function(bases,variables,window = "anual"){
 
   consistencias_continua <- panel_continua %>%
     dplyr::group_by(Periodo) %>%
-    dplyr::summarise(sin_controles = n(),
+    dplyr::summarise(sin_controles = dplyr::n(),
                      con_controles = sum(consistencia,na.rm = TRUE),
                      perdida = 1 - (con_controles/sin_controles))
 
