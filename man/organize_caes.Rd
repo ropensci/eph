@@ -19,6 +19,8 @@ Base con codigos y etiquetas del Clasificador de actividades economicas para enc
 }
 \details{
 disclaimer: El script no es un producto oficial de INDEC.
+
+El usuario debe garantizarse que el clasificador CAES 1.0 es compatible con la base que esta utilizando
 }
 \examples{
 bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)

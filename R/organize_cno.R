@@ -5,14 +5,16 @@
 #'@param base Base individual de uno o más períodos
 #'@details  disclaimer: El script no es un producto oficial de INDEC.
 #'
+#'El usuario debe garantizarse que el clasificador CNO 2001 es compatible con la base que esta utilizando
+#'
 #'@examples
 #'
 #'
 #'bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)
-#'bases_clasif <- organize_ocupations(base = bases)
+#'bases_clasif <- organize_cno(base = bases)
 #'
 #'@export
-organize_ocupations <- function(base){
+organize_cno <- function(base){
 
 ##Estos 4 df quizás podrían ir como RDA guardados en vez de CNO
 ##que, si bien condensa toda la info,  está en un formato que mucho no ayuda

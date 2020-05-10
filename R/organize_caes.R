@@ -8,6 +8,8 @@
 #' @return Devuelve la base con 7 columnas nuevas (ver \code{\link{caes}})
 #'
 #'@details disclaimer: El script no es un producto oficial de INDEC.
+#'
+#'El usuario debe garantizarse que el clasificador CAES 1.0 es compatible con la base que esta utilizando
 #' @export
 #'
 #' @examples

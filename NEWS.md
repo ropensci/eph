@@ -1,5 +1,6 @@
 # eph 0.3.1
 
+* rename organize_ocupations --> organize_cno for consistency
 * add function organize_caes
 * fixed compatibility with dplyr 1.0
 

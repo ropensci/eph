@@ -280,11 +280,11 @@
 <span class="co">#&gt; # A tibble: 5 x 7</span>
 <span class="co">#&gt;    year trimester wave  type       PONDERA ESTADO CAT_OCUP</span>
 <span class="co">#&gt;   &lt;int&gt;     &lt;int&gt; &lt;lgl&gt; &lt;fct&gt;        &lt;int&gt;  &lt;int&gt;    &lt;int&gt;</span>
-<span class="co">#&gt; 1  2018         2 NA    individual      59      3        0</span>
-<span class="co">#&gt; 2  2017         1 NA    individual     177      1        3</span>
-<span class="co">#&gt; 3  2017         1 NA    individual     319      3        0</span>
-<span class="co">#&gt; 4  2018         1 NA    individual    2293      3        0</span>
-<span class="co">#&gt; 5  2018         2 NA    individual      94      3        0</span></pre></body></html></div>
+<span class="co">#&gt; 1  2018         2 NA    individual    1481      1        3</span>
+<span class="co">#&gt; 2  2017         2 NA    individual      78      1        2</span>
+<span class="co">#&gt; 3  2018         1 NA    individual     683      1        3</span>
+<span class="co">#&gt; 4  2017         2 NA    individual     504      3        0</span>
+<span class="co">#&gt; 5  2017         1 NA    individual     305      3        0</span></pre></body></html></div>
 <p>Con estos datos podemos crear por ejemplo la serie de asalarización</p>
 <p><span class="math inline">\(SO_{t} = \frac{\sum_{i=1}^n w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}\)</span></p>
 <div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="no">df</span> <span class="kw">&lt;-</span> <span class="no">df</span> <span class="kw">%&gt;%</span>
@@ -362,16 +362,16 @@
 <span class="co">#&gt; # A tibble: 10 x 7</span>
 <span class="co">#&gt;    CODUSU                 ITF region  adequi_hogar CBA_hogar CBT_hogar situacion</span>
 <span class="co">#&gt;    &lt;fct&gt;                &lt;int&gt; &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;    </span>
-<span class="co">#&gt;  1 TQRMNOQTXHLMLMCDEHG… 20500 Patago…         0.67     1215.     3325. no_pobre </span>
-<span class="co">#&gt;  2 TQRMNOQYQHMNOMCDEII… 39500 GBA             0.76     1280.     3080. no_pobre </span>
-<span class="co">#&gt;  3 TQRMNORSQHKMMPCDEGJ…  4000 Pampea…         0.77     1345.     3241. no_pobre </span>
-<span class="co">#&gt;  4 TQRMNORVYHJMOSCDEIJ…     0 GBA             0.67     1177.     2836. NA       </span>
-<span class="co">#&gt;  5 TQRMNORQRHKMKPCDEFL… 14000 Pampea…         1        1676.     4034. no_pobre </span>
-<span class="co">#&gt;  6 TQRMNORQXHMMLQCDEFK… 10000 Pampea…         1.16     1944.     4679. no_pobre </span>
-<span class="co">#&gt;  7 TQRMNORVSHMKKRCDEHI… 18000 Noroes…         0.76     1159.     2593. no_pobre </span>
-<span class="co">#&gt;  8 TQRMNOPYQHMMKOCDEIJ… 10400 GBA             1        1756.     4232. no_pobre </span>
-<span class="co">#&gt;  9 TQRMNORQSHMMKOCDEGJ… 15000 Pampea…         0.76     1274.     3066. no_pobre </span>
-<span class="co">#&gt; 10 TQRMNOQTPHLMLNCDEGP… 27000 Noroes…         1        1472.     3292. no_pobre</span></pre></body></html></div>
+<span class="co">#&gt;  1 TQRMNOSPWHMKKOCDEFM…     0 Pampea…         0.77     1291.     3106. NA       </span>
+<span class="co">#&gt;  2 TQRMNOPSSHMMNQCDEIJ… 46000 GBA             0.7      1179.     2837. no_pobre </span>
+<span class="co">#&gt;  3 TQRMNOQUWHLLKUCDEHL…     0 Noroes…         1        1525.     3412. NA       </span>
+<span class="co">#&gt;  4 TQRMNOSYQHMNLMCDEHN… 34000 Cuyo            1.03     1617.     4151. no_pobre </span>
+<span class="co">#&gt;  5 TQRMNORRRHKOMLCDEGJ…  9300 Pampea…         0.83     1391.     3348. no_pobre </span>
+<span class="co">#&gt;  6 TQRMNOQPVHMOLMCDEHL… 48280 Noroes…         2        3051.     6824. no_pobre </span>
+<span class="co">#&gt;  7 TQRMNORTQHMOLLCDEHN…  8000 Cuyo            1        1570.     4030. no_pobre </span>
+<span class="co">#&gt;  8 TQRMNORTSHKLKTCDEGN…     0 Patago…         1        1813.     4963. NA       </span>
+<span class="co">#&gt;  9 TQRMNOQTUHLMOQCDEIJ… 12350 GBA             0.37      623.     1500. no_pobre </span>
+<span class="co">#&gt; 10 TQRMNOQYPHMMPQCDEIJ… 16600 GBA             0.83     1398.     3364. no_pobre</span></pre></body></html></div>
 </div>
 </div>
 <div class="footnotes">
