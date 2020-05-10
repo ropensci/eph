@@ -1,7 +1,7 @@
 # eph 0.3.1
 
+* add function organize_caes
 * fixed compatibility with dplyr 1.0
-
 
 # eph 0.3.0
 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pool de Datos en Panel - Base Individudal EPH continua — organize_panels • eph</title>
+<title>organize_caes — organize_caes • eph</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,10 @@
 
 
 
-<meta property="og:title" content="Pool de Datos en Panel - Base Individudal EPH continua — organize_panels" />
-<meta property="og:description" content="Permite armar un pool de datos en panel de la EPH continua a partir
-de especificar una serie consecutiva de bases, variables y el largo de la window de observación" />
+<meta property="og:title" content="organize_caes — organize_caes" />
+<meta property="og:description" content="Base con codigos y etiquetas del Clasificador de actividades economicas para encuestas sociodemograficas.
+             CAES Mercosur 1.0 - Actualización 2018.
+             Basado en https://www.indec.gob.ar/ftp/cuadros/menusuperior/clasificadores/notas_explicativas_caes_v2018.pdf" />
 
 
 
@@ -125,48 +126,39 @@ de especificar una serie consecutiva de bases, variables y el largo de la window
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pool de Datos en Panel - Base Individudal EPH continua</h1>
-    <small class="dont-index">Source: <a href='https://github.com/holatam/eph/blob/master/R/organize_panels.R'><code>R/organize_panels.R</code></a></small>
-    <div class="hidden name"><code>organize_panels.Rd</code></div>
+    <h1>organize_caes</h1>
+    <small class="dont-index">Source: <a href='https://github.com/holatam/eph/blob/master/R/organize_caes.R'><code>R/organize_caes.R</code></a></small>
+    <div class="hidden name"><code>organize_caes.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Permite armar un pool de datos en panel de la EPH continua a partir
-de especificar una serie consecutiva de bases, variables y el largo de la window de observación</p>
+    <p>Base con codigos y etiquetas del Clasificador de actividades economicas para encuestas sociodemograficas.
+             CAES Mercosur 1.0 - Actualización 2018.
+             Basado en https://www.indec.gob.ar/ftp/cuadros/menusuperior/clasificadores/notas_explicativas_caes_v2018.pdf</p>
     </div>
 
-    <pre class="usage"><span class='fu'>organize_panels</span>(<span class='no'>bases</span>, <span class='no'>variables</span>, <span class='kw'>window</span> <span class='kw'>=</span> <span class='st'>"anual"</span>)</pre>
+    <pre class="usage"><span class='fu'>organize_caes</span>(<span class='no'>base</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>bases</th>
-      <td><p>Lista de bases de microdatos a utilizar para armar el pool de datos</p></td>
-    </tr>
-    <tr>
-      <th>variables</th>
-      <td><p>Vector con nombres de las variables de interés</p></td>
-    </tr>
-    <tr>
-      <th>window</th>
-      <td><p>Especificar distancia temporal entre las observaciones. anual o trimestral</p></td>
+      <th>base</th>
+      <td><p>Base individual de uno o más períodos</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Devuelve el pool de datos de panel</p>
+    <p>Devuelve la base con 7 columnas nuevas (ver <code><a href='caes.html'>caes</a></code>)</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>disclaimer: El script no es un producto oficial de INDEC.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='no'>lista_bases</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>toybase_individual_2016_03</span>,<span class='no'>toybase_individual_2016_04</span>)
-<span class='no'>pool_trimestral</span> <span class='kw'>&lt;-</span> <span class='fu'>organize_panels</span>(<span class='kw'>bases</span> <span class='kw'>=</span> <span class='no'>lista_bases</span>,
-                    <span class='kw'>variables</span> <span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"P21"</span>,<span class='st'>"ESTADO"</span>),
-                    <span class='kw'>window</span> <span class='kw'>=</span> <span class='st'>"trimestral"</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>bases</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_rows</a></span>(<span class='no'>toybase_individual_2016_03</span>,<span class='no'>toybase_individual_2016_04</span>)
+<span class='fu'>organize_caes</span>(<span class='kw'>base</span> <span class='kw'>=</span> <span class='no'>bases</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Convirtiendo PP04B_COD a character</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -58,7 +58,10 @@ if(getRversion() >= "2.15.1") utils::globalVariables(c(".",
                                                        "DIGIT3",
                                                        "DIGIT4",
                                                        "DIGIT5",
-                                                       "centroides_aglomerados"))
+                                                       "centroides_aglomerados",
+                                                       "PP04B_CAES",
+                                                       "PP04B_COD",
+                                                       "caes"))
 
 
 

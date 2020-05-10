@@ -14,11 +14,11 @@ Función para clasificar las ocupaciones según las 4 dimensiones del Clasificad
 (CNO 2001)
 }
 \details{
-#'disclaimer: El script no es un producto oficial de INDEC.
+disclaimer: El script no es un producto oficial de INDEC.
 }
 \examples{
 
-#'
+
 bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)
 bases_clasif <- organize_ocupations(base = bases)
 

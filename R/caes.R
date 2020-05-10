@@ -1,0 +1,16 @@
+#' @title caes
+#' @description Base con codigos y etiquetas del Clasificador de actividades economicas para encuestas sociodemograficas.
+#'              CAES Mercosur 1.0 - Actualización 2018.
+#'              Basado en https://www.indec.gob.ar/ftp/cuadros/menusuperior/clasificadores/notas_explicativas_caes_v2018.pdf
+#' @format A data frame with 140 rows and 8 variables:
+#' \describe{
+#'   \item{\code{PP04B_COD}}{character Codigo clase CAES. 4 digitos (nivel 3) Variable que aparece en microdatos EPH}
+#'   \item{\code{PP04B_label}}{character Etiqueta clase CAES}
+#'   \item{\code{caes_seccion_cod}}{character Codigo seccion CAES. 2 digitos (nivel 2)}
+#'   \item{\code{caes_seccion_label}}{character Etiqueta seccion CAES}
+#'   \item{\code{caes_division_cod}}{character Codigo division CAES. Letra (nivel 1)}
+#'   \item{\code{caes_division_label}}{character Etiqueta division CAES}
+#'   \item{\code{caes_eph_cod}}{character Codigo reagrupamiento de CAES utilizado por EPH. Nivel 1}
+#'   \item{\code{caes_eph_label}}{factor Etiqueta reagrupamiento de CAES utilizado por EPH. Nivel 1}
+#'}
+"caes"
