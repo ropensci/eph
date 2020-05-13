@@ -1,0 +1,17 @@
+citHeader("To cite eph in publications use:")
+
+citEntry(
+  entry    = "Manual",
+  title    = "eph: Argentina's Permanent Household Survey Data and Manipulation Utilities",
+  author   = "Diego Kozlowski and Pablo Tiscornia and Guido Weksler and Natsumi Shokida and German Rosati",
+  year     = 2020,
+  DOI  = "10.5281/zenodo.3462677",
+
+  url   = "https://holatam.github.io/eph/",
+  textVersion = paste(
+  "  Diego Kozlowski, Pablo Tiscornia, Guido Weksler, Natsumi Shokida and German Rosati (2020).
+  eph: Argentina's Permanent Household Survey Data and Manipulation Utilities. R package
+  version https://doi.org/10.5281/zenodo.3462677"
+
+  )
+)

@@ -118,6 +118,18 @@ calculate_tabulates(base, x = "ESTADO", y = "CH04", add.totals = "row", add.perc
  
 ```
 
+### Referencias
+
+Este es un proyecto abierto, realizado con el único objetivo de ayudar a la comunidad de usuaries de R que utiliza los datos de la EPH. Si usas el paquete en un trabajo académico, te agradeceríamos que incluyas la siguiente referencia
+
+
+
+```
+  Diego Kozlowski, Pablo Tiscornia, Guido Weksler, Natsumi Shokida and German Rosati (2020).
+  eph: Argentina's Permanent Household Survey Data and Manipulation Utilities. R package
+  version https://doi.org/10.5281/zenodo.3462677
+```
+
 ### Aportes de la comunidad
 
 Este paquete se propone incorporar cualquier función de propósitos generales que utilice como base los datos de la Encuesta Permanente de Hogares. Todos los aportes en este sentido son bienvenidos.
