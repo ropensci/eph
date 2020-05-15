@@ -24,7 +24,6 @@ organize_caes <- function(base){
       dplyr::mutate(PP04B_COD  = PP04B_CAES)
   }
 
-  if (is.integer(base$PP04B_COD)) {
     warning("Convirtiendo PP04B_COD a character")
     base <- base %>%
       dplyr::mutate(PP04B_COD = as.character(PP04B_COD),
@@ -32,7 +31,6 @@ organize_caes <- function(base){
                                            nchar(PP04B_COD) == 2 ~ PP04B_COD,
                                            nchar(PP04B_COD) == 3 ~ paste0("0", PP04B_COD),
                                            nchar(PP04B_COD) == 4 ~ PP04B_COD))
-  }
 
   base <- base %>%
     dplyr::left_join(caes, by = "PP04B_COD")
