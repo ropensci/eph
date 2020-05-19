@@ -7,7 +7,7 @@
 #' @param variables Vector con nombres de las variables de interes
 #' @param window Especificar distancia temporal entre las observaciones. anual o trimestral
 #' @details
-#'disclaimer: El script no es un producto oficial de INDEC.
+#'Disclaimer: El script no es un producto oficial de INDEC.
 #' @return Devuelve el pool de datos de panel
 #' @export
 #'

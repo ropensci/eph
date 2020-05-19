@@ -3,7 +3,7 @@
 \docType{data}
 \name{adulto_equivalente}
 \alias{adulto_equivalente}
-\title{Tabla de valores de adulto equivalente según sexo y edad}
+\title{Tabla de valores de adulto equivalente segun sexo y edad}
 \format{
 A data frame with 222 rows and 3 variables
 
@@ -11,13 +11,13 @@ A data frame with 222 rows and 3 variables
 \item{CH04}{sexo}
 \item{CH06}{edad}
 \item{adequi}{unidades de adulto equivalente}
-...
+
 }
 }
 \usage{
 adulto_equivalente
 }
 \description{
-Tabla de valores de adulto equivalente según sexo y edad
+Tabla de valores de adulto equivalente segun sexo y edad
 }
 \keyword{datasets}

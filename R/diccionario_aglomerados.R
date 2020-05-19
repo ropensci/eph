@@ -3,8 +3,8 @@
 #' @format  A data frame with 32 rows and 2 variables
 #'
 #'\describe{
-#' \item{codigo}{codigo de aglomerado}
+#' \item{codigo}{Codigo de aglomerado}
 #' \item{aglo}{Nombre del aglomerado}
-#'...
+#'
 #'}
 "diccionario_aglomerados"

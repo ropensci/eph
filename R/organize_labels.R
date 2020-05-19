@@ -1,9 +1,9 @@
 #'Funcion para etiquetar las bases de la Encuesta Permanente de Hogares.
 #'
 #'@param df type de microdatos de la EPH
-#'@param type string. aclaracion de si se quiere etiquetar una de tipo 'individual' u 'hogar'
+#'@param type (string) aclaracion sobre si la base a etiquetar es de tipo 'individual' u 'hogar'
 #'@details
-#'disclaimer: El script no es un producto oficial de INDEC.
+#'Disclaimer: El script no es un producto oficial de INDEC.
 #'@examples
 #'df <- organize_labels(toybase_individual_2016_04, type='individual')
 #'@export

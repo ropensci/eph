@@ -14,9 +14,9 @@ Funcion para clasificar las ocupaciones segun las 4 dimensiones del Clasificador
 (CNO 2001)
 }
 \details{
-disclaimer: El script no es un producto oficial de INDEC.
+Disclaimer: El script no es un producto oficial de INDEC.
 
-El usuario debe garantizarse que el clasificador CNO 2001 es compatible con la base que esta utilizando
+Importante: El usuario debe garantizarse que el clasificador CNO 2001 es compatible con la base que esta utilizando
 }
 \examples{
 

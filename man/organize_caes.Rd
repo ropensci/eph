@@ -15,15 +15,19 @@ Devuelve la base con 7 columnas nuevas (ver \code{\link{caes}})
 \description{
 Base con codigos y etiquetas del Clasificador de actividades economicas para encuestas sociodemograficas.
              CAES Mercosur 1.0 - Actualizacion 2018.
-             Basado en https://www.indec.gob.ar/ftp/cuadros/menusuperior/clasificadores/notas_explicativas_caes_v2018.pdf
+             Basado en https://bit.ly/notas-explicativas-CAES-v2018 y
+             https://www.indec.gob.ar/ftp/cuadros/menusuperior/clasificadores/caes_v2018.xls,
+             obtenidos de
+             https://www.indec.gob.ar/indec/web/Institucional-Indec-Clasificadores
 }
 \details{
-disclaimer: El script no es un producto oficial de INDEC.
+Disclaimer: El script no es un producto oficial de INDEC.
 
-El usuario debe garantizarse que el clasificador CAES 1.0 es compatible con la base que esta utilizando
+Importante: El usuario debe garantizarse que el clasificador CAES 1.0 es compatible con la base que esta utilizando
 }
 \examples{
 bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)
+
 organize_caes(base = bases)
 
 }

@@ -3,8 +3,8 @@
 #' @format  A data frame with 6 rows and 2 variables
 #'
 #'\describe{
-#' \item{codigo}{codigo de region}
+#' \item{codigo}{Codigo de region}
 #' \item{region}{Nombre de región}
-#'...
+#'
 #'}
 "diccionario_regiones"

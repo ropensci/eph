@@ -4,7 +4,7 @@
 #'@param year un integer o vector de integers a partir de 2003
 #'@param trimester un integer o vector de integers con el numero de trimester: 1,2,3,4, para la EPH continua
 #'@param wave un integer o vector de integers con el numero de onda, 1 o 2, para la EPH puntual
-#'@param type un character o vector de characters con el tipo de base a descargar: 'individual' ; 'hogar', default individual
+#'@param type un character o vector de characters con el tipo de base a descargar: 'individual'; 'hogar', default individual
 #'@param vars un vector de characters. variables a seleccionar. Default='all' trae todas las variables
 #'@details
 #'Las bases de la EPH puntual utilizan el parametro wave, para referirse a las ondas.

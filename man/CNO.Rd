@@ -12,7 +12,7 @@ A data frame with 63 rows and 4 variables
 \item{value}{valor que toma cada categoria dentro de una dimension}
 \item{label}{nombre de la categoria propia a una dimension}
 \item{variable}{nombre de la dimension del CNO}
-...
+
 }
 }
 \usage{

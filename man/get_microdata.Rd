@@ -19,7 +19,7 @@ get_microdata(
 
 \item{wave}{un integer o vector de integers con el numero de onda, 1 o 2, para la EPH puntual}
 
-\item{type}{un character o vector de characters con el tipo de base a descargar: 'individual' ; 'hogar', default individual}
+\item{type}{un character o vector de characters con el tipo de base a descargar: 'individual'; 'hogar', default individual}
 
 \item{vars}{un vector de characters. variables a seleccionar. Default='all' trae todas las variables}
 }

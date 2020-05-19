@@ -4,14 +4,15 @@
 #' @param agglomerates Variable con los codigos de aglomerados
 #' @param indicator   Variable con los indicadores
 #' @param alpha Opacidad de los puntos
-#' @param palette paleta de colores a utilizar, incluye "viridis", "magma", "inferno", or "plasma". Para mas opciones, ver \link[leaflet]{colorNumeric}
+#' @param palette Paleta de colores a utilizar, incluye "viridis", "magma", "inferno", or "plasma". Para mas opciones, ver \link[leaflet]{colorNumeric}
 #'
 #' @examples
 #'
 #'toybase_individual_2016_04 %>%
-#' dplyr::group_by(AGLOMERADO) %>%
-#' dplyr::summarise(tasa_actividad = sum(PONDERA[ESTADO==1])/sum(PONDERA)) %>%
-#' map_agglomerates(agglomerates = AGLOMERADO,indicator = tasa_actividad)
+#'  dplyr::group_by(AGLOMERADO) %>%
+#'  dplyr::summarise(tasa_actividad = sum(PONDERA[ESTADO==1])/sum(PONDERA)) %>%
+#'  map_agglomerates(agglomerates = AGLOMERADO,
+#'                    indicator = tasa_actividad)
 #' @export
 
 map_agglomerates <- function(.data,agglomerates, indicator, alpha=.75, palette= 'viridis') {

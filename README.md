@@ -16,7 +16,7 @@ status](https://codecov.io/gh/holatam/eph/branch/master/graph/badge.svg)](https:
 # Caja de Herramientas para el procesamiento de la Encuesta Permanente de Hogares
 
 ## Descripción
-La librería `eph` tiene por objecto facilitar el trabajo de aquellos usuarios y usuarias de la [Encuesta Permanente de Hogares - INDEC](https://www.indec.gob.ar/bases-de-datos.asp) que deseen procesar datos de la misma mediante [R](https://www.r-project.org/).
+La librería `eph` tiene por objecto facilitar el trabajo de aquellos usuarios y usuarias de la [Encuesta Permanente de Hogares - INDEC](https://www.indec.gob.ar/bases-de-datos.asp) que deseen procesar datos de la misma mediante el lenguaje de programación [R](https://www.r-project.org/).
 
 
 Sus principales funciones son:
@@ -31,8 +31,29 @@ Sus principales funciones son:
 
 - **`get_poverty_lines()`**: Descarga de canasta basica alimentaria y canasta basica total
 
-- **`orgnize_panels()`**: Arma un pool de datos para trabajar con panel en la EPH continua
+- **`organize_panels()`**: Arma un pool de datos para trabajar con panel en la EPH continua
 
+## Cómo citar este paquete en tu artículo
+
+Podés citar este paquete como "se obtuvieron y/o normalizaron los datos de la Encuesta Permanente de Hogares (EPH-INDEC) utilizando el paquete de R 'eph' (Kozlowski et al, 2020)".   
+   
+La referencia completa para incluir en la bibliografía es:   
+   
+```
+Diego Kozlowski, Pablo Tiscornia, Guido Weksler, German Rosati and Natsumi Shokida (2020). eph: Argentina's Permanent Household Survey Data and Manipulation Utilities. R package version https://doi.org/10.5281/zenodo.3462677
+```
+
+Si necesitás la entrada bib: 
+
+```{bib}
+@Manual{kozlowski2020,
+    title = {eph: Argentina's Permanent Household Survey Data and Manipulation Utilities},
+    author = {Diego Kozlowski and Pablo Tiscornia and Guido Weksler and German Rosati and Natsumi Shokida},
+    year = {2020},
+    doi = {10.5281/zenodo.3462677},
+    url = {https://holatam.github.io/eph/},
+  }
+```
 
 ## Instalación
 
@@ -45,7 +66,7 @@ install.packages('eph')
 
 ```
 
-Para la versión en desarrollo. 
+Para la versión en desarrollo 
 
 ```r
 
@@ -55,13 +76,14 @@ devtools::install_github("holatam/eph")
 
 ```
 
-## Modo de uso.
+## Modo de uso
 
 ### Descarga de microdatos -->
+
 ```r
 
 # Cargo la libreria
-library(eph )
+library(eph)
 
 # Obtengo la base de microdatos para individuos
 base_2016t3_ind <- get_microdata(year = 2016, trimester = 3, type = 'individual')
@@ -71,7 +93,7 @@ base_2016t3_hog <- get_microdata(year = 2016, trimester = 3, type = 'hogar')
 
 ```
 
-### Tabulados uni / bivariados con ponderacion, totales parciales y porcentajes -->
+### Tabulados uni / bivariados con ponderación, totales parciales y porcentajes -->
 
 ```r
 
@@ -92,6 +114,7 @@ calculate_tabulates(base, x = "ESTADO", y = "CH04", add.totals = "row", add.perc
 ```
 
 ### Etiquetas [labels] para base de microdatos -->
+
 ```r
 
 # Cargo la librería
@@ -118,19 +141,7 @@ calculate_tabulates(base, x = "ESTADO", y = "CH04", add.totals = "row", add.perc
  
 ```
 
-### Referencias
-
-Este es un proyecto abierto, realizado con el único objetivo de ayudar a la comunidad de usuaries de R que utiliza los datos de la EPH. Si usas el paquete en un trabajo académico, te agradeceríamos que incluyas la siguiente referencia
-
-
-
-```
-  Diego Kozlowski, Pablo Tiscornia, Guido Weksler, Natsumi Shokida and German Rosati (2020).
-  eph: Argentina's Permanent Household Survey Data and Manipulation Utilities. R package
-  version https://doi.org/10.5281/zenodo.3462677
-```
-
-### Aportes de la comunidad
+## Aportes de la comunidad
 
 Este paquete se propone incorporar cualquier función de propósitos generales que utilice como base los datos de la Encuesta Permanente de Hogares. Todos los aportes en este sentido son bienvenidos.
 

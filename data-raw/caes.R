@@ -119,6 +119,7 @@ rama_caes_eph_label <- function(variable = rama.eph){
 
 }
 
+# https://www.indec.gob.ar/ftp/cuadros/menusuperior/clasificadores/caes_v2018.xls
 caes <- read_excel('../data/eph/CAES/caes_v2018.xls')
 
 caes <- caes %>%

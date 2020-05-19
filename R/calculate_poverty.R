@@ -2,22 +2,18 @@
 #'@description
 #'Funcion para calcular la pobreza e indigencia siguiendo la metodologia de linea.
 #'@param base Base individual de uno o mas periodos
-#'@param basket basket basica alimentaria y total, con la siguiente estructura:
-#'# A tibble: N x 5
-#'   region    periodo   CBA   CBT codigo
-#'   <chr>     <chr>   <dbl> <dbl>  <dbl>
-#' 1 Cuyo      2016.3  1509. 3872.     42
-#' 2 Cuyo      2016.4  1570. 4030.     42
-#' 3 GBA       2016.3  1684. 4053.      1
-#' . ...      .....   .....   ....    ...
+#'@param basket canasta basica alimentaria y total, con la estructura de la canasta de ejemplo (ver \code{\link{canastas_reg_example}})
 #'@param print_summary TRUE/FALSE, opcion para imprimir las tasas de pobreza e indigencia
-#'@details #'disclaimer: El script no es un producto oficial de INDEC.
+#'@details disclaimer: El script no es un producto oficial de INDEC.
 #'
 #'@examples
 #'
-#'#'
-#'bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)
-#'base_pobreza <- calculate_poverty(base = bases, basket = canastas_reg_example,print_summary=TRUE)
+#'bases <- dplyr::bind_rows(toybase_individual_2016_03,
+#'                           toybase_individual_2016_04)
+#'
+#'base_pobreza <- calculate_poverty(base = bases,
+#'                                   basket = canastas_reg_example,
+#'                                   print_summary=TRUE)
 #'
 
 #'@export

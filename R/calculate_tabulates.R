@@ -17,23 +17,27 @@
 #'
 #'### tabla simple ###
 #'
-#'calculate_tabulates(base = toybase_individual_2016_04,x = 'REGION', y = 'CH04',
-#'             weights = 'PONDERA')
+#'calculate_tabulates(base = toybase_individual_2016_04,
+#'                     x = 'REGION', y = 'CH04',
+#'                     weights = 'PONDERA')
 #'
 #'### para ver los totales por fila ###
 #'
-#'calculate_tabulates(base = toybase_individual_2016_04,x = 'REGION', y = 'CH04',
-#'             weights = 'PONDERA', add.totals = 'row')
+#'calculate_tabulates(base = toybase_individual_2016_04,
+#'                     x = 'REGION', y = 'CH04',
+#'                     weights = 'PONDERA', add.totals = 'row')
 #'
 #'### para ver los totales por columna ###
 #'
-#'calculate_tabulates(base = toybase_individual_2016_04,x = 'REGION', y = 'CH04',
-#'             weights = 'PONDERA', add.totals = 'col')
+#'calculate_tabulates(base = toybase_individual_2016_04,
+#'                     x = 'REGION', y = 'CH04',
+#'                     weights = 'PONDERA', add.totals = 'col')
 #'
 #'### para ver porcentajes por fila ###
 #'
-#'calculate_tabulates(base = toybase_individual_2016_04,x = 'REGION', y = 'CH04',
-#'             weights = 'PONDERA', add.percentage ='row')
+#'calculate_tabulates(base = toybase_individual_2016_04,
+#'                     x = 'REGION', y = 'CH04',
+#'                     weights = 'PONDERA', add.percentage ='row')
 #'
 #'@export
 
