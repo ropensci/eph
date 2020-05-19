@@ -7,7 +7,7 @@
 calculate_poverty(base, basket, print_summary = TRUE)
 }
 \arguments{
-\item{base}{Base individual de uno o más períodos}
+\item{base}{Base individual de uno o mas periodos}
 
 \item{basket}{basket basica alimentaria y total, con la siguiente estructura:
 # A tibble: N x 5
@@ -21,7 +21,7 @@ calculate_poverty(base, basket, print_summary = TRUE)
 \item{print_summary}{TRUE/FALSE, opcion para imprimir las tasas de pobreza e indigencia}
 }
 \description{
-Función para calcular la pobreza e indigencia siguiendo la metodología de línea.
+Funcion para calcular la pobreza e indigencia siguiendo la metodologia de linea.
 }
 \details{
 #'disclaimer: El script no es un producto oficial de INDEC.

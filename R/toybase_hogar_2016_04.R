@@ -1,4 +1,4 @@
-#' Selección aleatoria de casos de la base 2016 trimestre 4 para la base hogar
+#' Seleccion aleatoria de casos de la base 2016 trimestre 4 para la base hogar
 #'
 #' @format  A data frame with 2000 rows and 177 variables
 #'

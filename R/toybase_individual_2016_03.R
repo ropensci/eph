@@ -1,4 +1,4 @@
-#' Selección aleatoria de casos de la base 2016 trimestre 3 para la base individual
+#' Seleccion aleatoria de casos de la base 2016 trimestre 3 para la base individual
 #'
 #' @format  A data frame with 2000 rows and 177 variables
 #'

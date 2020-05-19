@@ -15,13 +15,13 @@ map_agglomerates(
 \arguments{
 \item{.data}{Dataframe con los datos}
 
-\item{agglomerates}{Variable con los códigos de aglomerados}
+\item{agglomerates}{Variable con los codigos de aglomerados}
 
 \item{indicator}{Variable con los indicadores}
 
 \item{alpha}{Opacidad de los puntos}
 
-\item{palette}{paleta de colores a utilizar, incluye "viridis", "magma", "inferno", or "plasma". Para más opciones, ver \link[leaflet]{colorNumeric}}
+\item{palette}{paleta de colores a utilizar, incluye "viridis", "magma", "inferno", or "plasma". Para mas opciones, ver \link[leaflet]{colorNumeric}}
 }
 \description{
 Mapa de indicadores por aglomerado

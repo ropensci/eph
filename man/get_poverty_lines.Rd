@@ -7,12 +7,12 @@
 get_poverty_lines()
 }
 \description{
-Función que descarga la CBA y CBT a partir de abril 2016
+Funcion que descarga la CBA y CBT a partir de abril 2016
 }
 \details{
 disclaimer: El script no es un producto oficial de INDEC.
 
-La función descarga la serie provista por indec en https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149
+La funcion descarga la serie provista por indec en https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149
 }
 \examples{
 

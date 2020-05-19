@@ -1,6 +1,6 @@
-#'Tabulado con ponderación
+#'Tabulado con ponderacion
 #'@description
-#'Función para crear tabulados uni o bivariados con ponderacion, totales parciales y porcentajes.
+#'Funcion para crear tabulados uni o bivariados con ponderacion, totales parciales y porcentajes.
 #'@param base Dataframe
 #'@param x string con el nombre de la variable a tabular
 #'@param y otro string (opcional) con el nombre de una segunda variable, para una tabla de doble entrada. Tiene que ser de igual largo que x

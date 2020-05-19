@@ -3,12 +3,12 @@
 \docType{data}
 \name{diccionario_regiones}
 \alias{diccionario_regiones}
-\title{Diccionario de aglomerados según diseño de registro de la EPH}
+\title{Diccionario de regiones segun diseño de registro de la EPH}
 \format{
 A data frame with 6 rows and 2 variables
 
 \describe{
-\item{codigo}{código de región}
+\item{codigo}{codigo de region}
 \item{region}{Nombre de región}
 ...
 }
@@ -17,6 +17,6 @@ A data frame with 6 rows and 2 variables
 diccionario_regiones
 }
 \description{
-Diccionario de aglomerados según diseño de registro de la EPH
+Diccionario de regiones segun diseño de registro de la EPH
 }
 \keyword{datasets}

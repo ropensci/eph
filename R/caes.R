@@ -1,6 +1,6 @@
 #' @title caes
 #' @description Base con codigos y etiquetas del Clasificador de actividades economicas para encuestas sociodemograficas.
-#'              CAES Mercosur 1.0 - Actualización 2018.
+#'              CAES Mercosur 1.0 - Actualizacion 2018.
 #'              Basado en https://www.indec.gob.ar/ftp/cuadros/menusuperior/clasificadores/notas_explicativas_caes_v2018.pdf
 #' @format A data frame with 140 rows and 8 variables:
 #' \describe{

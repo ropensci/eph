@@ -24,9 +24,9 @@ get_microdata(
 \item{vars}{un vector de characters. variables a seleccionar. Default='all' trae todas las variables}
 }
 \value{
-En caso de una única base devuevle un dataframe.
-En caso de una consulta múltiple devuelve un dataframe anidado, con
-la información de cada consulta y una columna `microdata` con la base
+En caso de una unica base devuevle un dataframe.
+En caso de una consulta multiple devuelve un dataframe anidado, con
+la informacion de cada consulta y una columna `microdata` con la base
 correspondiente
 }
 \description{
@@ -34,9 +34,9 @@ Funcion que descarga bases de la Encuesta Permanente de Hogares del INDEC a part
 }
 \details{
 Las bases de la EPH puntual utilizan el parametro wave, para referirse a las ondas.
-Su alcance es entre la onda 1 de 1996 y a onda 1 de 2003.
+Su alcance es entre la onda 1 de 1996 y la onda 1 de 2003.
 
-Las bases de la EPH continua utiliza el parametro trimester, para referirse a los trimestres.
+Las bases de la EPH continua utilizan el parametro trimester, para referirse a los trimestres.
 Su alcance es entre tercer trimestre de 2003 a la actualidad
 disclaimer: El script no es un producto oficial de INDEC.
 }

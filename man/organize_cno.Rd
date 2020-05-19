@@ -7,10 +7,10 @@
 organize_cno(base)
 }
 \arguments{
-\item{base}{Base individual de uno o más períodos}
+\item{base}{Base individual de uno o mas periodos}
 }
 \description{
-Función para clasificar las ocupaciones según las 4 dimensiones del Clasificador Nacional de Ocupaciones
+Funcion para clasificar las ocupaciones segun las 4 dimensiones del Clasificador Nacional de Ocupaciones
 (CNO 2001)
 }
 \details{

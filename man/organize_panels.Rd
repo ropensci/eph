@@ -9,7 +9,7 @@ organize_panels(bases, variables, window = "anual")
 \arguments{
 \item{bases}{Lista de bases de microdatos a utilizar para armar el pool de datos}
 
-\item{variables}{Vector con nombres de las variables de interés}
+\item{variables}{Vector con nombres de las variables de interes}
 
 \item{window}{Especificar distancia temporal entre las observaciones. anual o trimestral}
 }
@@ -18,7 +18,7 @@ Devuelve el pool de datos de panel
 }
 \description{
 Permite armar un pool de datos en panel de la EPH continua a partir
-de especificar una serie consecutiva de bases, variables y el largo de la window de observación
+de especificar una serie consecutiva de bases, variables y el largo de la ventana -window- de observación
 }
 \details{
 disclaimer: El script no es un producto oficial de INDEC.

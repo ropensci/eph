@@ -2,7 +2,7 @@
 % Please edit documentation in R/calculate_tabulates.R
 \name{calculate_tabulates}
 \alias{calculate_tabulates}
-\title{Tabulado con ponderación}
+\title{Tabulado con ponderacion}
 \usage{
 calculate_tabulates(
   base,
@@ -42,7 +42,7 @@ calculate_tabulates(
 \item{add.percentage}{toma los valores c('none','row','col'), para agregar porcentajes por fila y columna}
 }
 \description{
-Función para crear tabulados uni o bivariados con ponderacion, totales parciales y porcentajes.
+Funcion para crear tabulados uni o bivariados con ponderacion, totales parciales y porcentajes.
 }
 \examples{
 

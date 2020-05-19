@@ -1,10 +1,10 @@
 #'  Pool de Datos en Panel - Base Individudal EPH continua
 #'
 #'Permite armar un pool de datos en panel de la EPH continua a partir
-#'de especificar una serie consecutiva de bases, variables y el largo de la window de observación
+#'de especificar una serie consecutiva de bases, variables y el largo de la ventana -window- de observación
 #'
 #' @param bases Lista de bases de microdatos a utilizar para armar el pool de datos
-#' @param variables Vector con nombres de las variables de interés
+#' @param variables Vector con nombres de las variables de interes
 #' @param window Especificar distancia temporal entre las observaciones. anual o trimestral
 #' @details
 #'disclaimer: El script no es un producto oficial de INDEC.

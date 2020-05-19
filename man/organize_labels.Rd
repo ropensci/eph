@@ -9,7 +9,7 @@ organize_labels(df, type = "individual")
 \arguments{
 \item{df}{type de microdatos de la EPH}
 
-\item{type}{string. aclaracion de si se quiere etiquetar una type 'individual' u 'hogar'}
+\item{type}{string. aclaracion de si se quiere etiquetar una de tipo 'individual' u 'hogar'}
 }
 \description{
 Funcion para etiquetar las bases de la Encuesta Permanente de Hogares.

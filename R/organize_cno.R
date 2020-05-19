@@ -1,8 +1,8 @@
 #'Clasificador de Ocupaciones
 #'@description
-#'Función para clasificar las ocupaciones según las 4 dimensiones del Clasificador Nacional de Ocupaciones
+#'Funcion para clasificar las ocupaciones segun las 4 dimensiones del Clasificador Nacional de Ocupaciones
 #' (CNO 2001)
-#'@param base Base individual de uno o más períodos
+#'@param base Base individual de uno o mas periodos
 #'@details  disclaimer: El script no es un producto oficial de INDEC.
 #'
 #'El usuario debe garantizarse que el clasificador CNO 2001 es compatible con la base que esta utilizando
@@ -16,9 +16,9 @@
 #'@export
 organize_cno <- function(base){
 
-##Estos 4 df quizás podrían ir como RDA guardados en vez de CNO
-##que, si bien condensa toda la info,  está en un formato que mucho no ayuda
-##La otra opción es definir las categorías a mano con case_when
+##Estos 4 df quizas podrian ir como RDA guardados en vez de CNO
+##que, si bien condensa toda la info,  esta en un formato que mucho no ayuda
+##La otra opcion es definir las categorias a mano con case_when
 
   caracter <- CNO %>%
     dplyr::filter(digit==12) %>%

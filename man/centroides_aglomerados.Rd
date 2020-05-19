@@ -7,7 +7,7 @@
 \format{
 A data frame with 32 rows and 4 variables:
 \describe{
-\item{\code{AGLOMERADO}}{Factor Código de aglomerado EPH}
+\item{\code{AGLOMERADO}}{Factor Codigo de aglomerado EPH}
 \item{\code{nombre_aglomerado}}{Factor Nombre del aglomerado EPH}
 \item{\code{lat}}{latitud del aglomerado EPH}
 \item{\code{lon}}{longitud del aglomerado EPH}

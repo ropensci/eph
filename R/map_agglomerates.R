@@ -1,10 +1,10 @@
 #' Mapa de indicadores por aglomerado
 #'
 #' @param .data Dataframe con los datos
-#' @param agglomerates Variable con los códigos de aglomerados
+#' @param agglomerates Variable con los codigos de aglomerados
 #' @param indicator   Variable con los indicadores
 #' @param alpha Opacidad de los puntos
-#' @param palette paleta de colores a utilizar, incluye "viridis", "magma", "inferno", or "plasma". Para más opciones, ver \link[leaflet]{colorNumeric}
+#' @param palette paleta de colores a utilizar, incluye "viridis", "magma", "inferno", or "plasma". Para mas opciones, ver \link[leaflet]{colorNumeric}
 #'
 #' @examples
 #'

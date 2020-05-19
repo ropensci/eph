@@ -3,7 +3,7 @@
 \docType{data}
 \name{toybase_hogar_2016_04}
 \alias{toybase_hogar_2016_04}
-\title{Selección aleatoria de casos de la base 2016 trimestre 4 para la base hogar}
+\title{Seleccion aleatoria de casos de la base 2016 trimestre 4 para la base hogar}
 \format{
 A data frame with 2000 rows and 177 variables
 
@@ -103,6 +103,6 @@ A data frame with 2000 rows and 177 variables
 toybase_hogar_2016_04
 }
 \description{
-Selección aleatoria de casos de la base 2016 trimestre 4 para la base hogar
+Seleccion aleatoria de casos de la base 2016 trimestre 4 para la base hogar
 }
 \keyword{datasets}

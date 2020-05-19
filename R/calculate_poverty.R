@@ -1,7 +1,7 @@
 #'Calculo de Pobreza e Indigencia
 #'@description
-#'Función para calcular la pobreza e indigencia siguiendo la metodología de línea.
-#'@param base Base individual de uno o más períodos
+#'Funcion para calcular la pobreza e indigencia siguiendo la metodologia de linea.
+#'@param base Base individual de uno o mas periodos
 #'@param basket basket basica alimentaria y total, con la siguiente estructura:
 #'# A tibble: N x 5
 #'   region    periodo   CBA   CBT codigo
