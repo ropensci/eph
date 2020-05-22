@@ -7,27 +7,23 @@
 organize_caes(base)
 }
 \arguments{
-\item{base}{Base individual de uno o mas periodos}
+\item{base}{Base individual de uno o más períodos}
 }
 \value{
-Devuelve la base con 7 columnas nuevas (ver \code{\link{caes}})
+Devuelve la base con 8 columnas nuevas (ver \code{\link{caes}})
 }
 \description{
 Base con codigos y etiquetas del Clasificador de actividades economicas para encuestas sociodemograficas.
-             CAES Mercosur 1.0 - Actualizacion 2018.
-             Basado en https://bit.ly/notas-explicativas-CAES-v2018 y
-             https://www.indec.gob.ar/ftp/cuadros/menusuperior/clasificadores/caes_v2018.xls,
-             obtenidos de
-             https://www.indec.gob.ar/indec/web/Institucional-Indec-Clasificadores
+             CAES Mercosur 1.0 y CAES Mercosur.
+             Basado en https://www.indec.gob.ar/ftp/cuadros/menusuperior/clasificadores/notas_explicativas_caes_v2018.pdf
 }
 \details{
-Disclaimer: El script no es un producto oficial de INDEC.
+disclaimer: El script no es un producto oficial de INDEC.
 
-Importante: El usuario debe garantizarse que el clasificador CAES 1.0 es compatible con la base que esta utilizando
+El usuario debe contemplar los cambios en la codificacion y categorias de las distintas versiones del clasificador CAES, para la elaboracion de series de largo plazo.
 }
 \examples{
 bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)
-
 organize_caes(base = bases)
 
 }

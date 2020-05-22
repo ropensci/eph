@@ -7,6 +7,7 @@
 #'              https://www.indec.gob.ar/indec/web/Institucional-Indec-Clasificadores
 #' @format A data frame with 140 rows and 8 variables:
 #' \describe{
+#'   \item{caes_version}{(character) Version del CAES utilizada}
 #'   \item{PP04B_COD}{(character) Codigo clase CAES. 4 digitos (nivel 3) Variable que aparece en microdatos EPH}
 #'   \item{PP04B_label}{(character) Etiqueta clase CAES}
 #'   \item{caes_seccion_cod}{(character) Codigo seccion CAES. 2 digitos (nivel 2)}

@@ -121,6 +121,8 @@ rama_caes_eph_label <- function(variable = rama.eph){
 
 # https://www.indec.gob.ar/ftp/cuadros/menusuperior/clasificadores/caes_v2018.xls
 caes <- read_excel('../data/eph/CAES/caes_v2018.xls')
+caesv0 <- read_excel('../data/eph/CAES/CAESv0.xlsx')
+
 
 caes <- caes %>%
   distinct(cod,.keep_all = TRUE) %>%
@@ -138,6 +140,52 @@ caes <- caes %>%
          caes_eph_label = rama_caes_eph_label(caes_eph_cod),
          caes_eph_cod = as.character(caes_eph_cod))
 
+#####caes_v0####
+caesv0 <- caesv0 %>%
+  mutate(caes_seccion_cod = NA,
+         caes_seccion_label = NA,
+         caes_division_cod = NA,
+         caes_division_label = NA)
+
+#Asigno Letra y su etiqueta #
+for(i in 1:nrow(caesv0)){
+  if(caesv0$Codigo[i] %in% LETTERS) {
+    letra <- caesv0$Codigo[i]
+    label <- caesv0$Descripcion[i]
+  }
+  caesv0$caes_seccion_cod[i] <- letra
+  caesv0$caes_seccion_label[i] <- label
+
+}
+
+
+
+#Asigno Letra y su etiqueta #
+for(i in 1:nrow(caesv0)){
+  if(nchar(caesv0$Codigo[i]) %in% 1:2) {
+    cod <- caesv0$Codigo[i]
+    label <- caesv0$Descripcion[i]
+  }
+  caesv0$caes_division_cod[i] <- cod
+  caesv0$caes_division_label[i] <- label
+
+}
+
+caesv0 <- caesv0 %>%
+  filter(!(str_sub(Codigo,1,1) %in% LETTERS)) %>%
+  rename(PP04B_COD = Codigo,
+         PP04B_label = Descripcion) %>%
+  mutate(PP04B_COD   =  case_when(nchar(PP04B_COD) == 1 ~ paste0("0", PP04B_COD),
+                                  nchar(PP04B_COD) == 2 ~ PP04B_COD,
+                                  nchar(PP04B_COD) == 3 ~ paste0("0", PP04B_COD),
+                                  nchar(PP04B_COD) == 4 ~ PP04B_COD),
+         caes_division_cod = case_when(
+           nchar(caes_division_cod) == 1 ~ paste0("0", caes_division_cod),
+           nchar(caes_division_cod) == 2 ~ caes_division_cod))
+
+caes <- caes %>%
+  mutate(caes_version = "1.0") %>%
+  bind_rows(caesv0 %>% mutate(caes_version = "0"))
 
 usethis::use_data(caes, overwrite = TRUE)
 
