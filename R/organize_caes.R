@@ -3,7 +3,7 @@
 #'              CAES Mercosur 1.0 y CAES Mercosur.
 #'              Basado en https://www.indec.gob.ar/ftp/cuadros/menusuperior/clasificadores/notas_explicativas_caes_v2018.pdf
 #'
-#' @param base  Base individual de uno o más períodos
+#' @param base  Base individual de uno o mas periodos
 #'
 #' @return Devuelve la base con 8 columnas nuevas (ver \code{\link{caes}})
 #'
