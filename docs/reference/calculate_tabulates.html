@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tabulado con ponderación — calculate_tabulates • eph</title>
+<title>Tabulado con ponderacion — calculate_tabulates • eph</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Tabulado con ponderación — calculate_tabulates" />
-<meta property="og:description" content="Función para crear tabulados uni o bivariados con ponderacion, totales parciales y porcentajes." />
+<meta property="og:title" content="Tabulado con ponderacion — calculate_tabulates" />
+<meta property="og:description" content="Funcion para crear tabulados uni o bivariados con ponderacion, totales parciales y porcentajes." />
 
 
 
@@ -124,13 +124,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Tabulado con ponderación</h1>
+    <h1>Tabulado con ponderacion</h1>
     <small class="dont-index">Source: <a href='https://github.com/holatam/eph/blob/master/R/calculate_tabulates.R'><code>R/calculate_tabulates.R</code></a></small>
     <div class="hidden name"><code>calculate_tabulates.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Función para crear tabulados uni o bivariados con ponderacion, totales parciales y porcentajes.</p>
+    <p>Funcion para crear tabulados uni o bivariados con ponderacion, totales parciales y porcentajes.</p>
     </div>
 
     <pre class="usage"><span class='fu'>calculate_tabulates</span>(
@@ -202,8 +202,9 @@
 
 <span class='co'>### tabla simple ###</span>
 
-<span class='fu'>calculate_tabulates</span>(<span class='kw'>base</span> <span class='kw'>=</span> <span class='no'>toybase_individual_2016_04</span>,<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>'REGION'</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>'CH04'</span>,
-            <span class='kw'>weights</span> <span class='kw'>=</span> <span class='st'>'PONDERA'</span>)</div><div class='output co'>#&gt;   REGION/CH04      1      2
+<span class='fu'>calculate_tabulates</span>(<span class='kw'>base</span> <span class='kw'>=</span> <span class='no'>toybase_individual_2016_04</span>,
+                    <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>'REGION'</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>'CH04'</span>,
+                    <span class='kw'>weights</span> <span class='kw'>=</span> <span class='st'>'PONDERA'</span>)</div><div class='output co'>#&gt;   REGION/CH04      1      2
 #&gt; 1           1 245400 236187
 #&gt; 2          40  41706  49796
 #&gt; 3          41  22680  19816
@@ -212,8 +213,9 @@
 #&gt; 6          44  19250  17926</div><div class='input'>
 <span class='co'>### para ver los totales por fila ###</span>
 
-<span class='fu'>calculate_tabulates</span>(<span class='kw'>base</span> <span class='kw'>=</span> <span class='no'>toybase_individual_2016_04</span>,<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>'REGION'</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>'CH04'</span>,
-            <span class='kw'>weights</span> <span class='kw'>=</span> <span class='st'>'PONDERA'</span>, <span class='kw'>add.totals</span> <span class='kw'>=</span> <span class='st'>'row'</span>)</div><div class='output co'>#&gt;  REGION/CH04      1      2
+<span class='fu'>calculate_tabulates</span>(<span class='kw'>base</span> <span class='kw'>=</span> <span class='no'>toybase_individual_2016_04</span>,
+                    <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>'REGION'</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>'CH04'</span>,
+                    <span class='kw'>weights</span> <span class='kw'>=</span> <span class='st'>'PONDERA'</span>, <span class='kw'>add.totals</span> <span class='kw'>=</span> <span class='st'>'row'</span>)</div><div class='output co'>#&gt;  REGION/CH04      1      2
 #&gt;            1 245400 236187
 #&gt;           40  41706  49796
 #&gt;           41  22680  19816
@@ -223,8 +225,9 @@
 #&gt;        Total 455956 473798</div><div class='input'>
 <span class='co'>### para ver los totales por columna ###</span>
 
-<span class='fu'>calculate_tabulates</span>(<span class='kw'>base</span> <span class='kw'>=</span> <span class='no'>toybase_individual_2016_04</span>,<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>'REGION'</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>'CH04'</span>,
-            <span class='kw'>weights</span> <span class='kw'>=</span> <span class='st'>'PONDERA'</span>, <span class='kw'>add.totals</span> <span class='kw'>=</span> <span class='st'>'col'</span>)</div><div class='output co'>#&gt;  REGION/CH04      1      2  Total
+<span class='fu'>calculate_tabulates</span>(<span class='kw'>base</span> <span class='kw'>=</span> <span class='no'>toybase_individual_2016_04</span>,
+                    <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>'REGION'</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>'CH04'</span>,
+                    <span class='kw'>weights</span> <span class='kw'>=</span> <span class='st'>'PONDERA'</span>, <span class='kw'>add.totals</span> <span class='kw'>=</span> <span class='st'>'col'</span>)</div><div class='output co'>#&gt;  REGION/CH04      1      2  Total
 #&gt;            1 245400 236187 481587
 #&gt;           40  41706  49796  91502
 #&gt;           41  22680  19816  42496
@@ -233,8 +236,9 @@
 #&gt;           44  19250  17926  37176</div><div class='input'>
 <span class='co'>### para ver porcentajes por fila ###</span>
 
-<span class='fu'>calculate_tabulates</span>(<span class='kw'>base</span> <span class='kw'>=</span> <span class='no'>toybase_individual_2016_04</span>,<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>'REGION'</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>'CH04'</span>,
-            <span class='kw'>weights</span> <span class='kw'>=</span> <span class='st'>'PONDERA'</span>, <span class='kw'>add.percentage</span> <span class='kw'>=</span><span class='st'>'row'</span>)</div><div class='output co'>#&gt;  REGION/CH04     1     2
+<span class='fu'>calculate_tabulates</span>(<span class='kw'>base</span> <span class='kw'>=</span> <span class='no'>toybase_individual_2016_04</span>,
+                    <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>'REGION'</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>'CH04'</span>,
+                    <span class='kw'>weights</span> <span class='kw'>=</span> <span class='st'>'PONDERA'</span>, <span class='kw'>add.percentage</span> <span class='kw'>=</span><span class='st'>'row'</span>)</div><div class='output co'>#&gt;  REGION/CH04     1     2
 #&gt;            1 51.0% 49.0%
 #&gt;           40 45.6% 54.4%
 #&gt;           41 53.4% 46.6%

@@ -87,7 +87,7 @@
                         <h4 class="author">Guido Weksler</h4>
                         <h4 class="author">Natsumi Shokida</h4>
             
-            <h4 class="date">2020-05-13</h4>
+            <h4 class="date">2020-05-24</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/holatam/eph/blob/master/vignettes/eph.Rmd"><code>vignettes/eph.Rmd</code></a></small>
       <div class="hidden name"><code>eph.Rmd</code></div>
@@ -280,11 +280,11 @@
 <span class="co">#&gt; # A tibble: 5 x 7</span>
 <span class="co">#&gt;    year trimester wave  type       PONDERA ESTADO CAT_OCUP</span>
 <span class="co">#&gt;   &lt;int&gt;     &lt;int&gt; &lt;lgl&gt; &lt;fct&gt;        &lt;int&gt;  &lt;int&gt;    &lt;int&gt;</span>
-<span class="co">#&gt; 1  2018         2 NA    individual     516      1        3</span>
-<span class="co">#&gt; 2  2017         2 NA    individual     136      1        3</span>
-<span class="co">#&gt; 3  2018         2 NA    individual     113      3        0</span>
-<span class="co">#&gt; 4  2017         1 NA    individual     161      1        3</span>
-<span class="co">#&gt; 5  2017         1 NA    individual     188      3        0</span></pre></body></html></div>
+<span class="co">#&gt; 1  2017         2 NA    individual     339      1        3</span>
+<span class="co">#&gt; 2  2018         1 NA    individual     110      1        2</span>
+<span class="co">#&gt; 3  2017         2 NA    individual     602      4        0</span>
+<span class="co">#&gt; 4  2018         2 NA    individual    2698      2        2</span>
+<span class="co">#&gt; 5  2018         1 NA    individual    1867      1        3</span></pre></body></html></div>
 <p>Con estos datos podemos crear por ejemplo la serie de asalarización</p>
 <p><span class="math inline">\(SO_{t} = \frac{\sum_{i=1}^n w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}\)</span></p>
 <div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="no">df</span> <span class="kw">&lt;-</span> <span class="no">df</span> <span class="kw">%&gt;%</span>
@@ -362,16 +362,16 @@
 <span class="co">#&gt; # A tibble: 10 x 7</span>
 <span class="co">#&gt;    CODUSU                 ITF region  adequi_hogar CBA_hogar CBT_hogar situacion</span>
 <span class="co">#&gt;    &lt;fct&gt;                &lt;int&gt; &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;    </span>
-<span class="co">#&gt;  1 TQRMNOPYQHKLLOCDEGG… 28000 Cuyo            0.77     1162.     2982. no_pobre </span>
-<span class="co">#&gt;  2 TQRMNOQUUHKOKUCDEIH… 30000 Patago…         1        1813.     4963. no_pobre </span>
-<span class="co">#&gt;  3 TQRMNOPYPHLLKRCDEOJ…     0 Patago…         0.83     1505.     4119. NA       </span>
-<span class="co">#&gt;  4 TQRMNORRRHMMLLCDEGG… 15100 Cuyo            1.52     2387.     6126. no_pobre </span>
-<span class="co">#&gt;  5 TQRMNOPRUHLOLNCDEFN…  2854 Noreste         0.76     1150.     2595. no_pobre </span>
-<span class="co">#&gt;  6 TQRMNOQSXHKKLPCDEGG… 45000 Cuyo            0.67     1052.     2700. no_pobre </span>
-<span class="co">#&gt;  7 TQRMNOPQWHMMKRCDEGG… 14700 Cuyo            1.02     1539.     3950. no_pobre </span>
-<span class="co">#&gt;  8 TQRMNOPQPHMOMMCDEIK…  3200 Pampea…         0.76     1327.     3199. no_pobre </span>
-<span class="co">#&gt;  9 TQRMNOPTQHKOKRCDEGK… 41000 Pampea…         1.43     2397.     5768. no_pobre </span>
-<span class="co">#&gt; 10 TQRMNOSVUHJOLUCDEFK…     0 Pampea…         1.54     2689.     6482. NA</span></pre></body></html></div>
+<span class="co">#&gt;  1 TQRMNOQWYHMONMCDEIJ…     0 GBA             1        1684.     4053. NA       </span>
+<span class="co">#&gt;  2 TQRMNOTPUHKOMMCDEGJ…     0 Pampea…         0.76     1327.     3199. NA       </span>
+<span class="co">#&gt;  3 TQRMNOPVTHJMKUCDEHJ… 36000 Noroes…         1.43     2105.     4708. no_pobre </span>
+<span class="co">#&gt;  4 TQRMNOPSWHJLQRCDEIJ… 18000 GBA             0.76     1280.     3080. no_pobre </span>
+<span class="co">#&gt;  5 TQRMNORPUHJMLQCDEFK… 21000 Pampea…         0.96     1609.     3872. no_pobre </span>
+<span class="co">#&gt;  6 TQRMNOSVXHJOPTCDEIJ…     0 GBA             0.66     1112.     2675. NA       </span>
+<span class="co">#&gt;  7 TQRMNORTSHJOKOCDEGP… 39400 Noroes…         0.76     1119.     2502. no_pobre </span>
+<span class="co">#&gt;  8 TQRMNORWTHKLLMCDEIK… 92200 Pampea…         0.76     1274.     3066. no_pobre </span>
+<span class="co">#&gt;  9 TQRMNOQTPHJNKOCDEHJ… 20300 Noroes…         0.35      515.     1152. no_pobre </span>
+<span class="co">#&gt; 10 TQRMNOPWPHJMOSCDEIJ… 10100 GBA             1.02     1791.     4317. no_pobre</span></pre></body></html></div>
 </div>
 </div>
 <div class="footnotes">

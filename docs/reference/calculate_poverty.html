@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Calculo de Pobreza e Indigencia — calculate_poverty" />
-<meta property="og:description" content="Función para calcular la pobreza e indigencia siguiendo la metodología de línea." />
+<meta property="og:description" content="Funcion para calcular la pobreza e indigencia siguiendo la metodologia de linea." />
 
 
 
@@ -130,7 +130,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Función para calcular la pobreza e indigencia siguiendo la metodología de línea.</p>
+    <p>Funcion para calcular la pobreza e indigencia siguiendo la metodologia de linea.</p>
     </div>
 
     <pre class="usage"><span class='fu'>calculate_poverty</span>(<span class='no'>base</span>, <span class='no'>basket</span>, <span class='kw'>print_summary</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
@@ -140,18 +140,11 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>base</th>
-      <td><p>Base individual de uno o más períodos</p></td>
+      <td><p>Base individual de uno o mas periodos</p></td>
     </tr>
     <tr>
       <th>basket</th>
-      <td><p>basket basica alimentaria y total, con la siguiente estructura:
-# A tibble: N x 5
-  region    periodo   CBA   CBT codigo
-  &lt;chr&gt;     &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-1 Cuyo      2016.3  1509. 3872.     42
-2 Cuyo      2016.4  1570. 4030.     42
-3 GBA       2016.3  1684. 4053.      1
-. ...      .....   .....   ....    ...</p></td>
+      <td><p>canasta basica alimentaria y total, con la estructura de la canasta de ejemplo (ver <code><a href='canastas_reg_example.html'>canastas_reg_example</a></code>)</p></td>
     </tr>
     <tr>
       <th>print_summary</th>
@@ -161,13 +154,16 @@
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>#'disclaimer: El script no es un producto oficial de INDEC.</p>
+    <p>disclaimer: El script no es un producto oficial de INDEC.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='co'>#'</span>
-<span class='no'>bases</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_rows</a></span>(<span class='no'>toybase_individual_2016_03</span>,<span class='no'>toybase_individual_2016_04</span>)
-<span class='no'>base_pobreza</span> <span class='kw'>&lt;-</span> <span class='fu'>calculate_poverty</span>(<span class='kw'>base</span> <span class='kw'>=</span> <span class='no'>bases</span>, <span class='kw'>basket</span> <span class='kw'>=</span> <span class='no'>canastas_reg_example</span>,<span class='kw'>print_summary</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2 x 4</span><span>
+<span class='no'>bases</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_rows</a></span>(<span class='no'>toybase_individual_2016_03</span>,
+                          <span class='no'>toybase_individual_2016_04</span>)
+
+<span class='no'>base_pobreza</span> <span class='kw'>&lt;-</span> <span class='fu'>calculate_poverty</span>(<span class='kw'>base</span> <span class='kw'>=</span> <span class='no'>bases</span>,
+                                  <span class='kw'>basket</span> <span class='kw'>=</span> <span class='no'>canastas_reg_example</span>,
+                                  <span class='kw'>print_summary</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2 x 4</span><span>
 #&gt; </span><span style='color: #555555;'># Groups:   ANO4 [1]</span><span>
 #&gt;    ANO4 TRIMESTRE Tasa_pobreza Tasa_indigencia
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>

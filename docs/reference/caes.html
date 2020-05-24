@@ -41,8 +41,11 @@
 
 <meta property="og:title" content="caes — caes" />
 <meta property="og:description" content="Base con codigos y etiquetas del Clasificador de actividades economicas para encuestas sociodemograficas.
-             CAES Mercosur 1.0 - Actualización 2018.
-             Basado en https://www.indec.gob.ar/ftp/cuadros/menusuperior/clasificadores/notas_explicativas_caes_v2018.pdf" />
+             CAES Mercosur 1.0 - Actualizacion 2018.
+             Basado en https://bit.ly/notas-explicativas-CAES-v2018 y
+             https://www.indec.gob.ar/ftp/cuadros/menusuperior/clasificadores/caes_v2018.xls,
+             obtenidos de
+             https://www.indec.gob.ar/indec/web/Institucional-Indec-Clasificadores" />
 
 
 
@@ -133,8 +136,11 @@
 
     <div class="ref-description">
     <p>Base con codigos y etiquetas del Clasificador de actividades economicas para encuestas sociodemograficas.
-             CAES Mercosur 1.0 - Actualización 2018.
-             Basado en https://www.indec.gob.ar/ftp/cuadros/menusuperior/clasificadores/notas_explicativas_caes_v2018.pdf</p>
+             CAES Mercosur 1.0 - Actualizacion 2018.
+             Basado en https://bit.ly/notas-explicativas-CAES-v2018 y
+             https://www.indec.gob.ar/ftp/cuadros/menusuperior/clasificadores/caes_v2018.xls,
+             obtenidos de
+             https://www.indec.gob.ar/indec/web/Institucional-Indec-Clasificadores</p>
     </div>
 
     <pre class="usage"><span class='no'>caes</span></pre>
@@ -143,14 +149,15 @@
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <p>A data frame with 140 rows and 8 variables:</p><dl'>
-  <dt><code>PP04B_COD</code></dt><dd><p>character Codigo clase CAES. 4 digitos (nivel 3) Variable que aparece en microdatos EPH</p></dd>
-  <dt><code>PP04B_label</code></dt><dd><p>character Etiqueta clase CAES</p></dd>
-  <dt><code>caes_seccion_cod</code></dt><dd><p>character Codigo seccion CAES. 2 digitos (nivel 2)</p></dd>
-  <dt><code>caes_seccion_label</code></dt><dd><p>character Etiqueta seccion CAES</p></dd>
-  <dt><code>caes_division_cod</code></dt><dd><p>character Codigo division CAES. Letra (nivel 1)</p></dd>
-  <dt><code>caes_division_label</code></dt><dd><p>character Etiqueta division CAES</p></dd>
-  <dt><code>caes_eph_cod</code></dt><dd><p>character Codigo reagrupamiento de CAES utilizado por EPH. Nivel 1</p></dd>
-  <dt><code>caes_eph_label</code></dt><dd><p>factor Etiqueta reagrupamiento de CAES utilizado por EPH. Nivel 1</p></dd>
+  <dt>caes_version</dt><dd><p>(character) Version del CAES utilizada</p></dd>
+  <dt>PP04B_COD</dt><dd><p>(character) Codigo clase CAES. 4 digitos (nivel 3) Variable que aparece en microdatos EPH</p></dd>
+  <dt>PP04B_label</dt><dd><p>(character) Etiqueta clase CAES</p></dd>
+  <dt>caes_seccion_cod</dt><dd><p>(character) Codigo seccion CAES. 2 digitos (nivel 2)</p></dd>
+  <dt>caes_seccion_label</dt><dd><p>(character) Etiqueta seccion CAES</p></dd>
+  <dt>caes_division_cod</dt><dd><p>(character) Codigo division CAES. Letra (nivel 1)</p></dd>
+  <dt>caes_division_label</dt><dd><p>(character) Etiqueta division CAES</p></dd>
+  <dt>caes_eph_cod</dt><dd><p>(character) Codigo reagrupamiento de CAES utilizado por EPH (nivel 1)</p></dd>
+  <dt>caes_eph_label</dt><dd><p>(factor) Etiqueta reagrupamiento de CAES utilizado por EPH (nivel 1)</p></dd>
 
 </dl>
 
