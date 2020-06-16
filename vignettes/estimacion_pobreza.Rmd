@@ -1,0 +1,43 @@
+---
+title: "estimacion_pobreza"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{estimacion_pobreza}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(eph)
+library(tidyverse)
+```
+
+```{r}
+canastas_regionales <- get_poverty_lines(regional = TRUE)
+
+bases <- get_microdata(year = 2016:2019, 
+                       trimester = 1:4,
+                       type =  'individual',
+                       vars = c("ANO4", "TRIMESTRE", "REGION", "CODUSU", "NRO_HOGAR", "CH04", "CH06", "ITF", "PONDIH"))
+```
+
+```{r}
+bases <- bases %>% unnest(cols = c(microdata))
+bases
+```
+
+```{r}
+bases_pobreza <- calculate_poverty(bases, canastas_regionales)
+```
+
+```{r}
+bases_pobreza
+```
+
