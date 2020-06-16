@@ -4,19 +4,21 @@
 \alias{get_poverty_lines}
 \title{Descarga de canasta basica alimentaria y canasta basica total}
 \usage{
-get_poverty_lines()
+get_poverty_lines(regional = FALSE)
+}
+\arguments{
+\item{regional}{booleano, default = FALSE. Si es TRUE, descarga los datos de canastas regionales
+que se utilizan para el calculo de pobreza. Si es FALSE, descarga la serie de GBA
+provista por indec en https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149}
 }
 \description{
 Funcion que descarga la CBA y CBT a partir de abril 2016
 }
 \details{
 Disclaimer: El script no es un producto oficial de INDEC.
-
-La funcion descarga la serie provista por indec en
-https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149
 }
 \examples{
 
-canasta <- get_poverty_lines()
+canasta <- get_poverty_lines(regional = TRUE)
 
 }
