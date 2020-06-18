@@ -11,7 +11,7 @@ calculate_poverty(base, basket, print_summary = TRUE)
 
 \item{basket}{canasta basica alimentaria y total, con la estructura de la canasta de ejemplo (ver \code{\link{canastas_reg_example}})}
 
-\item{print_summary}{TRUE/FALSE, opcion para imprimir las tasas de pobreza e indigencia}
+\item{print_summary}{default = TRUE. Opcion para imprimir las tasas de pobreza e indigencia (proporcion de individuos)}
 }
 \description{
 Funcion para calcular la pobreza e indigencia siguiendo la metodologia de linea.
