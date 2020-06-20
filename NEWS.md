@@ -1,3 +1,9 @@
+# eph 0.4.0
+
+* add option destfile to get_microdata
+* add vignettes on poverty calculations
+* add option to get_poverty_lines to download regional baskets
+
 # eph 0.3.1
 
 * rename organize_ocupations --> organize_cno for consistency

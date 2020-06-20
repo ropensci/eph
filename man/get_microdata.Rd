@@ -9,7 +9,8 @@ get_microdata(
   trimester = NA,
   wave = NA,
   type = "individual",
-  vars = "all"
+  vars = "all",
+  destfile = NA
 )
 }
 \arguments{
@@ -22,6 +23,9 @@ get_microdata(
 \item{type}{un character o vector de characters con el tipo de base a descargar: 'individual'; 'hogar', default individual}
 
 \item{vars}{un vector de characters. variables a seleccionar. Default='all' trae todas las variables}
+
+\item{destfile}{un string con el patha un archivo .RDS. Si se ingresa un path a un archivo que no existe, se descarga
+el archivo y se graba en esa direccion. Si existe un archivo en ese path, se lee el archivo.}
 }
 \value{
 En caso de una unica base devuevle un dataframe.
@@ -56,4 +60,6 @@ base_2018 <- base_individual \%>\%
 bases_bind <- base_individual \%>\%
  dplyr::select(microdata) \%>\%
  tidyr::unnest(cols = c(microdata))
+
+get_microdata(2018,1,vars = 'CH04', destfile = '~/Desktop/test.rds')
 }
