@@ -61,5 +61,4 @@ bases_bind <- base_individual \%>\%
  dplyr::select(microdata) \%>\%
  tidyr::unnest(cols = c(microdata))
 
-get_microdata(2018,1,vars = 'CH04', destfile = '~/Desktop/test.rds')
 }
