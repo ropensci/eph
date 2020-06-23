@@ -24,7 +24,7 @@ get_microdata(
 
 \item{vars}{un vector de characters. variables a seleccionar. Default='all' trae todas las variables}
 
-\item{destfile}{un string con el patha un archivo .RDS. Si se ingresa un path a un archivo que no existe, se descarga
+\item{destfile}{un string con la direccion de un archivo .RDS. Si se ingresa un path a un archivo que no existe, se descarga
 el archivo y se graba en esa direccion. Si existe un archivo en ese path, se lee el archivo.}
 }
 \value{
