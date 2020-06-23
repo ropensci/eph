@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eph</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -101,7 +101,10 @@
 
     
     
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">eph</span>)
+<p>En esta vignette mostraremos como utilizar las funciones <code><a href="../reference/get_poverty_lines.html">get_poverty_lines()</a></code> y <code><a href="../reference/calculate_poverty.html">calculate_poverty()</a></code> para calcular la pobreza aproximando la <a href="http://www.indec.gob.ar/ftp/cuadros/sociedad/EPH_metodologia_22_pobreza.pdf">metodología oficial</a> de INDEC.</p>
+<p>Primero cargamos el paquete <code>eph</code> junto con otros paquetes que serán de utilidad</p>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="kw pkg">knitr</span><span class="kw ns">::</span><span class="no"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html">opts_chunk</a></span>$<span class="fu">set</span>(<span class="kw">warning</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">message</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">eph</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyverse</span>)
 <span class="co">#&gt; ── Attaching packages ─────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</span>
 <span class="co">#&gt; ✓ ggplot2 3.3.0           ✓ purrr   0.3.4      </span>
@@ -117,14 +120,23 @@
 <span class="co">#&gt; The following objects are masked from 'package:base':</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     date, intersect, setdiff, union</span></pre></body></html></div>
+<p>Luego descargamos los datos que utilizaremos. Para ello, debemos tener en cuenta que la metodología de pobreza de (INDEC, 2016) utiliza canastas basicas alimentarias (CBA) y totales (CBT) regionales, que INDEC publica dentro de los comunicados de pobreza. Para dejarlo claro, la función <code><a href="../reference/get_poverty_lines.html">get_poverty_lines()</a></code> permite descargar las dos series de CBA-CBT.</p>
+<ol style="list-style-type: decimal">
+<li>La CBA-CBT del Gran Buenos Aires, que INDEC <a href="https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149">publica mensualmente</a>
+</li>
+<li>Las canastas regionales, que se publican en los informes semestrales de pobreza. Estas canastas tienen una composición diferente siguiendo los hábitos de consumo de cada lugar, pero <em>se calculan con precios de GBA y se multiplican por los coeficientes de <a href="https://www.indec.gob.ar/ftp/indecinforma/nuevaWEB/cuadros/10/PPCC_2001_Regiones_Dos_digitos.pdf">Paridad de Poder de Compra (PPCC)</a>)</em><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</li>
+</ol>
+<p>El parametro <code>regionales</code> de la función <code><a href="../reference/get_poverty_lines.html">get_poverty_lines()</a></code> define cual de las dos canastas se descarga.</p>
+<p>Además, con la función <code><a href="../reference/get_microdata.html">get_microdata()</a></code> descargamos las bases de todos los trimestres entre 2016 y 2019. Dado que son muchas bases y no utilizaremos todas las variables, utilizamos el parametro <code>vars</code> para hacer un pre filtro de la base y no sobrecargar la memoria. A su vez, dado que la descarga y filtrado de las bases consume mucho tiempo, utilizamos el parámetro <code>destfile</code> para guardar la descarga en un archivo, y que la próxima vez que se ejecute la función cargue este archivo, de forma mucho más rápida (en la computadora donde se construyó la vignette, la primera corrida tarda 100 seg y las siguientes 0.5 seg!)</p>
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">canastas_regionales</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_poverty_lines.html">get_poverty_lines</a></span>(<span class="kw">regional</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
 <span class="no">bases</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_microdata.html">get_microdata</a></span>(<span class="kw">year</span> <span class="kw">=</span> <span class="fl">2016</span>:<span class="fl">2019</span>,
                        <span class="kw">trimester</span> <span class="kw">=</span> <span class="fl">1</span>:<span class="fl">4</span>,
                        <span class="kw">type</span> <span class="kw">=</span>  <span class="st">'individual'</span>,
                        <span class="kw">vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"ANO4"</span>, <span class="st">"TRIMESTRE"</span>, <span class="st">"REGION"</span>, <span class="st">"CODUSU"</span>, <span class="st">"NRO_HOGAR"</span>, <span class="st">"CH04"</span>, <span class="st">"CH06"</span>, <span class="st">"ITF"</span>, <span class="st">"PONDIH"</span>, <span class="st">"PP07H"</span>,<span class="st">"PP04D_COD"</span>),
-                       <span class="kw">destfile</span> <span class="kw">=</span> <span class="st">'~/Desktop/bases_eph.rds'</span>)</pre></body></html></div>
+                       <span class="kw">destfile</span> <span class="kw">=</span> <span class="st">'bases_eph.rds'</span>)</pre></body></html></div>
+<p>Con la función <code>unnest()</code> agrupamos todas las bases, y con <code><a href="../reference/calculate_poverty.html">calculate_poverty()</a></code> y los datos que descargamos calculamos la pobreza. El parámetro <code>print_summary=TRUE</code> le indica a la función que deseamos imprimir un cuadro de las tasas de pobreza e indigencia por período. Sin embargo, en la tabla <code>bases_pobreza</code> contamos ahora con la variable <code>situación</code> que indica si el hogar es <code>pobre</code>, <code>indigente</code> o <code>no_pobre</code>. Si la variable es <code>NA</code> es porque al menos un miembro del hogar no declaró el ingreso (y por lo tanto no se sabe el Ingreso Total Familiar).</p>
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">bases</span> <span class="kw">&lt;-</span> <span class="no">bases</span> <span class="kw">%&gt;%</span> <span class="fu">unnest</span>(<span class="kw">cols</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">microdata</span>))
-<span class="no">bases_pobreza</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/calculate_poverty.html">calculate_poverty</a></span>(<span class="no">bases</span>, <span class="no">canastas_regionales</span>)
+<span class="no">bases_pobreza</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/calculate_poverty.html">calculate_poverty</a></span>(<span class="no">bases</span>, <span class="no">canastas_regionales</span>, <span class="kw">print_summary</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
 <span class="co">#&gt; # A tibble: 15 x 4</span>
 <span class="co">#&gt; # Groups:   ANO4 [4]</span>
 <span class="co">#&gt;     ANO4 TRIMESTRE Tasa_pobreza Tasa_indigencia</span>
@@ -164,14 +176,8 @@
 <div id="comparación-con-los-resultados-oficiales-" class="section level2">
 <h2 class="hasAnchor">
 <a href="#comparaci%C3%B3n-con-los-resultados-oficiales-" class="anchor"></a>Comparación con los resultados oficiales.</h2>
+<p>Descargamos las tasas de pobreza e indigencia oficiales que guardamos en nuestro repositorio <a href="https://raw.githubusercontent.com/holatam/data/master/eph/canasta/pobreza_oficial.csv">holatam/data</a>.</p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">pobreza_oficial</span> <span class="kw">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/holatam/data/master/eph/canasta/pobreza_oficial.csv'</span>)
-<span class="co">#&gt; Parsed with column specification:</span>
-<span class="co">#&gt; cols(</span>
-<span class="co">#&gt;   ANO4 = col_double(),</span>
-<span class="co">#&gt;   SEMESTRE = col_double(),</span>
-<span class="co">#&gt;   tasa_pobreza = col_double(),</span>
-<span class="co">#&gt;   tasa_indigencia = col_double()</span>
-<span class="co">#&gt; )</span>
 <span class="no">pobreza_oficial</span> <span class="kw">&lt;-</span> <span class="no">pobreza_oficial</span> <span class="kw">%&gt;%</span>
   <span class="fu">mutate</span>(<span class="kw">periodo</span> <span class="kw">=</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/parse_date_time.html">parse_date_time</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="no">ANO4</span>,<span class="st">'-'</span>,<span class="no">SEMESTRE</span>*<span class="fl">2</span>), <span class="st">'Y.q'</span>)) <span class="kw">%&gt;%</span>
   <span class="fu">select</span>(<span class="no">periodo</span>,<span class="kw">pobreza_oficial</span><span class="kw">=</span><span class="no">tasa_pobreza</span>, <span class="kw">indigencia_oficial</span> <span class="kw">=</span> <span class="no">tasa_indigencia</span>)
@@ -186,6 +192,7 @@
 <span class="co">#&gt; 5 2018-10-01 00:00:00           0.32               0.067</span>
 <span class="co">#&gt; 6 2019-04-01 00:00:00           0.354              0.077</span>
 <span class="co">#&gt; 7 2019-10-01 00:00:00           0.355              0.08</span></pre></body></html></div>
+<p>Reutilizamos el código dentro de la función <code><a href="../reference/calculate_poverty.html">calculate_poverty()</a></code> que calcula las tasas de pobreza e indigencia para comparar los resultados. Nótese que no es un promedio simple, sino un promedio ponderado por la variable <code>PONDIH</code>.</p>
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">Pobreza_resumen</span> <span class="kw">&lt;-</span> <span class="no">bases_pobreza</span> <span class="kw">%&gt;%</span>
   <span class="fu">group_by</span>(<span class="no">ANO4</span>,<span class="no">TRIMESTRE</span>) <span class="kw">%&gt;%</span>
   <span class="fu">summarise</span>(<span class="kw">Tasa_pobreza</span>    <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDIH</span>[<span class="no">situacion</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'pobre'</span>, <span class="st">'indigente'</span>)],<span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>)/<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDIH</span>,<span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
@@ -197,6 +204,12 @@
 <span class="no">Pobreza_resumen</span> <span class="kw">&lt;-</span> <span class="no">Pobreza_resumen</span> <span class="kw">%&gt;%</span>
   <span class="fu">left_join</span>(<span class="no">pobreza_oficial</span>,<span class="kw">by</span> <span class="kw">=</span> <span class="st">"periodo"</span>) <span class="kw">%&gt;%</span>
   <span class="fu">pivot_longer</span>(<span class="kw">cols</span> <span class="kw">=</span> <span class="no">pobreza_estimada</span>:<span class="no">indigencia_oficial</span>, <span class="kw">names_to</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'tipo'</span>,<span class="st">'grupo'</span>), <span class="kw">values_to</span> <span class="kw">=</span> <span class="st">'valor'</span>, <span class="kw">names_sep</span> <span class="kw">=</span> <span class="st">'_'</span>,<span class="kw">values_drop_na</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
+<p>A continuación mostramos un gráfico que compara los resultados:</p>
+<ul>
+<li>como segmentos colorados, nuestro cálculo trimestral de la pobreza</li>
+<li>la pobreza oficial se calcula a nivel semestral, y se representa como un punto en el medio del semestre correspondiente.</li>
+</ul>
+<p>Se puede ver que la pobreza oficial se ubica en todos los períodos como un punto entre los dos trimestres que la componen (es decir los segmentos a su izquierda y derecha).</p>
 <div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">Pobreza_resumen</span> <span class="kw">&lt;-</span> <span class="no">Pobreza_resumen</span> <span class="kw">%&gt;%</span>
   <span class="fu">group_by</span>(<span class="no">tipo</span>, <span class="no">grupo</span>) <span class="kw">%&gt;%</span>
   <span class="fu">mutate</span>(<span class="kw">x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span>(<span class="no">periodo</span>),
@@ -209,9 +222,10 @@
   <span class="fu">geom_point</span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">Pobreza_resumen</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="no">grupo</span><span class="kw">==</span><span class="st">'oficial'</span>), <span class="kw">size</span><span class="kw">=</span> <span class="fl">3</span>)+
   <span class="fu">facet_wrap</span>(<span class="no">tipo</span>~<span class="no">.</span>, <span class="kw">scales</span> <span class="kw">=</span> <span class="st">'free'</span>)+
   <span class="fu">theme_minimal</span>()+
-  <span class="fu">theme</span>(<span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">'bottom'</span>)
-<span class="co">#&gt; Warning: Removed 2 rows containing missing values (geom_segment).</span></pre></body></html></div>
-<p><img src="estimacion_pobreza_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
+  <span class="fu">theme</span>(<span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">'bottom'</span>)</pre></body></html></div>
+<p><img src="estimacion_pobreza_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
+<p>Dado que la estimación que realizamos con las bases trimestrales es consistente con los resultados oficiales, podemos aprovechar que contamos con la identificación de la condición de los individuos, para realizar otro tipo de estimaciones.</p>
+<p>Por ejemplo, podemos utilizar la variable <code>PP04D_COD</code> con el código de ocupación, y la función <code><a href="../reference/organize_cno.html">organize_cno()</a></code> para extraer la calificación del puesto. Luego, podemos estudiar las tasas de pobreza e indigencia según la calificación del trabajo. De esta forma, vemos que tanto pobreza como indigencia son más altas entre los trabajadores no calificados, siguiendo los operativos, los técnicos y finalmente los trabajadores profesionales, con tasas más bajas.</p>
 <div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">pobreza_calificacion</span> <span class="kw">&lt;-</span> <span class="no">bases_pobreza</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(!<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">situacion</span>), !<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">PP04D_COD</span>))<span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/organize_cno.html">organize_cno</a></span>(<span class="no">.</span>) <span class="kw">%&gt;%</span>
@@ -230,10 +244,10 @@
   <span class="fu">facet_wrap</span>(<span class="no">.</span>~<span class="no">CALIFICACION</span>)+
   <span class="fu">theme_minimal</span>()+
   <span class="fu">theme</span>(<span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">'bottom'</span>)</pre></body></html></div>
-<p><img src="estimacion_pobreza_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
+<p><img src="estimacion_pobreza_files/figure-html/unnamed-chunk-7-1.png" width="672"></p>
+<p>A su vez, podemos analizar la relación entre la pobreza y la precariedad laboral. Utilizando la variable <code>PP07H</code>, que indica si se perciben descuentos jubilatorios o no (un proxy común para la precariedad laboral), podemos comparar la incidencia de la pobreza y la indigencia entre trabajadores precarios y formales. Como puede verse en el siguiente gráfico, las diferencias son significativas en ambos indicadores.</p>
 <div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">pobreza_informalidad</span> <span class="kw">&lt;-</span> <span class="no">bases_pobreza</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(!<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">situacion</span>), <span class="no">PP07H</span> <span class="kw">%in%</span> <span class="fl">1</span>:<span class="fl">2</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/organize_cno.html">organize_cno</a></span>(<span class="no">.</span>) <span class="kw">%&gt;%</span>
   <span class="fu">group_by</span>(<span class="no">year</span>,<span class="no">trimester</span>,<span class="no">PP07H</span>) <span class="kw">%&gt;%</span>
   <span class="fu">summarise</span>(<span class="kw">pobreza</span>    <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDIH</span>[<span class="no">situacion</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'pobre'</span>, <span class="st">'indigente'</span>)],<span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>)/<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDIH</span>,<span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
             <span class="kw">indigencia</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDIH</span>[<span class="no">situacion</span> <span class="kw">==</span> <span class="st">'indigente'</span>],<span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>)/<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDIH</span>,<span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
@@ -242,28 +256,27 @@
 
 <span class="no">pobreza_informalidad</span> <span class="kw">%&gt;%</span>
     <span class="fu">mutate</span>(<span class="kw">periodo</span> <span class="kw">=</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/parse_date_time.html">parse_date_time</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="no">year</span>,<span class="st">'-'</span>,<span class="no">trimester</span>), <span class="st">'Y.q'</span>),
-           <span class="kw">descuento_jubilatorio</span> <span class="kw">=</span> <span class="fu">case_when</span>(<span class="no">PP07H</span><span class="kw">==</span><span class="fl">1</span> ~ <span class="st">"No"</span>,
-                                             <span class="fl">TRUE</span> ~ <span class="st">"Si"</span>)) <span class="kw">%&gt;%</span>
+           <span class="kw">descuento_jubilatorio</span> <span class="kw">=</span> <span class="fu">case_when</span>(<span class="no">PP07H</span><span class="kw">==</span><span class="fl">1</span> ~ <span class="st">"Si"</span>,
+                                             <span class="fl">TRUE</span> ~ <span class="st">"No"</span>)) <span class="kw">%&gt;%</span>
   <span class="fu">pivot_longer</span>(<span class="kw">cols</span> <span class="kw">=</span> <span class="no">pobreza</span>:<span class="no">indigencia</span>, <span class="kw">names_to</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'tipo'</span>), <span class="kw">values_to</span> <span class="kw">=</span> <span class="st">'tasa'</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="no">periodo</span>,<span class="no">tasa</span>, <span class="kw">fill</span><span class="kw">=</span><span class="no">descuento_jubilatorio</span>))+
-  <span class="fu">geom_col</span>(<span class="kw">position</span> <span class="kw">=</span> <span class="fu">position_dodge</span>())+
-  <span class="fu">facet_wrap</span>(<span class="no">tipo</span>~<span class="no">.</span>, <span class="kw">scales</span> <span class="kw">=</span> <span class="st">'free'</span>)+
+  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="no">periodo</span>,<span class="no">tasa</span>, <span class="kw">color</span><span class="kw">=</span><span class="no">descuento_jubilatorio</span>))+
+  <span class="co">#geom_col(position = position_dodge())+</span>
+  <span class="fu">geom_point</span>(<span class="kw">size</span><span class="kw">=</span><span class="fl">2</span>)+
+  <span class="fu">geom_smooth</span>()+
+  <span class="fu">facet_wrap</span>(<span class="no">tipo</span>~<span class="no">.</span>, <span class="kw">scales</span> <span class="kw">=</span> <span class="st">'free'</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">1</span>)+
   <span class="fu">theme_minimal</span>()+
-  <span class="fu">theme</span>(<span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">'bottom'</span>)</pre></body></html></div>
-<p><img src="estimacion_pobreza_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
+  <span class="fu">theme</span>(<span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">'bottom'</span>,
+        <span class="kw">text</span> <span class="kw">=</span> <span class="fu">element_text</span>(<span class="kw">size</span> <span class="kw">=</span> <span class="fl">14</span>))</pre></body></html></div>
+<p><img src="estimacion_pobreza_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
 </div>
-<div id="canastas-regionales" class="section level1">
+<div id="comparación-de-canastas" class="section level1">
 <h1 class="hasAnchor">
-<a href="#canastas-regionales" class="anchor"></a>Canastas regionales</h1>
-<p>Construcción de las canastas regionales:</p>
-<ul>
-<li>Cada región tiene una definición de canasta, siguiendo los hábitos de consumo particulares.</li>
-<li>Cada canasta se valoriza con los precios de GBA, y se multiplica luego por Paridades de Poder de Compra del Consumidor (PPCC)<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>
-</li>
-</ul>
+<a href="#comparaci%C3%B3n-de-canastas" class="anchor"></a>Comparación de canastas</h1>
+<p>Como se mencionó más arriba, las canastas utilizadas para calular la pobreza tienen una definición regional, pero se valorizan con precios de GBA. A continuación, se realiza una pequeña comparación de las mismas.</p>
 <div id="canasta-básica-alimentaria" class="section level2">
 <h2 class="hasAnchor">
 <a href="#canasta-b%C3%A1sica-alimentaria" class="anchor"></a>Canasta Básica Alimentaria</h2>
+<p>Primero calculamos el cociente de las canastas de las regiones respecto a la de GBA.</p>
 <div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">relativos_cba</span> <span class="kw">&lt;-</span> <span class="no">canastas_regionales</span> <span class="kw">%&gt;%</span>
   <span class="fu">select</span>(-<span class="no">CBT</span>, -<span class="no">codigo</span>) <span class="kw">%&gt;%</span>
   <span class="fu">pivot_wider</span>(<span class="kw">names_from</span> <span class="kw">=</span> <span class="no">region</span>,<span class="kw">values_from</span> <span class="kw">=</span> <span class="no">CBA</span>) <span class="kw">%&gt;%</span>
@@ -291,8 +304,13 @@
 <span class="co">#&gt; 15 2019-04-01 00:00:00 0.886     1   0.885    0.866    0.986      1.02</span>
 <span class="co">#&gt; 16 2019-07-01 00:00:00 0.889     1   0.894    0.871    0.988      1.04</span>
 <span class="co">#&gt; 17 2019-10-01 00:00:00 0.893     1   0.898    0.874    0.992      1.04</span></pre></body></html></div>
-<p>El PPCC se encuentra en:</p>
-<p><a href="https://www.indec.gob.ar/ftp/indecinforma/nuevaWEB/cuadros/10/PPCC_2001_Regiones_Dos_digitos.pdf" class="uri">https://www.indec.gob.ar/ftp/indecinforma/nuevaWEB/cuadros/10/PPCC_2001_Regiones_Dos_digitos.pdf</a></p>
+<p>Como se dijo, luego de valorizarse con precios de GBA, se multiplican por el PPCC. A contiuación mostramos la evolución de las canastas según</p>
+<ul>
+<li>PPCC (es un único valor por región calculado en 2001)</li>
+<li>efecto total (las canastas que se publican en el informe de pobreza)</li>
+<li>efecto composición (efecto total dividido por el PPCC, para anular el efecto del mismo, y estudiar exclusivamente la diferencia por definición de las canastas)</li>
+</ul>
+<p>Se puede observar que si bien todas las canastas tienen por composición un mayor valor que la canasta de GBA, al multiplicarlas por el PPPC tan sólo la región Patagónica conserva una canasta con mayor valor.</p>
 <div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">ppcc</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(
 <span class="kw">region</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'Cuyo'</span>,<span class="st">'GBA'</span>,<span class="st">'Noreste'</span>,<span class="st">'Noroeste'</span>,<span class="st">'Pampeana'</span>,<span class="st">'Patagonia'</span>),
 <span class="kw">ppcc</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">.872</span>,<span class="fl">1</span>,<span class="fl">.886</span>,<span class="fl">.865</span>,<span class="fl">.904</span>,<span class="fl">.949</span>)
@@ -310,7 +328,7 @@
   <span class="fu">facet_wrap</span>(<span class="no">.</span>~<span class="no">grupo</span>)+
   <span class="fu">theme_minimal</span>()+
   <span class="fu">theme</span>(<span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">'bottom'</span>)</pre></body></html></div>
-<p><img src="estimacion_pobreza_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
+<p><img src="estimacion_pobreza_files/figure-html/unnamed-chunk-10-1.png" width="672"></p>
 </div>
 <div id="canasta-básica-total" class="section level2">
 <h2 class="hasAnchor">
@@ -342,6 +360,7 @@
 <span class="co">#&gt; 15 2019-04-01 00:00:00 0.945     1   0.830    0.804    0.986      1.16</span>
 <span class="co">#&gt; 16 2019-07-01 00:00:00 0.946     1   0.837    0.808    0.988      1.18</span>
 <span class="co">#&gt; 17 2019-10-01 00:00:00 0.950     1   0.841    0.811    0.991      1.18</span></pre></body></html></div>
+<p>Los resultados son similares analizando la CBT.</p>
 <div class="sourceCode" id="cb12"><html><body><pre class="r">
 <span class="no">relativos_cbt</span> <span class="kw">%&gt;%</span>
   <span class="fu">pivot_longer</span>(<span class="kw">cols</span> <span class="kw">=</span> <span class="no">Cuyo</span>:<span class="no">Patagonia</span>,<span class="kw">names_to</span> <span class="kw">=</span> <span class="st">'region'</span>, <span class="kw">values_to</span> <span class="kw">=</span> <span class="st">'relativo'</span>) <span class="kw">%&gt;%</span>
@@ -354,11 +373,13 @@
   <span class="fu">facet_wrap</span>(<span class="no">.</span>~<span class="no">grupo</span>)+
   <span class="fu">theme_minimal</span>()+
   <span class="fu">theme</span>(<span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">'bottom'</span>)</pre></body></html></div>
-<p><img src="estimacion_pobreza_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
+<p><img src="estimacion_pobreza_files/figure-html/unnamed-chunk-12-1.png" width="672"></p>
+<p>Dado que la CBT no se calcula valorizando una canasta, sino multiplicando a la CBA por la Inversa del Coeficiente de Engel (ICE), el gráfico anterior (dado que no es idéntico al de CBA) indica que hay una diferencia en los ICE de las regiones. Efectivamente, la metodología de pobreza indica que el ICE se calcula a nivel región.</p>
 </div>
 <div id="inversa-del-coeficiente-de-engel" class="section level2">
 <h2 class="hasAnchor">
 <a href="#inversa-del-coeficiente-de-engel" class="anchor"></a>Inversa del Coeficiente de Engel</h2>
+<p>Por lo tanto, realizamos la misma comparación para el ICE, calculado a partir de las CBA y CBT.</p>
 <div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">relativos_ice</span> <span class="kw">&lt;-</span> <span class="no">canastas_regionales</span> <span class="kw">%&gt;%</span>
   <span class="fu">group_by</span>(<span class="no">region</span>, <span class="no">periodo</span>) <span class="kw">%&gt;%</span>
   <span class="fu">mutate</span>(<span class="kw">ice</span> <span class="kw">=</span> <span class="no">CBT</span>/<span class="no">CBA</span>) <span class="kw">%&gt;%</span>
@@ -389,21 +410,21 @@
 <span class="co">#&gt; 15 2019-04-01 00:00:00  1.07     1   0.937    0.928    1.00       1.13</span>
 <span class="co">#&gt; 16 2019-07-01 00:00:00  1.06     1   0.936    0.928    1.00       1.14</span>
 <span class="co">#&gt; 17 2019-10-01 00:00:00  1.06     1   0.936    0.928    0.999      1.13</span></pre></body></html></div>
-<div class="sourceCode" id="cb14"><html><body><pre class="r">
-<span class="no">relativos_ice</span> <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="no">relativos_ice</span> <span class="kw">%&gt;%</span>
   <span class="fu">pivot_longer</span>(<span class="kw">cols</span> <span class="kw">=</span> <span class="no">Cuyo</span>:<span class="no">Patagonia</span>,<span class="kw">names_to</span> <span class="kw">=</span> <span class="st">'region'</span>, <span class="kw">values_to</span> <span class="kw">=</span> <span class="st">'relativo'</span>) <span class="kw">%&gt;%</span>
   <span class="fu">left_join</span>(<span class="no">ppcc</span>, <span class="kw">by</span> <span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'region'</span>)) <span class="kw">%&gt;%</span>
   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="no">periodo</span>,<span class="no">relativo</span>, <span class="kw">color</span><span class="kw">=</span><span class="no">region</span>,<span class="kw">group</span><span class="kw">=</span><span class="no">region</span>)) +
   <span class="fu">geom_line</span>()+
   <span class="fu">theme_minimal</span>()+
   <span class="fu">theme</span>(<span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">'bottom'</span>)</pre></body></html></div>
-<p><img src="estimacion_pobreza_files/figure-html/unnamed-chunk-14-1.png" width="700"></p>
+<p><img src="estimacion_pobreza_files/figure-html/unnamed-chunk-14-1.png" width="672"></p>
+<p>Si bien existe una clara diferencia de nivel, las variaciones dentro del período son marginales.</p>
 </div>
 </div>
 <div class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p>Ver INDEC (2002) “Paridades de Poder de Compra del Consumidor”. Dirección de Índices de Precios de Consumo -INDEC. Febrero, 2002.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>el motivo de esto es que al momento del primer calculo de pobreza en 2016 el IPC nacional se encontraba en construcción<a href="#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
   </div>
