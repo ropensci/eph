@@ -164,6 +164,12 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
     vars <- colnames(base)
   }
   if (nrow(base)>0) {
+
+    chequeo <- vars %in% colnames(base)
+
+
+    assertthat::assert_that(all(chequeo), msg=glue::glue('Las variables: {glue::glue_collapse(vars[!chequeo],sep = ", ", last = ", y ")} no se encuentran disponibles para esta base.
+                             Puede deberse a que son variables de la base individual (hogar) y se quiere descargar la base hogar (individual)'))
     base %>%
       dplyr::rename_all(toupper) %>%
       dplyr::select(vars)
