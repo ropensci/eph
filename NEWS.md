@@ -1,4 +1,5 @@
 # eph (development version)
+* add affix_sign argument to calculate_tabulates
 
 # eph 0.4.0
 
