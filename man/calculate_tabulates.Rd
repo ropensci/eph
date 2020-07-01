@@ -14,6 +14,7 @@ calculate_tabulates(
   na.rm = TRUE,
   na.show = FALSE,
   exclude = NULL,
+  affix_sign = FALSE,
   add.totals = "none",
   add.percentage = "none"
 )
@@ -36,6 +37,8 @@ calculate_tabulates(
 \item{na.show}{si TRUE, muestra el recuento de NA en la salida}
 
 \item{exclude}{valores a remover de x e y}
+
+\item{affix_sign}{si es TRUE agrega el signo \% al final}
 
 \item{add.totals}{toma los valores c('none','row','col','both'), para agregar totales por fila, columna o ambos}
 

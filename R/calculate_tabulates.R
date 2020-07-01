@@ -10,6 +10,7 @@
 #'@param na.rm Si es TRUE, elimina los NA antes del computo
 #'@param na.show si TRUE, muestra el recuento de NA en la salida
 #'@param exclude valores a remover de x e y
+#'@param affix_sign si es TRUE agrega el signo \% al final
 #'@param add.totals  toma los valores c('none','row','col','both'), para agregar totales por fila, columna o ambos
 #'@param add.percentage toma los valores c('none','row','col'), para agregar porcentajes por fila y columna
 #'@examples
@@ -42,7 +43,7 @@
 #'@export
 
 calculate_tabulates <- function(base, x, y = NULL, weights = NULL, digits = 3, normwt = FALSE,
-                         na.rm = TRUE, na.show = FALSE, exclude = NULL,
+                         na.rm = TRUE, na.show = FALSE, exclude = NULL, affix_sign = FALSE,
                          add.totals = 'none',
                          add.percentage = 'none'){
 
@@ -95,14 +96,28 @@ if (!is.null(weights)) {
       }
     }
     if (add.percentage == 'col') {
-      weighted_table <- weighted_table %>%
-      janitor::adorn_percentages("col") %>%
-        janitor::adorn_pct_formatting()
-    } else {
-      if (add.percentage == 'row') {
+      if (affix_sign == TRUE) {
         weighted_table <- weighted_table %>%
-          janitor::adorn_percentages("row") %>%
-          janitor::adorn_pct_formatting()
+          janitor::adorn_percentages("col") %>%
+          janitor::adorn_pct_formatting(affix_sign = TRUE)
+        } else {
+          if (affix_sign == FALSE) {
+            weighted_table <- weighted_table %>%
+              janitor::adorn_percentages("col") %>%
+              janitor::adorn_pct_formatting(affix_sign = FALSE)}
+        }
+      } else {
+      if (add.percentage == 'row') {
+        if (affix_sign == TRUE) {
+          weighted_table <- weighted_table %>%
+            janitor::adorn_percentages("row") %>%
+            janitor::adorn_pct_formatting(affix_sign = TRUE)
+        } else {
+          if (affix_sign == FALSE) {
+            weighted_table <- weighted_table %>%
+              janitor::adorn_percentages("row") %>%
+              janitor::adorn_pct_formatting(affix_sign = FALSE)}
+        }
       }
     }
 
