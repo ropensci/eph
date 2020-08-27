@@ -1,5 +1,5 @@
 
-# eph <a href='holatam.github.io/eph/'><img src='man/figures/logo.png' align="right" height="139" /></a>
+# eph <a><img src='man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 [![Travis-CI Build
