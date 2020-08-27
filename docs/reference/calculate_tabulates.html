@@ -8,6 +8,13 @@
 
 <title>Tabulado con ponderacion — calculate_tabulates • eph</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -41,6 +48,7 @@
 
 <meta property="og:title" content="Tabulado con ponderacion — calculate_tabulates" />
 <meta property="og:description" content="Funcion para crear tabulados uni o bivariados con ponderacion, totales parciales y porcentajes." />
+<meta property="og:image" content="https://rindec.github.io/eph/logo.png" />
 
 
 
@@ -82,7 +90,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eph</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9000</span>
       </span>
     </div>
 
@@ -155,6 +163,7 @@
   <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>na.show</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>exclude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>affix_sign</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>add.totals</span> <span class='kw'>=</span> <span class='st'>"none"</span>,
   <span class='kw'>add.percentage</span> <span class='kw'>=</span> <span class='st'>"none"</span>
 )</pre>
@@ -197,6 +206,10 @@
     <tr>
       <th>exclude</th>
       <td><p>valores a remover de x e y</p></td>
+    </tr>
+    <tr>
+      <th>affix_sign</th>
+      <td><p>si es TRUE agrega el signo % al final</p></td>
     </tr>
     <tr>
       <th>add.totals</th>
@@ -250,13 +263,13 @@
 
 <span class='fu'>calculate_tabulates</span>(<span class='kw'>base</span> <span class='kw'>=</span> <span class='no'>toybase_individual_2016_04</span>,
                     <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>'REGION'</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>'CH04'</span>,
-                    <span class='kw'>weights</span> <span class='kw'>=</span> <span class='st'>'PONDERA'</span>, <span class='kw'>add.percentage</span> <span class='kw'>=</span><span class='st'>'row'</span>)</div><div class='output co'>#&gt;  REGION/CH04     1     2
-#&gt;            1 51.0% 49.0%
-#&gt;           40 45.6% 54.4%
-#&gt;           41 53.4% 46.6%
-#&gt;           42 42.9% 57.1%
-#&gt;           43 46.5% 53.5%
-#&gt;           44 51.8% 48.2%</div><div class='input'>
+                    <span class='kw'>weights</span> <span class='kw'>=</span> <span class='st'>'PONDERA'</span>, <span class='kw'>add.percentage</span> <span class='kw'>=</span><span class='st'>'row'</span>)</div><div class='output co'>#&gt;  REGION/CH04    1    2
+#&gt;            1 51.0 49.0
+#&gt;           40 45.6 54.4
+#&gt;           41 53.4 46.6
+#&gt;           42 42.9 57.1
+#&gt;           43 46.5 53.5
+#&gt;           44 51.8 48.2</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

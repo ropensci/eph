@@ -6,6 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ejemplo de uso del paquete `eph` • eph</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -13,6 +19,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Ejemplo de uso del paquete `eph`">
 <meta property="og:description" content="eph">
+<meta property="og:image" content="https://rindec.github.io/eph/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -37,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eph</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9000</span>
       </span>
     </div>
 
@@ -99,7 +106,7 @@
                         <h4 class="author">Guido Weksler</h4>
                         <h4 class="author">Natsumi Shokida</h4>
             
-            <h4 class="date">2020-06-25</h4>
+            <h4 class="date">2020-08-27</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/holatam/eph/blob/master/vignettes/eph.Rmd"><code>vignettes/eph.Rmd</code></a></small>
       <div class="hidden name"><code>eph.Rmd</code></div>
@@ -178,13 +185,13 @@
 <span class="co">#&gt;                                                                      Inactivo</span>
 <span class="co">#&gt;                                                            Menor de 10 anios.</span>
 <span class="co">#&gt;                                                                         Total</span>
-<span class="co">#&gt;   Varon  Mujer</span>
-<span class="co">#&gt;    0.0%   0.0%</span>
-<span class="co">#&gt;   49.0%  35.4%</span>
-<span class="co">#&gt;    4.7%   4.3%</span>
-<span class="co">#&gt;   30.3%  46.7%</span>
-<span class="co">#&gt;   16.0%  13.6%</span>
-<span class="co">#&gt;  100.0% 100.0%</span></pre></body></html></div>
+<span class="co">#&gt;  Varon Mujer</span>
+<span class="co">#&gt;    0.0   0.0</span>
+<span class="co">#&gt;   49.0  35.4</span>
+<span class="co">#&gt;    4.7   4.3</span>
+<span class="co">#&gt;   30.3  46.7</span>
+<span class="co">#&gt;   16.0  13.6</span>
+<span class="co">#&gt;  100.0 100.0</span></pre></body></html></div>
 <p>Los argumentos principales de la función son:</p>
 <ul>
 <li>
@@ -214,13 +221,13 @@
 <span class="co">#&gt;                                                                      Inactivo</span>
 <span class="co">#&gt;                                                            Menor de 10 anios.</span>
 <span class="co">#&gt;                                                                         Total</span>
-<span class="co">#&gt;   Varon  Mujer</span>
-<span class="co">#&gt;    0.1%   0.1%</span>
-<span class="co">#&gt;   48.5%  34.0%</span>
-<span class="co">#&gt;    3.6%   3.3%</span>
-<span class="co">#&gt;   32.0%  48.8%</span>
-<span class="co">#&gt;   15.9%  13.8%</span>
-<span class="co">#&gt;  100.0% 100.0%</span></pre></body></html></div>
+<span class="co">#&gt;  Varon Mujer</span>
+<span class="co">#&gt;    0.1   0.1</span>
+<span class="co">#&gt;   48.5  34.0</span>
+<span class="co">#&gt;    3.6   3.3</span>
+<span class="co">#&gt;   32.0  48.8</span>
+<span class="co">#&gt;   15.9  13.8</span>
+<span class="co">#&gt;  100.0 100.0</span></pre></body></html></div>
 </div>
 <div id="armando-pools-de-datos-organize_panels" class="section level3">
 <h3 class="hasAnchor">
@@ -231,6 +238,13 @@
                        <span class="kw">vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'CODUSU'</span>,<span class="st">'NRO_HOGAR'</span>,<span class="st">'COMPONENTE'</span>,<span class="st">'ANO4'</span>,<span class="st">'TRIMESTRE'</span>,<span class="st">'CH04'</span>,<span class="st">'CH06'</span>, <span class="co">#variables necesarias para hacer el panel</span>
                                 <span class="st">'ESTADO'</span>,<span class="st">'PONDERA'</span>) ) <span class="co">#variables que nos interesan en nuestro análisis</span>
 <span class="no">bases</span>
+<span class="co">#&gt; Warning: `...` is not empty.</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; We detected these problematic arguments:</span>
+<span class="co">#&gt; * `needs_dots`</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; These dots only exist to allow future extensions and should be empty.</span>
+<span class="co">#&gt; Did you misspecify an argument?</span>
 <span class="co">#&gt; # A tibble: 4 x 5</span>
 <span class="co">#&gt;    year trimester wave  type       microdata            </span>
 <span class="co">#&gt;   &lt;dbl&gt;     &lt;int&gt; &lt;lgl&gt; &lt;fct&gt;      &lt;list&gt;               </span>
@@ -250,6 +264,13 @@
 <code>window</code>: un string que indique la ventana de distancia de las observaciones (<code>anual</code>) o (<code>trimestral</code>)</li>
 </ul>
 <div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="no">pool</span>
+<span class="co">#&gt; Warning: `...` is not empty.</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; We detected these problematic arguments:</span>
+<span class="co">#&gt; * `needs_dots`</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; These dots only exist to allow future extensions and should be empty.</span>
+<span class="co">#&gt; Did you misspecify an argument?</span>
 <span class="co">#&gt; # A tibble: 75,308 x 17</span>
 <span class="co">#&gt;    CODUSU NRO_HOGAR COMPONENTE  ANO4 TRIMESTRE  CH04  CH06 ESTADO PONDERA</span>
 <span class="co">#&gt;    &lt;fct&gt;      &lt;int&gt;      &lt;int&gt; &lt;int&gt;     &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;   &lt;int&gt;</span>
@@ -272,11 +293,11 @@
   <span class="fu"><a href="../reference/organize_labels.html">organize_labels</a></span>(<span class="no">.</span>) <span class="kw">%&gt;%</span>
 <span class="fu"><a href="../reference/calculate_tabulates.html">calculate_tabulates</a></span>(<span class="kw">x</span><span class="kw">=</span><span class="st">'ESTADO'</span>, <span class="kw">y</span><span class="kw">=</span><span class="st">'ESTADO_t1'</span>,
                     <span class="kw">weights</span> <span class="kw">=</span> <span class="st">"PONDERA"</span>, <span class="kw">add.percentage</span><span class="kw">=</span><span class="st">'row'</span>)
-<span class="co">#&gt;    ESTADO/ESTADO_t1     1     2     3     4</span>
-<span class="co">#&gt;             Ocupado 89.0%  3.7%  7.3%  0.0%</span>
-<span class="co">#&gt;          Desocupado 36.2% 34.8% 29.0%  0.0%</span>
-<span class="co">#&gt;            Inactivo  7.6%  3.2% 88.9%  0.3%</span>
-<span class="co">#&gt;  Menor de 10 anios.  0.0%  0.0%  3.8% 96.2%</span></pre></body></html></div>
+<span class="co">#&gt;    ESTADO/ESTADO_t1    1    2    3    4</span>
+<span class="co">#&gt;             Ocupado 89.0  3.7  7.3  0.0</span>
+<span class="co">#&gt;          Desocupado 36.2 34.8 29.0  0.0</span>
+<span class="co">#&gt;            Inactivo  7.6  3.2 88.9  0.3</span>
+<span class="co">#&gt;  Menor de 10 anios.  0.0  0.0  3.8 96.2</span></pre></body></html></div>
 <p>Un indicador frecuente construido con esta infomación es la Matriz de Transición. Ella refleja como los individuos que ocupaban una determinada categoría en el período inicial, se distribuyen en cada una de las categorías en el período siguiente. La misma puede construirse sencillamente utilizando la función <code>calculate_tabulates</code>. En este ejemplo, la información refleja que durante 2018, un 3.7% de los ocupados perdió su empleo en el trimestre siguiente.</p>
 </div>
 <div id="iterando-en-varias-bases" class="section level3">
@@ -292,11 +313,11 @@
 <span class="co">#&gt; # A tibble: 5 x 7</span>
 <span class="co">#&gt;    year trimester wave  type       PONDERA ESTADO CAT_OCUP</span>
 <span class="co">#&gt;   &lt;int&gt;     &lt;int&gt; &lt;lgl&gt; &lt;fct&gt;        &lt;int&gt;  &lt;int&gt;    &lt;int&gt;</span>
-<span class="co">#&gt; 1  2018         1 NA    individual     211      1        2</span>
-<span class="co">#&gt; 2  2018         1 NA    individual    1868      3        0</span>
-<span class="co">#&gt; 3  2018         1 NA    individual     162      1        1</span>
-<span class="co">#&gt; 4  2018         2 NA    individual     357      1        3</span>
-<span class="co">#&gt; 5  2017         2 NA    individual     138      1        3</span></pre></body></html></div>
+<span class="co">#&gt; 1  2018         1 NA    individual     202      1        3</span>
+<span class="co">#&gt; 2  2018         1 NA    individual     245      3        0</span>
+<span class="co">#&gt; 3  2017         1 NA    individual     116      2        0</span>
+<span class="co">#&gt; 4  2018         1 NA    individual    1836      3        0</span>
+<span class="co">#&gt; 5  2018         1 NA    individual     597      1        3</span></pre></body></html></div>
 <p>Con estos datos podemos crear por ejemplo la serie de asalarización</p>
 <p><span class="math inline">\(SO_{t} = \frac{\sum_{i=1}^n w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}\)</span></p>
 <div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="no">df</span> <span class="kw">&lt;-</span> <span class="no">df</span> <span class="kw">%&gt;%</span>
@@ -304,6 +325,13 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span>(<span class="kw">indicador</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDERA</span>[<span class="no">CAT_OCUP</span><span class="kw">==</span><span class="fl">3</span> <span class="kw">&amp;</span> <span class="no">ESTADO</span><span class="kw">==</span><span class="fl">1</span>], <span class="kw">na.rm</span> <span class="kw">=</span> <span class="no">T</span>) / <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDERA</span>[<span class="no">ESTADO</span><span class="kw">==</span><span class="fl">1</span>], <span class="kw">na.rm</span> <span class="kw">=</span> <span class="no">T</span>))
 <span class="co">#&gt; `summarise()` regrouping by 'year' (override with `.groups` argument)</span>
 <span class="no">df</span>
+<span class="co">#&gt; Warning: `...` is not empty.</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; We detected these problematic arguments:</span>
+<span class="co">#&gt; * `needs_dots`</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; These dots only exist to allow future extensions and should be empty.</span>
+<span class="co">#&gt; Did you misspecify an argument?</span>
 <span class="co">#&gt; # A tibble: 4 x 3</span>
 <span class="co">#&gt; # Groups:   year [2]</span>
 <span class="co">#&gt;    year trimester indicador</span>
@@ -322,6 +350,13 @@
 <p>Existen dos funciones núcleo:</p>
 <div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="no">lineas</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_poverty_lines.html">get_poverty_lines</a></span>()
 <span class="no">lineas</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()
+<span class="co">#&gt; Warning: `...` is not empty.</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; We detected these problematic arguments:</span>
+<span class="co">#&gt; * `needs_dots`</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; These dots only exist to allow future extensions and should be empty.</span>
+<span class="co">#&gt; Did you misspecify an argument?</span>
 <span class="co">#&gt; # A tibble: 6 x 4</span>
 <span class="co">#&gt;   periodo               CBA   ICE   CBT</span>
 <span class="co">#&gt;   &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
@@ -341,6 +376,13 @@
 <p>Para el calculo de la Pobreza e Indigence se utilizan canastas regionales, que sólo aparecen en los <a href="https://www.indec.gob.ar/uploads/informesdeprensa/eph_pobreza_01_19422F5FC20A.pdf">informes Técnicos</a>.</p>
 <p>A modo de ejemplo, en la librería <code>eph</code> se encuentra la base <code>canastas_reg_example</code> con la información necesaria para realizar el cálculo</p>
 <div class="sourceCode" id="cb19"><html><body><pre class="r"><span class="no">canastas_reg_example</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()
+<span class="co">#&gt; Warning: `...` is not empty.</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; We detected these problematic arguments:</span>
+<span class="co">#&gt; * `needs_dots`</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; These dots only exist to allow future extensions and should be empty.</span>
+<span class="co">#&gt; Did you misspecify an argument?</span>
 <span class="co">#&gt; # A tibble: 6 x 5</span>
 <span class="co">#&gt;   region  periodo   CBA   CBT codigo</span>
 <span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span>
@@ -371,19 +413,26 @@
 <div class="sourceCode" id="cb22"><html><body><pre class="r"><span class="no">base_pobreza</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="no">CODUSU</span>,<span class="no">ITF</span>,<span class="no">region</span>,<span class="no">adequi_hogar</span>,<span class="no">CBA_hogar</span>,<span class="no">CBT_hogar</span>,<span class="no">situacion</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_n</a></span>(<span class="fl">10</span>)
+<span class="co">#&gt; Warning: `...` is not empty.</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; We detected these problematic arguments:</span>
+<span class="co">#&gt; * `needs_dots`</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; These dots only exist to allow future extensions and should be empty.</span>
+<span class="co">#&gt; Did you misspecify an argument?</span>
 <span class="co">#&gt; # A tibble: 10 x 7</span>
 <span class="co">#&gt;    CODUSU                 ITF region  adequi_hogar CBA_hogar CBT_hogar situacion</span>
 <span class="co">#&gt;    &lt;fct&gt;                &lt;int&gt; &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;    </span>
-<span class="co">#&gt;  1 TQRMNOPRUHMMKPCDEIH… 52000 Patago…         0.76     1378.     3772. no_pobre </span>
-<span class="co">#&gt;  2 TQRMNOQYQHLOKPCDEHP…  9080 Noroes…         0.76     1119.     2502. no_pobre </span>
-<span class="co">#&gt;  3 TQRMNORPSHKMMMCDEFK…     0 Pampea…         1.69     2833.     6817. &lt;NA&gt;     </span>
-<span class="co">#&gt;  4 TQRMNORWYHLNLNCDEIO… 22600 Pampea…         0.76     1327.     3199. no_pobre </span>
-<span class="co">#&gt;  5 TQRMNOPQSHJOKQCDEFL… 18000 Pampea…         1.79     3126.     7534. no_pobre </span>
-<span class="co">#&gt;  6 TQRMNOPWQHJMOSCDEIJ…     0 GBA             0.77     1352.     3259. &lt;NA&gt;     </span>
-<span class="co">#&gt;  7 TQRMNORXYHMOKRCDEGI…  8400 Noreste         0.63      988.     2229. no_pobre </span>
-<span class="co">#&gt;  8 TQRMNOQQUHKOKPCDEGL… 31600 Noreste         0.9      1411.     3185. no_pobre </span>
-<span class="co">#&gt;  9 TQRMNOPUUHJMLOCDEFI… 15000 Pampea…         0.77     1291.     3106. no_pobre </span>
-<span class="co">#&gt; 10 TQRMNOQTWHJMKNCDEIG…     0 Pampea…         0.37      646.     1557. &lt;NA&gt;</span></pre></body></html></div>
+<span class="co">#&gt;  1 TQRMNOPRTHJLKNCDEHJ… 60000 Noroes…         1        1525.     3412. no_pobre </span>
+<span class="co">#&gt;  2 TQRMNORTYHKMKNCDEIJ… 46000 GBA             0.77     1297.     3121. no_pobre </span>
+<span class="co">#&gt;  3 TQRMNOPSSHKMLNCDEIJ…     0 GBA             0.77     1352.     3259. &lt;NA&gt;     </span>
+<span class="co">#&gt;  4 TQRMNORVUHMOKUCDEIJ…     0 GBA             1.85     3116.     7498. &lt;NA&gt;     </span>
+<span class="co">#&gt;  5 TQRMNOTTUHJLLOCDEFL…  5100 Pampea…         0.76     1327.     3199. no_pobre </span>
+<span class="co">#&gt;  6 TQRMNOPYYHMMKUCDEGP… 18000 Noroes…         0.67     1022.     2286. no_pobre </span>
+<span class="co">#&gt;  7 TQRMNORRUHLNLOCDEIG…     0 Pampea…         1        1746.     4209. &lt;NA&gt;     </span>
+<span class="co">#&gt;  8 TQRMNOPXWHMOLRCDEHN… 13000 Cuyo            0.37      558.     1433. no_pobre </span>
+<span class="co">#&gt;  9 TQRMNOSQWHKMKNCDEHJ… 31900 Noroes…         0.77     1134.     2535. no_pobre </span>
+<span class="co">#&gt; 10 TQRMNOQVWHMKNNCDEII…     0 GBA             0.83     1398.     3364. &lt;NA&gt;</span></pre></body></html></div>
 </div>
 </div>
 <div class="footnotes">
