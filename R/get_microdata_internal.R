@@ -96,8 +96,8 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
     try(check <- utils::download.file(link,temp),silent = TRUE)
     assertthat::assert_that(assertthat::noNA(check),msg = glue::glue("problema con la descarga {year} trimester {trimester}, wave {wave}"))
     nombres <- purrr::as_vector(utils::unzip(temp, list = TRUE)['Name'])
-    base_hogar_name <- nombres[stringr::str_detect(nombres, 'hog')]
-    base_individual_name <- nombres[stringr::str_detect(nombres, 'ind')]
+    base_hogar_name <- nombres[grep('hog', nombres, ignore.case = TRUE)]
+    base_individual_name <- nombres[grep('ind', nombres, ignore.case = TRUE)]
 
     if (type=='individual') {
       base <- utils::read.table(unz(temp,base_individual_name), sep=";", dec=",", header = TRUE, fill = TRUE)
