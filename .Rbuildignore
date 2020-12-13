@@ -5,11 +5,10 @@
 ^eph\.Rproj$
 ^\.Rproj\.user$
 ^codecov\.yml$
-.travis.yml
 ^cran-comments\.md$
 ^CRAN-RELEASE$
 ^docs/
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
-^\.travis\.yml$
+^\.github$
