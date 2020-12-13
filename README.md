@@ -2,13 +2,14 @@
 # eph <a><img src='man/figures/logo.png' align="right" height="250" /></a>
 
 <!-- badges: start -->
+[![R build status](https://github.com/holatam/eph/workflows/R-CMD-check/badge.svg)](https://github.com/holatam/eph/actions)
 [![Coverage
 status](https://codecov.io/gh/holatam/eph/branch/master/graph/badge.svg)](https://codecov.io/gh/holatam/eph?branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/eph)](https://cran.r-project.org/package=eph)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/eph?color=blue)](https://cran.r-project.org/package=eph)
 [![](http://cranlogs.r-pkg.org/badges/last-month/eph?color=blue)](https://cran.r-project.org/package=eph)
 [![DOI](https://zenodo.org/badge/142294444.svg)](https://zenodo.org/badge/latestdoi/142294444)
-[![R build status](https://github.com/holatam/eph/workflows/R-CMD-check/badge.svg)](https://github.com/holatam/eph/actions)
+
 <!-- badges: end -->
 
 # Caja de Herramientas para el procesamiento de la Encuesta Permanente de Hogares
