@@ -9,6 +9,9 @@ on:
     branches:
       - main
       - master
+  schedule:
+    # Agrego scheduler para que corra el check todos los sábados
+    - cron:  '* * * * 6'
 
 name: R-CMD-check
 
