@@ -17,7 +17,7 @@ aglomerados <- c('Total 31 aglomerados urbanos',aglomerados)
 
 raw_tables <- raw_tables[1:33]
 
-tablas <- tibble(aglomerados) %>%
+errores_muestrales <- tibble(aglomerados) %>%
   mutate(table = raw_tables[row_number()])
 
 clean_table <- function(df){
@@ -32,15 +32,74 @@ clean_table <- function(df){
     )
 }
 
-tablas_clean <- list()
-for (i in 1:nrow(tablas)) {
+errores_muestrales_clean <- list()
+for (i in 1:nrow(errores_muestrales)) {
 
-  print(tablas$aglomerados[i])
-  tmp_table <- tablas$table[i]
-  tablas_clean <- c(tablas_clean,list(clean_table(tmp_table)))
+  print(errores_muestrales$aglomerados[i])
+  tmp_table <- errores_muestrales$table[i]
+  errores_muestrales_clean <- c(errores_muestrales_clean,list(clean_table(tmp_table)))
 }
 
-tablas <- tablas %>%
-  mutate(tables_clean = tablas_clean[row_number()]) %>%
+errores_muestrales <- errores_muestrales %>%
+  mutate(tables_clean = errores_muestrales_clean[row_number()]) %>%
   select(-table) %>%
   unnest(cols = tables_clean)
+
+errores_muestrales$aglomerados <- errores_muestrales$aglomerados %>%
+  str_remove_all("Aglomerad(o|os)\\b") %>%
+  str_trim(., "both")
+
+errores_muestrales <-
+  left_join(errores_muestrales, eph::diccionario_aglomerados,
+            by = c("aglomerados" = "aglo"))
+
+reparacion_aglo <- errores_muestrales %>%
+  filter(is.na(errores_muestrales$codigo)) %>%
+  select("aglomerados") %>%
+  unique()
+
+reparacion_aglo$codigo <- c("Total", 32, 33, 26, 29, 19, 18, 3, 5,
+                       34, 30, 38, 9, 17, 31, 91, 93)
+
+for (i in seq_along(reparacion_aglo$aglomerados)) {
+  errores_muestrales <- errores_muestrales %>%
+    mutate(codigo = case_when(
+      aglomerados == reparacion_aglo$aglomerados[i] ~ reparacion_aglo$codigo[i],
+      TRUE ~ as.character(codigo)
+    ))
+}
+
+errores_muestrales <- errores_muestrales %>%
+  select(codigo, x, ds, cv) %>%
+  rename("aglomerado" = "codigo")
+
+usethis::use_data(errores_muestrales, overwrite = TRUE)
+
+data_frame_roxygen <- function(obj) {
+  if (inherits(obj, c("data.frame", "tibble"))) {
+    cl <- sapply(obj, typeof)
+
+    items <- paste0(sprintf("#'   \\item{\\code{%s}}{%s ---DESCRIPTION---}", names(cl), cl))
+
+
+    items <- paste0(items, collapse = "\n")
+
+
+    header <- c(
+      title = paste0("#' @title ", deparse(substitute(obj))),
+      description = "#' @description ---COLUMN DESCRIPTION---",
+      format = sprintf("#' @format A data frame with %s rows and %s variables:", nrow(obj), length(cl))
+    )
+
+    ret <- sprintf(
+      "%s\n%s\n%s",
+      paste(header, collapse = "\n"),
+      sprintf("#' \\describe{\n%s \n#'}", items),
+      sprintf('\n"%s"', deparse(substitute(obj)))
+    )
+  }
+  ret
+}
+
+
+data_frame_roxygen(errores_muestrales) %>% stringr::str_split("\n")
