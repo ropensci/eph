@@ -1,16 +1,18 @@
 #'Calculo del desvío estándar y el coeficiente de variación
 #'@description
 #'Asigna a una estimación de un total poblacional el desvío estándar o el coeficiente de variación
-#' correspondiente en base a las tablas de errores muestrales de INDEC para EPH continua a partir del segundo trimestre 2003.
-#'@param value Valor o vector de valores de las estimaciones puntuales para las
+#' correspondiente según las tablas de error muestral de INDEC para EPH continua
+#'  a partir del segundo trimestre 2003.
+#' (Ver \code{\link{errores_muestrales}})
+#'@param value Vector numérico de las estimaciones de población para las
 #' que se desea hallar el desvío estándar o el coeficiente de variación.
-#'@param codigo_aglo default = "Total". String con el código numerico de aglomerado que
-#' corresponde a la estimación o con "Total" para el total de 31 aglomerados urbanos (ver \code{\link{errores_muestrales}})
-#'@param periodo_eph default = "2014.03". String con "2014.03" para obtener los errores muestrales de las EPH realizadas
-#'del tercer trimestre de 2014 en adelante o con "2003.03_2014.02" para las EPH realizadas entre el tercer trimestre del 2003
-#'y el segundo trimestre del 2014. (ver \code{\link{errores_muestrales}})
-#'@param measure default = "cv". String con "cv" para obtener el coeficiente de variación
-#' correspondiente a las estimaciones o con "ds" para obtener el desvío estándar.
+#'@param codigo_aglo default = "Total". String con el código numerico del aglomerado al que
+#' pertenecen las estimaciones. "Total" para trabajar estimaciones del conjunto de 31 aglomerados urbanos.
+#'@param periodo_eph default = "2014.03". String indicando el periodo al que corresponde la EPH. "2014.03" para
+#' obtener los errores muestrales correspondientes al tercer trimestre de 2014 en adelante. "2003.03_2014.02"
+#' para los errores muestrales del tercer trimestre del 2003 al segundo trimestre del 2014.
+#'@param measure default = "cv". String indicando la medida que se desea obtener. "cv" para obtener el coeficiente de variación
+#' correspondiente a las estimaciones o "ds" para obtener el desvío estándar.
 #'@details disclaimer: El script no es un producto oficial de INDEC.
 #'
 #'@examples
@@ -41,8 +43,8 @@ calculate_error <- function(value, codigo_aglo = "Total", periodo_eph = "2014.03
 
   # Operacion
   tabla_referencia <- eph::errores_muestrales %>%
-    dplyr::filter(.data$codigo == codigo_aglo & periodo == periodo_eph)  %>%
-    dplyr::select(.data$x,measure)
+    dplyr::filter(.data$codigo == codigo_aglo & .data$periodo == periodo_eph)  %>%
+    dplyr::select(.data$x, measure)
 
   find_closest <-function(y) {
     tabla_referencia[[measure]][which.min(abs(tabla_referencia[["x"]] - y))]
