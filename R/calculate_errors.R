@@ -24,13 +24,13 @@
 #'                          weights = "PONDERA",
 #'                          add.totals = "row")
 #'tabla %>%
-#'   dplyr::mutate(ds = calculate_error(Freq, codigo_aglo = "32",
+#'   dplyr::mutate(ds = calculate_errors(Freq, codigo_aglo = "32",
 #'    periodo_eph = "2014.03", measure = "ds"))
 #'
 #'@export
 
 
-calculate_error <- function(value, codigo_aglo = "Total", periodo_eph = "2014.03", measure = "cv") {
+calculate_errors <- function(value, codigo_aglo = "Total", periodo_eph = "2014.03", measure = "cv") {
 
   # Controles de los parametros
   assertthat::assert_that(is.numeric(value))
