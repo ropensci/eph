@@ -40,37 +40,52 @@
 #'
 #'@export
 
-calculate_tabulates <- function(base, x, y = NULL, weights = NULL, digits = 3, normwt = FALSE,
-                                exclude = NULL, affix_sign = FALSE,
-                                add.totals = 'none',
-                                add.percentage = 'none'){
+calculate_tabulates_prueba <- function(base, x, y = NULL, weights = NULL, affix_sign = FALSE,
+                                  add.totals = 'none',
+                                  add.percentage = 'none'){
 
-  x_vec <- base[[x]]
-  if (!is.null(y)) {
-    y_vec <- base[[y]]
-  } else {
-    y_vec = NULL
-  }
-  if (!is.null(weights)) {
-
-    weights_vec <- base[[weights]]
-  } else {
-    weights_vec = NULL
-  }
 
   # Controles de los parametros
   assertthat::assert_that(is.vector(x))
   assertthat::assert_that(add.totals %in% c('none','row','col','both'))
   assertthat::assert_that(add.percentage %in% c('none','row','col'))
 
-  weighted_table <- as.data.frame(questionr::wtd.table(x = x_vec,
-                                                       y = y_vec,
-                                                       weights = weights_vec,
-                                                       digits = digits,
-                                                       normwt = normwt))
+
+if(!is.null(weights) & !is.null(y)){
+  cross_w_freq <- as.data.frame(xtabs(data = base,
+                                      formula = weights ~ x + y))
+}
+
+      simple_w_freq <- as.data.frame(xtabs(data = base,
+                                           formula = weights ~ x))
+      } else {
+        cross_w_freq <- as.data.frame(xtabs(data = base,
+                                          formula = weights ~ x + y))
+        } else {
+        simple_w_freq <- as.data.frame(xtabs(data = base,
+                                           formula = weights ~ x))
+      }
+
+
+  if (!is.null(weights)) {
+    weights_vec <- base[[weights]]
+    weighted_table <- as.data.frame(xtabs(data = base,
+                                          formula = weights_vec ~ x_vec + y_vec))
+
+  } else {
+    weights_vec = NULL
+    weighted_table <- as.data.frame(xtabs(data = base,
+                                          ~x_vec + y_vec))
+  }
+
+
+
+  # weighted_table <- as.data.frame(xtabs(data = base,
+  #                                       formula = weights_vec ~ x_vec + y_vec))
+
   if (!is.null(y)) {
     weighted_table <- weighted_table %>%
-      tidyr::spread(., Var2,Freq)
+      tidyr::spread(., y_vec, Freq)
     names(weighted_table) <- c(paste0(x,'/',y),names(weighted_table)[2:ncol(weighted_table)])
   } else {
     names(weighted_table) <- c(paste0(x),names(weighted_table)[2:ncol(weighted_table)])
