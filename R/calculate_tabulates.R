@@ -40,10 +40,17 @@
 #'
 #'@export
 
-calculate_tabulates <- function(base, x, y = NULL, weights = NULL, digits = 3, normwt = FALSE,
-                                exclude = NULL, affix_sign = FALSE,
-                                add.totals = 'none',
-                                add.percentage = 'none'){
+calculate_tabulates <- function(base, x, y = NULL, weights = NULL, affix_sign = FALSE, digits = 1,
+                                       add.totals = 'none',
+                                       add.percentage = 'none'){
+
+
+  # Controles de los parametros
+  assertthat::assert_that(is.vector(x))
+  assertthat::assert_that(add.totals %in% c('none','row','col','both'))
+  assertthat::assert_that(add.percentage %in% c('none','row','col'))
+
+
 
   x_vec <- base[[x]]
   if (!is.null(y)) {
@@ -51,72 +58,105 @@ calculate_tabulates <- function(base, x, y = NULL, weights = NULL, digits = 3, n
   } else {
     y_vec = NULL
   }
-  if (!is.null(weights)) {
 
+  if (!is.null(weights)) {
     weights_vec <- base[[weights]]
   } else {
     weights_vec = NULL
   }
 
-  # Controles de los parametros
-  assertthat::assert_that(is.vector(x))
-  assertthat::assert_that(add.totals %in% c('none','row','col','both'))
-  assertthat::assert_that(add.percentage %in% c('none','row','col'))
 
-  weighted_table <- as.data.frame(questionr::wtd.table(x = x_vec,
-                                                       y = y_vec,
-                                                       weights = weights_vec,
-                                                       digits = digits,
-                                                       normwt = normwt))
-  if (!is.null(y)) {
-    weighted_table <- weighted_table %>%
-      tidyr::spread(., Var2,Freq)
-    names(weighted_table) <- c(paste0(x,'/',y),names(weighted_table)[2:ncol(weighted_table)])
-  } else {
-    names(weighted_table) <- c(paste0(x),names(weighted_table)[2:ncol(weighted_table)])
+
+
+  ###############################################################
+  ######## Tabulado bi-variado - ponderado
+  if(!is.null(weights) & !is.null(y)){
+    tabulado <- xtabs(weights_vec ~ x_vec + y_vec,
+                      data = base)
+
+    tabulado <- as.data.frame(tabulado) %>%
+      tidyr::pivot_wider(.,
+                         names_from = y_vec,
+                         values_from = Freq)
+
+
+    names(tabulado) <- c(paste0(x,'/',y),names(tabulado)[2:ncol(tabulado)])
+
   }
 
+
+  ###############################################################
+  ####### Tabulado uni-variado - ponderado
+
+  if(!is.null(weights) & is.null(y)){
+    tabulado <- as.data.frame(xtabs(weights_vec ~ x_vec,
+                                    data = base))
+
+    names(tabulado) <- c(paste0(x),names(tabulado)[2:ncol(tabulado)])
+  }
+
+
+  ###############################################################
+  ######## Tabulado bi-variado - NO ponderado
+  if(is.null(weights) & !is.null(y_vec)){
+    tabulado <- xtabs(~ x_vec + y_vec,
+                      data = base)
+
+    tabulado <- as.data.frame(tabulado) %>%
+      tidyr::pivot_wider(.,
+                         names_from = y_vec,
+                         values_from = Freq)
+
+    names(tabulado) <- c(paste0(x,'/',y),names(tabulado)[2:ncol(tabulado)])
+
+  }
+
+
+  ###############################################################
+  ####### Tabulado uni-variado - NO ponderado
+
+  if(is.null(weights) & is.null(y)){
+    tabulado <- as.data.frame(xtabs(~ x_vec,
+                                    data = base))
+
+    names(tabulado) <- c(paste0(x),names(tabulado)[2:ncol(tabulado)])
+  }
+
+
+
+  ### add.totals
   if (add.totals=='row') {
-    weighted_table <- weighted_table %>%
+    tabulado <- tabulado %>%
       janitor::adorn_totals("row")
   } else{
     if (add.totals=='col') {
-      weighted_table <- weighted_table %>%
+      tabulado <- tabulado %>%
         janitor::adorn_totals("col")
     } else{
       if (add.totals =='both') {
-        weighted_table <- weighted_table %>%
+        tabulado <- tabulado %>%
           janitor::adorn_totals("row") %>%
           janitor::adorn_totals("col")
       }
     }
   }
+
+
+  ### add.percentage
+
   if (add.percentage == 'col') {
-    if (affix_sign == TRUE) {
-      weighted_table <- weighted_table %>%
+
+    tabulado <- tabulado %>%
         janitor::adorn_percentages("col") %>%
-        janitor::adorn_pct_formatting(affix_sign = TRUE)
-    } else {
-      if (affix_sign == FALSE) {
-        weighted_table <- weighted_table %>%
-          janitor::adorn_percentages("col") %>%
-          janitor::adorn_pct_formatting(affix_sign = FALSE)}
-    }
-  } else {
-    if (add.percentage == 'row') {
-      if (affix_sign == TRUE) {
-        weighted_table <- weighted_table %>%
-          janitor::adorn_percentages("row") %>%
-          janitor::adorn_pct_formatting(affix_sign = TRUE)
-      } else {
-        if (affix_sign == FALSE) {
-          weighted_table <- weighted_table %>%
-            janitor::adorn_percentages("row") %>%
-            janitor::adorn_pct_formatting(affix_sign = FALSE)}
-      }
-    }
+        janitor::adorn_pct_formatting(affix_sign = affix_sign, digits = digits)
   }
 
-  return(weighted_table)
-}
+  if (add.percentage == 'row') {
+    tabulado <- tabulado %>%
+          janitor::adorn_percentages("row") %>%
+          janitor::adorn_pct_formatting(affix_sign = affix_sign, digits = digits)
 
+    }
+
+  return(tabulado)
+}

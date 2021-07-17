@@ -85,7 +85,6 @@ calculate_tabulates_prueba <- function(base, x, y = NULL, weights = NULL, affix_
   }
 
 
-
   ###############################################################
   ####### Tabulado uni-variado - ponderado
 
@@ -95,7 +94,6 @@ calculate_tabulates_prueba <- function(base, x, y = NULL, weights = NULL, affix_
 
     names(tabulado) <- c(paste0(x),names(tabulado)[2:ncol(tabulado)])
   }
-
 
 
   ###############################################################
@@ -114,8 +112,6 @@ calculate_tabulates_prueba <- function(base, x, y = NULL, weights = NULL, affix_
   }
 
 
-
-
   ###############################################################
   ####### Tabulado uni-variado - NO ponderado
 
@@ -127,47 +123,47 @@ calculate_tabulates_prueba <- function(base, x, y = NULL, weights = NULL, affix_
   }
 
 
-  #
-  # if (add.totals=='row') {
-  #   tabulado <- tabulado %>%
-  #     janitor::adorn_totals("row")
-  # } else{
-  #   if (add.totals=='col') {
-  #     tabulado <- tabulado %>%
-  #       janitor::adorn_totals("col")
-  #   } else{
-  #     if (add.totals =='both') {
-  #       tabulado <- tabulado %>%
-  #         janitor::adorn_totals("row") %>%
-  #         janitor::adorn_totals("col")
-  #     }
-  #   }
-  # }
-  # if (add.percentage == 'col') {
-  #   if (affix_sign == TRUE) {
-  #     tabulado <- tabulado %>%
-  #       janitor::adorn_percentages("col") %>%
-  #       janitor::adorn_pct_formatting(affix_sign = TRUE)
-  #   } else {
-  #     if (affix_sign == FALSE) {
-  #       tabulado <- tabulado %>%
-  #         janitor::adorn_percentages("col") %>%
-  #         janitor::adorn_pct_formatting(affix_sign = FALSE)}
-  #   }
-  # } else {
-  #   if (add.percentage == 'row') {
-  #     if (affix_sign == TRUE) {
-  #       tabulado <- tabulado %>%
-  #         janitor::adorn_percentages("row") %>%
-  #         janitor::adorn_pct_formatting(affix_sign = TRUE)
-  #     } else {
-  #       if (affix_sign == FALSE) {
-  #         tabulado <- tabulado %>%
-  #           janitor::adorn_percentages("row") %>%
-  #           janitor::adorn_pct_formatting(affix_sign = FALSE)}
-  #     }
-  #   }
-  # }
+
+if (add.totals=='row') {
+  tabulado <- tabulado %>%
+    janitor::adorn_totals("row")
+} else{
+  if (add.totals=='col') {
+    tabulado <- tabulado %>%
+      janitor::adorn_totals("col")
+  } else{
+    if (add.totals =='both') {
+      tabulado <- tabulado %>%
+        janitor::adorn_totals("row") %>%
+        janitor::adorn_totals("col")
+    }
+  }
+}
+if (add.percentage == 'col') {
+  if (affix_sign == TRUE) {
+    tabulado <- tabulado %>%
+      janitor::adorn_percentages("col") %>%
+      janitor::adorn_pct_formatting(affix_sign = TRUE)
+  } else {
+    if (affix_sign == FALSE) {
+      tabulado <- tabulado %>%
+        janitor::adorn_percentages("col") %>%
+        janitor::adorn_pct_formatting(affix_sign = FALSE)}
+  }
+} else {
+  if (add.percentage == 'row') {
+    if (affix_sign == TRUE) {
+      tabulado <- tabulado %>%
+        janitor::adorn_percentages("row") %>%
+        janitor::adorn_pct_formatting(affix_sign = TRUE)
+    } else {
+      if (affix_sign == FALSE) {
+        tabulado <- tabulado %>%
+          janitor::adorn_percentages("row") %>%
+          janitor::adorn_pct_formatting(affix_sign = FALSE)}
+    }
+  }
+}
 
   return(tabulado)
 
