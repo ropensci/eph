@@ -4,13 +4,13 @@
     <loc>https://rindec.github.io/eph//index.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/CNO.html</loc>
-  </url>
-  <url>
     <loc>https://rindec.github.io/eph//reference/adulto_equivalente.html</loc>
   </url>
   <url>
     <loc>https://rindec.github.io/eph//reference/caes.html</loc>
+  </url>
+  <url>
+    <loc>https://rindec.github.io/eph//reference/calculate_errors.html</loc>
   </url>
   <url>
     <loc>https://rindec.github.io/eph//reference/calculate_poverty.html</loc>
@@ -25,6 +25,9 @@
     <loc>https://rindec.github.io/eph//reference/centroides_aglomerados.html</loc>
   </url>
   <url>
+    <loc>https://rindec.github.io/eph//reference/CNO.html</loc>
+  </url>
+  <url>
     <loc>https://rindec.github.io/eph//reference/diccionario_aglomerados.html</loc>
   </url>
   <url>
@@ -32,6 +35,9 @@
   </url>
   <url>
     <loc>https://rindec.github.io/eph//reference/eph.html</loc>
+  </url>
+  <url>
+    <loc>https://rindec.github.io/eph//reference/errores_muestrales.html</loc>
   </url>
   <url>
     <loc>https://rindec.github.io/eph//reference/get_microdata.html</loc>

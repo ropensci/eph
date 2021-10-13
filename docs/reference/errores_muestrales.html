@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Mapa de indicadores por aglomerado — map_agglomerates • eph</title>
+<title>errores_muestrales — errores_muestrales • eph</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,11 @@
 
 
 
-<meta property="og:title" content="Mapa de indicadores por aglomerado — map_agglomerates" />
-<meta property="og:description" content="Mapa de indicadores por aglomerado" />
+<meta property="og:title" content="errores_muestrales — errores_muestrales" />
+<meta property="og:description" content="Base con los errores muestrales para estimaciones de población en los aglomerados urbanos
+ para la EPH continua desde 2003 segundo trimestre según documentación de INDEC:
+https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_errores_muestreo_3t2014.pdf
+https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_errores_muestreo.pdf" />
 <meta property="og:image" content="https://rindec.github.io/eph/logo.png" />
 
 
@@ -144,57 +147,36 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Mapa de indicadores por aglomerado</h1>
-    <small class="dont-index">Source: <a href='https://github.com/holatam/eph/blob/master/R/map_agglomerates.R'><code>R/map_agglomerates.R</code></a></small>
-    <div class="hidden name"><code>map_agglomerates.Rd</code></div>
+    <h1>errores_muestrales</h1>
+    <small class="dont-index">Source: <a href='https://github.com/holatam/eph/blob/master/R/errores_muestrales.R'><code>R/errores_muestrales.R</code></a></small>
+    <div class="hidden name"><code>errores_muestrales.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Mapa de indicadores por aglomerado</p>
+    <p>Base con los errores muestrales para estimaciones de población en los aglomerados urbanos
+ para la EPH continua desde 2003 segundo trimestre según documentación de INDEC:
+https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_errores_muestreo_3t2014.pdf
+https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_errores_muestreo.pdf</p>
     </div>
 
-    <pre class="usage"><span class='fu'>map_agglomerates</span><span class='op'>(</span>
-  <span class='va'>.data</span>,
-  <span class='va'>agglomerates</span>,
-  <span class='va'>indicator</span>,
-  alpha <span class='op'>=</span> <span class='fl'>0.75</span>,
-  palette <span class='op'>=</span> <span class='st'>"viridis"</span>
-<span class='op'>)</span></pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>.data</th>
-      <td><p>Dataframe con los datos</p></td>
-    </tr>
-    <tr>
-      <th>agglomerates</th>
-      <td><p>Variable con los codigos de aglomerados</p></td>
-    </tr>
-    <tr>
-      <th>indicator</th>
-      <td><p>Variable con los indicadores</p></td>
-    </tr>
-    <tr>
-      <th>alpha</th>
-      <td><p>Opacidad de los puntos</p></td>
-    </tr>
-    <tr>
-      <th>palette</th>
-      <td><p>Paleta de colores a utilizar, incluye "viridis", "magma", "inferno", or "plasma". Para mas opciones, ver <a href='https://rdrr.io/pkg/leaflet/man/colorNumeric.html'>colorNumeric</a></p></td>
-    </tr>
-    </table>
+    <pre class="usage"><span class='va'>errores_muestrales</span></pre>
 
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='va'>toybase_individual_2016_04</span> <span class='op'>%&gt;%</span>
- <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>AGLOMERADO</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
- <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>tasa_actividad <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>PONDERA</span><span class='op'>[</span><span class='va'>ESTADO</span><span class='op'>==</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span><span class='op'>/</span><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>PONDERA</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
- <span class='fu'>map_agglomerates</span><span class='op'>(</span>agglomerates <span class='op'>=</span> <span class='va'>AGLOMERADO</span>,
-                   indicator <span class='op'>=</span> <span class='va'>tasa_actividad</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Assuming "lon" and "lat" are longitude and latitude, respectively</span></div></pre>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>A data frame with 1687 rows and 5 variables:</p><dl>
+  <dt><code>codigo</code></dt><dd><p>character ---String con código numérico de los 31 aglomerados, "Gran Buenos Aires"
+   (sólo para 2003.03 a 2014.02), o con "Total" para el conjunto de los 31 aglomerados---</p></dd>
+  <dt><code>aglomerado</code></dt><dd><p>character ---String con el nombre del aglomerado---</p></dd>
+  <dt><code>periodo</code></dt><dd><p>character ---String indicando el periodo de EPH que corresponde, "2014.03"
+   para datos de EPH a partir del tercer trimestre 2014, o "2003.03_2014.02" para datos anteriores---</p></dd>
+  <dt><code>x</code></dt><dd><p>double ---Estimación de población para la cual se desea conocer el error muestral---</p></dd>
+  <dt><code>ds</code></dt><dd><p>double ---Desvío Estándar correspondiente a la estimación de población en el aglomerado---</p></dd>
+  <dt><code>cv</code></dt><dd><p>double ---Coeficiente de Variación correspondiente a la estimación de población en el aglomerado---</p></dd>
+
+</dl>
+
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

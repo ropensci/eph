@@ -52,7 +52,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -81,7 +81,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/holatam/eph/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -95,7 +95,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="eph_files/header-attrs-2.9/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Ejemplo de uso del paquete <code>eph</code>
@@ -106,7 +106,7 @@
                         <h4 class="author">Guido Weksler</h4>
                         <h4 class="author">Natsumi Shokida</h4>
             
-            <h4 class="date">2020-09-08</h4>
+            <h4 class="date">2021-10-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/holatam/eph/blob/master/vignettes/eph.Rmd"><code>vignettes/eph.Rmd</code></a></small>
       <div class="hidden name"><code>eph.Rmd</code></div>
@@ -120,11 +120,13 @@
 <h2 class="hasAnchor">
 <a href="#instalaci%C3%B3n" class="anchor"></a>Instalación</h2>
 <p>Para instalar la versión estable del paquete usar:</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">'eph'</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'eph'</span><span class="op">)</span></code></pre></div>
 <p>Para la versión en desarrollo:</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co"># install.packages('devtools') si no tiene instalado devtools</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages('devtools') si no tiene instalado devtools</span>
 
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"holatam/eph"</span>)</pre></body></html></div>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"holatam/eph"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="ejemplo-de-flujo-de-trabajo" class="section level2">
 <h2 class="hasAnchor">
@@ -133,13 +135,15 @@
 <h3 class="hasAnchor">
 <a href="#descarga-de-datos-get_microdata" class="anchor"></a>Descarga de datos: <code>get_microdata()</code>
 </h3>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">eph</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyr</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">purrr</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/holatam/eph">eph</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org">purrr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></code></pre></div>
 <p>Obtengamos la base de microdatos de individuos para el tercer trimestre de 2018:</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">ind_3_18</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_microdata.html">get_microdata</a></span>(<span class="kw">year</span><span class="kw">=</span><span class="fl">2018</span>, <span class="kw">trimester</span><span class="kw">=</span><span class="fl">2</span>, <span class="kw">type</span><span class="kw">=</span><span class="st">'individual'</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ind_3_18</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_microdata.html">get_microdata</a></span><span class="op">(</span>year<span class="op">=</span><span class="fl">2018</span>, trimester<span class="op">=</span><span class="fl">2</span>, type<span class="op">=</span><span class="st">'individual'</span><span class="op">)</span></code></pre></div>
 <p>Puede verse que la función requiere tres argumentos básicos:</p>
 <ul>
 <li>
@@ -150,14 +154,16 @@
 <code>type</code>: character <code>"individual"</code>, para descargar la base de invidividuos y <code>"hogar"</code>, para la de hogar.</li>
 </ul>
 <p>Si se deseara descargar una base de la EPH puntual, será necesario reemplazar el argumento <code>trimester</code> por <code>wave</code> que define la onda de la EPH puntual que se desea descargar. Por ejemplo, si se buscara descargar la base individual de la segunda onda del año 2002, debería escribirse</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">ind_2_02</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_microdata.html">get_microdata</a></span>(<span class="kw">year</span><span class="kw">=</span><span class="fl">2001</span>, <span class="kw">wave</span><span class="kw">=</span><span class="fl">2</span>, <span class="kw">type</span><span class="kw">=</span><span class="st">'individual'</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ind_2_02</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_microdata.html">get_microdata</a></span><span class="op">(</span>year<span class="op">=</span><span class="fl">2001</span>, wave<span class="op">=</span><span class="fl">2</span>, type<span class="op">=</span><span class="st">'individual'</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="etiquetado-organize_labels" class="section level3">
 <h3 class="hasAnchor">
 <a href="#etiquetado-organize_labels" class="anchor"></a>Etiquetado: <code>organize_labels()</code>
 </h3>
 <p>Es posible etiquetar de forma automática el dataset llamando a la función <code><a href="../reference/organize_labels.html">organize_labels()</a></code>:</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">ind_3_18</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/organize_labels.html">organize_labels</a></span>(<span class="kw">df</span><span class="kw">=</span><span class="no">ind_3_18</span>, <span class="kw">type</span><span class="kw">=</span><span class="st">'individual'</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ind_3_18</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/organize_labels.html">organize_labels</a></span><span class="op">(</span>df<span class="op">=</span><span class="va">ind_3_18</span>, type<span class="op">=</span><span class="st">'individual'</span><span class="op">)</span></code></pre></div>
 <p>La función toma dos argumentos:</p>
 <ul>
 <li>
@@ -167,17 +173,21 @@
 <code>type</code>: string; cuál es el tipo de datatset que se quiere etiquetar, <code>"individual"</code> o <code>"hogar"</code>
 </li>
 </ul>
-<p>Descarguemos y etiquetemos la base de hogares del 3 trimestre de 2018. Podemos hacer uso de los <code><a href="../reference/pipe.html">%&gt;%</a></code> pipes de <code>magritte</code>:</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">hog_3_18</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_microdata.html">get_microdata</a></span>(<span class="kw">year</span><span class="kw">=</span><span class="fl">2018</span>, <span class="kw">trimester</span><span class="kw">=</span><span class="fl">3</span>, <span class="kw">type</span><span class="kw">=</span><span class="st">'hogar'</span>) <span class="kw">%&gt;%</span>
-              <span class="fu"><a href="../reference/organize_labels.html">organize_labels</a></span>(<span class="no">.</span>, <span class="kw">type</span><span class="kw">=</span><span class="st">'hogar'</span>)</pre></body></html></div>
+<p>Descarguemos y etiquetemos la base de hogares del 3 trimestre de 2018. Podemos hacer uso de los <code><a href="../reference/%&gt;%.html">%&gt;%</a></code> pipes de <code>magritte</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">hog_3_18</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_microdata.html">get_microdata</a></span><span class="op">(</span>year<span class="op">=</span><span class="fl">2018</span>, trimester<span class="op">=</span><span class="fl">3</span>, type<span class="op">=</span><span class="st">'hogar'</span><span class="op">)</span> <span class="op">%&gt;%</span>
+              <span class="fu"><a href="../reference/organize_labels.html">organize_labels</a></span><span class="op">(</span><span class="va">.</span>, type<span class="op">=</span><span class="st">'hogar'</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="tabulados-ponderados-calculate_tabulates" class="section level3">
 <h3 class="hasAnchor">
 <a href="#tabulados-ponderados-calculate_tabulates" class="anchor"></a>Tabulados ponderados: <code>calculate_tabulates()</code>
 </h3>
 <p>Una de las operaciones más usuales al trabajar con la EPH son los tabulados uni y bivariados. Para ello, el paquete cuenta con la función <code><a href="../reference/calculate_tabulates.html">calculate_tabulates()</a></code>, la cual brinda la posibilidad de obtener tanto resultados en valores absolutos como relativos, como así también contar con la posibilidad de ponderar los datos:</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="fu"><a href="../reference/calculate_tabulates.html">calculate_tabulates</a></span>(<span class="kw">base</span><span class="kw">=</span><span class="no">ind_3_18</span>, <span class="kw">x</span><span class="kw">=</span><span class="st">'ESTADO'</span>, <span class="kw">y</span><span class="kw">=</span><span class="st">'CH04'</span>, <span class="kw">weights</span> <span class="kw">=</span> <span class="st">'PONDIH'</span>,
-                    <span class="kw">add.totals</span><span class="kw">=</span><span class="st">'row'</span>, <span class="kw">add.percentage</span><span class="kw">=</span><span class="st">'col'</span>)
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/calculate_tabulates.html">calculate_tabulates</a></span><span class="op">(</span>base<span class="op">=</span><span class="va">ind_3_18</span>, x<span class="op">=</span><span class="st">'ESTADO'</span>, y<span class="op">=</span><span class="st">'CH04'</span>, weights <span class="op">=</span> <span class="st">'PONDIH'</span>,
+                    add.totals<span class="op">=</span><span class="st">'row'</span>, add.percentage<span class="op">=</span><span class="st">'col'</span><span class="op">)</span>
+<span class="co">#&gt; Warning in questionr::wtd.table(x = x_vec, y = y_vec, weights = weights_vec, :</span>
+<span class="co">#&gt; 'na.rm' and 'na.show' are deprecated. Use 'useNA' instead.</span>
 <span class="co">#&gt;                                                                   ESTADO/CH04</span>
 <span class="co">#&gt;  Entrevista individual no realizada (no respuesta al cuestionario individual)</span>
 <span class="co">#&gt;                                                                       Ocupado</span>
@@ -185,13 +195,13 @@
 <span class="co">#&gt;                                                                      Inactivo</span>
 <span class="co">#&gt;                                                            Menor de 10 anios.</span>
 <span class="co">#&gt;                                                                         Total</span>
-<span class="co">#&gt;  Varon Mujer</span>
-<span class="co">#&gt;    0.0   0.0</span>
-<span class="co">#&gt;   49.0  35.4</span>
-<span class="co">#&gt;    4.7   4.3</span>
-<span class="co">#&gt;   30.3  46.7</span>
-<span class="co">#&gt;   16.0  13.6</span>
-<span class="co">#&gt;  100.0 100.0</span></pre></body></html></div>
+<span class="co">#&gt;   Varon  Mujer</span>
+<span class="co">#&gt;    0.0%   0.0%</span>
+<span class="co">#&gt;   49.0%  35.4%</span>
+<span class="co">#&gt;    4.7%   4.3%</span>
+<span class="co">#&gt;   30.3%  46.7%</span>
+<span class="co">#&gt;   16.0%  13.6%</span>
+<span class="co">#&gt;  100.0% 100.0%</span></code></pre></div>
 <p>Los argumentos principales de la función son:</p>
 <ul>
 <li>
@@ -212,8 +222,11 @@
 </li>
 </ul>
 <p>Así, si quisiéramos la misma tabla sin ponderar:</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="../reference/calculate_tabulates.html">calculate_tabulates</a></span>(<span class="kw">base</span><span class="kw">=</span><span class="no">ind_3_18</span>, <span class="kw">x</span><span class="kw">=</span><span class="st">'ESTADO'</span>, <span class="kw">y</span><span class="kw">=</span><span class="st">'CH04'</span>,
-                    <span class="kw">add.totals</span><span class="kw">=</span><span class="st">'row'</span>, <span class="kw">add.percentage</span><span class="kw">=</span><span class="st">'col'</span>)
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/calculate_tabulates.html">calculate_tabulates</a></span><span class="op">(</span>base<span class="op">=</span><span class="va">ind_3_18</span>, x<span class="op">=</span><span class="st">'ESTADO'</span>, y<span class="op">=</span><span class="st">'CH04'</span>,
+                    add.totals<span class="op">=</span><span class="st">'row'</span>, add.percentage<span class="op">=</span><span class="st">'col'</span><span class="op">)</span>
+<span class="co">#&gt; Warning in questionr::wtd.table(x = x_vec, y = y_vec, weights = weights_vec, :</span>
+<span class="co">#&gt; 'na.rm' and 'na.show' are deprecated. Use 'useNA' instead.</span>
 <span class="co">#&gt;                                                                   ESTADO/CH04</span>
 <span class="co">#&gt;  Entrevista individual no realizada (no respuesta al cuestionario individual)</span>
 <span class="co">#&gt;                                                                       Ocupado</span>
@@ -221,39 +234,34 @@
 <span class="co">#&gt;                                                                      Inactivo</span>
 <span class="co">#&gt;                                                            Menor de 10 anios.</span>
 <span class="co">#&gt;                                                                         Total</span>
-<span class="co">#&gt;  Varon Mujer</span>
-<span class="co">#&gt;    0.1   0.1</span>
-<span class="co">#&gt;   48.5  34.0</span>
-<span class="co">#&gt;    3.6   3.3</span>
-<span class="co">#&gt;   32.0  48.8</span>
-<span class="co">#&gt;   15.9  13.8</span>
-<span class="co">#&gt;  100.0 100.0</span></pre></body></html></div>
+<span class="co">#&gt;   Varon  Mujer</span>
+<span class="co">#&gt;    0.1%   0.1%</span>
+<span class="co">#&gt;   48.5%  34.0%</span>
+<span class="co">#&gt;    3.6%   3.3%</span>
+<span class="co">#&gt;   32.0%  48.8%</span>
+<span class="co">#&gt;   15.9%  13.8%</span>
+<span class="co">#&gt;  100.0% 100.0%</span></code></pre></div>
 </div>
 <div id="armando-pools-de-datos-organize_panels" class="section level3">
 <h3 class="hasAnchor">
 <a href="#armando-pools-de-datos-organize_panels" class="anchor"></a>Armando pools de datos: <code>organize_panels()</code>
 </h3>
 <p>Otra potencialidad del trabajo con microdatos de la EPH es la capacidad de generar un pool de observaciones de panel. Este procedimiento consta en identificar a una misma persona u hogar encuestado en distintos trimestres, y permite realizar estudios sobre la evolución de sus caracteristicas con el correr del tiempo. Esto puede generarse, para las bases individuales en <code>eph</code> con la función <code><a href="../reference/organize_panels.html">organize_panels()</a></code>. Para ello es necesario contar previamente con las múltiples bases de datos que se deseen poolear.</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">bases</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_microdata.html">get_microdata</a></span>(<span class="kw">year</span><span class="kw">=</span><span class="fl">2018</span>, <span class="kw">trimester</span><span class="kw">=</span><span class="fl">1</span>:<span class="fl">4</span>, <span class="kw">type</span><span class="kw">=</span><span class="st">'individual'</span>,
-                       <span class="kw">vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'CODUSU'</span>,<span class="st">'NRO_HOGAR'</span>,<span class="st">'COMPONENTE'</span>,<span class="st">'ANO4'</span>,<span class="st">'TRIMESTRE'</span>,<span class="st">'CH04'</span>,<span class="st">'CH06'</span>, <span class="co">#variables necesarias para hacer el panel</span>
-                                <span class="st">'ESTADO'</span>,<span class="st">'PONDERA'</span>) ) <span class="co">#variables que nos interesan en nuestro análisis</span>
-<span class="no">bases</span>
-<span class="co">#&gt; Warning: `...` is not empty.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; We detected these problematic arguments:</span>
-<span class="co">#&gt; * `needs_dots`</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; These dots only exist to allow future extensions and should be empty.</span>
-<span class="co">#&gt; Did you misspecify an argument?</span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">bases</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_microdata.html">get_microdata</a></span><span class="op">(</span>year<span class="op">=</span><span class="fl">2018</span>, trimester<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, type<span class="op">=</span><span class="st">'individual'</span>, 
+                       vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'CODUSU'</span>,<span class="st">'NRO_HOGAR'</span>,<span class="st">'COMPONENTE'</span>,<span class="st">'ANO4'</span>,<span class="st">'TRIMESTRE'</span>,<span class="st">'CH04'</span>,<span class="st">'CH06'</span>, <span class="co">#variables necesarias para hacer el panel</span>
+                                <span class="st">'ESTADO'</span>,<span class="st">'PONDERA'</span><span class="op">)</span> <span class="op">)</span> <span class="co">#variables que nos interesan en nuestro análisis</span>
+<span class="va">bases</span>
 <span class="co">#&gt; # A tibble: 4 x 5</span>
 <span class="co">#&gt;    year trimester wave  type       microdata            </span>
 <span class="co">#&gt;   &lt;dbl&gt;     &lt;int&gt; &lt;lgl&gt; &lt;fct&gt;      &lt;list&gt;               </span>
-<span class="co">#&gt; 1  2018         1 NA    individual &lt;tibble [57,951 × 9]&gt;</span>
-<span class="co">#&gt; 2  2018         2 NA    individual &lt;tibble [57,835 × 9]&gt;</span>
-<span class="co">#&gt; 3  2018         3 NA    individual &lt;tibble [56,879 × 9]&gt;</span>
-<span class="co">#&gt; 4  2018         4 NA    individual &lt;tibble [57,418 × 9]&gt;</span></pre></body></html></div>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">pool</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/organize_panels.html">organize_panels</a></span>(<span class="kw">bases</span><span class="kw">=</span><span class="no">bases</span>$<span class="no">microdata</span>, <span class="kw">variables</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'ESTADO'</span>,<span class="st">'PONDERA'</span>),
-                        <span class="kw">window</span><span class="kw">=</span><span class="st">'trimestral'</span>)</pre></body></html></div>
+<span class="co">#&gt; 1  2018         1 NA    individual &lt;tibble [57,951 x 9]&gt;</span>
+<span class="co">#&gt; 2  2018         2 NA    individual &lt;tibble [57,835 x 9]&gt;</span>
+<span class="co">#&gt; 3  2018         3 NA    individual &lt;tibble [56,879 x 9]&gt;</span>
+<span class="co">#&gt; 4  2018         4 NA    individual &lt;tibble [57,418 x 9]&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pool</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/organize_panels.html">organize_panels</a></span><span class="op">(</span>bases<span class="op">=</span><span class="va">bases</span><span class="op">$</span><span class="va">microdata</span>, variables<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'ESTADO'</span>,<span class="st">'PONDERA'</span><span class="op">)</span>,
+                        window<span class="op">=</span><span class="st">'trimestral'</span><span class="op">)</span></code></pre></div>
 <p>Los argumentos principales de la función <code>organize_panels</code>son:</p>
 <ul>
 <li>
@@ -263,75 +271,65 @@
 <li>
 <code>window</code>: un string que indique la ventana de distancia de las observaciones (<code>anual</code>) o (<code>trimestral</code>)</li>
 </ul>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="no">pool</span>
-<span class="co">#&gt; Warning: `...` is not empty.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; We detected these problematic arguments:</span>
-<span class="co">#&gt; * `needs_dots`</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; These dots only exist to allow future extensions and should be empty.</span>
-<span class="co">#&gt; Did you misspecify an argument?</span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pool</span>
 <span class="co">#&gt; # A tibble: 75,308 x 17</span>
-<span class="co">#&gt;    CODUSU NRO_HOGAR COMPONENTE  ANO4 TRIMESTRE  CH04  CH06 ESTADO PONDERA</span>
-<span class="co">#&gt;    &lt;fct&gt;      &lt;int&gt;      &lt;int&gt; &lt;int&gt;     &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;   &lt;int&gt;</span>
-<span class="co">#&gt;  1 TQRMN…         1          1  2018         1     2    67      3    1008</span>
-<span class="co">#&gt;  2 TQRMN…         1          2  2018         1     1    81      1    1008</span>
-<span class="co">#&gt;  3 TQRMN…         1          3  2018         1     2    22      2    1008</span>
-<span class="co">#&gt;  4 TQRMN…         1          1  2018         1     1    62      1     886</span>
-<span class="co">#&gt;  5 TQRMN…         1          1  2018         1     1    83      3     594</span>
-<span class="co">#&gt;  6 TQRMN…         1          2  2018         1     2    79      3     594</span>
-<span class="co">#&gt;  7 TQRMN…         1          1  2018         1     2    79      3     700</span>
-<span class="co">#&gt;  8 TQRMN…         1          1  2018         1     1    38      1     700</span>
-<span class="co">#&gt;  9 TQRMN…         1          2  2018         1     2    33      1     700</span>
-<span class="co">#&gt; 10 TQRMN…         1          1  2018         1     1    64      1     546</span>
-<span class="co">#&gt; # … with 75,298 more rows, and 8 more variables: Periodo &lt;yearqtr&gt;,</span>
+<span class="co">#&gt;    CODUSU        NRO_HOGAR COMPONENTE  ANO4 TRIMESTRE  CH04  CH06 ESTADO PONDERA</span>
+<span class="co">#&gt;    &lt;fct&gt;             &lt;int&gt;      &lt;int&gt; &lt;int&gt;     &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;   &lt;int&gt;</span>
+<span class="co">#&gt;  1 TQRMNORUTHMK~         1          1  2018         1     2    67      3    1008</span>
+<span class="co">#&gt;  2 TQRMNORUTHMK~         1          2  2018         1     1    81      1    1008</span>
+<span class="co">#&gt;  3 TQRMNORUTHMK~         1          3  2018         1     2    22      2    1008</span>
+<span class="co">#&gt;  4 TQRMNOVQVHMO~         1          1  2018         1     1    62      1     886</span>
+<span class="co">#&gt;  5 TQRMNORPYHMM~         1          1  2018         1     1    83      3     594</span>
+<span class="co">#&gt;  6 TQRMNORPYHMM~         1          2  2018         1     2    79      3     594</span>
+<span class="co">#&gt;  7 TQRMNOTSYHKM~         1          1  2018         1     2    79      3     700</span>
+<span class="co">#&gt;  8 TQRMNOQTTHKM~         1          1  2018         1     1    38      1     700</span>
+<span class="co">#&gt;  9 TQRMNOQTTHKM~         1          2  2018         1     2    33      1     700</span>
+<span class="co">#&gt; 10 TQRMNOQRVHMM~         1          1  2018         1     1    64      1     546</span>
+<span class="co">#&gt; # ... with 75,298 more rows, and 8 more variables: Periodo &lt;yearqtr&gt;,</span>
 <span class="co">#&gt; #   ANO4_t1 &lt;int&gt;, TRIMESTRE_t1 &lt;int&gt;, CH04_t1 &lt;int&gt;, CH06_t1 &lt;int&gt;,</span>
-<span class="co">#&gt; #   ESTADO_t1 &lt;int&gt;, PONDERA_t1 &lt;int&gt;, consistencia &lt;lgl&gt;</span></pre></body></html></div>
+<span class="co">#&gt; #   ESTADO_t1 &lt;int&gt;, PONDERA_t1 &lt;int&gt;, consistencia &lt;lgl&gt;</span></code></pre></div>
 <p>La función nos devuelve un data.frame similar a la base original, en el cual cada fila es un registro individual, que consta de las observaciones de las variables de interés específicadas, en dos periodos de tiempo. En el período inicial las mismas conservan su nombre, y en el siguiente (año o trimestre) aparecen renombradas con el agregado del string <code>_t1</code>.</p>
 <p>Lo que hace la función detrás de bambalinas es concatenar todas las bases espeficadas en el argumento <code>list=</code> y hacer un join, conservando sólo aquellos individuos encuestados en los diferentes trimestres. La columna <code>consistencia</code> evalúa si entre ambas observaciones un mismo individuo figura con distinto sexo o con una difrencia absoluta de 2 años de edad.</p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">pool</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/organize_labels.html">organize_labels</a></span>(<span class="no">.</span>) <span class="kw">%&gt;%</span>
-<span class="fu"><a href="../reference/calculate_tabulates.html">calculate_tabulates</a></span>(<span class="kw">x</span><span class="kw">=</span><span class="st">'ESTADO'</span>, <span class="kw">y</span><span class="kw">=</span><span class="st">'ESTADO_t1'</span>,
-                    <span class="kw">weights</span> <span class="kw">=</span> <span class="st">"PONDERA"</span>, <span class="kw">add.percentage</span><span class="kw">=</span><span class="st">'row'</span>)
-<span class="co">#&gt;    ESTADO/ESTADO_t1    1    2    3    4</span>
-<span class="co">#&gt;             Ocupado 89.0  3.7  7.3  0.0</span>
-<span class="co">#&gt;          Desocupado 36.2 34.8 29.0  0.0</span>
-<span class="co">#&gt;            Inactivo  7.6  3.2 88.9  0.3</span>
-<span class="co">#&gt;  Menor de 10 anios.  0.0  0.0  3.8 96.2</span></pre></body></html></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pool</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/organize_labels.html">organize_labels</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<span class="fu"><a href="../reference/calculate_tabulates.html">calculate_tabulates</a></span><span class="op">(</span>x<span class="op">=</span><span class="st">'ESTADO'</span>, y<span class="op">=</span><span class="st">'ESTADO_t1'</span>,
+                    weights <span class="op">=</span> <span class="st">"PONDERA"</span>, add.percentage<span class="op">=</span><span class="st">'row'</span><span class="op">)</span>
+<span class="co">#&gt;    ESTADO/ESTADO_t1     1     2     3     4</span>
+<span class="co">#&gt;             Ocupado 89.0%  3.7%  7.3%  0.0%</span>
+<span class="co">#&gt;          Desocupado 36.2% 34.8% 29.0%  0.0%</span>
+<span class="co">#&gt;            Inactivo  7.6%  3.2% 88.9%  0.3%</span>
+<span class="co">#&gt;  Menor de 10 anios.  0.0%  0.0%  3.8% 96.2%</span></code></pre></div>
 <p>Un indicador frecuente construido con esta infomación es la Matriz de Transición. Ella refleja como los individuos que ocupaban una determinada categoría en el período inicial, se distribuyen en cada una de las categorías en el período siguiente. La misma puede construirse sencillamente utilizando la función <code>calculate_tabulates</code>. En este ejemplo, la información refleja que durante 2018, un 3.7% de los ocupados perdió su empleo en el trimestre siguiente.</p>
 </div>
 <div id="iterando-en-varias-bases" class="section level3">
 <h3 class="hasAnchor">
 <a href="#iterando-en-varias-bases" class="anchor"></a>Iterando en varias bases</h3>
 <p>Dado que levantar muchas bases al mismo tiempo puede superar el espacio disponible en memoria, es posible utilizar el parametro <code>vars</code> para hacer una selección de variables al mismo tiempo que se levantan las bases.</p>
-<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_microdata.html">get_microdata</a></span>(<span class="kw">year</span> <span class="kw">=</span> <span class="fl">2017</span>:<span class="fl">2018</span>, <span class="kw">trimester</span> <span class="kw">=</span> <span class="fl">1</span>:<span class="fl">2</span>,<span class="kw">type</span> <span class="kw">=</span> <span class="st">'individual'</span>,
-                    <span class="kw">vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'PONDERA'</span>,<span class="st">'ESTADO'</span>,<span class="st">'CAT_OCUP'</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span>()
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_microdata.html">get_microdata</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2017</span><span class="op">:</span><span class="fl">2018</span>, trimester <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>,type <span class="op">=</span> <span class="st">'individual'</span>,
+                    vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'PONDERA'</span>,<span class="st">'ESTADO'</span>,<span class="st">'CAT_OCUP'</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="op">)</span>
 
-<span class="no">df</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_n</a></span>(<span class="fl">5</span>)
+<span class="va">df</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_n</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 5 x 7</span>
 <span class="co">#&gt;    year trimester wave  type       PONDERA ESTADO CAT_OCUP</span>
 <span class="co">#&gt;   &lt;int&gt;     &lt;int&gt; &lt;lgl&gt; &lt;fct&gt;        &lt;int&gt;  &lt;int&gt;    &lt;int&gt;</span>
-<span class="co">#&gt; 1  2017         2 NA    individual     218      4        0</span>
-<span class="co">#&gt; 2  2018         2 NA    individual     198      4        0</span>
-<span class="co">#&gt; 3  2017         1 NA    individual     126      2        0</span>
-<span class="co">#&gt; 4  2018         1 NA    individual     257      3        0</span>
-<span class="co">#&gt; 5  2017         1 NA    individual    2712      2        3</span></pre></body></html></div>
+<span class="co">#&gt; 1  2018         1 NA    individual     640      1        3</span>
+<span class="co">#&gt; 2  2017         2 NA    individual     110      3        0</span>
+<span class="co">#&gt; 3  2017         1 NA    individual    2019      1        1</span>
+<span class="co">#&gt; 4  2017         1 NA    individual     783      3        0</span>
+<span class="co">#&gt; 5  2017         1 NA    individual     295      3        0</span></code></pre></div>
 <p>Con estos datos podemos crear por ejemplo la serie de asalarización</p>
 <p><span class="math inline">\(SO_{t} = \frac{\sum_{i=1}^n w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}\)</span></p>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="no">df</span> <span class="kw">&lt;-</span> <span class="no">df</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">year</span>,<span class="no">trimester</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span>(<span class="kw">indicador</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDERA</span>[<span class="no">CAT_OCUP</span><span class="kw">==</span><span class="fl">3</span> <span class="kw">&amp;</span> <span class="no">ESTADO</span><span class="kw">==</span><span class="fl">1</span>], <span class="kw">na.rm</span> <span class="kw">=</span> <span class="no">T</span>) / <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDERA</span>[<span class="no">ESTADO</span><span class="kw">==</span><span class="fl">1</span>], <span class="kw">na.rm</span> <span class="kw">=</span> <span class="no">T</span>))
-<span class="co">#&gt; `summarise()` regrouping by 'year' (override with `.groups` argument)</span>
-<span class="no">df</span>
-<span class="co">#&gt; Warning: `...` is not empty.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; We detected these problematic arguments:</span>
-<span class="co">#&gt; * `needs_dots`</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; These dots only exist to allow future extensions and should be empty.</span>
-<span class="co">#&gt; Did you misspecify an argument?</span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>,<span class="va">trimester</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>indicador <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">PONDERA</span><span class="op">[</span><span class="va">CAT_OCUP</span><span class="op">==</span><span class="fl">3</span> <span class="op">&amp;</span> <span class="va">ESTADO</span><span class="op">==</span><span class="fl">1</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">PONDERA</span><span class="op">[</span><span class="va">ESTADO</span><span class="op">==</span><span class="fl">1</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">)</span> 
+<span class="co">#&gt; `summarise()` has grouped output by 'year'. You can override using the `.groups` argument.</span>
+<span class="va">df</span>
 <span class="co">#&gt; # A tibble: 4 x 3</span>
 <span class="co">#&gt; # Groups:   year [2]</span>
 <span class="co">#&gt;    year trimester indicador</span>
@@ -339,24 +337,19 @@
 <span class="co">#&gt; 1  2017         1     0.742</span>
 <span class="co">#&gt; 2  2017         2     0.751</span>
 <span class="co">#&gt; 3  2018         1     0.752</span>
-<span class="co">#&gt; 4  2018         2     0.740</span></pre></body></html></div>
+<span class="co">#&gt; 4  2018         2     0.740</span></code></pre></div>
 </div>
 <div id="cálculo-de-pobreza" class="section level3">
 <h3 class="hasAnchor">
 <a href="#c%C3%A1lculo-de-pobreza" class="anchor"></a>Cálculo de pobreza:</h3>
 <p>Un objetivo del paquete <code>eph</code>, es lograr automatizar el cálculo de pobreza e indigencia del INDEC para las bases trimestrales<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. El gran problema es que no existe información publicada fuera de los informes de prensa en formato pdf sobre los valores de las canastas básicas y alimentarias.</p>
 <p>No obstante, hemos desarrollado dos funciones que, de encontrarse disponibles dichos datos, podrían calcular de forma automática los valores de pobreza e indigencia. Mostraremos un ejemplo de juguete con dos datasets de la CABA y sus respectivos valores de canastas.</p>
-<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="no">bases</span> <span class="kw">&lt;-</span> <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span>(<span class="no">toybase_individual_2016_03</span>,<span class="no">toybase_individual_2016_04</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">bases</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">toybase_individual_2016_03</span>,<span class="va">toybase_individual_2016_04</span><span class="op">)</span></code></pre></div>
 <p>Existen dos funciones núcleo:</p>
-<div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="no">lineas</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_poverty_lines.html">get_poverty_lines</a></span>()
-<span class="no">lineas</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()
-<span class="co">#&gt; Warning: `...` is not empty.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; We detected these problematic arguments:</span>
-<span class="co">#&gt; * `needs_dots`</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; These dots only exist to allow future extensions and should be empty.</span>
-<span class="co">#&gt; Did you misspecify an argument?</span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lineas</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_poverty_lines.html">get_poverty_lines</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">lineas</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 x 4</span>
 <span class="co">#&gt;   periodo               CBA   ICE   CBT</span>
 <span class="co">#&gt;   &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
@@ -365,24 +358,19 @@
 <span class="co">#&gt; 3 2016-06-01 00:00:00 1614.  2.44 3943.</span>
 <span class="co">#&gt; 4 2016-07-01 00:00:00 1666.  2.42 4034.</span>
 <span class="co">#&gt; 5 2016-08-01 00:00:00 1675.  2.41 4042.</span>
-<span class="co">#&gt; 6 2016-09-01 00:00:00 1711.  2.39 4090.</span></pre></body></html></div>
+<span class="co">#&gt; 6 2016-09-01 00:00:00 1711.  2.39 4090.</span></code></pre></div>
 <p>Esta función descarga los valores de las canastas alimentaria, básica (CBA y CBT) y la inversa del coeficiente de Engels… perdón, Engel (ICE) de <a href="https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149">la serie provista por INDEC</a>. Esta es la serie para GBA, y es la que publica regularmente INDEC.</p>
-<div class="sourceCode" id="cb18"><html><body><pre class="r"><span class="no">lineas</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(-<span class="no">ICE</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/gather.html">gather</a></span>(<span class="no">canasta</span>, <span class="no">valor</span>, -<span class="no">periodo</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>() +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span><span class="kw">=</span><span class="no">periodo</span>, <span class="kw">y</span><span class="kw">=</span><span class="no">valor</span>, <span class="kw">col</span><span class="kw">=</span><span class="no">canasta</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lineas</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">ICE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/gather.html">gather</a></span><span class="op">(</span><span class="va">canasta</span>, <span class="va">valor</span>, <span class="op">-</span><span class="va">periodo</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">periodo</span>, y<span class="op">=</span><span class="va">valor</span>, col<span class="op">=</span><span class="va">canasta</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="eph_files/figure-html/unnamed-chunk-18-1.png" width="672"></p>
 <p>Para el calculo de la Pobreza e Indigence se utilizan canastas regionales, que sólo aparecen en los <a href="https://www.indec.gob.ar/uploads/informesdeprensa/eph_pobreza_01_19422F5FC20A.pdf">informes Técnicos</a>.</p>
 <p>A modo de ejemplo, en la librería <code>eph</code> se encuentra la base <code>canastas_reg_example</code> con la información necesaria para realizar el cálculo</p>
-<div class="sourceCode" id="cb19"><html><body><pre class="r"><span class="no">canastas_reg_example</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()
-<span class="co">#&gt; Warning: `...` is not empty.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; We detected these problematic arguments:</span>
-<span class="co">#&gt; * `needs_dots`</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; These dots only exist to allow future extensions and should be empty.</span>
-<span class="co">#&gt; Did you misspecify an argument?</span>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">canastas_reg_example</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 x 5</span>
 <span class="co">#&gt;   region  periodo   CBA   CBT codigo</span>
 <span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span>
@@ -391,54 +379,50 @@
 <span class="co">#&gt; 3 GBA     2016.3  1684. 4053.      1</span>
 <span class="co">#&gt; 4 GBA     2016.4  1756. 4232.      1</span>
 <span class="co">#&gt; 5 Noreste 2016.3  1513. 3414.     41</span>
-<span class="co">#&gt; 6 Noreste 2016.4  1568. 3539.     41</span></pre></body></html></div>
+<span class="co">#&gt; 6 Noreste 2016.4  1568. 3539.     41</span></code></pre></div>
 <p>A su vez, también se encuentra la tabla de <code>adulto_equivalente</code> que permite construir la cantidad de adultos equivalentes a nivel hogar, para multiplicar al mismo por la canasta regional correspondiente, a fin de definir la línea a nivel hogar.</p>
-<div class="sourceCode" id="cb20"><html><body><pre class="r"><span class="no">adulto_equivalente</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">adulto_equivalente</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt;   CH04 CH06 adequi</span>
 <span class="co">#&gt; 1    1   -1   0.35</span>
 <span class="co">#&gt; 2    1    1   0.37</span>
 <span class="co">#&gt; 3    1    2   0.46</span>
 <span class="co">#&gt; 4    1    3   0.51</span>
 <span class="co">#&gt; 5    1    4   0.55</span>
-<span class="co">#&gt; 6    1    5   0.60</span></pre></body></html></div>
+<span class="co">#&gt; 6    1    5   0.60</span></code></pre></div>
 <p>La función <code>calculate_poverty</code> calcula la pertenencia a situaciones de pobreza e indigencia a nivel de los individuos siguiendo la metodología de línea:</p>
-<div class="sourceCode" id="cb21"><html><body><pre class="r"><span class="no">bases</span> <span class="kw">&lt;-</span> <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span>(<span class="no">toybase_individual_2016_03</span>,<span class="no">toybase_individual_2016_04</span>)
-<span class="no">base_pobreza</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/calculate_poverty.html">calculate_poverty</a></span>(<span class="kw">base</span> <span class="kw">=</span> <span class="no">bases</span>, <span class="kw">basket</span> <span class="kw">=</span> <span class="no">canastas_reg_example</span>,<span class="kw">print_summary</span><span class="kw">=</span><span class="fl">TRUE</span>)
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">bases</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">toybase_individual_2016_03</span>,<span class="va">toybase_individual_2016_04</span><span class="op">)</span>
+<span class="va">base_pobreza</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calculate_poverty.html">calculate_poverty</a></span><span class="op">(</span>base <span class="op">=</span> <span class="va">bases</span>, basket <span class="op">=</span> <span class="va">canastas_reg_example</span>,print_summary<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 2 x 4</span>
 <span class="co">#&gt; # Groups:   ANO4 [1]</span>
 <span class="co">#&gt;    ANO4 TRIMESTRE Tasa_pobreza Tasa_indigencia</span>
 <span class="co">#&gt;   &lt;int&gt;     &lt;int&gt;        &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1  2016         3       0.0296          0.0136</span>
-<span class="co">#&gt; 2  2016         4       0.0324          0.0122</span></pre></body></html></div>
-<div class="sourceCode" id="cb22"><html><body><pre class="r"><span class="no">base_pobreza</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="no">CODUSU</span>,<span class="no">ITF</span>,<span class="no">region</span>,<span class="no">adequi_hogar</span>,<span class="no">CBA_hogar</span>,<span class="no">CBT_hogar</span>,<span class="no">situacion</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_n</a></span>(<span class="fl">10</span>)
-<span class="co">#&gt; Warning: `...` is not empty.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; We detected these problematic arguments:</span>
-<span class="co">#&gt; * `needs_dots`</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; These dots only exist to allow future extensions and should be empty.</span>
-<span class="co">#&gt; Did you misspecify an argument?</span>
+<span class="co">#&gt; 2  2016         4       0.0324          0.0122</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">base_pobreza</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">CODUSU</span>,<span class="va">ITF</span>,<span class="va">region</span>,<span class="va">adequi_hogar</span>,<span class="va">CBA_hogar</span>,<span class="va">CBT_hogar</span>,<span class="va">situacion</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_n</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 10 x 7</span>
 <span class="co">#&gt;    CODUSU                 ITF region  adequi_hogar CBA_hogar CBT_hogar situacion</span>
 <span class="co">#&gt;    &lt;fct&gt;                &lt;int&gt; &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;    </span>
-<span class="co">#&gt;  1 TQSMNOQSUHKNLMCDEFP… 90000 Patago…         0.66     1197.     3275. no_pobre </span>
-<span class="co">#&gt;  2 TQRMNORUYHMOKMCDEGJ… 18400 Pampea…         1.67     2916.     7029. no_pobre </span>
-<span class="co">#&gt;  3 TQRMNOPTSHMLKNCDEHJ… 28800 Noroes…         1.02     1556.     3480. no_pobre </span>
-<span class="co">#&gt;  4 TQRMNOQTUHLLKMCDEFJ… 17500 Pampea…         0.76     1327.     3199. no_pobre </span>
-<span class="co">#&gt;  5 TQRMNOPWSHLOKTCDEHI…  9940 Noroes…         1.02     1556.     3480. no_pobre </span>
-<span class="co">#&gt;  6 TQRMNOPUSHMNLUCDEIK…     0 Pampea…         0.77     1345.     3241. &lt;NA&gt;     </span>
-<span class="co">#&gt;  7 TQRMNORXUHLKMSCDEII… 58000 GBA             1        1684.     4053. no_pobre </span>
-<span class="co">#&gt;  8 TQRMNOQSVHJLLLCDEIO…     0 Pampea…         0.76     1327.     3199. &lt;NA&gt;     </span>
-<span class="co">#&gt;  9 TQRMNORQTHMLLRCDEFK… 16500 Pampea…         0.83     1450.     3493. no_pobre </span>
-<span class="co">#&gt; 10 TQRMNORQRHKMKPCDEFL… 14000 Pampea…         1        1676.     4034. no_pobre</span></pre></body></html></div>
+<span class="co">#&gt;  1 TQRMNOQSVHMMSUCDEIJ~  5000 GBA             0.96     1686.     4063. no_pobre </span>
+<span class="co">#&gt;  2 TQRMNOQXRHJMRLCDEIJ~ 23900 GBA             1        1756.     4232. no_pobre </span>
+<span class="co">#&gt;  3 TQRMNORSTHMNLPCDEFO~ 10600 Noreste         0.46      696.     1570. no_pobre </span>
+<span class="co">#&gt;  4 TQRMNOQTWHLNKMCDEHN~  8800 Cuyo            1.02     1539.     3950. no_pobre </span>
+<span class="co">#&gt;  5 TQSMNORSXHJOLPCDEFK~     0 Pampea~         0.35      587.     1412. indigente</span>
+<span class="co">#&gt;  6 TQRMNOPPYHLMKMCDEIM~     0 Pampea~         0.77     1345.     3241. &lt;NA&gt;     </span>
+<span class="co">#&gt;  7 TQRMNOQUQHJLKNCDEHJ~ 41500 Noroes~         0.77     1175.     2627. no_pobre </span>
+<span class="co">#&gt;  8 TQRMNOQYTHJOKOCDEHP~ 31970 Noroes~         0.76     1119.     2502. no_pobre </span>
+<span class="co">#&gt;  9 TQRMNOPXYHKMKUCDEGK~ 25900 Pampea~         0.35      611.     1473. no_pobre </span>
+<span class="co">#&gt; 10 TQRMNORTVHJLLNCDEGO~     0 Noroes~         1.46     2149.     4807. &lt;NA&gt;</span></code></pre></div>
 </div>
 </div>
 <div class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p>El calculo oficial se realiza sobre bases semestrales no publicadas<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>El calculo oficial se realiza sobre bases semestrales no publicadas<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>
@@ -458,7 +442,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

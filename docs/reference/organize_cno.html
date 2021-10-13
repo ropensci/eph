@@ -99,7 +99,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -128,7 +128,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/holatam/eph/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -155,7 +155,7 @@
 (CNO 2001)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>organize_cno</span>(<span class='no'>base</span>)</pre>
+    <pre class="usage"><span class='fu'>organize_cno</span><span class='op'>(</span><span class='va'>base</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -174,8 +174,10 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 
-<span class='no'>bases</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_rows</a></span>(<span class='no'>toybase_individual_2016_03</span>,<span class='no'>toybase_individual_2016_04</span>)
-<span class='no'>bases_clasif</span> <span class='kw'>&lt;-</span> <span class='fu'>organize_cno</span>(<span class='kw'>base</span> <span class='kw'>=</span> <span class='no'>bases</span>)</div></pre>
+<span class='va'>bases</span> <span class='op'>&lt;-</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_rows</a></span><span class='op'>(</span><span class='va'>toybase_individual_2016_03</span>,<span class='va'>toybase_individual_2016_04</span><span class='op'>)</span>
+<span class='va'>bases_clasif</span> <span class='op'>&lt;-</span> <span class='fu'>organize_cno</span><span class='op'>(</span>base <span class='op'>=</span> <span class='va'>bases</span><span class='op'>)</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -191,7 +193,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
