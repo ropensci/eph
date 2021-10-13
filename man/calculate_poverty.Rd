@@ -4,7 +4,13 @@
 \alias{calculate_poverty}
 \title{Calculo de Pobreza e Indigencia}
 \usage{
-calculate_poverty(base, basket, print_summary = TRUE)
+calculate_poverty(
+  base,
+  basket,
+  print_summary = TRUE,
+  window = "quarter",
+  group_vars = c()
+)
 }
 \arguments{
 \item{base}{Base individual de uno o mas periodos}
@@ -12,6 +18,11 @@ calculate_poverty(base, basket, print_summary = TRUE)
 \item{basket}{canasta basica alimentaria y total, con la estructura de la canasta de ejemplo (ver \code{\link{canastas_reg_example}})}
 
 \item{print_summary}{default = TRUE. Opcion para imprimir las tasas de pobreza e indigencia (proporcion de individuos)}
+
+\item{window}{default = "quarter". Opcion para cambiar el lapso del calculo que se imprime en consola.
+"quarter" (para estimacion trimestral) o "semester" (estimacion semestral)}
+
+\item{group_vars}{Opcion para agregar variables agrupadoras para el calculo que se imprime en consola.}
 }
 \description{
 Funcion para calcular la pobreza e indigencia siguiendo la metodologia de linea.
@@ -22,10 +33,12 @@ disclaimer: El script no es un producto oficial de INDEC.
 \examples{
 
 bases <- dplyr::bind_rows(toybase_individual_2016_03,
-                          toybase_individual_2016_04)
+                         toybase_individual_2016_04)
 
 base_pobreza <- calculate_poverty(base = bases,
-                                  basket = canastas_reg_example,
-                                  print_summary=TRUE)
+                                 basket = canastas_reg_example,
+                                 print_summary=TRUE,
+                                 group_vars = c(CH04,NIVEL_ED),
+                                 window = "semestral")
 
 }

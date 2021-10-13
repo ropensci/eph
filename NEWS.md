@@ -1,4 +1,6 @@
 # eph (development version)
+* add group_vars and window argument to calculate_poverty
+* add function calculate_errors 
 * add affix_sign argument to calculate_tabulates
 
 # eph 0.4.0

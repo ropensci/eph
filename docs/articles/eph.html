@@ -195,13 +195,13 @@
 <span class="co">#&gt;                                                                      Inactivo</span>
 <span class="co">#&gt;                                                            Menor de 10 anios.</span>
 <span class="co">#&gt;                                                                         Total</span>
-<span class="co">#&gt;   Varon  Mujer</span>
-<span class="co">#&gt;    0.0%   0.0%</span>
-<span class="co">#&gt;   49.0%  35.4%</span>
-<span class="co">#&gt;    4.7%   4.3%</span>
-<span class="co">#&gt;   30.3%  46.7%</span>
-<span class="co">#&gt;   16.0%  13.6%</span>
-<span class="co">#&gt;  100.0% 100.0%</span></code></pre></div>
+<span class="co">#&gt;  Varon Mujer</span>
+<span class="co">#&gt;    0.0   0.0</span>
+<span class="co">#&gt;   49.0  35.4</span>
+<span class="co">#&gt;    4.7   4.3</span>
+<span class="co">#&gt;   30.3  46.7</span>
+<span class="co">#&gt;   16.0  13.6</span>
+<span class="co">#&gt;  100.0 100.0</span></code></pre></div>
 <p>Los argumentos principales de la función son:</p>
 <ul>
 <li>
@@ -234,13 +234,13 @@
 <span class="co">#&gt;                                                                      Inactivo</span>
 <span class="co">#&gt;                                                            Menor de 10 anios.</span>
 <span class="co">#&gt;                                                                         Total</span>
-<span class="co">#&gt;   Varon  Mujer</span>
-<span class="co">#&gt;    0.1%   0.1%</span>
-<span class="co">#&gt;   48.5%  34.0%</span>
-<span class="co">#&gt;    3.6%   3.3%</span>
-<span class="co">#&gt;   32.0%  48.8%</span>
-<span class="co">#&gt;   15.9%  13.8%</span>
-<span class="co">#&gt;  100.0% 100.0%</span></code></pre></div>
+<span class="co">#&gt;  Varon Mujer</span>
+<span class="co">#&gt;    0.1   0.1</span>
+<span class="co">#&gt;   48.5  34.0</span>
+<span class="co">#&gt;    3.6   3.3</span>
+<span class="co">#&gt;   32.0  48.8</span>
+<span class="co">#&gt;   15.9  13.8</span>
+<span class="co">#&gt;  100.0 100.0</span></code></pre></div>
 </div>
 <div id="armando-pools-de-datos-organize_panels" class="section level3">
 <h3 class="hasAnchor">
@@ -296,11 +296,11 @@
   <span class="fu"><a href="../reference/organize_labels.html">organize_labels</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span> <span class="op">%&gt;%</span> 
 <span class="fu"><a href="../reference/calculate_tabulates.html">calculate_tabulates</a></span><span class="op">(</span>x<span class="op">=</span><span class="st">'ESTADO'</span>, y<span class="op">=</span><span class="st">'ESTADO_t1'</span>,
                     weights <span class="op">=</span> <span class="st">"PONDERA"</span>, add.percentage<span class="op">=</span><span class="st">'row'</span><span class="op">)</span>
-<span class="co">#&gt;    ESTADO/ESTADO_t1     1     2     3     4</span>
-<span class="co">#&gt;             Ocupado 89.0%  3.7%  7.3%  0.0%</span>
-<span class="co">#&gt;          Desocupado 36.2% 34.8% 29.0%  0.0%</span>
-<span class="co">#&gt;            Inactivo  7.6%  3.2% 88.9%  0.3%</span>
-<span class="co">#&gt;  Menor de 10 anios.  0.0%  0.0%  3.8% 96.2%</span></code></pre></div>
+<span class="co">#&gt;    ESTADO/ESTADO_t1    1    2    3    4</span>
+<span class="co">#&gt;             Ocupado 89.0  3.7  7.3  0.0</span>
+<span class="co">#&gt;          Desocupado 36.2 34.8 29.0  0.0</span>
+<span class="co">#&gt;            Inactivo  7.6  3.2 88.9  0.3</span>
+<span class="co">#&gt;  Menor de 10 anios.  0.0  0.0  3.8 96.2</span></code></pre></div>
 <p>Un indicador frecuente construido con esta infomación es la Matriz de Transición. Ella refleja como los individuos que ocupaban una determinada categoría en el período inicial, se distribuyen en cada una de las categorías en el período siguiente. La misma puede construirse sencillamente utilizando la función <code>calculate_tabulates</code>. En este ejemplo, la información refleja que durante 2018, un 3.7% de los ocupados perdió su empleo en el trimestre siguiente.</p>
 </div>
 <div id="iterando-en-varias-bases" class="section level3">
@@ -317,11 +317,11 @@
 <span class="co">#&gt; # A tibble: 5 x 7</span>
 <span class="co">#&gt;    year trimester wave  type       PONDERA ESTADO CAT_OCUP</span>
 <span class="co">#&gt;   &lt;int&gt;     &lt;int&gt; &lt;lgl&gt; &lt;fct&gt;        &lt;int&gt;  &lt;int&gt;    &lt;int&gt;</span>
-<span class="co">#&gt; 1  2018         1 NA    individual     640      1        3</span>
-<span class="co">#&gt; 2  2017         2 NA    individual     110      3        0</span>
-<span class="co">#&gt; 3  2017         1 NA    individual    2019      1        1</span>
-<span class="co">#&gt; 4  2017         1 NA    individual     783      3        0</span>
-<span class="co">#&gt; 5  2017         1 NA    individual     295      3        0</span></code></pre></div>
+<span class="co">#&gt; 1  2018         1 NA    individual     662      4        0</span>
+<span class="co">#&gt; 2  2017         1 NA    individual      88      3        0</span>
+<span class="co">#&gt; 3  2018         2 NA    individual     113      1        3</span>
+<span class="co">#&gt; 4  2018         2 NA    individual     230      1        3</span>
+<span class="co">#&gt; 5  2017         2 NA    individual      86      1        3</span></code></pre></div>
 <p>Con estos datos podemos crear por ejemplo la serie de asalarización</p>
 <p><span class="math inline">\(SO_{t} = \frac{\sum_{i=1}^n w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}\)</span></p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
@@ -407,16 +407,16 @@
 <span class="co">#&gt; # A tibble: 10 x 7</span>
 <span class="co">#&gt;    CODUSU                 ITF region  adequi_hogar CBA_hogar CBT_hogar situacion</span>
 <span class="co">#&gt;    &lt;fct&gt;                &lt;int&gt; &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;    </span>
-<span class="co">#&gt;  1 TQRMNOQSVHMMSUCDEIJ~  5000 GBA             0.96     1686.     4063. no_pobre </span>
-<span class="co">#&gt;  2 TQRMNOQXRHJMRLCDEIJ~ 23900 GBA             1        1756.     4232. no_pobre </span>
-<span class="co">#&gt;  3 TQRMNORSTHMNLPCDEFO~ 10600 Noreste         0.46      696.     1570. no_pobre </span>
-<span class="co">#&gt;  4 TQRMNOQTWHLNKMCDEHN~  8800 Cuyo            1.02     1539.     3950. no_pobre </span>
-<span class="co">#&gt;  5 TQSMNORSXHJOLPCDEFK~     0 Pampea~         0.35      587.     1412. indigente</span>
-<span class="co">#&gt;  6 TQRMNOPPYHLMKMCDEIM~     0 Pampea~         0.77     1345.     3241. &lt;NA&gt;     </span>
-<span class="co">#&gt;  7 TQRMNOQUQHJLKNCDEHJ~ 41500 Noroes~         0.77     1175.     2627. no_pobre </span>
-<span class="co">#&gt;  8 TQRMNOQYTHJOKOCDEHP~ 31970 Noroes~         0.76     1119.     2502. no_pobre </span>
-<span class="co">#&gt;  9 TQRMNOPXYHKMKUCDEGK~ 25900 Pampea~         0.35      611.     1473. no_pobre </span>
-<span class="co">#&gt; 10 TQRMNORTVHJLLNCDEGO~     0 Noroes~         1.46     2149.     4807. &lt;NA&gt;</span></code></pre></div>
+<span class="co">#&gt;  1 TQRMNOQPRHMNRRCDEIJ~ 23000 GBA             1.02     1791.     4317. no_pobre </span>
+<span class="co">#&gt;  2 TQRMNORTVHJNLMCDEHG~ 17000 Patago~         1.02     1770.     4837. no_pobre </span>
+<span class="co">#&gt;  3 TQRMNOQTRHKOLQCDEFK~ 18600 Pampea~         0.83     1391.     3348. no_pobre </span>
+<span class="co">#&gt;  4 TQRMNORYVHKMNRCDEII~ 40000 GBA             1        1684.     4053. no_pobre </span>
+<span class="co">#&gt;  5 TQRMNOQUQHKLKSCDEHM~  6000 Cuyo            1.02     1602.     4111. no_pobre </span>
+<span class="co">#&gt;  6 TQRMNOSRQHMMKUCDEHM~  4960 Cuyo            0.85     1335.     3426. no_pobre </span>
+<span class="co">#&gt;  7 TQRMNOQUSHJNLLCDEGN~     0 Patago~         1.02     1850.     5062. &lt;NA&gt;     </span>
+<span class="co">#&gt;  8 TQTMNOSSPHLMKQCDEFM~ 16300 Pampea~         1        1676.     4034. no_pobre </span>
+<span class="co">#&gt;  9 TQRMNOSTRHJNRRCDEIJ~ 20800 GBA             1        1684.     4053. no_pobre </span>
+<span class="co">#&gt; 10 TQRMNOPTPHKOKRCDEFN~ 34000 Noreste         0.66     1035.     2336. no_pobre</span></code></pre></div>
 </div>
 </div>
 <div class="footnotes">

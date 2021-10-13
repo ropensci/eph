@@ -153,7 +153,13 @@
     <p>Funcion para calcular la pobreza e indigencia siguiendo la metodologia de linea.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>calculate_poverty</span><span class='op'>(</span><span class='va'>base</span>, <span class='va'>basket</span>, print_summary <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>calculate_poverty</span><span class='op'>(</span>
+  <span class='va'>base</span>,
+  <span class='va'>basket</span>,
+  print_summary <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  window <span class='op'>=</span> <span class='st'>"quarter"</span>,
+  group_vars <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -170,6 +176,15 @@
       <th>print_summary</th>
       <td><p>default = TRUE. Opcion para imprimir las tasas de pobreza e indigencia (proporcion de individuos)</p></td>
     </tr>
+    <tr>
+      <th>window</th>
+      <td><p>default = "quarter". Opcion para cambiar el lapso del calculo que se imprime en consola.
+"quarter" (para estimacion trimestral) o "semester" (estimacion semestral)</p></td>
+    </tr>
+    <tr>
+      <th>group_vars</th>
+      <td><p>Opcion para agregar variables agrupadoras para el calculo que se imprime en consola.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -179,17 +194,31 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='va'>bases</span> <span class='op'>&lt;-</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_rows</a></span><span class='op'>(</span><span class='va'>toybase_individual_2016_03</span>,
-                          <span class='va'>toybase_individual_2016_04</span><span class='op'>)</span>
+                         <span class='va'>toybase_individual_2016_04</span><span class='op'>)</span>
 
 <span class='va'>base_pobreza</span> <span class='op'>&lt;-</span> <span class='fu'>calculate_poverty</span><span class='op'>(</span>base <span class='op'>=</span> <span class='va'>bases</span>,
-                                  basket <span class='op'>=</span> <span class='va'>canastas_reg_example</span>,
-                                  print_summary<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 4</span><span>
-#&gt; </span><span style='color: #949494;'># Groups:   ANO4 [1]</span><span>
-#&gt;    ANO4 TRIMESTRE Tasa_pobreza Tasa_indigencia
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>  </span><span style='text-decoration: underline;'>2</span><span>016         3       0.029</span><span style='text-decoration: underline;'>6</span><span>          0.013</span><span style='text-decoration: underline;'>6</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span>  </span><span style='text-decoration: underline;'>2</span><span>016         4       0.032</span><span style='text-decoration: underline;'>4</span><span>          0.012</span><span style='text-decoration: underline;'>2</span><span></div><div class='input'>
+                                 basket <span class='op'>=</span> <span class='va'>canastas_reg_example</span>,
+                                 print_summary<span class='op'>=</span><span class='cn'>TRUE</span>,
+                                 group_vars <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>CH04</span>,<span class='va'>NIVEL_ED</span><span class='op'>)</span>,
+                                 window <span class='op'>=</span> <span class='st'>"semestral"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 14 x 6</span><span>
+#&gt; </span><span style='color: #949494;'># Groups:   ANO4, SEMESTRE, CH04 [2]</span><span>
+#&gt;     ANO4 SEMESTRE  CH04 NIVEL_ED Tasa_pobreza Tasa_indigencia
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>  </span><span style='text-decoration: underline;'>2</span><span>016        2     1        1       0.070</span><span style='text-decoration: underline;'>0</span><span>         0.004</span><span style='text-decoration: underline;'>30</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>  </span><span style='text-decoration: underline;'>2</span><span>016        2     1        2       0.014</span><span style='text-decoration: underline;'>9</span><span>         0.005</span><span style='text-decoration: underline;'>09</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>  </span><span style='text-decoration: underline;'>2</span><span>016        2     1        3       0.034</span><span style='text-decoration: underline;'>8</span><span>         0.006</span><span style='text-decoration: underline;'>82</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>  </span><span style='text-decoration: underline;'>2</span><span>016        2     1        4       0.015</span><span style='text-decoration: underline;'>8</span><span>         0.011</span><span style='text-decoration: underline;'>1</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>  </span><span style='text-decoration: underline;'>2</span><span>016        2     1        5       0.055</span><span style='text-decoration: underline;'>6</span><span>         0.039</span><span style='text-decoration: underline;'>9</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>  </span><span style='text-decoration: underline;'>2</span><span>016        2     1        6       0              0      
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>  </span><span style='text-decoration: underline;'>2</span><span>016        2     1        7       0.044</span><span style='text-decoration: underline;'>8</span><span>         0.004</span><span style='text-decoration: underline;'>42</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>  </span><span style='text-decoration: underline;'>2</span><span>016        2     2        1       0.027</span><span style='text-decoration: underline;'>6</span><span>         0.007</span><span style='text-decoration: underline;'>08</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>  </span><span style='text-decoration: underline;'>2</span><span>016        2     2        2       0.039</span><span style='text-decoration: underline;'>7</span><span>         0.031</span><span style='text-decoration: underline;'>5</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>  </span><span style='text-decoration: underline;'>2</span><span>016        2     2        3       0.042</span><span style='text-decoration: underline;'>7</span><span>         0.018</span><span style='text-decoration: underline;'>4</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'>11</span><span>  </span><span style='text-decoration: underline;'>2</span><span>016        2     2        4       0.027</span><span style='text-decoration: underline;'>8</span><span>         0.019</span><span style='text-decoration: underline;'>4</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'>12</span><span>  </span><span style='text-decoration: underline;'>2</span><span>016        2     2        5       0.034</span><span style='text-decoration: underline;'>9</span><span>         0.018</span><span style='text-decoration: underline;'>4</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'>13</span><span>  </span><span style='text-decoration: underline;'>2</span><span>016        2     2        6       0              0      
+#&gt; </span><span style='color: #BCBCBC;'>14</span><span>  </span><span style='text-decoration: underline;'>2</span><span>016        2     2        7       0.012</span><span style='text-decoration: underline;'>5</span><span>         0.010</span><span style='text-decoration: underline;'>9</span><span> </div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
