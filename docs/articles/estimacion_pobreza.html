@@ -52,7 +52,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -81,7 +81,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/holatam/eph/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -95,7 +95,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="estimacion_pobreza_files/header-attrs-2.9/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Estimación de Pobreza e Indigencia</h1>
@@ -110,23 +110,11 @@
     
 <p>En esta vignette mostraremos como utilizar las funciones <code><a href="../reference/get_poverty_lines.html">get_poverty_lines()</a></code> y <code><a href="../reference/calculate_poverty.html">calculate_poverty()</a></code> para calcular la pobreza aproximando la <a href="http://www.indec.gob.ar/ftp/cuadros/sociedad/EPH_metodologia_22_pobreza.pdf">metodología oficial</a> de INDEC.</p>
 <p>Primero cargamos el paquete <code>eph</code> junto con otros paquetes que serán de utilidad</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="kw pkg">knitr</span><span class="kw ns">::</span><span class="no"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html">opts_chunk</a></span>$<span class="fu">set</span>(<span class="kw">warning</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">message</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">eph</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyverse</span>)
-<span class="co">#&gt; ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</span>
-<span class="co">#&gt; ✓ ggplot2 3.3.2           ✓ purrr   0.3.4      </span>
-<span class="co">#&gt; ✓ tibble  3.0.2           ✓ dplyr   0.8.99.9002</span>
-<span class="co">#&gt; ✓ tidyr   1.0.3           ✓ stringr 1.4.0      </span>
-<span class="co">#&gt; ✓ readr   1.3.1           ✓ forcats 0.5.0</span>
-<span class="co">#&gt; ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──</span>
-<span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
-<span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">lubridate</span>)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'lubridate'</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     date, intersect, setdiff, union</span></pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html">opts_chunk</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span>warning <span class="op">=</span> <span class="cn">FALSE</span>, message <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/holatam/eph">eph</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span></code></pre></div>
 <p>Luego descargamos los datos que utilizaremos. Para ello, debemos tener en cuenta que la metodología de pobreza de (INDEC, 2016) utiliza canastas basicas alimentarias (CBA) y totales (CBT) regionales, que INDEC publica dentro de los comunicados de pobreza. Para dejarlo claro, la función <code><a href="../reference/get_poverty_lines.html">get_poverty_lines()</a></code> permite descargar las dos series de CBA-CBT.</p>
 <ol style="list-style-type: decimal">
 <li>La CBA-CBT del Gran Buenos Aires, que INDEC <a href="https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149">publica mensualmente</a>
@@ -135,146 +123,105 @@
 </ol>
 <p>El parametro <code>regionales</code> de la función <code><a href="../reference/get_poverty_lines.html">get_poverty_lines()</a></code> define cual de las dos canastas se descarga.</p>
 <p>Además, con la función <code><a href="../reference/get_microdata.html">get_microdata()</a></code> descargamos las bases de todos los trimestres entre 2016 y 2019. Dado que son muchas bases y no utilizaremos todas las variables, utilizamos el parametro <code>vars</code> para hacer un pre filtro de la base y no sobrecargar la memoria. A su vez, dado que la descarga y filtrado de las bases consume mucho tiempo, utilizamos el parámetro <code>destfile</code> para guardar la descarga en un archivo, y que la próxima vez que se ejecute la función cargue este archivo, de forma mucho más rápida (en la computadora donde se construyó la vignette, la primera corrida tarda 100 seg y las siguientes 0.5 seg!)</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">canastas_regionales</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_poverty_lines.html">get_poverty_lines</a></span>(<span class="kw">regional</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
-<span class="no">bases</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_microdata.html">get_microdata</a></span>(<span class="kw">year</span> <span class="kw">=</span> <span class="fl">2016</span>:<span class="fl">2019</span>,
-                       <span class="kw">trimester</span> <span class="kw">=</span> <span class="fl">1</span>:<span class="fl">4</span>,
-                       <span class="kw">type</span> <span class="kw">=</span>  <span class="st">'individual'</span>,
-                       <span class="kw">vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"ANO4"</span>, <span class="st">"TRIMESTRE"</span>, <span class="st">"REGION"</span>, <span class="st">"CODUSU"</span>, <span class="st">"NRO_HOGAR"</span>, <span class="st">"CH04"</span>, <span class="st">"CH06"</span>, <span class="st">"ITF"</span>, <span class="st">"PONDIH"</span>, <span class="st">"PP07H"</span>,<span class="st">"PP04D_COD"</span>),
-                       <span class="kw">destfile</span> <span class="kw">=</span> <span class="st">'bases_eph.rds'</span>)</pre></body></html></div>
-<p>Con la función <code>unnest()</code> agrupamos todas las bases, y con <code><a href="../reference/calculate_poverty.html">calculate_poverty()</a></code> y los datos que descargamos calculamos la pobreza. El parámetro <code>print_summary=TRUE</code> le indica a la función que deseamos imprimir un cuadro de las tasas de pobreza e indigencia por período. Sin embargo, en la tabla <code>bases_pobreza</code> contamos ahora con la variable <code>situación</code> que indica si el hogar es <code>pobre</code>, <code>indigente</code> o <code>no_pobre</code>. Si la variable es <code>NA</code> es porque al menos un miembro del hogar no declaró el ingreso (y por lo tanto no se sabe el Ingreso Total Familiar).</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">bases</span> <span class="kw">&lt;-</span> <span class="no">bases</span> <span class="kw">%&gt;%</span> <span class="fu">unnest</span>(<span class="kw">cols</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">microdata</span>))
-<span class="no">bases_pobreza</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/calculate_poverty.html">calculate_poverty</a></span>(<span class="no">bases</span>, <span class="no">canastas_regionales</span>, <span class="kw">print_summary</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
-<span class="co">#&gt; # A tibble: 15 x 4</span>
-<span class="co">#&gt; # Groups:   ANO4 [4]</span>
-<span class="co">#&gt;     ANO4 TRIMESTRE Tasa_pobreza Tasa_indigencia</span>
-<span class="co">#&gt;    &lt;int&gt;     &lt;int&gt;        &lt;dbl&gt;           &lt;dbl&gt;</span>
-<span class="co">#&gt;  1  2016         2        0.322          0.0620</span>
-<span class="co">#&gt;  2  2016         3        0.307          0.0662</span>
-<span class="co">#&gt;  3  2016         4        0.300          0.0568</span>
-<span class="co">#&gt;  4  2017         1        0.277          0.0613</span>
-<span class="co">#&gt;  5  2017         2        0.293          0.0618</span>
-<span class="co">#&gt;  6  2017         3        0.249          0.0505</span>
-<span class="co">#&gt;  7  2017         4        0.263          0.0447</span>
-<span class="co">#&gt;  8  2018         1        0.256          0.0492</span>
-<span class="co">#&gt;  9  2018         2        0.290          0.0484</span>
-<span class="co">#&gt; 10  2018         3        0.281          0.0596</span>
-<span class="co">#&gt; 11  2018         4        0.355          0.0737</span>
-<span class="co">#&gt; 12  2019         1        0.342          0.0709</span>
-<span class="co">#&gt; 13  2019         2        0.364          0.0812</span>
-<span class="co">#&gt; 14  2019         3        0.331          0.0762</span>
-<span class="co">#&gt; 15  2019         4        0.383          0.0866</span>
-<span class="no">bases_pobreza</span>
-<span class="co">#&gt; # A tibble: 877,305 x 20</span>
-<span class="co">#&gt;     year trimester wave  type   ANO4 TRIMESTRE REGION CODUSU NRO_HOGAR  CH04</span>
-<span class="co">#&gt;    &lt;int&gt;     &lt;int&gt; &lt;lgl&gt; &lt;fct&gt; &lt;int&gt;     &lt;int&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1  2017         1 NA    indi…  2017         1     43 TQRMN…         1     2</span>
-<span class="co">#&gt;  2  2017         1 NA    indi…  2017         1     43 TQRMN…         1     2</span>
-<span class="co">#&gt;  3  2017         1 NA    indi…  2017         1     43 TQRMN…         1     1</span>
-<span class="co">#&gt;  4  2017         1 NA    indi…  2017         1     43 TQRMN…         1     2</span>
-<span class="co">#&gt;  5  2017         1 NA    indi…  2017         1     43 TQRMN…         1     1</span>
-<span class="co">#&gt;  6  2017         1 NA    indi…  2017         1     43 TQRMN…         1     2</span>
-<span class="co">#&gt;  7  2017         1 NA    indi…  2017         1     43 TQRMN…         1     2</span>
-<span class="co">#&gt;  8  2017         1 NA    indi…  2017         1     43 TQRMN…         1     1</span>
-<span class="co">#&gt;  9  2017         1 NA    indi…  2017         1     43 TQRMN…         1     1</span>
-<span class="co">#&gt; 10  2017         1 NA    indi…  2017         1     43 TQRMN…         1     2</span>
-<span class="co">#&gt; # … with 877,295 more rows, and 10 more variables: CH06 &lt;dbl&gt;, ITF &lt;int&gt;,</span>
-<span class="co">#&gt; #   PONDIH &lt;int&gt;, PP07H &lt;int&gt;, PP04D_COD &lt;chr&gt;, region &lt;chr&gt;,</span>
-<span class="co">#&gt; #   adequi_hogar &lt;dbl&gt;, CBA_hogar &lt;dbl&gt;, CBT_hogar &lt;dbl&gt;, situacion &lt;chr&gt;</span></pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">canastas_regionales</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_poverty_lines.html">get_poverty_lines</a></span><span class="op">(</span>regional <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">bases</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_microdata.html">get_microdata</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2016</span><span class="op">:</span><span class="fl">2019</span>, 
+                       trimester <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,
+                       type <span class="op">=</span>  <span class="st">'individual'</span>,
+                       vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ANO4"</span>, <span class="st">"TRIMESTRE"</span>, <span class="st">"REGION"</span>, <span class="st">"CODUSU"</span>, <span class="st">"NRO_HOGAR"</span>, <span class="st">"CH04"</span>, <span class="st">"CH06"</span>, <span class="st">"ITF"</span>, <span class="st">"PONDIH"</span>, <span class="st">"PP07H"</span>,<span class="st">"PP04D_COD"</span><span class="op">)</span>,
+                       destfile <span class="op">=</span> <span class="st">'bases_eph.rds'</span><span class="op">)</span></code></pre></div>
+<p>Con la función <code><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest()</a></code> agrupamos todas las bases, y con <code><a href="../reference/calculate_poverty.html">calculate_poverty()</a></code> y los datos que descargamos calculamos la pobreza. El parámetro <code>print_summary=TRUE</code> le indica a la función que deseamos imprimir un cuadro de las tasas de pobreza e indigencia por período. Sin embargo, en la tabla <code>bases_pobreza</code> contamos ahora con la variable <code>situación</code> que indica si el hogar es <code>pobre</code>, <code>indigente</code> o <code>no_pobre</code>. Si la variable es <code>NA</code> es porque al menos un miembro del hogar no declaró el ingreso (y por lo tanto no se sabe el Ingreso Total Familiar).</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">bases</span> <span class="op">&lt;-</span> <span class="va">bases</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">microdata</span><span class="op">)</span><span class="op">)</span>
+<span class="va">bases_pobreza</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calculate_poverty.html">calculate_poverty</a></span><span class="op">(</span><span class="va">bases</span>, <span class="va">canastas_regionales</span>, print_summary <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">bases_pobreza</span></code></pre></div>
 <div id="comparación-con-los-resultados-oficiales-" class="section level2">
 <h2 class="hasAnchor">
 <a href="#comparaci%C3%B3n-con-los-resultados-oficiales-" class="anchor"></a>Comparación con los resultados oficiales.</h2>
 <p>Descargamos las tasas de pobreza e indigencia oficiales que guardamos en nuestro repositorio <a href="https://raw.githubusercontent.com/holatam/data/master/eph/canasta/pobreza_oficial.csv">holatam/data</a>.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">pobreza_oficial</span> <span class="kw">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/holatam/data/master/eph/canasta/pobreza_oficial.csv'</span>)
-<span class="no">pobreza_oficial</span> <span class="kw">&lt;-</span> <span class="no">pobreza_oficial</span> <span class="kw">%&gt;%</span>
-  <span class="fu">mutate</span>(<span class="kw">periodo</span> <span class="kw">=</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/parse_date_time.html">parse_date_time</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="no">ANO4</span>,<span class="st">'-'</span>,<span class="no">SEMESTRE</span>*<span class="fl">2</span>), <span class="st">'Y.q'</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu">select</span>(<span class="no">periodo</span>,<span class="kw">pobreza_oficial</span><span class="kw">=</span><span class="no">tasa_pobreza</span>, <span class="kw">indigencia_oficial</span> <span class="kw">=</span> <span class="no">tasa_indigencia</span>)
-<span class="no">pobreza_oficial</span>
-<span class="co">#&gt; # A tibble: 7 x 3</span>
-<span class="co">#&gt;   periodo             pobreza_oficial indigencia_oficial</span>
-<span class="co">#&gt;   &lt;dttm&gt;                        &lt;dbl&gt;              &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 2016-10-01 00:00:00           0.303              0.061</span>
-<span class="co">#&gt; 2 2017-04-01 00:00:00           0.286              0.062</span>
-<span class="co">#&gt; 3 2017-10-01 00:00:00           0.257              0.048</span>
-<span class="co">#&gt; 4 2018-04-01 00:00:00           0.273              0.049</span>
-<span class="co">#&gt; 5 2018-10-01 00:00:00           0.32               0.067</span>
-<span class="co">#&gt; 6 2019-04-01 00:00:00           0.354              0.077</span>
-<span class="co">#&gt; 7 2019-10-01 00:00:00           0.355              0.08</span></pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pobreza_oficial</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/holatam/data/master/eph/canasta/pobreza_oficial.csv'</span><span class="op">)</span>
+<span class="va">pobreza_oficial</span> <span class="op">&lt;-</span> <span class="va">pobreza_oficial</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>periodo <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/parse_date_time.html">parse_date_time</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">ANO4</span>,<span class="st">'-'</span>,<span class="va">SEMESTRE</span><span class="op">*</span><span class="fl">2</span><span class="op">)</span>, <span class="st">'Y.q'</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">periodo</span>,pobreza_oficial<span class="op">=</span><span class="va">tasa_pobreza</span>, indigencia_oficial <span class="op">=</span> <span class="va">tasa_indigencia</span><span class="op">)</span>
+<span class="va">pobreza_oficial</span></code></pre></div>
 <p>Reutilizamos el código dentro de la función <code><a href="../reference/calculate_poverty.html">calculate_poverty()</a></code> que calcula las tasas de pobreza e indigencia para comparar los resultados. Nótese que no es un promedio simple, sino un promedio ponderado por la variable <code>PONDIH</code>.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">Pobreza_resumen</span> <span class="kw">&lt;-</span> <span class="no">bases_pobreza</span> <span class="kw">%&gt;%</span>
-  <span class="fu">group_by</span>(<span class="no">ANO4</span>,<span class="no">TRIMESTRE</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">summarise</span>(<span class="kw">Tasa_pobreza</span>    <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDIH</span>[<span class="no">situacion</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'pobre'</span>, <span class="st">'indigente'</span>)],<span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>)/<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDIH</span>,<span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
-            <span class="kw">Tasa_indigencia</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDIH</span>[<span class="no">situacion</span> <span class="kw">==</span> <span class="st">'indigente'</span>],<span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>)/<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDIH</span>,<span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
-            <span class="kw">.groups</span><span class="kw">=</span> <span class="st">'drop'</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">mutate</span>(<span class="kw">periodo</span> <span class="kw">=</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/parse_date_time.html">parse_date_time</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="no">ANO4</span>,<span class="st">'-'</span>,<span class="no">TRIMESTRE</span>), <span class="st">'Y.q'</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu">select</span>(<span class="no">periodo</span>,<span class="kw">pobreza_estimada</span> <span class="kw">=</span> <span class="no">Tasa_pobreza</span>, <span class="kw">indigencia_estimada</span> <span class="kw">=</span> <span class="no">Tasa_indigencia</span>)
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">Pobreza_resumen</span> <span class="op">&lt;-</span> <span class="va">bases_pobreza</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ANO4</span>,<span class="va">TRIMESTRE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>Tasa_pobreza    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">PONDIH</span><span class="op">[</span><span class="va">situacion</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'pobre'</span>, <span class="st">'indigente'</span><span class="op">)</span><span class="op">]</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">PONDIH</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+            Tasa_indigencia <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">PONDIH</span><span class="op">[</span><span class="va">situacion</span> <span class="op">==</span> <span class="st">'indigente'</span><span class="op">]</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">PONDIH</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, 
+            .groups<span class="op">=</span> <span class="st">'drop'</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>periodo <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/parse_date_time.html">parse_date_time</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">ANO4</span>,<span class="st">'-'</span>,<span class="va">TRIMESTRE</span><span class="op">)</span>, <span class="st">'Y.q'</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">periodo</span>,pobreza_estimada <span class="op">=</span> <span class="va">Tasa_pobreza</span>, indigencia_estimada <span class="op">=</span> <span class="va">Tasa_indigencia</span><span class="op">)</span>
 
-<span class="no">Pobreza_resumen</span> <span class="kw">&lt;-</span> <span class="no">Pobreza_resumen</span> <span class="kw">%&gt;%</span>
-  <span class="fu">left_join</span>(<span class="no">pobreza_oficial</span>,<span class="kw">by</span> <span class="kw">=</span> <span class="st">"periodo"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">pivot_longer</span>(<span class="kw">cols</span> <span class="kw">=</span> <span class="no">pobreza_estimada</span>:<span class="no">indigencia_oficial</span>, <span class="kw">names_to</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'tipo'</span>,<span class="st">'grupo'</span>), <span class="kw">values_to</span> <span class="kw">=</span> <span class="st">'valor'</span>, <span class="kw">names_sep</span> <span class="kw">=</span> <span class="st">'_'</span>,<span class="kw">values_drop_na</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
+<span class="va">Pobreza_resumen</span> <span class="op">&lt;-</span> <span class="va">Pobreza_resumen</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">pobreza_oficial</span>,by <span class="op">=</span> <span class="st">"periodo"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">pobreza_estimada</span><span class="op">:</span><span class="va">indigencia_oficial</span>, names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'tipo'</span>,<span class="st">'grupo'</span><span class="op">)</span>, values_to <span class="op">=</span> <span class="st">'valor'</span>, names_sep <span class="op">=</span> <span class="st">'_'</span>,values_drop_na <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>A continuación mostramos un gráfico que compara los resultados:</p>
 <ul>
 <li>como segmentos colorados, nuestro cálculo trimestral de la pobreza</li>
 <li>la pobreza oficial se calcula a nivel semestral, y se representa como un punto en el medio del semestre correspondiente.</li>
 </ul>
 <p>Se puede ver que la pobreza oficial se ubica en todos los períodos como un punto entre los dos trimestres que la componen (es decir los segmentos a su izquierda y derecha).</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">Pobreza_resumen</span> <span class="kw">&lt;-</span> <span class="no">Pobreza_resumen</span> <span class="kw">%&gt;%</span>
-  <span class="fu">group_by</span>(<span class="no">tipo</span>, <span class="no">grupo</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">mutate</span>(<span class="kw">x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span>(<span class="no">periodo</span>),
-         <span class="kw">y</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span>(<span class="no">valor</span>))
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">Pobreza_resumen</span> <span class="op">&lt;-</span> <span class="va">Pobreza_resumen</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">tipo</span>, <span class="va">grupo</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag</a></span><span class="op">(</span><span class="va">periodo</span><span class="op">)</span>,
+         y <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag</a></span><span class="op">(</span><span class="va">valor</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu">ggplot</span>(<span class="no">Pobreza_resumen</span>, <span class="fu">aes</span>(<span class="no">periodo</span>, <span class="no">valor</span>,<span class="kw">color</span><span class="kw">=</span><span class="no">grupo</span>))+
-  <span class="fu">geom_step</span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">Pobreza_resumen</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="no">grupo</span><span class="kw">==</span><span class="st">'estimada'</span>), <span class="kw">linetype</span><span class="kw">=</span><span class="st">'dashed'</span>)+
-  <span class="fu">geom_segment</span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">Pobreza_resumen</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="no">grupo</span><span class="kw">==</span><span class="st">'estimada'</span>),
-               <span class="fu">aes</span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">x</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">y</span>, <span class="kw">xend</span> <span class="kw">=</span> <span class="no">periodo</span>, <span class="kw">yend</span> <span class="kw">=</span> <span class="no">y</span>), <span class="kw">size</span><span class="kw">=</span><span class="fl">1</span>)+
-  <span class="fu">geom_point</span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">Pobreza_resumen</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="no">grupo</span><span class="kw">==</span><span class="st">'oficial'</span>), <span class="kw">size</span><span class="kw">=</span> <span class="fl">3</span>)+
-  <span class="fu">facet_wrap</span>(<span class="no">tipo</span>~<span class="no">.</span>, <span class="kw">scales</span> <span class="kw">=</span> <span class="st">'free'</span>)+
-  <span class="fu">theme_minimal</span>()+
-  <span class="fu">theme</span>(<span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">'bottom'</span>)</pre></body></html></div>
-<p><img src="estimacion_pobreza_files/figure-html/unnamed-chunk-7-1.png" width="672"></p>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Pobreza_resumen</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">periodo</span>, <span class="va">valor</span>,color<span class="op">=</span><span class="va">grupo</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_step</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">Pobreza_resumen</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">grupo</span><span class="op">==</span><span class="st">'estimada'</span><span class="op">)</span>, linetype<span class="op">=</span><span class="st">'dashed'</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">Pobreza_resumen</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">grupo</span><span class="op">==</span><span class="st">'estimada'</span><span class="op">)</span>,
+               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span>, xend <span class="op">=</span> <span class="va">periodo</span>, yend <span class="op">=</span> <span class="va">y</span><span class="op">)</span>, size<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">Pobreza_resumen</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">grupo</span><span class="op">==</span><span class="st">'oficial'</span><span class="op">)</span>, size<span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="va">tipo</span><span class="op">~</span><span class="va">.</span>, scales <span class="op">=</span> <span class="st">'free'</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">'bottom'</span><span class="op">)</span></code></pre></div>
 <p>Dado que la estimación que realizamos con las bases trimestrales es consistente con los resultados oficiales, podemos aprovechar que contamos con la identificación de la condición de los individuos, para realizar otro tipo de estimaciones.</p>
 <p>Por ejemplo, podemos utilizar la variable <code>PP04D_COD</code> con el código de ocupación, y la función <code><a href="../reference/organize_cno.html">organize_cno()</a></code> para extraer la calificación del puesto. Luego, podemos estudiar las tasas de pobreza e indigencia según la calificación del trabajo. De esta forma, vemos que tanto pobreza como indigencia son más altas entre los trabajadores no calificados, siguiendo los operativos, los técnicos y finalmente los trabajadores profesionales, con tasas más bajas.</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">pobreza_calificacion</span> <span class="kw">&lt;-</span> <span class="no">bases_pobreza</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(!<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">situacion</span>), !<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">PP04D_COD</span>))<span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/organize_cno.html">organize_cno</a></span>(<span class="no">.</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="no">CALIFICACION</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'No calificados'</span>,<span class="st">'Operativos'</span>,<span class="st">'Técnicos'</span>,<span class="st">'Profesionales'</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu">group_by</span>(<span class="no">year</span>,<span class="no">trimester</span>,<span class="no">CALIFICACION</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">summarise</span>(<span class="kw">pobreza</span>    <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDIH</span>[<span class="no">situacion</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'pobre'</span>, <span class="st">'indigente'</span>)],<span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>)/<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDIH</span>,<span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
-            <span class="kw">indigencia</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDIH</span>[<span class="no">situacion</span> <span class="kw">==</span> <span class="st">'indigente'</span>],<span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>)/<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDIH</span>,<span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
-            <span class="kw">.groups</span><span class="kw">=</span> <span class="st">'drop'</span>)
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pobreza_calificacion</span> <span class="op">&lt;-</span> <span class="va">bases_pobreza</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">situacion</span><span class="op">)</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">PP04D_COD</span><span class="op">)</span><span class="op">)</span><span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/organize_cno.html">organize_cno</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">CALIFICACION</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'No calificados'</span>,<span class="st">'Operativos'</span>,<span class="st">'Técnicos'</span>,<span class="st">'Profesionales'</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>,<span class="va">trimester</span>,<span class="va">CALIFICACION</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>pobreza    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">PONDIH</span><span class="op">[</span><span class="va">situacion</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'pobre'</span>, <span class="st">'indigente'</span><span class="op">)</span><span class="op">]</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">PONDIH</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+            indigencia <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">PONDIH</span><span class="op">[</span><span class="va">situacion</span> <span class="op">==</span> <span class="st">'indigente'</span><span class="op">]</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">PONDIH</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, 
+            .groups<span class="op">=</span> <span class="st">'drop'</span><span class="op">)</span>
 
 
-<span class="no">pobreza_calificacion</span> <span class="kw">%&gt;%</span>
-  <span class="fu">mutate</span>(<span class="kw">periodo</span> <span class="kw">=</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/parse_date_time.html">parse_date_time</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="no">year</span>,<span class="st">'-'</span>,<span class="no">trimester</span>), <span class="st">'Y.q'</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu">pivot_longer</span>(<span class="kw">cols</span> <span class="kw">=</span> <span class="no">pobreza</span>:<span class="no">indigencia</span>, <span class="kw">names_to</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'tipo'</span>), <span class="kw">values_to</span> <span class="kw">=</span> <span class="st">'tasa'</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="no">periodo</span>,<span class="no">tasa</span>, <span class="kw">fill</span><span class="kw">=</span><span class="no">tipo</span>))+
-  <span class="fu">geom_col</span>(<span class="kw">position</span> <span class="kw">=</span> <span class="fu">position_dodge</span>())+
-  <span class="fu">facet_wrap</span>(<span class="no">.</span>~<span class="no">CALIFICACION</span>)+
-  <span class="fu">theme_minimal</span>()+
-  <span class="fu">theme</span>(<span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">'bottom'</span>)</pre></body></html></div>
-<p><img src="estimacion_pobreza_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
+<span class="va">pobreza_calificacion</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>periodo <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/parse_date_time.html">parse_date_time</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">year</span>,<span class="st">'-'</span>,<span class="va">trimester</span><span class="op">)</span>, <span class="st">'Y.q'</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">pobreza</span><span class="op">:</span><span class="va">indigencia</span>, names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'tipo'</span><span class="op">)</span>, values_to <span class="op">=</span> <span class="st">'tasa'</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">periodo</span>,<span class="va">tasa</span>, fill<span class="op">=</span><span class="va">tipo</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html">position_dodge</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="va">.</span><span class="op">~</span><span class="va">CALIFICACION</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">'bottom'</span><span class="op">)</span></code></pre></div>
 <p>A su vez, podemos analizar la relación entre la pobreza y la precariedad laboral. Utilizando la variable <code>PP07H</code>, que indica si se perciben descuentos jubilatorios o no (un proxy común para la precariedad laboral), podemos comparar la incidencia de la pobreza y la indigencia entre trabajadores precarios y formales. Como puede verse en el siguiente gráfico, las diferencias son significativas en ambos indicadores.</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">pobreza_informalidad</span> <span class="kw">&lt;-</span> <span class="no">bases_pobreza</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(!<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">situacion</span>), <span class="no">PP07H</span> <span class="kw">%in%</span> <span class="fl">1</span>:<span class="fl">2</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">group_by</span>(<span class="no">year</span>,<span class="no">trimester</span>,<span class="no">PP07H</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">summarise</span>(<span class="kw">pobreza</span>    <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDIH</span>[<span class="no">situacion</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'pobre'</span>, <span class="st">'indigente'</span>)],<span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>)/<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDIH</span>,<span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
-            <span class="kw">indigencia</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDIH</span>[<span class="no">situacion</span> <span class="kw">==</span> <span class="st">'indigente'</span>],<span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>)/<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">PONDIH</span>,<span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
-            <span class="kw">.groups</span><span class="kw">=</span> <span class="st">'drop'</span>)
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pobreza_informalidad</span> <span class="op">&lt;-</span> <span class="va">bases_pobreza</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">situacion</span><span class="op">)</span>, <span class="va">PP07H</span> <span class="op">%in%</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>,<span class="va">trimester</span>,<span class="va">PP07H</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>pobreza    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">PONDIH</span><span class="op">[</span><span class="va">situacion</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'pobre'</span>, <span class="st">'indigente'</span><span class="op">)</span><span class="op">]</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">PONDIH</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+            indigencia <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">PONDIH</span><span class="op">[</span><span class="va">situacion</span> <span class="op">==</span> <span class="st">'indigente'</span><span class="op">]</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">PONDIH</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, 
+            .groups<span class="op">=</span> <span class="st">'drop'</span><span class="op">)</span>
 
 
-<span class="no">pobreza_informalidad</span> <span class="kw">%&gt;%</span>
-    <span class="fu">mutate</span>(<span class="kw">periodo</span> <span class="kw">=</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/parse_date_time.html">parse_date_time</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="no">year</span>,<span class="st">'-'</span>,<span class="no">trimester</span>), <span class="st">'Y.q'</span>),
-           <span class="kw">descuento_jubilatorio</span> <span class="kw">=</span> <span class="fu">case_when</span>(<span class="no">PP07H</span><span class="kw">==</span><span class="fl">1</span> ~ <span class="st">"Si"</span>,
-                                             <span class="fl">TRUE</span> ~ <span class="st">"No"</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu">pivot_longer</span>(<span class="kw">cols</span> <span class="kw">=</span> <span class="no">pobreza</span>:<span class="no">indigencia</span>, <span class="kw">names_to</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'tipo'</span>), <span class="kw">values_to</span> <span class="kw">=</span> <span class="st">'tasa'</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="no">periodo</span>,<span class="no">tasa</span>, <span class="kw">color</span><span class="kw">=</span><span class="no">descuento_jubilatorio</span>))+
+<span class="va">pobreza_informalidad</span> <span class="op">%&gt;%</span> 
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>periodo <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/parse_date_time.html">parse_date_time</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">year</span>,<span class="st">'-'</span>,<span class="va">trimester</span><span class="op">)</span>, <span class="st">'Y.q'</span><span class="op">)</span>,
+           descuento_jubilatorio <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">PP07H</span><span class="op">==</span><span class="fl">1</span> <span class="op">~</span> <span class="st">"Si"</span>,
+                                             <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"No"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">pobreza</span><span class="op">:</span><span class="va">indigencia</span>, names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'tipo'</span><span class="op">)</span>, values_to <span class="op">=</span> <span class="st">'tasa'</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">periodo</span>,<span class="va">tasa</span>, color<span class="op">=</span><span class="va">descuento_jubilatorio</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
   <span class="co">#geom_col(position = position_dodge())+</span>
-  <span class="fu">geom_point</span>(<span class="kw">size</span><span class="kw">=</span><span class="fl">2</span>)+
-  <span class="fu">geom_smooth</span>()+
-  <span class="fu">facet_wrap</span>(<span class="no">tipo</span>~<span class="no">.</span>, <span class="kw">scales</span> <span class="kw">=</span> <span class="st">'free'</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">1</span>)+
-  <span class="fu">theme_minimal</span>()+
-  <span class="fu">theme</span>(<span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">'bottom'</span>,
-        <span class="kw">text</span> <span class="kw">=</span> <span class="fu">element_text</span>(<span class="kw">size</span> <span class="kw">=</span> <span class="fl">14</span>))</pre></body></html></div>
-<p><img src="estimacion_pobreza_files/figure-html/unnamed-chunk-9-1.png" width="672"></p>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="va">tipo</span><span class="op">~</span><span class="va">.</span>, scales <span class="op">=</span> <span class="st">'free'</span>, ncol <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">'bottom'</span>,
+        text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="comparación-de-canastas" class="section level1">
 <h1 class="hasAnchor">
@@ -284,33 +231,14 @@
 <h2 class="hasAnchor">
 <a href="#canasta-b%C3%A1sica-alimentaria" class="anchor"></a>Canasta Básica Alimentaria</h2>
 <p>Primero calculamos el cociente de las canastas de las regiones respecto a la de GBA.</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">relativos_cba</span> <span class="kw">&lt;-</span> <span class="no">canastas_regionales</span> <span class="kw">%&gt;%</span>
-  <span class="fu">select</span>(-<span class="no">CBT</span>, -<span class="no">codigo</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">pivot_wider</span>(<span class="kw">names_from</span> <span class="kw">=</span> <span class="no">region</span>,<span class="kw">values_from</span> <span class="kw">=</span> <span class="no">CBA</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">mutate_at</span>(<span class="kw">.vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'Cuyo'</span>,<span class="st">'Noreste'</span>,<span class="st">'Noroeste'</span>,<span class="st">'Pampeana'</span>,<span class="st">'Patagonia'</span>), ~ <span class="no">.x</span>/<span class="no">GBA</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">mutate</span>(<span class="kw">GBA</span> <span class="kw">=</span> <span class="no">GBA</span>/<span class="no">GBA</span>,
-         <span class="kw">periodo</span> <span class="kw">=</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/parse_date_time.html">parse_date_time</a></span>(<span class="no">periodo</span>, <span class="st">'Y.q'</span>)) <span class="co">#paso a formato fecha los trimestres</span>
-<span class="no">relativos_cba</span>
-<span class="co">#&gt; # A tibble: 17 x 7</span>
-<span class="co">#&gt;    periodo              Cuyo   GBA Noreste Noroeste Pampeana Patagonia</span>
-<span class="co">#&gt;    &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 2015-10-01 00:00:00 0.896     1   0.912    0.882    1.00       1.03</span>
-<span class="co">#&gt;  2 2016-01-01 00:00:00 0.895     1   0.906    0.879    1.00       1.03</span>
-<span class="co">#&gt;  3 2016-04-01 00:00:00 0.896     1   0.900    0.878    1.00       1.03</span>
-<span class="co">#&gt;  4 2016-07-01 00:00:00 0.896     1   0.898    0.874    0.995      1.03</span>
-<span class="co">#&gt;  5 2016-10-01 00:00:00 0.894     1   0.893    0.869    0.994      1.03</span>
-<span class="co">#&gt;  6 2017-01-01 00:00:00 0.894     1   0.890    0.863    0.993      1.03</span>
-<span class="co">#&gt;  7 2017-04-01 00:00:00 0.894     1   0.892    0.868    0.992      1.03</span>
-<span class="co">#&gt;  8 2017-07-01 00:00:00 0.892     1   0.888    0.868    0.993      1.03</span>
-<span class="co">#&gt;  9 2017-10-01 00:00:00 0.894     1   0.891    0.871    0.996      1.03</span>
-<span class="co">#&gt; 10 2018-01-01 00:00:00 0.894     1   0.892    0.871    0.995      1.03</span>
-<span class="co">#&gt; 11 2018-04-01 00:00:00 0.891     1   0.891    0.866    0.989      1.03</span>
-<span class="co">#&gt; 12 2018-07-01 00:00:00 0.896     1   0.894    0.873    0.992      1.03</span>
-<span class="co">#&gt; 13 2018-10-01 00:00:00 0.894     1   0.890    0.867    0.991      1.03</span>
-<span class="co">#&gt; 14 2019-01-01 00:00:00 0.889     1   0.887    0.865    0.990      1.03</span>
-<span class="co">#&gt; 15 2019-04-01 00:00:00 0.886     1   0.885    0.866    0.986      1.02</span>
-<span class="co">#&gt; 16 2019-07-01 00:00:00 0.889     1   0.894    0.871    0.988      1.04</span>
-<span class="co">#&gt; 17 2019-10-01 00:00:00 0.893     1   0.898    0.874    0.992      1.04</span></pre></body></html></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">relativos_cba</span> <span class="op">&lt;-</span> <span class="va">canastas_regionales</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">CBT</span>, <span class="op">-</span><span class="va">codigo</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">region</span>,values_from <span class="op">=</span> <span class="va">CBA</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span><span class="op">(</span>.vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'Cuyo'</span>,<span class="st">'Noreste'</span>,<span class="st">'Noroeste'</span>,<span class="st">'Pampeana'</span>,<span class="st">'Patagonia'</span><span class="op">)</span>, <span class="op">~</span> <span class="va">.x</span><span class="op">/</span><span class="va">GBA</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>GBA <span class="op">=</span> <span class="va">GBA</span><span class="op">/</span><span class="va">GBA</span>,
+         periodo <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/parse_date_time.html">parse_date_time</a></span><span class="op">(</span><span class="va">periodo</span>, <span class="st">'Y.q'</span><span class="op">)</span><span class="op">)</span> <span class="co">#paso a formato fecha los trimestres</span>
+<span class="va">relativos_cba</span></code></pre></div>
 <p>Como se dijo, luego de valorizarse con precios de GBA, se multiplican por el PPCC. A contiuación mostramos la evolución de las canastas según</p>
 <ul>
 <li>PPCC (es un único valor por región calculado en 2001)</li>
@@ -318,120 +246,81 @@
 <li>efecto composición (efecto total dividido por el PPCC, para anular el efecto del mismo, y estudiar exclusivamente la diferencia por definición de las canastas)</li>
 </ul>
 <p>Se puede observar que si bien todas las canastas tienen por composición un mayor valor que la canasta de GBA, al multiplicarlas por el PPPC tan sólo la región Patagónica conserva una canasta con mayor valor.</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">ppcc</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(
-<span class="kw">region</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'Cuyo'</span>,<span class="st">'GBA'</span>,<span class="st">'Noreste'</span>,<span class="st">'Noroeste'</span>,<span class="st">'Pampeana'</span>,<span class="st">'Patagonia'</span>),
-<span class="kw">ppcc</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">.872</span>,<span class="fl">1</span>,<span class="fl">.886</span>,<span class="fl">.865</span>,<span class="fl">.904</span>,<span class="fl">.949</span>)
-)
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ppcc</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
+region <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'Cuyo'</span>,<span class="st">'GBA'</span>,<span class="st">'Noreste'</span>,<span class="st">'Noroeste'</span>,<span class="st">'Pampeana'</span>,<span class="st">'Patagonia'</span><span class="op">)</span>,
+ppcc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">.872</span>,<span class="fl">1</span>,<span class="fl">.886</span>,<span class="fl">.865</span>,<span class="fl">.904</span>,<span class="fl">.949</span><span class="op">)</span>
+<span class="op">)</span>
 
 
-<span class="no">relativos_cba</span> <span class="kw">%&gt;%</span>
-  <span class="fu">pivot_longer</span>(<span class="kw">cols</span> <span class="kw">=</span> <span class="no">Cuyo</span>:<span class="no">Patagonia</span>,<span class="kw">names_to</span> <span class="kw">=</span> <span class="st">'region'</span>, <span class="kw">values_to</span> <span class="kw">=</span> <span class="st">'relativo'</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">left_join</span>(<span class="no">ppcc</span>, <span class="kw">by</span> <span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'region'</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu">mutate</span>(<span class="kw">relativo_normalizado</span> <span class="kw">=</span> <span class="no">relativo</span>/<span class="no">ppcc</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">pivot_longer</span>(<span class="kw">names_to</span> <span class="kw">=</span> <span class="st">'grupo'</span>, <span class="kw">cols</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'relativo'</span>, <span class="st">'relativo_normalizado'</span>,<span class="st">'ppcc'</span>),<span class="kw">values_to</span> <span class="kw">=</span> <span class="st">'valor'</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">mutate</span>(<span class="kw">grupo</span> <span class="kw">=</span> <span class="fu">fct_recode</span>(<span class="no">grupo</span>,<span class="st">'efecto total'</span><span class="kw">=</span><span class="st">'relativo'</span>,<span class="st">'efecto composición'</span> <span class="kw">=</span><span class="st">'relativo_normalizado'</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="no">periodo</span>,<span class="no">valor</span>, <span class="kw">color</span><span class="kw">=</span><span class="no">region</span>,<span class="kw">group</span><span class="kw">=</span><span class="no">region</span>)) +
-  <span class="fu">geom_line</span>()+
-  <span class="fu">facet_wrap</span>(<span class="no">.</span>~<span class="no">grupo</span>)+
-  <span class="fu">theme_minimal</span>()+
-  <span class="fu">theme</span>(<span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">'bottom'</span>)</pre></body></html></div>
-<p><img src="estimacion_pobreza_files/figure-html/unnamed-chunk-11-1.png" width="672"></p>
+<span class="va">relativos_cba</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Cuyo</span><span class="op">:</span><span class="va">Patagonia</span>,names_to <span class="op">=</span> <span class="st">'region'</span>, values_to <span class="op">=</span> <span class="st">'relativo'</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">ppcc</span>, by <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'region'</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>relativo_normalizado <span class="op">=</span> <span class="va">relativo</span><span class="op">/</span><span class="va">ppcc</span><span class="op">)</span> <span class="op">%&gt;%</span>  
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>names_to <span class="op">=</span> <span class="st">'grupo'</span>, cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'relativo'</span>, <span class="st">'relativo_normalizado'</span>,<span class="st">'ppcc'</span><span class="op">)</span>,values_to <span class="op">=</span> <span class="st">'valor'</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>grupo <span class="op">=</span> <span class="fu">fct_recode</span><span class="op">(</span><span class="va">grupo</span>,<span class="st">'efecto total'</span><span class="op">=</span><span class="st">'relativo'</span>,<span class="st">'efecto composición'</span> <span class="op">=</span><span class="st">'relativo_normalizado'</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">periodo</span>,<span class="va">valor</span>, color<span class="op">=</span><span class="va">region</span>,group<span class="op">=</span><span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="va">.</span><span class="op">~</span><span class="va">grupo</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">'bottom'</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="canasta-básica-total" class="section level2">
 <h2 class="hasAnchor">
 <a href="#canasta-b%C3%A1sica-total" class="anchor"></a>Canasta Básica Total</h2>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">relativos_cbt</span> <span class="kw">&lt;-</span> <span class="no">canastas_regionales</span> <span class="kw">%&gt;%</span>
-  <span class="fu">select</span>(-<span class="no">CBA</span>, -<span class="no">codigo</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">pivot_wider</span>(<span class="kw">names_from</span> <span class="kw">=</span> <span class="no">region</span>,<span class="kw">values_from</span> <span class="kw">=</span> <span class="no">CBT</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">mutate_at</span>(<span class="kw">.vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'Cuyo'</span>,<span class="st">'Noreste'</span>,<span class="st">'Noroeste'</span>,<span class="st">'Pampeana'</span>,<span class="st">'Patagonia'</span>), ~ <span class="no">.x</span>/<span class="no">GBA</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">mutate</span>(<span class="kw">GBA</span> <span class="kw">=</span> <span class="no">GBA</span>/<span class="no">GBA</span>,
-         <span class="kw">periodo</span> <span class="kw">=</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/parse_date_time.html">parse_date_time</a></span>(<span class="no">periodo</span>, <span class="st">'Y.q'</span>)) <span class="co">#paso a formato fecha los trimestres</span>
-<span class="no">relativos_cbt</span>
-<span class="co">#&gt; # A tibble: 17 x 7</span>
-<span class="co">#&gt;    periodo              Cuyo   GBA Noreste Noroeste Pampeana Patagonia</span>
-<span class="co">#&gt;    &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 2015-10-01 00:00:00 0.951     1   0.852    0.816    1.00       1.17</span>
-<span class="co">#&gt;  2 2016-01-01 00:00:00 0.953     1   0.849    0.816    1.00       1.17</span>
-<span class="co">#&gt;  3 2016-04-01 00:00:00 0.955     1   0.844    0.815    1.00       1.17</span>
-<span class="co">#&gt;  4 2016-07-01 00:00:00 0.955     1   0.842    0.812    0.995      1.17</span>
-<span class="co">#&gt;  5 2016-10-01 00:00:00 0.952     1   0.836    0.806    0.994      1.17</span>
-<span class="co">#&gt;  6 2017-01-01 00:00:00 0.952     1   0.834    0.801    0.993      1.17</span>
-<span class="co">#&gt;  7 2017-04-01 00:00:00 0.951     1   0.835    0.805    0.991      1.17</span>
-<span class="co">#&gt;  8 2017-07-01 00:00:00 0.951     1   0.833    0.807    0.993      1.16</span>
-<span class="co">#&gt;  9 2017-10-01 00:00:00 0.953     1   0.836    0.810    0.996      1.17</span>
-<span class="co">#&gt; 10 2018-01-01 00:00:00 0.951     1   0.835    0.808    0.995      1.17</span>
-<span class="co">#&gt; 11 2018-04-01 00:00:00 0.948     1   0.833    0.803    0.989      1.17</span>
-<span class="co">#&gt; 12 2018-07-01 00:00:00 0.953     1   0.837    0.810    0.992      1.17</span>
-<span class="co">#&gt; 13 2018-10-01 00:00:00 0.952     1   0.833    0.805    0.991      1.17</span>
-<span class="co">#&gt; 14 2019-01-01 00:00:00 0.946     1   0.831    0.804    0.990      1.17</span>
-<span class="co">#&gt; 15 2019-04-01 00:00:00 0.945     1   0.830    0.804    0.986      1.16</span>
-<span class="co">#&gt; 16 2019-07-01 00:00:00 0.946     1   0.837    0.808    0.988      1.18</span>
-<span class="co">#&gt; 17 2019-10-01 00:00:00 0.950     1   0.841    0.811    0.991      1.18</span></pre></body></html></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">relativos_cbt</span> <span class="op">&lt;-</span> <span class="va">canastas_regionales</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">CBA</span>, <span class="op">-</span><span class="va">codigo</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">region</span>,values_from <span class="op">=</span> <span class="va">CBT</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span><span class="op">(</span>.vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'Cuyo'</span>,<span class="st">'Noreste'</span>,<span class="st">'Noroeste'</span>,<span class="st">'Pampeana'</span>,<span class="st">'Patagonia'</span><span class="op">)</span>, <span class="op">~</span> <span class="va">.x</span><span class="op">/</span><span class="va">GBA</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>GBA <span class="op">=</span> <span class="va">GBA</span><span class="op">/</span><span class="va">GBA</span>,
+         periodo <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/parse_date_time.html">parse_date_time</a></span><span class="op">(</span><span class="va">periodo</span>, <span class="st">'Y.q'</span><span class="op">)</span><span class="op">)</span> <span class="co">#paso a formato fecha los trimestres</span>
+<span class="va">relativos_cbt</span></code></pre></div>
 <p>Los resultados son similares analizando la CBT.</p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r">
-<span class="no">relativos_cbt</span> <span class="kw">%&gt;%</span>
-  <span class="fu">pivot_longer</span>(<span class="kw">cols</span> <span class="kw">=</span> <span class="no">Cuyo</span>:<span class="no">Patagonia</span>,<span class="kw">names_to</span> <span class="kw">=</span> <span class="st">'region'</span>, <span class="kw">values_to</span> <span class="kw">=</span> <span class="st">'relativo'</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">left_join</span>(<span class="no">ppcc</span>, <span class="kw">by</span> <span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'region'</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu">mutate</span>(<span class="kw">relativo_normalizado</span> <span class="kw">=</span> <span class="no">relativo</span>/<span class="no">ppcc</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">pivot_longer</span>(<span class="kw">names_to</span> <span class="kw">=</span> <span class="st">'grupo'</span>, <span class="kw">cols</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'relativo'</span>, <span class="st">'relativo_normalizado'</span>,<span class="st">'ppcc'</span>),<span class="kw">values_to</span> <span class="kw">=</span> <span class="st">'valor'</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">mutate</span>(<span class="kw">grupo</span> <span class="kw">=</span> <span class="fu">fct_recode</span>(<span class="no">grupo</span>,<span class="st">'efecto total'</span><span class="kw">=</span><span class="st">'relativo'</span>,<span class="st">'efecto composición'</span> <span class="kw">=</span><span class="st">'relativo_normalizado'</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="no">periodo</span>,<span class="no">valor</span>, <span class="kw">color</span><span class="kw">=</span><span class="no">region</span>,<span class="kw">group</span><span class="kw">=</span><span class="no">region</span>)) +
-  <span class="fu">geom_line</span>()+
-  <span class="fu">facet_wrap</span>(<span class="no">.</span>~<span class="no">grupo</span>)+
-  <span class="fu">theme_minimal</span>()+
-  <span class="fu">theme</span>(<span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">'bottom'</span>)</pre></body></html></div>
-<p><img src="estimacion_pobreza_files/figure-html/unnamed-chunk-13-1.png" width="672"></p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="va">relativos_cbt</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Cuyo</span><span class="op">:</span><span class="va">Patagonia</span>,names_to <span class="op">=</span> <span class="st">'region'</span>, values_to <span class="op">=</span> <span class="st">'relativo'</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">ppcc</span>, by <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'region'</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>relativo_normalizado <span class="op">=</span> <span class="va">relativo</span><span class="op">/</span><span class="va">ppcc</span><span class="op">)</span> <span class="op">%&gt;%</span>  
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>names_to <span class="op">=</span> <span class="st">'grupo'</span>, cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'relativo'</span>, <span class="st">'relativo_normalizado'</span>,<span class="st">'ppcc'</span><span class="op">)</span>,values_to <span class="op">=</span> <span class="st">'valor'</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>grupo <span class="op">=</span> <span class="fu">fct_recode</span><span class="op">(</span><span class="va">grupo</span>,<span class="st">'efecto total'</span><span class="op">=</span><span class="st">'relativo'</span>,<span class="st">'efecto composición'</span> <span class="op">=</span><span class="st">'relativo_normalizado'</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">periodo</span>,<span class="va">valor</span>, color<span class="op">=</span><span class="va">region</span>,group<span class="op">=</span><span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="va">.</span><span class="op">~</span><span class="va">grupo</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">'bottom'</span><span class="op">)</span></code></pre></div>
 <p>Dado que la CBT no se calcula valorizando una canasta, sino multiplicando a la CBA por la Inversa del Coeficiente de Engel (ICE), el gráfico anterior (dado que no es idéntico al de CBA) indica que hay una diferencia en los ICE de las regiones. Efectivamente, la metodología de pobreza indica que el ICE se calcula a nivel región.</p>
 </div>
 <div id="inversa-del-coeficiente-de-engel" class="section level2">
 <h2 class="hasAnchor">
 <a href="#inversa-del-coeficiente-de-engel" class="anchor"></a>Inversa del Coeficiente de Engel</h2>
 <p>Por lo tanto, realizamos la misma comparación para el ICE, calculado a partir de las CBA y CBT.</p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">relativos_ice</span> <span class="kw">&lt;-</span> <span class="no">canastas_regionales</span> <span class="kw">%&gt;%</span>
-  <span class="fu">group_by</span>(<span class="no">region</span>, <span class="no">periodo</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">mutate</span>(<span class="kw">ice</span> <span class="kw">=</span> <span class="no">CBT</span>/<span class="no">CBA</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">select</span>(-<span class="no">CBA</span>,-<span class="no">CBT</span>, -<span class="no">codigo</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">pivot_wider</span>(<span class="kw">names_from</span> <span class="kw">=</span> <span class="no">region</span>,<span class="kw">values_from</span> <span class="kw">=</span> <span class="no">ice</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">mutate_at</span>(<span class="kw">.vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'Cuyo'</span>,<span class="st">'Noreste'</span>,<span class="st">'Noroeste'</span>,<span class="st">'Pampeana'</span>,<span class="st">'Patagonia'</span>), ~ <span class="no">.x</span>/<span class="no">GBA</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">mutate</span>(<span class="kw">GBA</span> <span class="kw">=</span> <span class="no">GBA</span>/<span class="no">GBA</span>,
-         <span class="kw">periodo</span> <span class="kw">=</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/parse_date_time.html">parse_date_time</a></span>(<span class="no">periodo</span>, <span class="st">'Y.q'</span>)) <span class="co">#paso a formato fecha los trimestres</span>
-<span class="no">relativos_ice</span>
-<span class="co">#&gt; # A tibble: 17 x 7</span>
-<span class="co">#&gt; # Groups:   periodo [17]</span>
-<span class="co">#&gt;    periodo              Cuyo   GBA Noreste Noroeste Pampeana Patagonia</span>
-<span class="co">#&gt;    &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 2015-10-01 00:00:00  1.06     1   0.934    0.925    1.00       1.13</span>
-<span class="co">#&gt;  2 2016-01-01 00:00:00  1.06     1   0.936    0.928    1.00       1.13</span>
-<span class="co">#&gt;  3 2016-04-01 00:00:00  1.07     1   0.937    0.929    1.00       1.14</span>
-<span class="co">#&gt;  4 2016-07-01 00:00:00  1.07     1   0.938    0.929    1.00       1.14</span>
-<span class="co">#&gt;  5 2016-10-01 00:00:00  1.07     1   0.936    0.928    1.00       1.14</span>
-<span class="co">#&gt;  6 2017-01-01 00:00:00  1.06     1   0.937    0.928    1.00       1.13</span>
-<span class="co">#&gt;  7 2017-04-01 00:00:00  1.06     1   0.936    0.928    0.999      1.14</span>
-<span class="co">#&gt;  8 2017-07-01 00:00:00  1.07     1   0.937    0.929    1.00       1.14</span>
-<span class="co">#&gt;  9 2017-10-01 00:00:00  1.07     1   0.938    0.930    1.00       1.14</span>
-<span class="co">#&gt; 10 2018-01-01 00:00:00  1.06     1   0.936    0.928    1.00       1.13</span>
-<span class="co">#&gt; 11 2018-04-01 00:00:00  1.06     1   0.935    0.927    1.00       1.13</span>
-<span class="co">#&gt; 12 2018-07-01 00:00:00  1.06     1   0.936    0.928    1.00       1.14</span>
-<span class="co">#&gt; 13 2018-10-01 00:00:00  1.06     1   0.936    0.928    1.00       1.13</span>
-<span class="co">#&gt; 14 2019-01-01 00:00:00  1.06     1   0.937    0.929    1.00       1.14</span>
-<span class="co">#&gt; 15 2019-04-01 00:00:00  1.07     1   0.937    0.928    1.00       1.13</span>
-<span class="co">#&gt; 16 2019-07-01 00:00:00  1.06     1   0.936    0.928    1.00       1.14</span>
-<span class="co">#&gt; 17 2019-10-01 00:00:00  1.06     1   0.936    0.928    0.999      1.13</span></pre></body></html></div>
-<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="no">relativos_ice</span> <span class="kw">%&gt;%</span>
-  <span class="fu">pivot_longer</span>(<span class="kw">cols</span> <span class="kw">=</span> <span class="no">Cuyo</span>:<span class="no">Patagonia</span>,<span class="kw">names_to</span> <span class="kw">=</span> <span class="st">'region'</span>, <span class="kw">values_to</span> <span class="kw">=</span> <span class="st">'relativo'</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">left_join</span>(<span class="no">ppcc</span>, <span class="kw">by</span> <span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'region'</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="no">periodo</span>,<span class="no">relativo</span>, <span class="kw">color</span><span class="kw">=</span><span class="no">region</span>,<span class="kw">group</span><span class="kw">=</span><span class="no">region</span>)) +
-  <span class="fu">geom_line</span>()+
-  <span class="fu">theme_minimal</span>()+
-  <span class="fu">theme</span>(<span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">'bottom'</span>)</pre></body></html></div>
-<p><img src="estimacion_pobreza_files/figure-html/unnamed-chunk-15-1.png" width="672"></p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">relativos_ice</span> <span class="op">&lt;-</span> <span class="va">canastas_regionales</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">region</span>, <span class="va">periodo</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>ice <span class="op">=</span> <span class="va">CBT</span><span class="op">/</span><span class="va">CBA</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">CBA</span>,<span class="op">-</span><span class="va">CBT</span>, <span class="op">-</span><span class="va">codigo</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">region</span>,values_from <span class="op">=</span> <span class="va">ice</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span><span class="op">(</span>.vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'Cuyo'</span>,<span class="st">'Noreste'</span>,<span class="st">'Noroeste'</span>,<span class="st">'Pampeana'</span>,<span class="st">'Patagonia'</span><span class="op">)</span>, <span class="op">~</span> <span class="va">.x</span><span class="op">/</span><span class="va">GBA</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>GBA <span class="op">=</span> <span class="va">GBA</span><span class="op">/</span><span class="va">GBA</span>,
+         periodo <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/parse_date_time.html">parse_date_time</a></span><span class="op">(</span><span class="va">periodo</span>, <span class="st">'Y.q'</span><span class="op">)</span><span class="op">)</span> <span class="co">#paso a formato fecha los trimestres</span>
+<span class="va">relativos_ice</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">relativos_ice</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Cuyo</span><span class="op">:</span><span class="va">Patagonia</span>,names_to <span class="op">=</span> <span class="st">'region'</span>, values_to <span class="op">=</span> <span class="st">'relativo'</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">ppcc</span>, by <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'region'</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">periodo</span>,<span class="va">relativo</span>, color<span class="op">=</span><span class="va">region</span>,group<span class="op">=</span><span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">'bottom'</span><span class="op">)</span></code></pre></div>
 <p>Si bien existe una clara diferencia de nivel, las variaciones dentro del período son marginales.</p>
 </div>
 </div>
 <div class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p>el motivo de esto es que al momento del primer calculo de pobreza en 2016 el IPC nacional se encontraba en construcción<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>el motivo de esto es que al momento del primer calculo de pobreza en 2016 el IPC nacional se encontraba en construcción<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>
@@ -451,7 +340,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
