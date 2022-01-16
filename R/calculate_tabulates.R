@@ -6,9 +6,8 @@
 #'@param y otro string (opcional) con el nombre de una segunda variable, para una tabla de doble entrada. Tiene que ser de igual largo que x
 #'@param weights string con el nombre de la variable con los pesos de pesos, tiene que ser de igual largo que x
 #'@param digits numero de digitos significativos
-#'@param normwt si es TRUE, normaliza los pesos de modo que el recuento ponderado total sea el mismo que el no ponderado
-#'@param exclude valores a remover de x e y
 #'@param affix_sign si es TRUE agrega el signo \% al final
+#'@param addNA de haber, cuenta valores NA
 #'@param add.totals  toma los valores c('none','row','col','both'), para agregar totales por fila, columna o ambos
 #'@param add.percentage toma los valores c('none','row','col'), para agregar porcentajes por fila y columna
 #'@examples
@@ -40,25 +39,32 @@
 #'
 #'@export
 
-calculate_tabulates <- function(base, x, y = NULL, weights = NULL, affix_sign = FALSE, digits = 1,
-                                       add.totals = 'none',
-                                       add.percentage = 'none'){
+calculate_tabulates <- function(base,
+                                x, y = NULL,
+                                weights = NULL, affix_sign = FALSE, digits = 1, addNA = FALSE,
+                                add.totals = 'none', add.percentage = 'none'){
 
 
   # Controles de los parametros
   assertthat::assert_that(is.vector(x))
   assertthat::assert_that(add.totals %in% c('none','row','col','both'))
   assertthat::assert_that(add.percentage %in% c('none','row','col'))
+  assertthat::assert_that(is.numeric(digits))
 
 
 
   x_vec <- base[[x]]
+
+  ## Vector y
   if (!is.null(y)) {
     y_vec <- base[[y]]
   } else {
     y_vec = NULL
   }
 
+
+
+  ## weight[ponderador]
   if (!is.null(weights)) {
     weights_vec <- base[[weights]]
   } else {
@@ -66,15 +72,26 @@ calculate_tabulates <- function(base, x, y = NULL, weights = NULL, affix_sign = 
   }
 
 
+  ###############################################################
+  ####### Tabulado uni-variado - ponderado
+
+  if(!is.null(weights) & is.null(y)){
+    tabulado <- xtabs(weights_vec ~ x_vec,
+                                    data = base) %>%
+      as.data.frame(.)
+
+    names(tabulado) <- c(paste0(x),names(tabulado)[2:ncol(tabulado)])
+  }
 
 
   ###############################################################
   ######## Tabulado bi-variado - ponderado
   if(!is.null(weights) & !is.null(y)){
     tabulado <- xtabs(weights_vec ~ x_vec + y_vec,
-                      data = base)
+                      data = base) %>%
+      as.data.frame(.)
 
-    tabulado <- as.data.frame(tabulado) %>%
+    tabulado <- tabulado %>%
       tidyr::pivot_wider(.,
                          names_from = y_vec,
                          values_from = Freq)
@@ -85,24 +102,15 @@ calculate_tabulates <- function(base, x, y = NULL, weights = NULL, affix_sign = 
   }
 
 
-  ###############################################################
-  ####### Tabulado uni-variado - ponderado
-
-  if(!is.null(weights) & is.null(y)){
-    tabulado <- as.data.frame(xtabs(weights_vec ~ x_vec,
-                                    data = base))
-
-    names(tabulado) <- c(paste0(x),names(tabulado)[2:ncol(tabulado)])
-  }
-
 
   ###############################################################
   ######## Tabulado bi-variado - NO ponderado
   if(is.null(weights) & !is.null(y_vec)){
     tabulado <- xtabs(~ x_vec + y_vec,
-                      data = base)
+                      data = base) %>%
+      as.data.frame(.)
 
-    tabulado <- as.data.frame(tabulado) %>%
+    tabulado <- tabulado %>%
       tidyr::pivot_wider(.,
                          names_from = y_vec,
                          values_from = Freq)
@@ -116,8 +124,9 @@ calculate_tabulates <- function(base, x, y = NULL, weights = NULL, affix_sign = 
   ####### Tabulado uni-variado - NO ponderado
 
   if(is.null(weights) & is.null(y)){
-    tabulado <- as.data.frame(xtabs(~ x_vec,
-                                    data = base))
+    tabulado <- xtabs(~ x_vec,
+                      data = base) %>%
+      as.data.frame(.)
 
     names(tabulado) <- c(paste0(x),names(tabulado)[2:ncol(tabulado)])
   }
