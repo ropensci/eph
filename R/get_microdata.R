@@ -111,6 +111,6 @@ get_microdata <- function(year = 2018,
   if (nrow(df)==1) {
     df$microdata[[1]]
   }else{
-    df
+    df %>% tidyr::unnest(.)
   }
 }
