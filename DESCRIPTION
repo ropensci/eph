@@ -28,7 +28,6 @@ Imports:
     glue,
     readxl,
     janitor,
-    questionr,
     tidyr,
     readr,
     utils,

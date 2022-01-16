@@ -76,8 +76,8 @@ calculate_tabulates <- function(base,
   ####### Tabulado uni-variado - ponderado
 
   if(!is.null(weights) & is.null(y)){
-    tabulado <- xtabs(weights_vec ~ x_vec,
-                                    data = base) %>%
+    tabulado <- stats::xtabs(weights_vec ~ x_vec,
+                             data = base) %>%
       as.data.frame(.)
 
     names(tabulado) <- c(paste0(x),names(tabulado)[2:ncol(tabulado)])
@@ -87,8 +87,8 @@ calculate_tabulates <- function(base,
   ###############################################################
   ######## Tabulado bi-variado - ponderado
   if(!is.null(weights) & !is.null(y)){
-    tabulado <- xtabs(weights_vec ~ x_vec + y_vec,
-                      data = base) %>%
+    tabulado <- stats::xtabs(weights_vec ~ x_vec + y_vec,
+                             data = base) %>%
       as.data.frame(.)
 
     tabulado <- tabulado %>%
@@ -106,8 +106,8 @@ calculate_tabulates <- function(base,
   ###############################################################
   ######## Tabulado bi-variado - NO ponderado
   if(is.null(weights) & !is.null(y_vec)){
-    tabulado <- xtabs(~ x_vec + y_vec,
-                      data = base) %>%
+    tabulado <- stats::xtabs(~ x_vec + y_vec,
+                             data = base) %>%
       as.data.frame(.)
 
     tabulado <- tabulado %>%
@@ -124,8 +124,8 @@ calculate_tabulates <- function(base,
   ####### Tabulado uni-variado - NO ponderado
 
   if(is.null(weights) & is.null(y)){
-    tabulado <- xtabs(~ x_vec,
-                      data = base) %>%
+    tabulado <- stats::xtabs(~ x_vec,
+                             data = base) %>%
       as.data.frame(.)
 
     names(tabulado) <- c(paste0(x),names(tabulado)[2:ncol(tabulado)])
@@ -156,16 +156,16 @@ calculate_tabulates <- function(base,
   if (add.percentage == 'col') {
 
     tabulado <- tabulado %>%
-        janitor::adorn_percentages("col") %>%
-        janitor::adorn_pct_formatting(affix_sign = affix_sign, digits = digits)
+      janitor::adorn_percentages("col") %>%
+      janitor::adorn_pct_formatting(affix_sign = affix_sign, digits = digits)
   }
 
   if (add.percentage == 'row') {
     tabulado <- tabulado %>%
-          janitor::adorn_percentages("row") %>%
-          janitor::adorn_pct_formatting(affix_sign = affix_sign, digits = digits)
+      janitor::adorn_percentages("row") %>%
+      janitor::adorn_pct_formatting(affix_sign = affix_sign, digits = digits)
 
-    }
+  }
 
   return(tabulado)
 }
