@@ -24,12 +24,12 @@ test_that("Sin data", {
   expect_length(df,0)
   })
 
-test_that("muchas bases", {
-  skip_if_offline()
-  skip_on_cran()
-  df <- suppressWarnings(get_microdata(year = 2017:2018, trimester = 4,type = c('individual','hogar')))
-  expect_equal(dim(df$microdata[[1]]), c(58181,177))
-  expect_equal(dim(df$microdata[[2]]), c(57418,177))
-  expect_equal(dim(df$microdata[[3]]), c(18793,88))
-  expect_equal(dim(df$microdata[[4]]), c(18616,88))
-})
+# test_that("muchas bases", {
+#   skip_if_offline()
+#   skip_on_cran()
+#   df <- suppressWarnings(get_microdata(year = 2017:2018, trimester = 4,type = c('individual','hogar')))
+#   expect_equal(dim(df$microdata[[1]]), c(58181,177))
+#   expect_equal(dim(df$microdata[[2]]), c(57418,177))
+#   expect_equal(dim(df$microdata[[3]]), c(18793,88))
+#   expect_equal(dim(df$microdata[[4]]), c(18616,88))
+# })
