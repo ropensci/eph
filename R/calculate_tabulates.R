@@ -57,8 +57,11 @@ calculate_tabulates <- function(base,
 
   ## Vector y
   if (!is.null(y)) {
+
     y_vec <- base[[y]]
+
   } else {
+
     y_vec = NULL
   }
 
@@ -66,8 +69,11 @@ calculate_tabulates <- function(base,
 
   ## weight[ponderador]
   if (!is.null(weights)) {
+
     weights_vec <- base[[weights]]
+
   } else {
+
     weights_vec = NULL
   }
 
@@ -76,8 +82,8 @@ calculate_tabulates <- function(base,
   ####### Tabulado uni-variado - ponderado
 
   if(!is.null(weights) & is.null(y)){
-    tabulado <- stats::xtabs(weights_vec ~ x_vec,
-                             data = base) %>%
+
+    tabulado <- stats::xtabs(weights_vec ~ x_vec, data = base) %>%
       as.data.frame(.)
 
     names(tabulado) <- c(paste0(x),names(tabulado)[2:ncol(tabulado)])
@@ -86,7 +92,9 @@ calculate_tabulates <- function(base,
 
   ###############################################################
   ######## Tabulado bi-variado - ponderado
+
   if(!is.null(weights) & !is.null(y)){
+
     tabulado <- stats::xtabs(weights_vec ~ x_vec + y_vec,
                              data = base) %>%
       as.data.frame(.)
@@ -106,8 +114,8 @@ calculate_tabulates <- function(base,
   ###############################################################
   ######## Tabulado bi-variado - NO ponderado
   if(is.null(weights) & !is.null(y_vec)){
-    tabulado <- stats::xtabs(~ x_vec + y_vec,
-                             data = base) %>%
+
+    tabulado <- stats::xtabs(~ x_vec + y_vec, data = base) %>%
       as.data.frame(.)
 
     tabulado <- tabulado %>%
@@ -124,8 +132,8 @@ calculate_tabulates <- function(base,
   ####### Tabulado uni-variado - NO ponderado
 
   if(is.null(weights) & is.null(y)){
-    tabulado <- stats::xtabs(~ x_vec,
-                             data = base) %>%
+
+    tabulado <- stats::xtabs(~ x_vec, data = base) %>%
       as.data.frame(.)
 
     names(tabulado) <- c(paste0(x),names(tabulado)[2:ncol(tabulado)])
@@ -135,14 +143,21 @@ calculate_tabulates <- function(base,
 
   ### add.totals
   if (add.totals=='row') {
+
     tabulado <- tabulado %>%
       janitor::adorn_totals("row")
+
   } else{
+
     if (add.totals=='col') {
+
       tabulado <- tabulado %>%
         janitor::adorn_totals("col")
-    } else{
+
+    } else {
+
       if (add.totals =='both') {
+
         tabulado <- tabulado %>%
           janitor::adorn_totals("row") %>%
           janitor::adorn_totals("col")
@@ -164,7 +179,12 @@ calculate_tabulates <- function(base,
     tabulado <- tabulado %>%
       janitor::adorn_percentages("row") %>%
       janitor::adorn_pct_formatting(affix_sign = affix_sign, digits = digits)
+  }
 
+  if(affix_sign == FALSE){
+
+    tabulado <- tabulado %>%
+      dplyr::mutate(dplyr::across(.cols = 2:length(.), ~ as.numeric(.)))
   }
 
   return(tabulado)

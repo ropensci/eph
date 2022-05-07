@@ -20,5 +20,5 @@ test_that("totales por columna", {
 
 test_that("porcentaje por fila", {
   tab <- calculate_tabulates(base = toybase_individual_2016_03,x = 'REGION', y = 'CH04', weights = 'PONDERA', add.percentage ='row') %>% as.data.frame(.)
-  expect_equal(tab[1,2], '50.4')
+  expect_equal(tab[1,2], 50.4)
 })
