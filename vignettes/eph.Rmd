@@ -27,13 +27,13 @@ El paquete `eph` tiene como objetivo facilitar el trabajo de les usuaries que tr
 
 Para instalar la versión estable del paquete usar:
 
-```{r eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+```
 install.packages('eph')
 ```
 
 Para la versión en desarrollo:
 
-```{r, eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+```
 # install.packages('devtools') si no tiene instalado devtools
 
 devtools::install_github("holatam/eph")
@@ -55,18 +55,22 @@ library(ggplot2)
 Obtengamos la base de microdatos de individuos para el tercer trimestre de 2018:
 
 ```{r}
-ind_3_18 <- get_microdata(year=2018, trimester=2, type='individual')
+ind_3_18 <- get_microdata(year = 2018, 
+                          trimester = 2, 
+                          type = 'individual')
 ```
 Puede verse que la función requiere tres argumentos básicos:
 
-- `year`: entero con el año de la encuesta que se desea descargar
-- `trimester`: entero con el trimestre (este argumento es válido para la EPH continua, 2004-actualidad)
-- `type`: character `"individual"`, para descargar la base de invidividuos y `"hogar"`, para la de hogar.
+- `year`: un valor numérico entero con el año de la encuesta que se desea descargar
+- `trimester`: un valor numérico entero con el trimestre (este argumento es válido para la EPH continua, 2004-actualidad)
+- `type`: un valor character `"individual"`, para descargar la base de invidividuos y `"hogar"`, para la de hogar.
 
 Si se deseara descargar una base de la EPH puntual, será necesario reemplazar el argumento `trimester` por `wave` que define la onda de la EPH puntual que se desea descargar. Por ejemplo, si se buscara descargar la base individual de la segunda onda del año 2002, debería escribirse
 
 ```{r message=FALSE, warning=FALSE}
-ind_2_02 <- get_microdata(year=2001, wave=2, type='individual')
+ind_2_02 <- get_microdata(year = 2001, 
+                          wave = 2, 
+                          type = 'individual')
 ```
 
 
@@ -75,7 +79,8 @@ ind_2_02 <- get_microdata(year=2001, wave=2, type='individual')
 Es posible etiquetar de forma automática el dataset llamando a la función `organize_labels()`:
 
 ```{r}
-ind_3_18 <- organize_labels(df=ind_3_18, type='individual')
+ind_3_18 <- organize_labels(df = ind_3_18, 
+                            type='individual')
 ```
 
 La función toma dos argumentos:
@@ -87,74 +92,95 @@ La función toma dos argumentos:
 Descarguemos y etiquetemos la base de hogares del 3 trimestre de 2018. Podemos hacer uso de los `%>%` pipes de `magritte`:
 
 ```{r}
-hog_3_18 <- get_microdata(year=2018, trimester=3, type='hogar') %>%
-              organize_labels(., type='hogar')
+hog_3_18 <- get_microdata(year = 2018, 
+                          trimester = 3, 
+                          type='hogar') %>%
+  organize_labels(., 
+                  type = 'hogar')
 ```
 
 
 ### Tabulados ponderados: `calculate_tabulates()`
 
-Una de las operaciones más usuales al trabajar con la EPH son los tabulados uni y bivariados. Para ello, el paquete cuenta con la función  `calculate_tabulates()`, la cual brinda la posibilidad de obtener tanto resultados en valores absolutos como relativos, como así también contar con la posibilidad de ponderar los datos:
+Una de las operaciones más usuales al trabajar con la EPH son los tabulados uni y bivariados. Para ello, el paquete cuenta con la función  `calculate_tabulates()`, la cual brinda la posibilidad de obtener tanto resultados en valores absolutos como porcentuales, como así también contar con la posibilidad de extrapolar los datos según el factor de ponderación correspondiente:
 
 
 ```{r}
-calculate_tabulates(base=ind_3_18, x='ESTADO', y='CH04', weights = 'PONDIH',
-                    add.totals='row', add.percentage='col')
+calculate_tabulates(base = ind_3_18, 
+                    x = 'NIVEL_ED', 
+                    y = 'CH04', 
+                    weights = 'PONDERA',
+                    add.totals = 'row', 
+                    add.percentage='col')
 ```
 
 Los argumentos principales de la función son:
 
-- `base`: un data.frame proveniente de `get_microdata()`
+- `base`: un data.frame
 - `x`: string con el nombre de la variable a tabular
 - `y`: otro string (opcional) con el nombre de una segunda variable, para una tabla de doble entrada. Tiene que ser de igual largo que `x`
 - `weights`: string con el nombre de la variable que contiene los pesos
-- `add.totals`: agrega valores por `row`, `col` o `both`
-- `add.percentage`: calcula porcentajes por `row`, `col` o `both`
+- `add.totals`: agrega maginales por fila (`row`), columnas (`col`) o ambas (`both`)
+- `add.percentage`: calcula porcentajes por fila (`row`), columnas (`col`) o ambas (`both`)
 
 Así, si quisiéramos la misma tabla sin ponderar:
 
 ```{r}
-calculate_tabulates(base=ind_3_18, x='ESTADO', y='CH04',
-                    add.totals='row', add.percentage='col')
+calculate_tabulates(base = ind_3_18, 
+                    x = 'NIVEL_ED', 
+                    y = 'CH04',
+                    add.totals = 'row', 
+                    add.percentage = 'col')
 ```
 
 
 
-### Armando pools de datos: `organize_panels()`
+### Armando pools de datos ("análisis de panel"): `organize_panels()`
 
-Otra potencialidad del trabajo con microdatos de la EPH es la capacidad de generar un pool de observaciones de panel. Este procedimiento consta en identificar a una misma persona u hogar encuestado en distintos trimestres, y permite realizar estudios sobre la evolución de sus caracteristicas con el correr del tiempo. Esto puede generarse, para las bases individuales en `eph` con la función `organize_panels()`. Para ello es necesario contar previamente con las múltiples bases de datos que se deseen poolear.
+Otra potencialidad del trabajo con microdatos de la EPH es la capacidad de generar un pool de observaciones de panel. Este procedimiento consta en identificar a una misma persona u hogar encuestado en distintos trimestres, y permite realizar estudios sobre la evolución de sus características con el correr del tiempo. Esto puede generarse, para las bases individuales en `eph` con la función `organize_panels()`. Para ello es necesario contar previamente con las múltiples bases de datos que se deseen poolear, y armar un objeto de tipo lista que las contenga.
+
 ```{r}
-bases <- get_microdata(year=2018, trimester=1:4, type='individual', 
-                       vars = c('CODUSU','NRO_HOGAR','COMPONENTE','ANO4','TRIMESTRE','CH04','CH06', #variables necesarias para hacer el panel
-                                'ESTADO','PONDERA') ) #variables que nos interesan en nuestro análisis
-bases
-```
+### Armo vector con el nombre de las variables de interés
+variables <- c('CODUSU','NRO_HOGAR','COMPONENTE','ANO4',
+               'TRIMESTRE','CH04', 'CH06', #variables necesarias para hacer el panel
+               'ESTADO','PONDERA') #variables que nos interesan en nuestro análisis
+  
+### Descargo la base individual para el 2018_t1
+base_2018t1 <- get_microdata(year = 2018,  trimester = 1,  type = 'individual', 
+                       vars = variables) 
 
+### Descargo la base individual para el 2018_t2
+base_2018t2 <- get_microdata(year = 2018,  trimester = 2,  type = 'individual', 
+                       vars = variables) 
 
-```{r warning=FALSE}
-pool <- organize_panels(bases=bases$microdata, variables=c('ESTADO','PONDERA'),
-                        window='trimestral')
+### Armo el panel
+pool <- organize_panels(bases = list(base_2018t1, base_2018t2), 
+                        variables = c('ESTADO','PONDERA'),
+                        window = 'trimestral')
 ```
 
 Los argumentos principales de la función `organize_panels`son:  
 
 - `bases`: una lista con las bases de datos a poolear
-- `variables`: string con los nombre de la variables de interés
+- `variables`: string con los nombres de las variables de interés
 - `window`: un string que indique la ventana de distancia de las observaciones (`anual`) o  (`trimestral`)
+
 ```{r}
 pool
 ```
-La función nos devuelve un data.frame similar a la base original, en el cual cada fila es un registro individual, que consta de las observaciones de las variables de interés específicadas, en dos periodos de tiempo. En el período inicial las mismas conservan su nombre, y en el siguiente (año o trimestre) aparecen renombradas con el agregado del string `_t1`.             
+La función nos devuelve un data.frame similar a la base original, en el cual cada fila es un registro individual, que consta de las observaciones de las variables de interés especificadas, en dos periodos de tiempo. En el período inicial las mismas conservan su nombre, y en el siguiente (año o trimestre) aparecen renombradas con el agregado del string `_t1`.             
 
-Lo que hace la función detrás de bambalinas es concatenar todas las bases espeficadas en el argumento `list=` y hacer un join, conservando sólo aquellos individuos encuestados en los diferentes trimestres. La columna `consistencia` evalúa si entre ambas observaciones un mismo individuo figura con distinto sexo o con una difrencia absoluta de 2 años de edad.        
+El trabajo que realiza la función es concatenar todas las bases espeficadas en el argumento `list=` y hacer un `join`, conservando sólo aquellos individuos encuestados en los diferentes trimestres. La columna `consistencia` evalúa si entre ambas observaciones un mismo individuo figura con distinto sexo o con una diferencia absoluta de 2 años de edad.        
 
 ```{r message=FALSE, warning=FALSE}
 pool %>% 
   organize_labels(.) %>% 
-calculate_tabulates(x='ESTADO', y='ESTADO_t1',
-                    weights = "PONDERA", add.percentage='row')
+  calculate_tabulates(x = 'ESTADO', 
+                      y = 'ESTADO_t1',
+                      weights = "PONDERA",  
+                      add.percentage='row')
 ```
-Un indicador frecuente construido con esta infomación es la Matriz de Transición. Ella refleja como los individuos que ocupaban una determinada categoría en el período inicial, se distribuyen en cada una de las categorías en el período siguiente. La misma puede construirse sencillamente utilizando la función `calculate_tabulates`. En este ejemplo, la información refleja que durante 2018, un 3.7% de los ocupados perdió su empleo en el trimestre siguiente. 
+Un indicador frecuente construido con esta información es la _Matriz de Transición_. Ella refleja como los individuos que ocupaban una determinada categoría en el período inicial, se distribuyen en cada una de las categorías en el período siguiente. La misma puede construirse sencillamente utilizando la función `calculate_tabulates`. En este ejemplo, la información refleja que durante 2018, un 3.7% de los ocupados perdió su empleo en el trimestre siguiente. 
 
 
 ### Iterando en varias bases
@@ -163,9 +189,10 @@ Dado que levantar muchas bases al mismo tiempo puede superar el espacio disponib
 
 
 ```{r message=FALSE, warning=FALSE}
-df <- get_microdata(year = 2017:2018, trimester = 1:2,type = 'individual',
-                    vars = c('PONDERA','ESTADO','CAT_OCUP')) %>% 
-  unnest()
+df <- get_microdata(year = 2017:2019, 
+                    trimester = 1:4,
+                    type = 'individual',
+                    vars = c('ANO4', 'TRIMESTRE', 'PONDERA','ESTADO','CAT_OCUP'))
 
 df %>% 
   sample_n(5)
@@ -173,14 +200,14 @@ df %>%
 
 Con estos datos podemos crear por ejemplo la serie de asalarización
 
-
 $SO_{t} = \frac{\sum_{i=1}^n w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}$
 
 
 ```{r}
 df <- df %>% 
-  group_by(year,trimester) %>% 
+  group_by(ANO4, TRIMESTRE) %>% 
   summarise(indicador = sum(PONDERA[CAT_OCUP==3 & ESTADO==1], na.rm = T) / sum(PONDERA[ESTADO==1], na.rm = T)) 
+
 df
 ```
 
@@ -189,10 +216,6 @@ df
 Un objetivo del paquete `eph`, es lograr automatizar el cálculo de pobreza e indigencia del INDEC para las bases trimestrales^[El calculo oficial se realiza sobre bases semestrales no publicadas]. El gran problema es que no existe información publicada fuera de los informes de prensa en formato pdf sobre los valores de las canastas básicas y alimentarias. 
 
 No obstante, hemos desarrollado dos funciones que, de encontrarse disponibles dichos datos, podrían calcular de forma automática los valores de pobreza e indigencia. Mostraremos un ejemplo de juguete con dos datasets de la CABA y sus respectivos valores de canastas. 
-
-```{r message=FALSE, warning=FALSE}
-bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)
-```
 
 
 Existen dos funciones núcleo:
@@ -207,14 +230,14 @@ Esta función descarga los valores de las canastas alimentaria, básica (CBA y C
 ```{r, fig.width=7, fig.height=5}
 lineas %>%
   select(-ICE) %>%
-  gather(canasta, valor, -periodo) %>%
+  pivot_longer(cols = c("CBA", "CBT"), names_to = "canasta", values_to = "valor") %>% 
   ggplot() +
     geom_line(aes(x=periodo, y=valor, col=canasta))
 ```
  
 
 
-Para el calculo de la Pobreza e Indigence se utilizan canastas regionales, que sólo aparecen en los [informes Técnicos](https://www.indec.gob.ar/uploads/informesdeprensa/eph_pobreza_01_19422F5FC20A.pdf).
+Para el calculo de la Pobreza e Indigencia se utilizan canastas regionales, que sólo aparecen en los [informes Técnicos](https://www.indec.gob.ar/uploads/informesdeprensa/eph_pobreza_01_19422F5FC20A.pdf).
 
 A modo de ejemplo, en la librería `eph` se encuentra la base `canastas_reg_example` con la información necesaria para realizar el cálculo
 
@@ -232,14 +255,16 @@ adulto_equivalente %>% head()
 La función `calculate_poverty` calcula la pertenencia a situaciones de pobreza e indigencia a nivel de los individuos siguiendo la metodología de línea:
 
 ```{r warning=FALSE}
-bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)
-base_pobreza <- calculate_poverty(base = bases, basket = canastas_reg_example,print_summary=TRUE)
+bases <- bind_rows(toybase_individual_2016_03, toybase_individual_2016_04)
+base_pobreza <- calculate_poverty(base = bases, 
+                                  basket = canastas_reg_example,
+                                  print_summary = TRUE)
 ```
 
 
 ```{r}
 base_pobreza %>% 
-  select(CODUSU,ITF,region,adequi_hogar,CBA_hogar,CBT_hogar,situacion) %>% 
+  select(CODUSU, ITF, region, adequi_hogar, CBA_hogar, CBT_hogar, situacion) %>% 
   sample_n(10)
 ```
 

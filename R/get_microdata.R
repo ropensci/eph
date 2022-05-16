@@ -30,15 +30,6 @@
 #'                                  type='individual',
 #'                                  vars = c('PONDERA','ESTADO','CAT_OCUP'))
 #'
-#'base_2018 <- base_individual %>%
-#'  dplyr::filter(year==2018) %>%
-#'  dplyr::select(microdata) %>%
-#'  tidyr::unnest(microdata)
-#'
-#'
-#'bases_bind <- base_individual %>%
-#'  dplyr::select(microdata) %>%
-#'  tidyr::unnest(cols = c(microdata))
 #'
 #'@export
 
@@ -111,6 +102,7 @@ get_microdata <- function(year = 2018,
   if (nrow(df)==1) {
     df$microdata[[1]]
   }else{
-    df
+    df %>% tidyr::unnest(microdata) %>%
+      dplyr::select(-c(year, trimester, wave, type))
   }
 }

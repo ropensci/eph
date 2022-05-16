@@ -9,12 +9,9 @@ calculate_tabulates(
   x,
   y = NULL,
   weights = NULL,
-  digits = 3,
-  normwt = FALSE,
-  na.rm = TRUE,
-  na.show = FALSE,
-  exclude = NULL,
   affix_sign = FALSE,
+  digits = 1,
+  addNA = FALSE,
   add.totals = "none",
   add.percentage = "none"
 )
@@ -28,17 +25,11 @@ calculate_tabulates(
 
 \item{weights}{string con el nombre de la variable con los pesos de pesos, tiene que ser de igual largo que x}
 
+\item{affix_sign}{si es TRUE agrega el signo \% al final}
+
 \item{digits}{numero de digitos significativos}
 
-\item{normwt}{si es TRUE, normaliza los pesos de modo que el recuento ponderado total sea el mismo que el no ponderado}
-
-\item{na.rm}{Si es TRUE, elimina los NA antes del computo}
-
-\item{na.show}{si TRUE, muestra el recuento de NA en la salida}
-
-\item{exclude}{valores a remover de x e y}
-
-\item{affix_sign}{si es TRUE agrega el signo \% al final}
+\item{addNA}{de haber, cuenta valores NA}
 
 \item{add.totals}{toma los valores c('none','row','col','both'), para agregar totales por fila, columna o ambos}
 

@@ -51,14 +51,5 @@ base_individual <- get_microdata(year = 2018:2019,
                                  type='individual',
                                  vars = c('PONDERA','ESTADO','CAT_OCUP'))
 
-base_2018 <- base_individual \%>\%
- dplyr::filter(year==2018) \%>\%
- dplyr::select(microdata) \%>\%
- tidyr::unnest(microdata)
-
-
-bases_bind <- base_individual \%>\%
- dplyr::select(microdata) \%>\%
- tidyr::unnest(cols = c(microdata))
 
 }

@@ -4,3 +4,6 @@ inst/doc
 .Rproj.user
 cran-comments.md
 .DS_Store
+.Rhistory
+.Rdata
+.httr-oauth
