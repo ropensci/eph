@@ -1,87 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://rindec.github.io/eph//index.html</loc>
+    <loc>https://rindec.github.io/eph/404.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/adulto_equivalente.html</loc>
+    <loc>https://rindec.github.io/eph/articles/eph.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/caes.html</loc>
+    <loc>https://rindec.github.io/eph/articles/estimacion_pobreza.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/calculate_errors.html</loc>
+    <loc>https://rindec.github.io/eph/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/calculate_poverty.html</loc>
+    <loc>https://rindec.github.io/eph/authors.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/calculate_tabulates.html</loc>
+    <loc>https://rindec.github.io/eph/index.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/canastas_reg_example.html</loc>
+    <loc>https://rindec.github.io/eph/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/centroides_aglomerados.html</loc>
+    <loc>https://rindec.github.io/eph/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/CNO.html</loc>
+    <loc>https://rindec.github.io/eph/news/index.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/diccionario_aglomerados.html</loc>
+    <loc>https://rindec.github.io/eph/reference/adulto_equivalente.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/diccionario_regiones.html</loc>
+    <loc>https://rindec.github.io/eph/reference/caes.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/eph.html</loc>
+    <loc>https://rindec.github.io/eph/reference/calculate_errors.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/errores_muestrales.html</loc>
+    <loc>https://rindec.github.io/eph/reference/calculate_poverty.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/get_microdata.html</loc>
+    <loc>https://rindec.github.io/eph/reference/calculate_tabulates.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/get_microdata_internal.html</loc>
+    <loc>https://rindec.github.io/eph/reference/canastas_reg_example.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/get_poverty_lines.html</loc>
+    <loc>https://rindec.github.io/eph/reference/centroides_aglomerados.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/is_in_github.html</loc>
+    <loc>https://rindec.github.io/eph/reference/CNO.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/map_agglomerates.html</loc>
+    <loc>https://rindec.github.io/eph/reference/diccionario_aglomerados.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/organize_caes.html</loc>
+    <loc>https://rindec.github.io/eph/reference/diccionario_regiones.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/organize_cno.html</loc>
+    <loc>https://rindec.github.io/eph/reference/eph.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/organize_labels.html</loc>
+    <loc>https://rindec.github.io/eph/reference/errores_muestrales.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/organize_panels.html</loc>
+    <loc>https://rindec.github.io/eph/reference/get_microdata.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/pipe.html</loc>
+    <loc>https://rindec.github.io/eph/reference/get_microdata_internal.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/toybase_hogar_2016_04.html</loc>
+    <loc>https://rindec.github.io/eph/reference/get_poverty_lines.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/toybase_individual_2016_03.html</loc>
+    <loc>https://rindec.github.io/eph/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//reference/toybase_individual_2016_04.html</loc>
+    <loc>https://rindec.github.io/eph/reference/is_in_github.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//articles/eph.html</loc>
+    <loc>https://rindec.github.io/eph/reference/map_agglomerates.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph//articles/estimacion_pobreza.html</loc>
+    <loc>https://rindec.github.io/eph/reference/map_aglomerados.html</loc>
+  </url>
+  <url>
+    <loc>https://rindec.github.io/eph/reference/organize_caes.html</loc>
+  </url>
+  <url>
+    <loc>https://rindec.github.io/eph/reference/organize_cno.html</loc>
+  </url>
+  <url>
+    <loc>https://rindec.github.io/eph/reference/organize_labels.html</loc>
+  </url>
+  <url>
+    <loc>https://rindec.github.io/eph/reference/organize_ocupations.html</loc>
+  </url>
+  <url>
+    <loc>https://rindec.github.io/eph/reference/organize_panels.html</loc>
+  </url>
+  <url>
+    <loc>https://rindec.github.io/eph/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://rindec.github.io/eph/reference/toybase_hogar_2016_04.html</loc>
+  </url>
+  <url>
+    <loc>https://rindec.github.io/eph/reference/toybase_individual_2016_03.html</loc>
+  </url>
+  <url>
+    <loc>https://rindec.github.io/eph/reference/toybase_individual_2016_04.html</loc>
   </url>
 </urlset>

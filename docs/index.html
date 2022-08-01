@@ -39,6 +39,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -51,18 +53,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">eph</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="articles/eph.html">Get started</a>
 </li>
@@ -70,7 +66,7 @@
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -87,7 +83,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/holatam/eph/">
+  <a href="https://github.com/holatam/eph/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -105,28 +101,28 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<div id="eph-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#eph-" class="anchor"></a>eph <a><img src="reference/figures/logo.png" align="right" height="250"></a>
+<div class="section level1">
+<div class="page-header"><h1 id="eph-">eph <a><img src="reference/figures/logo.png" align="right" height="250"></a>
+<a class="anchor" aria-label="anchor" href="#eph-"></a>
 </h1></div>
 <!-- badges: start -->
 
 <!-- badges: end -->
 </div>
-<div id="caja-de-herramientas-para-el-procesamiento-de-la-encuesta-permanente-de-hogares" class="section level1">
-<h1 class="hasAnchor">
-<a href="#caja-de-herramientas-para-el-procesamiento-de-la-encuesta-permanente-de-hogares" class="anchor"></a>Caja de Herramientas para el procesamiento de la Encuesta Permanente de Hogares</h1>
-<div id="descripción" class="section level2">
-<h2 class="hasAnchor">
-<a href="#descripci%C3%B3n" class="anchor"></a>Descripción</h2>
-<p>La librería <code>eph</code> tiene por objecto facilitar el trabajo de aquellos usuarios y usuarias de la <a href="https://www.indec.gob.ar/bases-de-datos.asp">Encuesta Permanente de Hogares - INDEC</a> que deseen procesar datos de la misma mediante el lenguaje de programación <a href="https://www.r-project.org/">R</a>.</p>
+<div class="section level1">
+<h1 id="caja-de-herramientas-para-el-procesamiento-de-la-encuesta-permanente-de-hogares">Caja de Herramientas para el procesamiento de la Encuesta Permanente de Hogares<a class="anchor" aria-label="anchor" href="#caja-de-herramientas-para-el-procesamiento-de-la-encuesta-permanente-de-hogares"></a>
+</h1>
+<div class="section level2">
+<h2 id="descripción">Descripción<a class="anchor" aria-label="anchor" href="#descripci%C3%B3n"></a>
+</h2>
+<p>La librería <code>eph</code> tiene por objecto facilitar el trabajo de aquellos usuarios y usuarias de la <a href="https://www.indec.gob.ar/bases-de-datos.asp" class="external-link">Encuesta Permanente de Hogares - INDEC</a> que deseen procesar datos de la misma mediante el lenguaje de programación <a href="https://www.r-project.org/" class="external-link">R</a>.</p>
 <p>Algunas de sus funciones son:</p>
 <ul>
 <li><p><strong><code><a href="reference/get_microdata.html">get_microdata()</a></code></strong>: Descarga las bases de microdatos,</p></li>
 <li><p><strong><code><a href="reference/organize_panels.html">organize_panels()</a></code></strong>: Permite armar un pool de datos en panel de la EPH continua,</p></li>
 <li><p><strong><code><a href="reference/organize_cno.html">organize_cno()</a></code></strong>: Clasifica las ocupaciones según el CNO 2001</p></li>
 <li><p><strong><code><a href="reference/organize_caes.html">organize_caes()</a></code></strong>: Clasifica las actividades económicas según CAES Mercosur 1.0 y CAES Mercosur</p></li>
-<li><p><strong><code><a href="reference/organize_labels.html">organize_labels()</a></code></strong>: Etiqueta las bases siguiendo el último <a href="https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_registro_t218.pdf">diseño de registro</a></p></li>
+<li><p><strong><code><a href="reference/organize_labels.html">organize_labels()</a></code></strong>: Etiqueta las bases siguiendo el último <a href="https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_registro_t218.pdf" class="external-link">diseño de registro</a></p></li>
 <li><p><strong><code><a href="reference/map_agglomerates.html">map_agglomerates()</a></code></strong>: Mapa de indicadores por aglomerado</p></li>
 </ul>
 <p>El paquete también cuenta con dataframes útiles para el trabajo con la EPH. Algunos de estos son:</p>
@@ -137,9 +133,9 @@
 <li><strong><code>adulto_equivalente</code></strong></li>
 </ul>
 </div>
-<div id="cómo-citar-este-paquete" class="section level2">
-<h2 class="hasAnchor">
-<a href="#c%C3%B3mo-citar-este-paquete" class="anchor"></a>Cómo citar este paquete</h2>
+<div class="section level2">
+<h2 id="cómo-citar-este-paquete">Cómo citar este paquete<a class="anchor" aria-label="anchor" href="#c%C3%B3mo-citar-este-paquete"></a>
+</h2>
 <p>Podés citar este paquete como “se obtuvieron y/o normalizaron los datos de la Encuesta Permanente de Hogares (EPH-INDEC) utilizando el paquete de R ‘eph’ (Kozlowski et al, 2020)”.</p>
 <p>La referencia completa para incluir en la bibliografía es:</p>
 <pre><code>Diego Kozlowski, Pablo Tiscornia, Guido Weksler, German Rosati and Natsumi Shokida (2020). eph: Argentina's Permanent Household Survey Data and Manipulation Utilities. R package version https://doi.org/10.5281/zenodo.3462677</code></pre>
@@ -152,40 +148,40 @@
     url = {https://holatam.github.io/eph/},
   }</code></pre>
 </div>
-<div id="instalación" class="section level2">
-<h2 class="hasAnchor">
-<a href="#instalaci%C3%B3n" class="anchor"></a>Instalación</h2>
+<div class="section level2">
+<h2 id="instalación">Instalación<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n"></a>
+</h2>
 <p>Para la versión estable</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'eph'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'eph'</span><span class="op">)</span></span></code></pre></div>
 <p>Para la versión en desarrollo</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># install.packages('devtools') </span>
-<span class="co"># si no tiene instalado devtools</span>
-
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"holatam/eph"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="co"># install.packages('devtools') </span></span>
+<span><span class="co"># si no tiene instalado devtools</span></span>
+<span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"holatam/eph"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="modo-de-uso" class="section level2">
-<h2 class="hasAnchor">
-<a href="#modo-de-uso" class="anchor"></a>Modo de uso</h2>
+<div class="section level2">
+<h2 id="modo-de-uso">Modo de uso<a class="anchor" aria-label="anchor" href="#modo-de-uso"></a>
+</h2>
 <p>Ejemplo de descarga de microdatos</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># Cargo la libreria</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/holatam/eph">eph</a></span><span class="op">)</span>
-
-<span class="va">base_individual</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_microdata.html">get_microdata</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2018</span><span class="op">:</span><span class="fl">2019</span>,   <span class="co"># especifco el año</span>
-                                  trimester <span class="op">=</span> <span class="fl">1</span>,     <span class="co"># el trimestre</span>
-                                  type<span class="op">=</span><span class="st">'individual'</span>, <span class="co"># y el tipo de base</span>
-                                  vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'PONDERA'</span>,<span class="st">'ESTADO'</span>,<span class="st">'CAT_OCUP'</span><span class="op">)</span><span class="op">)</span> <span class="co"># opcionalmente, puedo especificar las variables que deseo utilizar.</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Cargo la libreria</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/holatam/eph" class="external-link">eph</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">base_individual</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_microdata.html">get_microdata</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2018</span><span class="op">:</span><span class="fl">2019</span>,   <span class="co"># especifco el año</span></span>
+<span>                                  trimester <span class="op">=</span> <span class="fl">1</span>,     <span class="co"># el trimestre</span></span>
+<span>                                  type<span class="op">=</span><span class="st">'individual'</span>, <span class="co"># y el tipo de base</span></span>
+<span>                                  vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'PONDERA'</span>,<span class="st">'ESTADO'</span>,<span class="st">'CAT_OCUP'</span><span class="op">)</span><span class="op">)</span> <span class="co"># opcionalmente, puedo especificar las variables que deseo utilizar.</span></span></code></pre></div>
 </div>
-<div id="aportes-de-la-comunidad" class="section level2">
-<h2 class="hasAnchor">
-<a href="#aportes-de-la-comunidad" class="anchor"></a>Aportes de la comunidad</h2>
+<div class="section level2">
+<h2 id="aportes-de-la-comunidad">Aportes de la comunidad<a class="anchor" aria-label="anchor" href="#aportes-de-la-comunidad"></a>
+</h2>
 <p>Este paquete se propone incorporar cualquier función de propósitos generales que utilice como base los datos de la Encuesta Permanente de Hogares. Todos los aportes en este sentido son bienvenidos.</p>
-<p>Si trabajas con la EPH y querés agregar tu función, te recomendamos que leas el siguiente <a href="https://github.com/pablinte/eph/issues/5#issue-407890587">issue</a> con consejos de como colaborar</p>
+<p>Si trabajas con la EPH y querés agregar tu función, te recomendamos que leas el siguiente <a href="https://github.com/pablinte/eph/issues/5#issue-407890587" class="external-link">issue</a> con consejos de como colaborar</p>
 </div>
 </div>
 
@@ -193,62 +189,67 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=eph">https://​cloud.r-project.org/​package=eph</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/holatam/eph/">https://​github.com/​holatam/​eph/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/holatam/eph/issues">https://​github.com/​holatam/​eph/​issues</a>
-</li>
-</ul>
-</div>
-<div class="license">
-<h2>License</h2>
-<ul class="list-unstyled">
-<li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
-</ul>
-</div>
-<div class="citation">
-<h2>Citation</h2>
-<ul class="list-unstyled">
-<li><a href="authors.html">Citing eph</a></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>Diego Kozlowski <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-5396-3471" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Pablo Tiscornia <br><small class="roles"> Author </small>  </li>
-<li>Guido Weksler <br><small class="roles"> Author, maintainer </small>  </li>
-<li>Natsumi Shokida <br><small class="roles"> Author </small>  </li>
-<li>German Rosati <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-9775-0435" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li><a href="authors.html">All authors...</a></li>
+<li><a href="https://cloud.r-project.org/package=eph" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/holatam/eph/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/holatam/eph/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="license">
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/holatam/eph/actions"><img src="https://github.com/holatam/eph/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://codecov.io/gh/holatam/eph?branch=master"><img src="https://codecov.io/gh/holatam/eph/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
-<li><a href="https://cran.r-project.org/package=eph"><img src="https://www.r-pkg.org/badges/version/eph" alt="CRAN status"></a></li>
-<li><a href="https://cran.r-project.org/package=eph"><img src="http://cranlogs.r-pkg.org/badges/grand-total/eph?color=blue"></a></li>
-<li><a href="https://cran.r-project.org/package=eph"><img src="http://cranlogs.r-pkg.org/badges/last-month/eph?color=blue"></a></li>
-<li><a href="https://zenodo.org/badge/latestdoi/142294444"><img src="https://zenodo.org/badge/142294444.svg" alt="DOI"></a></li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing eph</a></li>
+</ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Diego Kozlowski <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-5396-3471" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Pablo Tiscornia <br><small class="roles"> Author </small>  </li>
+<li>Guido Weksler <br><small class="roles"> Author </small>  </li>
+<li>Natsumi Shokida <br><small class="roles"> Author </small>  </li>
+<li>German Rosati <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-9775-0435" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Carolina Pradier <br><small class="roles"> Author, maintainer </small>  </li>
+<li><a href="authors.html">More about authors...</a></li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/holatam/eph/actions" class="external-link"><img src="https://github.com/holatam/eph/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://codecov.io/gh/holatam/eph?branch=master" class="external-link"><img src="https://codecov.io/gh/holatam/eph/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
+<li><a href="https://cran.r-project.org/package=eph" class="external-link"><img src="https://www.r-pkg.org/badges/version/eph" alt="CRAN status"></a></li>
+<li><a href="https://cran.r-project.org/package=eph" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/grand-total/eph?color=blue"></a></li>
+<li><a href="https://cran.r-project.org/package=eph" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/last-month/eph?color=blue"></a></li>
+<li><a href="https://zenodo.org/badge/latestdoi/142294444" class="external-link"><img src="https://zenodo.org/badge/142294444.svg" alt="DOI"></a></li>
+</ul>
+</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Diego Kozlowski, Pablo Tiscornia, Guido Weksler, Natsumi Shokida, German Rosati.</p>
+  <p></p>
+<p>Developed by Diego Kozlowski, Pablo Tiscornia, Guido Weksler, Natsumi Shokida, German Rosati, Carolina Pradier.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -256,6 +257,8 @@
 
   
 
+
+  
 
   </body>
 </html>
