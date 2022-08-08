@@ -1,4 +1,4 @@
-# eph (development version)
+# eph 0.5.0
 * improve `get_microdata()` internals
 * remove `questionr` dependency
 * add group_vars and window argument to calculate_poverty
