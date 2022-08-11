@@ -44,8 +44,9 @@ canastas_regionales <- get_poverty_lines(regional = TRUE)
 bases <- get_microdata(year = 2016:2019, 
                        trimester = 1:4,
                        type =  'individual',
-                       vars = c("ANO4", "TRIMESTRE", "REGION", "CODUSU", "NRO_HOGAR", "CH04", "CH06", "ITF", "PONDIH", "PP07H","PP04D_COD"),
-                       destfile = 'bases_eph.rds')
+                       vars = c("ANO4", "TRIMESTRE", "REGION", "CODUSU", "NRO_HOGAR", "CH04", "CH06", "ITF", "PONDIH", "PP07H","PP04D_COD")
+                       #,destfile = 'bases_eph.rds'
+                       )
 ```
 
 Con la función `unnest()` agrupamos todas las bases, y con `calculate_poverty()` y los datos que descargamos calculamos la pobreza. El parámetro `print_summary=TRUE` le indica a la función que deseamos imprimir un cuadro de las tasas de pobreza e indigencia por período. Sin embargo, en la tabla `bases_pobreza` contamos ahora con la variable `situación` que indica si el hogar es `pobre`, `indigente` o `no_pobre`. Si la variable es `NA` es porque al menos un miembro del hogar no declaró el ingreso (y por lo tanto no se sabe el Ingreso Total Familiar).
