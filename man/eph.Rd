@@ -9,5 +9,5 @@ Caja de Herramientas para el procesamiento de la Encuesta Permanente de Hogares
 }
 \details{
 See the README on
-\href{https://github.com/pablinte/eph/blob/master/README.md}{Github}
+\href{https://github.com/holatam/eph/blob/master/README.md}{Github}
 }
