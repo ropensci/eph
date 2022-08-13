@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eph</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.0</span>
       </span>
     </div>
 
@@ -149,8 +149,9 @@ seg y las siguientes 0.5 seg!)</p>
 <span><span class="va">bases</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_microdata.html">get_microdata</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2016</span><span class="op">:</span><span class="fl">2019</span>, </span>
 <span>                       trimester <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,</span>
 <span>                       type <span class="op">=</span>  <span class="st">'individual'</span>,</span>
-<span>                       vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ANO4"</span>, <span class="st">"TRIMESTRE"</span>, <span class="st">"REGION"</span>, <span class="st">"CODUSU"</span>, <span class="st">"NRO_HOGAR"</span>, <span class="st">"CH04"</span>, <span class="st">"CH06"</span>, <span class="st">"ITF"</span>, <span class="st">"PONDIH"</span>, <span class="st">"PP07H"</span>,<span class="st">"PP04D_COD"</span><span class="op">)</span>,</span>
-<span>                       destfile <span class="op">=</span> <span class="st">'bases_eph.rds'</span><span class="op">)</span></span></code></pre></div>
+<span>                       vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ANO4"</span>, <span class="st">"TRIMESTRE"</span>, <span class="st">"REGION"</span>, <span class="st">"CODUSU"</span>, <span class="st">"NRO_HOGAR"</span>, <span class="st">"CH04"</span>, <span class="st">"CH06"</span>, <span class="st">"ITF"</span>, <span class="st">"PONDIH"</span>, <span class="st">"PP07H"</span>,<span class="st">"PP04D_COD"</span><span class="op">)</span></span>
+<span>                       <span class="co">#,destfile = 'bases_eph.rds'</span></span>
+<span>                       <span class="op">)</span></span></code></pre></div>
 <p>Con la función <code><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">unnest()</a></code> agrupamos todas las bases, y con
 <code><a href="../reference/calculate_poverty.html">calculate_poverty()</a></code> y los datos que descargamos calculamos
 la pobreza. El parámetro <code>print_summary=TRUE</code> le indica a la
