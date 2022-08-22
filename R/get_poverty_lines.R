@@ -18,7 +18,14 @@ get_poverty_lines <- function(regional = FALSE){
   if (regional){
     temp = tempfile()
     link <- 'https://github.com/holatam/data/raw/master/eph/canasta/canastas.rds'
-    utils::download.file(link,destfile=temp, mode='wb')
+    #utils::download.file(link,destfile=temp, mode='wb')
+
+
+    check <- NA
+    try(check <- utils::download.file(link,destfile=temp, mode='wb'),silent = TRUE)
+    assertthat::assert_that(assertthat::noNA(check),msg = glue::glue("problema con la descarga"))
+
+
 
     canasta <- readRDS(temp)
     unlink(temp)
@@ -26,7 +33,14 @@ get_poverty_lines <- function(regional = FALSE){
   }
   else{temp = tempfile(fileext = ".xls")
   dataURL <- "https://www.indec.gob.ar/ftp/cuadros/sociedad/serie_cba_cbt.xls"
-  utils::download.file(dataURL, destfile=temp, mode='wb')
+  #utils::download.file(dataURL, destfile=temp, mode='wb')
+
+
+  check <- NA
+  try(check <-  utils::download.file(dataURL, destfile=temp, mode='wb'),silent = TRUE)
+  assertthat::assert_that(assertthat::noNA(check),msg = glue::glue("problema con la descarga"))
+
+
 
   suppressWarnings({canasta <- readxl::read_excel(temp, sheet =1, skip = 6,col_names = c('periodo', 'CBA', 'ICE', 'CBT'),
                                                   col_types = c('date','numeric','numeric','numeric')) %>% stats::na.omit()})
