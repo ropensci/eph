@@ -1,3 +1,6 @@
+# eph 0.5.1
+* fixed warnings when downloading poverty lines 
+
 # eph 0.5.0
 * improve `get_microdata()` internals
 * remove `questionr` dependency
