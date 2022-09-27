@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   eph: eph.html
   estimacion_pobreza: estimacion_pobreza.html
-last_built: 2022-08-13T13:59Z
+last_built: 2022-08-29T13:21Z
 urls:
   reference: https://rindec.github.io/eph/reference
   article: https://rindec.github.io/eph/articles

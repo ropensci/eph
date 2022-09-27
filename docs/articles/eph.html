@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eph</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.1</span>
       </span>
     </div>
 
@@ -107,7 +107,7 @@ Weksler</h4>
                         <h4 data-toc-skip class="author">Natsumi
 Shokida</h4>
             
-            <h4 data-toc-skip class="date">2022-08-13</h4>
+            <h4 data-toc-skip class="date">2022-08-29</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/holatam/eph/blob/HEAD/vignettes/eph.Rmd" class="external-link"><code>vignettes/eph.Rmd</code></a></small>
       <div class="hidden name"><code>eph.Rmd</code></div>
@@ -379,11 +379,11 @@ que se levantan las bases.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 x 5</span></span></span>
 <span><span class="co">#&gt;    ANO4 TRIMESTRE PONDERA ESTADO CAT_OCUP</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494;font-style: italic;">&lt;int&gt;</span><span>     </span><span style="color: #949494;font-style: italic;">&lt;int&gt;</span><span>   </span><span style="color: #949494;font-style: italic;">&lt;int&gt;</span><span>  </span><span style="color: #949494;font-style: italic;">&lt;int&gt;</span><span>    </span><span style="color: #949494;font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span><span>  </span><span style="text-decoration: underline;">2</span><span>018         2     256      2        3</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span><span>  </span><span style="text-decoration: underline;">2</span><span>019         4     147      3        0</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span><span>  </span><span style="text-decoration: underline;">2</span><span>018         2    </span><span style="text-decoration: underline;">1</span><span>067      3        0</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span><span>  </span><span style="text-decoration: underline;">2</span><span>019         4     338      4        0</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span><span>  </span><span style="text-decoration: underline;">2</span><span>019         4    </span><span style="text-decoration: underline;">1</span><span>277      3        0</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span><span>  </span><span style="text-decoration: underline;">2</span><span>019         2      73      3        0</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span><span>  </span><span style="text-decoration: underline;">2</span><span>017         4     351      1        3</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span><span>  </span><span style="text-decoration: underline;">2</span><span>018         4     159      3        0</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span><span>  </span><span style="text-decoration: underline;">2</span><span>018         3     106      3        0</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span><span>  </span><span style="text-decoration: underline;">2</span><span>017         4     137      3        0</span></span></span></code></pre></div>
 <p>Con estos datos podemos crear por ejemplo la serie de
 asalarización</p>
 <p><span class="math inline">\(SO_{t} = \frac{\sum_{i=1}^n
@@ -502,16 +502,16 @@ la metodología de línea:</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 x 7</span></span></span>
 <span><span class="co">#&gt;    CODUSU                  ITF region adequi_hogar CBA_hogar CBT_hogar situacion</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494;font-style: italic;">&lt;fct&gt;</span><span>                 </span><span style="color: #949494;font-style: italic;">&lt;int&gt;</span><span> </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>         </span><span style="color: #949494;font-style: italic;">&lt;dbl&gt;</span><span>     </span><span style="color: #949494;font-style: italic;">&lt;dbl&gt;</span><span>     </span><span style="color: #949494;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>    </span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span><span> TQRMNOPYWHMMLPCDEFPC~ </span><span style="text-decoration: underline;">21</span><span>700 Patag~         0.76     </span><span style="text-decoration: underline;">1</span><span>319.     </span><span style="text-decoration: underline;">3</span><span>604. no_pobre </span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span><span> TQRMNOQYRHJOKMCDEHIB~  </span><span style="text-decoration: underline;">7</span><span>400 Noroe~         0.77     </span><span style="text-decoration: underline;">1</span><span>134.     </span><span style="text-decoration: underline;">2</span><span>535. no_pobre </span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span><span> TQRMNOPSWHMLNOCDEIJA~ </span><span style="text-decoration: underline;">25</span><span>000 GBA            0.66     </span><span style="text-decoration: underline;">1</span><span>159.     </span><span style="text-decoration: underline;">2</span><span>793. no_pobre </span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span><span> TQRMNOPQXHLNLSCDEFJA~ </span><span style="text-decoration: underline;">10</span><span>500 Pampe~         0.76     </span><span style="text-decoration: underline;">1</span><span>327.     </span><span style="text-decoration: underline;">3</span><span>199. no_pobre </span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span><span> TQRMNOPUUHLOQRCDEIJA~     0 GBA            1.78     </span><span style="text-decoration: underline;">3</span><span>126.     </span><span style="text-decoration: underline;">7</span><span>534. </span><span style="color: #BB0000;">NA</span><span>       </span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span><span> TQRMNOPVQHKMLRCDEFLI~ </span><span style="text-decoration: underline;">45</span><span>300 Pampe~         2.04     </span><span style="text-decoration: underline;">3</span><span>419.     </span><span style="text-decoration: underline;">8</span><span>229. no_pobre </span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span><span> TQRMNOPSWHMMMSCDEIIA~ </span><span style="text-decoration: underline;">45</span><span>000 GBA            0.68     </span><span style="text-decoration: underline;">1</span><span>194.     </span><span style="text-decoration: underline;">2</span><span>878. no_pobre </span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span><span> TQRMNOPWTHLOKTCDEHIB~ </span><span style="text-decoration: underline;">13</span><span>100 Noroe~         1.02     </span><span style="text-decoration: underline;">1</span><span>556.     </span><span style="text-decoration: underline;">3</span><span>480. no_pobre </span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span><span> TQRMNOPRYHMNKMCDEIGE~     0 Pampe~         0.64     </span><span style="text-decoration: underline;">1</span><span>118.     </span><span style="text-decoration: underline;">2</span><span>694. </span><span style="color: #BB0000;">NA</span><span>       </span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span><span> TQRMNOPWXHLOKPCDEFMD~ </span><span style="text-decoration: underline;">13</span><span>700 Pampe~         0.77     </span><span style="text-decoration: underline;">1</span><span>345.     </span><span style="text-decoration: underline;">3</span><span>241. no_pobre</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span><span> TQRMNORYSHLOLRCDEIJA~ </span><span style="text-decoration: underline;">24</span><span>700 GBA            0.76     </span><span style="text-decoration: underline;">1</span><span>280.     </span><span style="text-decoration: underline;">3</span><span>080. no_pobre </span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span><span> TQRMNOQRXHJOKMCDEGNF~  </span><span style="text-decoration: underline;">6</span><span>000 Patag~         0.67     </span><span style="text-decoration: underline;">1</span><span>163.     </span><span style="text-decoration: underline;">3</span><span>177. no_pobre </span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span><span> TQRMNOQTVHKMLRCDEIKA~     0 Pampe~         0.77     </span><span style="text-decoration: underline;">1</span><span>345.     </span><span style="text-decoration: underline;">3</span><span>241. </span><span style="color: #BB0000;">NA</span><span>       </span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span><span> TQRMNOQYUHJMLNCDEHJG~ </span><span style="text-decoration: underline;">18</span><span>000 Noroe~         1        </span><span style="text-decoration: underline;">1</span><span>472.     </span><span style="text-decoration: underline;">3</span><span>292. no_pobre </span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span><span> TQRMNOPTPHKOKRCDEFNF~ </span><span style="text-decoration: underline;">34</span><span>000 Nores~         0.66     </span><span style="text-decoration: underline;">1</span><span>035.     </span><span style="text-decoration: underline;">2</span><span>336. no_pobre </span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span><span> TQRMNOPUUHJOMMCDEHJG~ </span><span style="text-decoration: underline;">18</span><span>400 Noroe~         1.02     </span><span style="text-decoration: underline;">1</span><span>502.     </span><span style="text-decoration: underline;">3</span><span>358. no_pobre </span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span><span> TQRMNOPTUHKLLLCDEGKD~ </span><span style="text-decoration: underline;">32</span><span>000 Pampe~         0.76     </span><span style="text-decoration: underline;">1</span><span>327.     </span><span style="text-decoration: underline;">3</span><span>199. no_pobre </span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span><span> TQRMNOPSYHMNOUCDEIJA~ </span><span style="text-decoration: underline;">11</span><span>200 GBA            1.53     </span><span style="text-decoration: underline;">2</span><span>687.     </span><span style="text-decoration: underline;">6</span><span>476. no_pobre </span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span><span> TQRMNOPTPHMLKQCDEGNF~ </span><span style="text-decoration: underline;">25</span><span>000 Patag~         1        </span><span style="text-decoration: underline;">1</span><span>735.     </span><span style="text-decoration: underline;">4</span><span>742. no_pobre </span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span><span> TQRMNORQQHLLLLCDEGPD~ </span><span style="text-decoration: underline;">25</span><span>000 Noroe~         1        </span><span style="text-decoration: underline;">1</span><span>525.     </span><span style="text-decoration: underline;">3</span><span>412. no_pobre</span></span></span></code></pre></div>
 </div>
 </div>
 <div class="footnotes footnotes-end-of-document">
