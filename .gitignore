@@ -7,3 +7,5 @@ cran-comments.md
 .Rhistory
 .Rdata
 .httr-oauth
+/doc/
+/Meta/

@@ -9,7 +9,7 @@ author:
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Ejemplo de uso}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -230,7 +230,7 @@ Esta función descarga los valores de las canastas alimentaria, básica (CBA y C
 ```{r, fig.width=7, fig.height=5}
 lineas %>%
   select(-ICE) %>%
-  gather(canasta, valor, -periodo) %>%
+  pivot_longer(cols = c("CBA", "CBT"), names_to = "canasta", values_to = "valor") %>% 
   ggplot() +
     geom_line(aes(x=periodo, y=valor, col=canasta))
 ```

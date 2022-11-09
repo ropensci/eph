@@ -16,11 +16,23 @@
 <meta name="author" content="Guido Weksler" />
 <meta name="author" content="Natsumi Shokida" />
 
-<meta name="date" content="2022-01-16" />
+<meta name="date" content="2022-11-08" />
 
 <title>Ejemplo de uso del paquete eph</title>
 
-<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -30,6 +42,7 @@
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
+
 
 
 <style type="text/css">
@@ -113,13 +126,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -131,7 +151,187 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
 
 
 
@@ -143,17 +343,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<h1 class="title toc-ignore">Ejemplo de uso del paquete <code>eph</code></h1>
+<h1 class="title toc-ignore">Ejemplo de uso del paquete
+<code>eph</code></h1>
 <h4 class="author">Germán Rosati</h4>
 <h4 class="author">Diego Kozlowski</h4>
 <h4 class="author">Pablo Tiscornia</h4>
 <h4 class="author">Guido Weksler</h4>
 <h4 class="author">Natsumi Shokida</h4>
-<h4 class="date">2022-01-16</h4>
+<h4 class="date">2022-11-08</h4>
 
 
 
-<p>El paquete <code>eph</code> tiene como objetivo facilitar el trabajo de les usuaries que trabajen con los microdatos de la Encuesta Permanente de Hogares. Este tutorial busca ejemplificar un pipeline de trabajo más o menos típico para mostrar el uso de las funciones del paquete.</p>
+<p>El paquete <code>eph</code> tiene como objetivo facilitar el trabajo
+de les usuaries que trabajen con los microdatos de la Encuesta
+Permanente de Hogares. Este tutorial busca ejemplificar un pipeline de
+trabajo más o menos típico para mostrar el uso de las funciones del
+paquete.</p>
 <div id="instalación" class="section level2">
 <h2>Instalación</h2>
 <p>Para instalar la versión estable del paquete usar:</p>
@@ -172,32 +377,46 @@ devtools::install_github(&quot;holatam/eph&quot;)</code></pre>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
-<p>Obtengamos la base de microdatos de individuos para el tercer trimestre de 2018:</p>
+<p>Obtengamos la base de microdatos de individuos para el tercer
+trimestre de 2018:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ind_3_18 <span class="ot">&lt;-</span> <span class="fu">get_microdata</span>(<span class="at">year =</span> <span class="dv">2018</span>, </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">trimester =</span> <span class="dv">2</span>, </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">type =</span> <span class="st">&#39;individual&#39;</span>)</span></code></pre></div>
 <p>Puede verse que la función requiere tres argumentos básicos:</p>
 <ul>
-<li><code>year</code>: un valor numérico entero con el año de la encuesta que se desea descargar</li>
-<li><code>trimester</code>: un valor numérico entero con el trimestre (este argumento es válido para la EPH continua, 2004-actualidad)</li>
-<li><code>type</code>: un valor character <code>&quot;individual&quot;</code>, para descargar la base de invidividuos y <code>&quot;hogar&quot;</code>, para la de hogar.</li>
+<li><code>year</code>: un valor numérico entero con el año de la
+encuesta que se desea descargar</li>
+<li><code>trimester</code>: un valor numérico entero con el trimestre
+(este argumento es válido para la EPH continua, 2004-actualidad)</li>
+<li><code>type</code>: un valor character <code>&quot;individual&quot;</code>,
+para descargar la base de invidividuos y <code>&quot;hogar&quot;</code>, para la
+de hogar.</li>
 </ul>
-<p>Si se deseara descargar una base de la EPH puntual, será necesario reemplazar el argumento <code>trimester</code> por <code>wave</code> que define la onda de la EPH puntual que se desea descargar. Por ejemplo, si se buscara descargar la base individual de la segunda onda del año 2002, debería escribirse</p>
+<p>Si se deseara descargar una base de la EPH puntual, será necesario
+reemplazar el argumento <code>trimester</code> por <code>wave</code> que
+define la onda de la EPH puntual que se desea descargar. Por ejemplo, si
+se buscara descargar la base individual de la segunda onda del año 2002,
+debería escribirse</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ind_2_02 <span class="ot">&lt;-</span> <span class="fu">get_microdata</span>(<span class="at">year =</span> <span class="dv">2001</span>, </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">wave =</span> <span class="dv">2</span>, </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">type =</span> <span class="st">&#39;individual&#39;</span>)</span></code></pre></div>
 </div>
 <div id="etiquetado-organize_labels" class="section level3">
 <h3>Etiquetado: <code>organize_labels()</code></h3>
-<p>Es posible etiquetar de forma automática el dataset llamando a la función <code>organize_labels()</code>:</p>
+<p>Es posible etiquetar de forma automática el dataset llamando a la
+función <code>organize_labels()</code>:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ind_3_18 <span class="ot">&lt;-</span> <span class="fu">organize_labels</span>(<span class="at">df =</span> ind_3_18, </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">type=</span><span class="st">&#39;individual&#39;</span>)</span></code></pre></div>
 <p>La función toma dos argumentos:</p>
 <ul>
-<li><code>df</code>: el data.frame que se quiere etiquetar, debe ser producto de <code>get_microdata()</code></li>
-<li><code>type</code>: string; cuál es el tipo de datatset que se quiere etiquetar, <code>&quot;individual&quot;</code> o <code>&quot;hogar&quot;</code></li>
+<li><code>df</code>: el data.frame que se quiere etiquetar, debe ser
+producto de <code>get_microdata()</code></li>
+<li><code>type</code>: string; cuál es el tipo de datatset que se quiere
+etiquetar, <code>&quot;individual&quot;</code> o <code>&quot;hogar&quot;</code></li>
 </ul>
-<p>Descarguemos y etiquetemos la base de hogares del 3 trimestre de 2018. Podemos hacer uso de los <code>%&gt;%</code> pipes de <code>magritte</code>:</p>
+<p>Descarguemos y etiquetemos la base de hogares del 3 trimestre de
+2018. Podemos hacer uso de los <code>%&gt;%</code> pipes de
+<code>magritte</code>:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>hog_3_18 <span class="ot">&lt;-</span> <span class="fu">get_microdata</span>(<span class="at">year =</span> <span class="dv">2018</span>, </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">trimester =</span> <span class="dv">3</span>, </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">type=</span><span class="st">&#39;hogar&#39;</span>) <span class="sc">%&gt;%</span></span>
@@ -206,7 +425,12 @@ devtools::install_github(&quot;holatam/eph&quot;)</code></pre>
 </div>
 <div id="tabulados-ponderados-calculate_tabulates" class="section level3">
 <h3>Tabulados ponderados: <code>calculate_tabulates()</code></h3>
-<p>Una de las operaciones más usuales al trabajar con la EPH son los tabulados uni y bivariados. Para ello, el paquete cuenta con la función <code>calculate_tabulates()</code>, la cual brinda la posibilidad de obtener tanto resultados en valores absolutos como porcentuales, como así también contar con la posibilidad de extrapolar los datos según el factor de ponderación correspondiente:</p>
+<p>Una de las operaciones más usuales al trabajar con la EPH son los
+tabulados uni y bivariados. Para ello, el paquete cuenta con la función
+<code>calculate_tabulates()</code>, la cual brinda la posibilidad de
+obtener tanto resultados en valores absolutos como porcentuales, como
+así también contar con la posibilidad de extrapolar los datos según el
+factor de ponderación correspondiente:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">calculate_tabulates</span>(<span class="at">base =</span> ind_3_18, </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">x =</span> <span class="st">&#39;NIVEL_ED&#39;</span>, </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">y =</span> <span class="st">&#39;CH04&#39;</span>, </span>
@@ -226,10 +450,17 @@ devtools::install_github(&quot;holatam/eph&quot;)</code></pre>
 <ul>
 <li><code>base</code>: un data.frame</li>
 <li><code>x</code>: string con el nombre de la variable a tabular</li>
-<li><code>y</code>: otro string (opcional) con el nombre de una segunda variable, para una tabla de doble entrada. Tiene que ser de igual largo que <code>x</code></li>
-<li><code>weights</code>: string con el nombre de la variable que contiene los pesos</li>
-<li><code>add.totals</code>: agrega maginales por fila (<code>row</code>), columnas (<code>col</code>) o ambas (<code>both</code>)</li>
-<li><code>add.percentage</code>: calcula porcentajes por fila (<code>row</code>), columnas (<code>col</code>) o ambas (<code>both</code>)</li>
+<li><code>y</code>: otro string (opcional) con el nombre de una segunda
+variable, para una tabla de doble entrada. Tiene que ser de igual largo
+que <code>x</code></li>
+<li><code>weights</code>: string con el nombre de la variable que
+contiene los pesos</li>
+<li><code>add.totals</code>: agrega maginales por fila
+(<code>row</code>), columnas (<code>col</code>) o ambas
+(<code>both</code>)</li>
+<li><code>add.percentage</code>: calcula porcentajes por fila
+(<code>row</code>), columnas (<code>col</code>) o ambas
+(<code>both</code>)</li>
 </ul>
 <p>Así, si quisiéramos la misma tabla sin ponderar:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">calculate_tabulates</span>(<span class="at">base =</span> ind_3_18, </span>
@@ -248,8 +479,17 @@ devtools::install_github(&quot;holatam/eph&quot;)</code></pre>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                             Total 100.0 100.0</span></span></code></pre></div>
 </div>
 <div id="armando-pools-de-datos-análisis-de-panel-organize_panels" class="section level3">
-<h3>Armando pools de datos (“análisis de panel”): <code>organize_panels()</code></h3>
-<p>Otra potencialidad del trabajo con microdatos de la EPH es la capacidad de generar un pool de observaciones de panel. Este procedimiento consta en identificar a una misma persona u hogar encuestado en distintos trimestres, y permite realizar estudios sobre la evolución de sus características con el correr del tiempo. Esto puede generarse, para las bases individuales en <code>eph</code> con la función <code>organize_panels()</code>. Para ello es necesario contar previamente con las múltiples bases de datos que se deseen poolear, y armar un objeto de tipo lista que las contenga.</p>
+<h3>Armando pools de datos (“análisis de panel”):
+<code>organize_panels()</code></h3>
+<p>Otra potencialidad del trabajo con microdatos de la EPH es la
+capacidad de generar un pool de observaciones de panel. Este
+procedimiento consta en identificar a una misma persona u hogar
+encuestado en distintos trimestres, y permite realizar estudios sobre la
+evolución de sus características con el correr del tiempo. Esto puede
+generarse, para las bases individuales en <code>eph</code> con la
+función <code>organize_panels()</code>. Para ello es necesario contar
+previamente con las múltiples bases de datos que se deseen poolear, y
+armar un objeto de tipo lista que las contenga.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Armo vector con el nombre de las variables de interés</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>variables <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;CODUSU&#39;</span>,<span class="st">&#39;NRO_HOGAR&#39;</span>,<span class="st">&#39;COMPONENTE&#39;</span>,<span class="st">&#39;ANO4&#39;</span>,</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>               <span class="st">&#39;TRIMESTRE&#39;</span>,<span class="st">&#39;CH04&#39;</span>, <span class="st">&#39;CH06&#39;</span>, <span class="co">#variables necesarias para hacer el panel</span></span>
@@ -263,38 +503,50 @@ devtools::install_github(&quot;holatam/eph&quot;)</code></pre>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>base_2018t2 <span class="ot">&lt;-</span> <span class="fu">get_microdata</span>(<span class="at">year =</span> <span class="dv">2018</span>,  <span class="at">trimester =</span> <span class="dv">2</span>,  <span class="at">type =</span> <span class="st">&#39;individual&#39;</span>, </span>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>                       <span class="at">vars =</span> variables) </span>
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="do">### Armo un objeto de tipo lista</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>lista_bases <span class="ot">&lt;-</span> <span class="fu">list</span>(base_2018t1, base_2018t2)</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="do">### Armo el panel</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>pool <span class="ot">&lt;-</span> <span class="fu">organize_panels</span>(<span class="at">bases =</span> lista_bases, </span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>                        <span class="at">variables =</span> <span class="fu">c</span>(<span class="st">&#39;ESTADO&#39;</span>,<span class="st">&#39;PONDERA&#39;</span>),</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>                        <span class="at">window =</span> <span class="st">&#39;trimestral&#39;</span>)</span></code></pre></div>
-<p>Los argumentos principales de la función <code>organize_panels</code>son:</p>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="do">### Armo el panel</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>pool <span class="ot">&lt;-</span> <span class="fu">organize_panels</span>(<span class="at">bases =</span> <span class="fu">list</span>(base_2018t1, base_2018t2), </span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>                        <span class="at">variables =</span> <span class="fu">c</span>(<span class="st">&#39;ESTADO&#39;</span>,<span class="st">&#39;PONDERA&#39;</span>),</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>                        <span class="at">window =</span> <span class="st">&#39;trimestral&#39;</span>)</span></code></pre></div>
+<p>Los argumentos principales de la función
+<code>organize_panels</code>son:</p>
 <ul>
 <li><code>bases</code>: una lista con las bases de datos a poolear</li>
-<li><code>variables</code>: string con los nombres de las variables de interés</li>
-<li><code>window</code>: un string que indique la ventana de distancia de las observaciones (<code>anual</code>) o (<code>trimestral</code>)</li>
+<li><code>variables</code>: string con los nombres de las variables de
+interés</li>
+<li><code>window</code>: un string que indique la ventana de distancia
+de las observaciones (<code>anual</code>) o
+(<code>trimestral</code>)</li>
 </ul>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pool</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 25,411 x 17</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    CODUSU        NRO_HOGAR COMPONENTE  ANO4 TRIMESTRE  CH04  CH06 ESTADO PONDERA</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;fct&gt;             &lt;int&gt;      &lt;int&gt; &lt;int&gt;     &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;   &lt;int&gt;</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 TQRMNORUTHMK~         1          1  2018         1     2    67      3    1008</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 TQRMNORUTHMK~         1          2  2018         1     1    81      1    1008</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 TQRMNORUTHMK~         1          3  2018         1     2    22      2    1008</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 TQRMNOVQVHMO~         1          1  2018         1     1    62      1     886</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 TQRMNORPYHMM~         1          1  2018         1     1    83      3     594</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 TQRMNORPYHMM~         1          2  2018         1     2    79      3     594</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 TQRMNOTSYHKM~         1          1  2018         1     2    79      3     700</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 TQRMNOQTTHKM~         1          1  2018         1     1    38      1     700</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 TQRMNOQTTHKM~         1          2  2018         1     2    33      1     700</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 TQRMNOQRVHMM~         1          1  2018         1     1    64      1     546</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 25,401 more rows, and 8 more variables: Periodo &lt;yearqtr&gt;,</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   ANO4_t1 &lt;int&gt;, TRIMESTRE_t1 &lt;int&gt;, CH04_t1 &lt;int&gt;, CH06_t1 &lt;int&gt;,</span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   ESTADO_t1 &lt;int&gt;, PONDERA_t1 &lt;int&gt;, consistencia &lt;lgl&gt;</span></span></code></pre></div>
-<p>La función nos devuelve un data.frame similar a la base original, en el cual cada fila es un registro individual, que consta de las observaciones de las variables de interés especificadas, en dos periodos de tiempo. En el período inicial las mismas conservan su nombre, y en el siguiente (año o trimestre) aparecen renombradas con el agregado del string <code>_t1</code>.</p>
-<p>El trabajo que realiza la función es concatenar todas las bases espeficadas en el argumento <code>list=</code> y hacer un <code>join</code>, conservando sólo aquellos individuos encuestados en los diferentes trimestres. La columna <code>consistencia</code> evalúa si entre ambas observaciones un mismo individuo figura con distinto sexo o con una diferencia absoluta de 2 años de edad.</p>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    CODUSU       NRO_H~1 COMPO~2  ANO4 TRIME~3  CH04  CH06 ESTADO PONDERA Periodo</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;fct&gt;          &lt;int&gt;   &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;   &lt;int&gt; &lt;yearq&gt;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 TQRMNORUTHM~       1       1  2018       1     2    67      3    1008 2018 Q1</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 TQRMNORUTHM~       1       2  2018       1     1    81      1    1008 2018 Q1</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 TQRMNORUTHM~       1       3  2018       1     2    22      2    1008 2018 Q1</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 TQRMNOVQVHM~       1       1  2018       1     1    62      1     886 2018 Q1</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 TQRMNORPYHM~       1       1  2018       1     1    83      3     594 2018 Q1</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 TQRMNORPYHM~       1       2  2018       1     2    79      3     594 2018 Q1</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 TQRMNOTSYHK~       1       1  2018       1     2    79      3     700 2018 Q1</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 TQRMNOQTTHK~       1       1  2018       1     1    38      1     700 2018 Q1</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 TQRMNOQTTHK~       1       2  2018       1     2    33      1     700 2018 Q1</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 TQRMNOQRVHM~       1       1  2018       1     1    64      1     546 2018 Q1</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 25,401 more rows, 7 more variables: ANO4_t1 &lt;int&gt;,</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   TRIMESTRE_t1 &lt;int&gt;, CH04_t1 &lt;int&gt;, CH06_t1 &lt;int&gt;, ESTADO_t1 &lt;int&gt;,</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   PONDERA_t1 &lt;int&gt;, consistencia &lt;lgl&gt;, and abbreviated variable names</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   1: NRO_HOGAR, 2: COMPONENTE, 3: TRIMESTRE</span></span></code></pre></div>
+<p>La función nos devuelve un data.frame similar a la base original, en
+el cual cada fila es un registro individual, que consta de las
+observaciones de las variables de interés especificadas, en dos periodos
+de tiempo. En el período inicial las mismas conservan su nombre, y en el
+siguiente (año o trimestre) aparecen renombradas con el agregado del
+string <code>_t1</code>.</p>
+<p>El trabajo que realiza la función es concatenar todas las bases
+espeficadas en el argumento <code>list=</code> y hacer un
+<code>join</code>, conservando sólo aquellos individuos encuestados en
+los diferentes trimestres. La columna <code>consistencia</code> evalúa
+si entre ambas observaciones un mismo individuo figura con distinto sexo
+o con una diferencia absoluta de 2 años de edad.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pool <span class="sc">%&gt;%</span> </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">organize_labels</span>(.) <span class="sc">%&gt;%</span> </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate_tabulates</span>(<span class="at">x =</span> <span class="st">&#39;ESTADO&#39;</span>, </span>
@@ -306,11 +558,21 @@ devtools::install_github(&quot;holatam/eph&quot;)</code></pre>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          Desocupado 36.2 34.7 29.0  0.0</span></span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            Inactivo  7.5  3.5 88.8  0.2</span></span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Menor de 10 anios.  0.0  0.0  3.7 96.3</span></span></code></pre></div>
-<p>Un indicador frecuente construido con esta información es la <em>Matriz de Transición</em>. Ella refleja como los individuos que ocupaban una determinada categoría en el período inicial, se distribuyen en cada una de las categorías en el período siguiente. La misma puede construirse sencillamente utilizando la función <code>calculate_tabulates</code>. En este ejemplo, la información refleja que durante 2018, un 3.7% de los ocupados perdió su empleo en el trimestre siguiente.</p>
+<p>Un indicador frecuente construido con esta información es la
+<em>Matriz de Transición</em>. Ella refleja como los individuos que
+ocupaban una determinada categoría en el período inicial, se distribuyen
+en cada una de las categorías en el período siguiente. La misma puede
+construirse sencillamente utilizando la función
+<code>calculate_tabulates</code>. En este ejemplo, la información
+refleja que durante 2018, un 3.7% de los ocupados perdió su empleo en el
+trimestre siguiente.</p>
 </div>
 <div id="iterando-en-varias-bases" class="section level3">
 <h3>Iterando en varias bases</h3>
-<p>Dado que levantar muchas bases al mismo tiempo puede superar el espacio disponible en memoria, es posible utilizar el parametro <code>vars</code> para hacer una selección de variables al mismo tiempo que se levantan las bases.</p>
+<p>Dado que levantar muchas bases al mismo tiempo puede superar el
+espacio disponible en memoria, es posible utilizar el parametro
+<code>vars</code> para hacer una selección de variables al mismo tiempo
+que se levantan las bases.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">get_microdata</span>(<span class="at">year =</span> <span class="dv">2017</span><span class="sc">:</span><span class="dv">2019</span>, </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">trimester =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">type =</span> <span class="st">&#39;individual&#39;</span>,</span>
@@ -321,40 +583,50 @@ devtools::install_github(&quot;holatam/eph&quot;)</code></pre>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 5</span></span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    ANO4 TRIMESTRE PONDERA ESTADO CAT_OCUP</span></span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt;     &lt;int&gt;   &lt;int&gt;  &lt;int&gt;    &lt;int&gt;</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  2017         3     216      3        0</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  2019         2      94      4        0</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  2019         2     391      3        0</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  2019         1     171      4        0</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  2019         3     121      4        0</span></span></code></pre></div>
-<p>Con estos datos podemos crear por ejemplo la serie de asalarización</p>
-<p><span class="math inline">\(SO_{t} = \frac{\sum_{i=1}^n w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}\)</span></p>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  2017         4     200      3        0</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  2017         4     222      4        0</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  2019         2     107      1        3</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  2019         4      87      3        0</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  2018         4     119      3        0</span></span></code></pre></div>
+<p>Con estos datos podemos crear por ejemplo la serie de
+asalarización</p>
+<p><span class="math inline">\(SO_{t} = \frac{\sum_{i=1}^n
+w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}\)</span></p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ANO4, TRIMESTRE) <span class="sc">%&gt;%</span> </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">indicador =</span> <span class="fu">sum</span>(PONDERA[CAT_OCUP<span class="sc">==</span><span class="dv">3</span> <span class="sc">&amp;</span> ESTADO<span class="sc">==</span><span class="dv">1</span>], <span class="at">na.rm =</span> T) <span class="sc">/</span> <span class="fu">sum</span>(PONDERA[ESTADO<span class="sc">==</span><span class="dv">1</span>], <span class="at">na.rm =</span> T)) </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;ANO4&#39;. You can override using the `.groups` argument.</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>df</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 12 x 3</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   ANO4 [3]</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     ANO4 TRIMESTRE indicador</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;int&gt;     &lt;int&gt;     &lt;dbl&gt;</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1  2017         1     0.742</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2  2017         2     0.751</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3  2017         3     0.745</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4  2017         4     0.748</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5  2018         1     0.752</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6  2018         2     0.740</span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7  2018         3     0.741</span></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8  2018         4     0.745</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9  2019         1     0.745</span></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10  2019         2     0.741</span></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11  2019         3     0.726</span></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12  2019         4     0.726</span></span></code></pre></div>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;ANO4&#39;. You can override using the</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `.groups` argument.</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>df</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 12 x 3</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   ANO4 [3]</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     ANO4 TRIMESTRE indicador</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;int&gt;     &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1  2017         1     0.742</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2  2017         2     0.751</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3  2017         3     0.745</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4  2017         4     0.748</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5  2018         1     0.752</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6  2018         2     0.740</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7  2018         3     0.741</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8  2018         4     0.745</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9  2019         1     0.745</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10  2019         2     0.741</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11  2019         3     0.726</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12  2019         4     0.726</span></span></code></pre></div>
 </div>
 <div id="cálculo-de-pobreza" class="section level3">
 <h3>Cálculo de pobreza:</h3>
-<p>Un objetivo del paquete <code>eph</code>, es lograr automatizar el cálculo de pobreza e indigencia del INDEC para las bases trimestrales<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. El gran problema es que no existe información publicada fuera de los informes de prensa en formato pdf sobre los valores de las canastas básicas y alimentarias.</p>
-<p>No obstante, hemos desarrollado dos funciones que, de encontrarse disponibles dichos datos, podrían calcular de forma automática los valores de pobreza e indigencia. Mostraremos un ejemplo de juguete con dos datasets de la CABA y sus respectivos valores de canastas.</p>
+<p>Un objetivo del paquete <code>eph</code>, es lograr automatizar el
+cálculo de pobreza e indigencia del INDEC para las bases trimestrales<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. El gran
+problema es que no existe información publicada fuera de los informes de
+prensa en formato pdf sobre los valores de las canastas básicas y
+alimentarias.</p>
+<p>No obstante, hemos desarrollado dos funciones que, de encontrarse
+disponibles dichos datos, podrían calcular de forma automática los
+valores de pobreza e indigencia. Mostraremos un ejemplo de juguete con
+dos datasets de la CABA y sus respectivos valores de canastas.</p>
 <p>Existen dos funciones núcleo:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>lineas <span class="ot">&lt;-</span> <span class="fu">get_poverty_lines</span>()</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>lineas <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
@@ -367,15 +639,23 @@ devtools::install_github(&quot;holatam/eph&quot;)</code></pre>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2016-07-01 00:00:00 1666.  2.42 4034.</span></span>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2016-08-01 00:00:00 1675.  2.41 4042.</span></span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 2016-09-01 00:00:00 1711.  2.39 4090.</span></span></code></pre></div>
-<p>Esta función descarga los valores de las canastas alimentaria, básica (CBA y CBT) y la inversa del coeficiente de Engels… perdón, Engel (ICE) de <a href="https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149">la serie provista por INDEC</a>. Esta es la serie para GBA, y es la que publica regularmente INDEC.</p>
+<p>Esta función descarga los valores de las canastas alimentaria, básica
+(CBA y CBT) y la inversa del coeficiente de Engels… perdón, Engel (ICE)
+de <a href="https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149">la
+serie provista por INDEC</a>. Esta es la serie para GBA, y es la que
+publica regularmente INDEC.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>lineas <span class="sc">%&gt;%</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>ICE) <span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(canasta, valor, <span class="sc">-</span>periodo) <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;CBA&quot;</span>, <span class="st">&quot;CBT&quot;</span>), <span class="at">names_to =</span> <span class="st">&quot;canasta&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;valor&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>periodo, <span class="at">y=</span>valor, <span class="at">col=</span>canasta))</span></code></pre></div>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
-<p>Para el calculo de la Pobreza e Indigencia se utilizan canastas regionales, que sólo aparecen en los <a href="https://www.indec.gob.ar/uploads/informesdeprensa/eph_pobreza_01_19422F5FC20A.pdf">informes Técnicos</a>.</p>
-<p>A modo de ejemplo, en la librería <code>eph</code> se encuentra la base <code>canastas_reg_example</code> con la información necesaria para realizar el cálculo</p>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>Para el calculo de la Pobreza e Indigencia se utilizan canastas
+regionales, que sólo aparecen en los <a href="https://www.indec.gob.ar/uploads/informesdeprensa/eph_pobreza_01_19422F5FC20A.pdf">informes
+Técnicos</a>.</p>
+<p>A modo de ejemplo, en la librería <code>eph</code> se encuentra la
+base <code>canastas_reg_example</code> con la información necesaria para
+realizar el cálculo</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>canastas_reg_example <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 5</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   region  periodo   CBA   CBT codigo</span></span>
@@ -386,7 +666,11 @@ devtools::install_github(&quot;holatam/eph&quot;)</code></pre>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 GBA     2016.4  1756. 4232.      1</span></span>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Noreste 2016.3  1513. 3414.     41</span></span>
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Noreste 2016.4  1568. 3539.     41</span></span></code></pre></div>
-<p>A su vez, también se encuentra la tabla de <code>adulto_equivalente</code> que permite construir la cantidad de adultos equivalentes a nivel hogar, para multiplicar al mismo por la canasta regional correspondiente, a fin de definir la línea a nivel hogar.</p>
+<p>A su vez, también se encuentra la tabla de
+<code>adulto_equivalente</code> que permite construir la cantidad de
+adultos equivalentes a nivel hogar, para multiplicar al mismo por la
+canasta regional correspondiente, a fin de definir la línea a nivel
+hogar.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>adulto_equivalente <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   CH04 CH06 adequi</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    1   -1   0.35</span></span>
@@ -395,7 +679,9 @@ devtools::install_github(&quot;holatam/eph&quot;)</code></pre>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    1    3   0.51</span></span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    1    4   0.55</span></span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6    1    5   0.60</span></span></code></pre></div>
-<p>La función <code>calculate_poverty</code> calcula la pertenencia a situaciones de pobreza e indigencia a nivel de los individuos siguiendo la metodología de línea:</p>
+<p>La función <code>calculate_poverty</code> calcula la pertenencia a
+situaciones de pobreza e indigencia a nivel de los individuos siguiendo
+la metodología de línea:</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>bases <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(toybase_individual_2016_03, toybase_individual_2016_04)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>base_pobreza <span class="ot">&lt;-</span> <span class="fu">calculate_poverty</span>(<span class="at">base =</span> bases, </span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">basket =</span> canastas_reg_example,</span>
@@ -410,24 +696,27 @@ devtools::install_github(&quot;holatam/eph&quot;)</code></pre>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(CODUSU, ITF, region, adequi_hogar, CBA_hogar, CBT_hogar, situacion) <span class="sc">%&gt;%</span> </span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>)</span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 10 x 7</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    CODUSU                 ITF region  adequi_hogar CBA_hogar CBT_hogar situacion</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;fct&gt;                &lt;int&gt; &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;    </span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 TQRMNOQPVHLNLPCDEFN~ 20000 Noreste         0.76     1150.     2595. no_pobre </span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 TQRMNORRTHMMLLCDEGG~  8000 Cuyo            1        1509.     3872. no_pobre </span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 TQRMNOQTPHMOKMCDEGO~  9000 Noroes~         1        1472.     3292. no_pobre </span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 TQRMNOPYTHKMLMCDEIO~     0 Pampea~         0.76     1274.     3066. &lt;NA&gt;     </span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 TQSMNORRQHMMLLCDEGG~  4800 Cuyo            0.83     1252.     3214. no_pobre </span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 TQRMNOQTWHLOOSCDEIJ~     0 GBA             0.74     1300.     3132. &lt;NA&gt;     </span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 TQRMNOQVPHKLKRCDEFK~ 35000 Pampea~         1.68     2934.     7071. no_pobre </span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 TQRMNORWVHMNLNCDEGG~ 11000 Cuyo            1        1509.     3872. no_pobre </span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 TQRMNOSUUHJOKOCDEGJ~  4000 Pampea~         0.83     1391.     3348. no_pobre </span></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 TQRMNOQVPHJMPQCDEIJ~ 15000 GBA             1.04     1752.     4215. no_pobre</span></span></code></pre></div>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    CODUSU                          ITF region    adequ~1 CBA_h~2 CBT_h~3 situa~4</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;fct&gt;                         &lt;int&gt; &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  </span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 TQRMNOSWYHKMKQCDEGKDB00490852     0 Pampeana     0.77   1291.   3106. &lt;NA&gt;   </span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 TQRMNOPSQHLMKMCDEGJBF00474588 28000 Pampeana     1.73   2900.   6978. no_pob~</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 TQRMNOQTUHLMKQCDEFPCH00499933 70000 Patagonia    1.02   1850.   5062. no_pob~</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 TQRMNOQWWHJMLPCDEFLID00498902 13300 Pampeana     1.02   1781.   4293. no_pob~</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 TQRMNOQTTHKNNOCDEIJAH00495578     0 GBA          1      1756.   4232. &lt;NA&gt;   </span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 TQRMNORPQHLMKOCDEIHJF00504496 52000 Patagonia    0.83   1505.   4119. no_pob~</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 TQRMNOQPVHJMKRCDEFNFF00499491 30000 Noreste      0.9    1411.   3185. no_pob~</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 TQRMNORSPHKKKOCDEIMBF00497136  9700 Pampeana     1.83   3196.   7702. no_pob~</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 TQRMNOPYUHMMSSCDEIJAH00505210 46500 GBA          0.77   1352.   3259. no_pob~</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 TQRMNORQXHKNKNCDEGKDB00490875 17000 Pampeana     1      1676.   4034. no_pob~</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with abbreviated variable names 1: adequi_hogar, 2: CBA_hogar,</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   3: CBT_hogar, 4: situacion</span></span></code></pre></div>
 </div>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr />
 <ol>
-<li id="fn1"><p>El calculo oficial se realiza sobre bases semestrales no publicadas<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>El calculo oficial se realiza sobre bases semestrales no
+publicadas<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 
