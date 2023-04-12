@@ -47,18 +47,31 @@ calculate_tabulates <- function(base,
 
   # Controles de los parametros
   assertthat::assert_that(is.vector(x))
-  assertthat::assert_that(add.totals %in% c('none','row','col','both'))
-  assertthat::assert_that(add.percentage %in% c('none','row','col'))
-  assertthat::assert_that(is.numeric(digits))
+  assertthat::assert_that(add.totals %in% c('none','row','col','both'),msg = "Elegir alguna de las opciones de add.totals: 'none','row', 'col' o 'both'.")
+  assertthat::assert_that(add.percentage %in% c('none','row','col'),msg = "Elegir alguna de las opciones de add.percentage: 'none','row' o 'col'.")
+  assertthat::assert_that(is.numeric(digits),msg = "digits debe ser numeric.")
 
+  if (x %in% names(base)) {
+    x_vec <- base[[x]]
+  } else {
+    cli::cli_abort(c(
+      "La variable x no pertence a la base de datos",
+      "i" = "Puede usar names() para extraer los nombres de las variables."
+    ))
+  }
 
-
-  x_vec <- base[[x]]
 
   ## Vector y
   if (!is.null(y)) {
 
+    if (y %in% names(base)) {
     y_vec <- base[[y]]
+    } else {
+      cli::cli_abort(c(
+        "La variable y no pertence a la base de datos",
+        "i" = "Puede usar names() para extraer los nombres de las variables."
+      ))
+    }
 
   } else {
 
@@ -70,7 +83,14 @@ calculate_tabulates <- function(base,
   ## weight[ponderador]
   if (!is.null(weights)) {
 
-    weights_vec <- base[[weights]]
+    if (weights %in% names(base)) {
+      weights_vec <- base[[weights]]
+    } else {
+      cli::cli_abort(c(
+        "La variable weights no pertence a la base de datos",
+        "i" = "Puede usar names() para extraer los nombres de las variables."
+      ))
+    }
 
   } else {
 
