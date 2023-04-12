@@ -30,12 +30,10 @@ Imports:
     readxl,
     janitor,
     tidyr,
-    readr,
     utils,
     curl,
     attempt,
     zoo,
-    tidyverse,
     leaflet,
     htmltools,
     rlang,
@@ -48,12 +46,14 @@ Encoding: UTF-8
 Language: es
 URL: https://github.com/holatam/eph
 LazyData: true
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Suggests: 
     testthat,
     lubridate,
     covr,
     knitr,
     rmarkdown,
-    ggplot2
+    ggplot2,
+    readr,
+    forcats
 VignetteBuilder: knitr

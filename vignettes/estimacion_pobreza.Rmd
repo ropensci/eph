@@ -2,7 +2,7 @@
 title: "Estimación de Pobreza e Indigencia"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{estimacion_pobreza}
+  %\VignetteIndexEntry{Estimación de Pobreza e Indigencia}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -26,8 +26,12 @@ Primero cargamos el paquete `eph` junto con otros paquetes que serán de utilida
 ```{r setup, eval=LOCAL}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, results = 'hide')
 library(eph)
-library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(readr)
 library(lubridate)
+library(ggplot2)
+library(forcats)
 ```
 
 

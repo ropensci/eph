@@ -16,8 +16,6 @@
 #'Su alcance es entre tercer trimestre de 2003 a la actualidad
 #'disclaimer: El script no es un producto oficial de INDEC.
 #'
-#'@return
-#'
 #'@examples
 #'
 #'base_individual <- get_microdata(year = 2018:2019,
