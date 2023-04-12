@@ -1,4 +1,6 @@
 # eph 0.6.0
+* removed 'readr' and 'tidyverse'from Imports. readr was reclassified as a Suggest (because it was only used in a vignette) and tidyverse was replaced by the tidyverse packages actually required.
+* improved error messages in calculate_tabulates() function.
 
 # eph 0.5.1
 * fixed warnings when downloading poverty lines 
