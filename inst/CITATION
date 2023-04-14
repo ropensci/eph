@@ -1,8 +1,8 @@
 citHeader("Para citar el paquete eph puedes usar:")
 
-citEntry(
+bibentry(
+  bibtype = "Manual",
   key = 'kozlowski2020',
-  entry    = "Manual",
   title    = "eph: Argentina's Permanent Household Survey Data and Manipulation Utilities",
   author   = "Diego Kozlowski, Pablo Tiscornia, Guido Weksler, German Rosati and Natsumi Shokida",
   year     = 2020,
