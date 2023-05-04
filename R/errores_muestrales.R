@@ -1,4 +1,4 @@
-#' @title errores_muestrales
+#' @title Tabla con los errores muestrales para estimaciones de población
 #' @description Base con los errores muestrales para estimaciones de población en los aglomerados urbanos
 #'  para la EPH continua desde 2003 segundo trimestre según documentación de INDEC:
 #' https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_errores_muestreo_3t2014.pdf

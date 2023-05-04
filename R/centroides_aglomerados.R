@@ -1,4 +1,4 @@
-#' @title centroides_aglomerados
+#' @title Tabla de centroides de los aglomerados
 #' @description Base con centroides de los aglomerados de EPH.
 #' Basado en https://www.indec.gob.ar/indec/web/Nivel4-Tema-1-39-120
 #' @format A data frame with 32 rows and 4 variables:

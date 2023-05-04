@@ -1,4 +1,4 @@
-#' @title caes
+#' @title Categorias del Clasificador de Actividades Economicas para encuestas Sociodemograficas
 #' @description Base con codigos y etiquetas del Clasificador de actividades economicas para encuestas sociodemograficas.
 #'              CAES Mercosur 1.0 - Actualizacion 2018.
 #'              Basado en https://bit.ly/notas-explicativas-CAES-v2018 y

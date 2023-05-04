@@ -6,6 +6,8 @@
 #'@param wave un integer con el numero de onda, 1 o 2, para la EPH puntual
 #'@param type tipo de base a descargar: 'individual' ; 'hogar', default individual
 #'@param vars variables a seleccionar. Default trae todas las variables
+#'
+#' @noRd
 
 get_microdata_internal <- function(year = 2018,
                           trimester = NA,

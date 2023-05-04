@@ -5,7 +5,7 @@
 #' @param type el parametro de get_microdata_internal
 #'
 #'
-#'
+#' @noRd
 is_in_github <- function(year = 2018,
                          trimester = NA,
                          type='individual'){

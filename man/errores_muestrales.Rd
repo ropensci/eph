@@ -3,7 +3,7 @@
 \docType{data}
 \name{errores_muestrales}
 \alias{errores_muestrales}
-\title{errores_muestrales}
+\title{Tabla con los errores muestrales para estimaciones de población}
 \format{
 A data frame with 1687 rows and 5 variables:
 \describe{

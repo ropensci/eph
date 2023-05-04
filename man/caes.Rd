@@ -3,7 +3,7 @@
 \docType{data}
 \name{caes}
 \alias{caes}
-\title{caes}
+\title{Categorias del Clasificador de Actividades Economicas para encuestas Sociodemograficas}
 \format{
 A data frame with 140 rows and 8 variables:
 \describe{

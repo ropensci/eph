@@ -1,4 +1,4 @@
-#' @title organize_caes
+#' @title Clasificador de Actividades
 #' @description Funcion para clasificar las actividades economicas segun el
 #'              Clasificador de actividades economicas para encuestas sociodemograficas.
 #'              CAES Mercosur 1.0 y CAES Mercosur.

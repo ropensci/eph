@@ -3,7 +3,7 @@
 \docType{data}
 \name{centroides_aglomerados}
 \alias{centroides_aglomerados}
-\title{centroides_aglomerados}
+\title{Tabla de centroides de los aglomerados}
 \format{
 A data frame with 32 rows and 4 variables:
 \describe{

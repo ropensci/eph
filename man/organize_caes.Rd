@@ -2,7 +2,7 @@
 % Please edit documentation in R/organize_caes.R
 \name{organize_caes}
 \alias{organize_caes}
-\title{organize_caes}
+\title{Clasificador de Actividades}
 \usage{
 organize_caes(base)
 }
