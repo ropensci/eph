@@ -12,3 +12,30 @@ template:
     ganalytics: UA-122515754-3
 navbar:
   type: inverse
+
+reference:
+- title: Descarga y recodificación
+  desc:  Funciones para descargar los datos de la encuesta y recodificar sus variables.
+  contents:
+  - get_microdata
+  - starts_with("organize")
+- title: Tablas auxiliares
+  desc:  Tablas auxiliares para la recodificacion y otros calculos frecuentes.
+  contents:
+  - get_poverty_lines
+  - adulto_equivalente
+  - starts_with("diccionario")
+  - errores_muestrales
+  - CNO
+  - caes
+  - centroides_aglomerados
+- title: Procesamiento
+  desc:  Funciones para facilitar procesamientos básicos de la base de datos (incluyendo mapeo)
+  contents:
+  - starts_with("calculate")
+  - starts_with("map")
+- title: Ejemplos y bases de juguete
+  contents:
+  - starts_with("toy")
+  - canastas_reg_example
+
