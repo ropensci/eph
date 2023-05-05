@@ -11,8 +11,8 @@
 
 organize_labels <- function(df, type = "individual"){
 
-  assertthat::assert_that(is.data.frame(df))
-  assertthat::assert_that(type %in% c("individual", "hogar"))
+  assertthat::assert_that(is.data.frame(df),msg = "Indique la base de datos que quiere etiquetar.")
+  assertthat::assert_that(type %in% c("individual", "hogar"),msg = "Elegir alguna de las opciones: 'individual' u 'hogar'.")
 
   if(type == "hogar"){
     df = expss::apply_labels(df,
@@ -1084,8 +1084,6 @@ organize_labels <- function(df, type = "individual"){
                              ADECCFR = 'Nro de decil de ingreso per capita familiar del AGLOMERADO.',
                              PONDIH = 'Ponderador del ingreso total familiar y del ingreso per capita familiar, para hogares.')
   }
-  else{
-    stop("couldn't tagg")
-  }
+
 
 }
