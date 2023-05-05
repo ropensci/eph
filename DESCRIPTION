@@ -50,7 +50,6 @@ RoxygenNote: 7.2.3
 Suggests: 
     testthat,
     lubridate,
-    covr,
     knitr,
     rmarkdown,
     ggplot2,
