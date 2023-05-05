@@ -19,7 +19,7 @@ get_microdata_internal <- function(year = 2018,
   assertthat::assert_that(is.numeric(year))
   assertthat::assert_that((is.numeric(trimester)|is.numeric(wave)))
   # assertthat::assert_that(assertthat::is.flag(labels), msg = "Por favor ingresa TRUE o FALSE")
-  assertthat::assert_that((is.na(trimester)|is.na(wave)), msg = 'por favor seleccionar onda o trimestre, no ambas')
+  assertthat::assert_that((is.na(trimester)|is.na(wave)), msg = 'Por favor seleccionar onda o trimestre, no ambas')
   if (!is.na(trimester)) {
     assertthat::assert_that(trimester %in% 1:4, msg = "Por favor ingresa un numero de trimeste valido: 1,2,3,4")
   }
@@ -28,7 +28,7 @@ get_microdata_internal <- function(year = 2018,
   }
   assertthat::assert_that(type %in% c('individual','hogar'))
   if (year<2003) {
-    assertthat::assert_that(!is.na(wave), msg='para antes de 2003, es necesario definir la onda (wave) de la EPH puntual')
+    assertthat::assert_that(!is.na(wave), msg='Para antes de 2003, es necesario definir la onda (wave) de la EPH puntual')
     link = glue::glue('https://github.com/holatam/data/raw/master/eph/{type}/base_{type}_{year}O{wave}.RDS')
   }else
     if (year>2003){
@@ -84,7 +84,7 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
     base <- emptyenv()
     try(base <- readRDS(gzcon(url(link))),silent = TRUE)
 
-    assertthat::assert_that(assertthat::not_empty(base),msg = "problema con la descarga. Posiblemente un error de la conexion a internet")
+    assertthat::assert_that(assertthat::not_empty(base),msg = "Problema con la descarga. Posiblemente un error de la conexion a internet")
   }
   else{
     if (!is_in_github(year = year, trimester = trimester,type = type)) {
@@ -96,7 +96,7 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
 
     check <- NA
     try(check <- utils::download.file(link,temp),silent = TRUE)
-    assertthat::assert_that(assertthat::noNA(check),msg = glue::glue("problema con la descarga {year} trimester {trimester}, wave {wave}"))
+    assertthat::assert_that(assertthat::noNA(check),msg = glue::glue("Problema con la descarga {year} trimester {trimester}, wave {wave}"))
     nombres <- purrr::as_vector(utils::unzip(temp, list = TRUE)['Name'])
     base_hogar_name <- nombres[grep('hog', nombres, ignore.case = TRUE)]
     base_individual_name <- nombres[grep('ind', nombres, ignore.case = TRUE)]

@@ -36,6 +36,15 @@ get_microdata <- function(year = 2018,
   if (!is.na(destfile)) {
     destfile_exists <- file.exists(destfile)
   }
+
+  if (destfile_exists) {
+    df <- readRDS(destfile)
+
+    return(df)
+
+  }
+
+
   if (is.na(destfile) | !destfile_exists) {
     attempt::stop_if_not(.x = curl::has_internet(),
                          msg = "No se detecto acceso a internet. Por favor checkea tu conexion.")
@@ -85,12 +94,7 @@ get_microdata <- function(year = 2018,
     saveRDS(df,file = destfile)
 
   }
-  }else{
-      if (destfile_exists) {
-        df <- readRDS(destfile)
-
-      }
-    }
+  }
 
   if (nrow(df)==1) {
     df$microdata[[1]]
