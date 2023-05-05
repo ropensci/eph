@@ -25,7 +25,6 @@ Imports:
     purrr,
     tibble,
     stringr,
-    magrittr,
     glue,
     readxl,
     janitor,
