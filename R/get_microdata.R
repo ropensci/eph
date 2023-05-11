@@ -5,8 +5,8 @@
 #'@param trimester un integer o vector de integers con el numero de trimester: 1,2,3,4, para la EPH continua
 #'@param wave un integer o vector de integers con el numero de onda, 1 o 2, para la EPH puntual
 #'@param type un character o vector de characters con el tipo de base a descargar: 'individual'; 'hogar', default individual
-#'@param vars un vector de characters. variables a seleccionar. Default='all' trae todas las variables
-#'@param destfile un string con la direccion de un archivo .RDS. Si se ingresa un path a un archivo que no existe, se descarga
+#'@param vars opcional: un vector de characters. variables a seleccionar. Default='all' trae todas las variables
+#'@param destfile opcional: un string con la direccion de un archivo .RDS. Si se ingresa un path a un archivo que no existe, se descarga
 #'                el archivo y se graba en esa direccion. Si existe un archivo en ese path, se lee el archivo.
 #'@details
 #'Las bases de la EPH puntual utilizan el parametro wave, para referirse a las ondas.
@@ -46,7 +46,8 @@ get_microdata <- function(year = 2018,
 
 
   if (is.na(destfile) | !destfile_exists) {
-    attempt::stop_if_not(.x = curl::has_internet(),
+    attempt::stop_if_not(.x = is_online(),
+                          #.x = curl::has_internet(),
                          msg = "No se detecto acceso a internet. Por favor checkea tu conexion.")
 
     df <- tibble::as_tibble(expand.grid(year=year,

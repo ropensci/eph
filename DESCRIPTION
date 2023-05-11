@@ -30,7 +30,6 @@ Imports:
     janitor,
     tidyr,
     utils,
-    curl,
     attempt,
     zoo,
     leaflet,

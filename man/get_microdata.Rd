@@ -22,9 +22,9 @@ get_microdata(
 
 \item{type}{un character o vector de characters con el tipo de base a descargar: 'individual'; 'hogar', default individual}
 
-\item{vars}{un vector de characters. variables a seleccionar. Default='all' trae todas las variables}
+\item{vars}{opcional: un vector de characters. variables a seleccionar. Default='all' trae todas las variables}
 
-\item{destfile}{un string con la direccion de un archivo .RDS. Si se ingresa un path a un archivo que no existe, se descarga
+\item{destfile}{opcional: un string con la direccion de un archivo .RDS. Si se ingresa un path a un archivo que no existe, se descarga
 el archivo y se graba en esa direccion. Si existe un archivo en ese path, se lee el archivo.}
 }
 \description{

@@ -9,7 +9,7 @@ author:
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Ejemplo de uso}
+  %\VignetteIndexEntry{Ejemplo de uso del paquete `eph`}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
