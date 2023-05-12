@@ -1,4 +1,5 @@
 #'Tabulado con ponderacion
+#'@importFrom rlang .data
 #'@description
 #'Funcion para crear tabulados uni o bivariados con ponderacion, totales parciales y porcentajes.
 #'@param base Dataframe
@@ -7,7 +8,6 @@
 #'@param weights string con el nombre de la variable con los pesos de pesos, tiene que ser de igual largo que x
 #'@param digits numero de digitos significativos
 #'@param affix_sign si es TRUE agrega el signo \% al final
-#'@param addNA de haber, cuenta valores NA
 #'@param add.totals  toma los valores c('none','row','col','both'), para agregar totales por fila, columna o ambos
 #'@param add.percentage toma los valores c('none','row','col'), para agregar porcentajes por fila y columna
 #'@examples
@@ -41,7 +41,7 @@
 
 calculate_tabulates <- function(base,
                                 x, y = NULL,
-                                weights = NULL, affix_sign = FALSE, digits = 1, addNA = FALSE,
+                                weights = NULL, affix_sign = FALSE, digits = 1,
                                 add.totals = 'none', add.percentage = 'none'){
 
 
@@ -65,7 +65,7 @@ calculate_tabulates <- function(base,
   if (!is.null(y)) {
 
     if (y %in% names(base)) {
-    y_vec <- base[[y]]
+      y_vec <- base[[y]]
     } else {
       cli::cli_abort(c(
         "La variable y no pertence a la base de datos",
@@ -159,52 +159,176 @@ calculate_tabulates <- function(base,
     names(tabulado) <- c(paste0(x),names(tabulado)[2:ncol(tabulado)])
   }
 
+  #####Early return
 
-
-  ### add.totals
-  if (add.totals=='row') {
-
-    tabulado <- tabulado %>%
-      janitor::adorn_totals("row")
-
-  } else{
-
-    if (add.totals=='col') {
-
-      tabulado <- tabulado %>%
-        janitor::adorn_totals("col")
-
-    } else {
-
-      if (add.totals =='both') {
-
-        tabulado <- tabulado %>%
-          janitor::adorn_totals("row") %>%
-          janitor::adorn_totals("col")
-      }
-    }
+  if(add.totals == "none" & add.percentage == "none"){
+    return(tabulado)
   }
 
+  ### add.totals
+
+  if(add.percentage == "none"){
+
+    if (add.totals=='row'){
+
+      totales <- data.frame("label" = "Total",
+                            "var" = names(tabulado)[2:ncol(tabulado)],
+                            "valor" =colSums(tabulado[2:ncol(tabulado)])) %>%
+        tidyr::pivot_wider(names_from = .data$var, values_from = .data$valor)
+
+      names(totales)[1] <- paste0(names(tabulado)[1])
+
+      tabulado <- dplyr::bind_rows(tabulado, totales)
+
+    }
+
+    if (add.totals=='col'){
+
+      totales <- tabulado %>%
+        dplyr::select_if(is.numeric) %>%
+        dplyr::transmute(Total = rowSums(., na.rm = TRUE))
+
+      tabulado <- dplyr::bind_cols(tabulado, totales)
+
+    }
+
+    if (add.totals=='both'){
+
+      totales_c <- tabulado %>%
+        dplyr::select_if(is.numeric) %>%
+        dplyr::transmute(Total = rowSums(., na.rm = TRUE))
+
+      tab_intermedio <- dplyr::bind_cols(tabulado, totales_c)
+
+      totales_r <- data.frame("label" = "Total",
+                              "var" = names(tab_intermedio)[2:ncol(tab_intermedio)],
+                              "valor" =colSums(tab_intermedio[2:ncol(tab_intermedio)])) %>%
+        tidyr::pivot_wider(names_from = .data$var, values_from = .data$valor)
+
+      names(totales_r)[1] <- paste0(names(tab_intermedio)[1])
+
+      tabulado <- dplyr::bind_rows(tab_intermedio, totales_r)
+
+    }
+
+
+    return(tabulado)
+  }
 
   ### add.percentage
 
-  if (add.percentage == 'col') {
+  if (add.percentage == 'col'){
 
-    tabulado <- tabulado %>%
-      janitor::adorn_percentages("col") %>%
-      janitor::adorn_pct_formatting(affix_sign = affix_sign, digits = digits)
+    perc_col <- tabulado %>%
+      dplyr::mutate(Total = rowSums(dplyr::across(dplyr::where(is.numeric)))) %>%
+      tidyr::pivot_longer(cols = !names(tabulado)[1],names_to = "var", values_to = "valor") %>%
+      dplyr::group_by(.data$var) %>%
+      dplyr::mutate(aux = sum(.data$valor, na.rm = T)) %>%
+      dplyr::ungroup() %>%
+      dplyr::mutate(prop = round((.data$valor/.data$aux)*100,digits)) %>%
+      dplyr::select(-.data$valor,-.data$aux) %>%
+      tidyr::pivot_wider(names_from = .data$var, values_from = .data$prop)
+
+    if (add.totals=='col'){
+      tabulado <- perc_col
+    }
+
+    if (add.totals=='row'){
+
+      perc_col <- perc_col[,1:(ncol(perc_col)-1)]
+
+      totales <- data.frame("label" = "Total",
+                            "var" = names(perc_col)[2:ncol(perc_col)],
+                            "valor" = round(100,digits)) %>%
+        tidyr::pivot_wider(names_from = .data$var, values_from = .data$valor)
+
+      names(totales)[1] <- paste0(names(perc_col)[1])
+
+      tabulado <- dplyr::bind_rows(perc_col, totales)
+
+    }
+
+    if (add.totals=='none'){
+
+      tabulado <- perc_col[,1:(ncol(perc_col)-1)]
+
+    }
+
+    if (add.totals=='both'){
+
+      totales <- data.frame("label" = "Total",
+                            "var" = names(perc_col)[2:ncol(perc_col)],
+                            "valor" = round(100,digits)) %>%
+        tidyr::pivot_wider(names_from = .data$var, values_from = .data$valor)
+
+      names(totales)[1] <- paste0(names(perc_col)[1])
+
+      tabulado <- dplyr::bind_rows(perc_col, totales)
+
+    }
+
   }
 
-  if (add.percentage == 'row') {
-    tabulado <- tabulado %>%
-      janitor::adorn_percentages("row") %>%
-      janitor::adorn_pct_formatting(affix_sign = affix_sign, digits = digits)
+  if (add.percentage == 'row'){
+
+    totales <- data.frame("label" = "Total",
+                          "var" = names(tabulado)[2:ncol(tabulado)],
+                          "valor" =colSums(tabulado[2:ncol(tabulado)])) %>%
+      tidyr::pivot_wider(names_from = .data$var, values_from = .data$valor)
+
+    names(totales)[1] <- paste0(names(tabulado)[1])
+
+    tabulado <- dplyr::bind_rows(tabulado, totales)
+
+    perc_row <- tabulado%>%
+      dplyr::mutate(aux = rowSums(dplyr::across(dplyr::where(is.numeric)))) %>%
+      dplyr::mutate(dplyr::across(c(names(tabulado)[2:ncol(tabulado)]), function(x) round((x/.data$aux)*100,digits))) %>%
+      dplyr::select(-.data$aux)
+
+
+    if (add.totals=='col'){
+
+      perc_row <- perc_row[1:(nrow(perc_row)-1),]
+
+      totales <- perc_row %>%
+        dplyr::select_if(is.numeric) %>%
+        dplyr::transmute(Total = rowSums(., na.rm = TRUE))
+
+      tabulado <- dplyr::bind_cols(perc_row, totales)
+
+    }
+
+    if (add.totals=='row'){
+
+      tabulado <- perc_row
+
+    }
+
+
+    if (add.totals=='none'){
+
+      tabulado <- perc_row[1:(nrow(perc_row)-1),]
+
+    }
+
+    if (add.totals=='both'){
+
+      totales <- perc_row %>%
+        dplyr::select_if(is.numeric) %>%
+        dplyr::transmute(Total = rowSums(., na.rm = TRUE))
+
+      tabulado <- dplyr::bind_cols(perc_row, totales)
+
+    }
+
+
   }
 
-  if(affix_sign == FALSE){
+  if(affix_sign == TRUE){
 
     tabulado <- tabulado %>%
-      dplyr::mutate(dplyr::across(.cols = 2:length(.), ~ as.numeric(.)))
+      dplyr::mutate_at(dplyr::vars(names(tabulado)[2:ncol(tabulado)]),function(x) paste0(x,"%"))
+
   }
 
   return(tabulado)

@@ -27,7 +27,6 @@ Imports:
     stringr,
     glue,
     readxl,
-    janitor,
     tidyr,
     utils,
     attempt,

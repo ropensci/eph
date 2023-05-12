@@ -11,7 +11,6 @@ calculate_tabulates(
   weights = NULL,
   affix_sign = FALSE,
   digits = 1,
-  addNA = FALSE,
   add.totals = "none",
   add.percentage = "none"
 )
@@ -28,8 +27,6 @@ calculate_tabulates(
 \item{affix_sign}{si es TRUE agrega el signo \% al final}
 
 \item{digits}{numero de digitos significativos}
-
-\item{addNA}{de haber, cuenta valores NA}
 
 \item{add.totals}{toma los valores c('none','row','col','both'), para agregar totales por fila, columna o ambos}
 
