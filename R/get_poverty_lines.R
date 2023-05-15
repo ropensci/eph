@@ -23,7 +23,7 @@ get_poverty_lines <- function(regional = FALSE){
 
     check <- NA
     try(check <- utils::download.file(link,destfile=temp, mode='wb'),silent = TRUE)
-    assertthat::assert_that(assertthat::noNA(check),msg = glue::glue("problema con la descarga"))
+    assertthat::assert_that(assertthat::noNA(check),msg = "Problema con la descarga")
 
 
 
@@ -38,7 +38,7 @@ get_poverty_lines <- function(regional = FALSE){
 
   check <- NA
   try(check <-  utils::download.file(dataURL, destfile=temp, mode='wb'),silent = TRUE)
-  assertthat::assert_that(assertthat::noNA(check),msg = glue::glue("problema con la descarga"))
+  assertthat::assert_that(assertthat::noNA(check),msg = "Problema con la descarga")
 
 
 
