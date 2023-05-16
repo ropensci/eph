@@ -29,7 +29,7 @@ get_microdata_internal <- function(year = 2018,
   assertthat::assert_that(type %in% c('individual','hogar'))
   if (year<2003) {
     assertthat::assert_that(!is.na(wave), msg='Para antes de 2003, es necesario definir la onda (wave) de la EPH puntual')
-    link = glue::glue('https://github.com/holatam/data/raw/master/eph/{type}/base_{type}_{year}O{wave}.RDS')
+    link = sprintf('https://github.com/holatam/data/raw/master/eph/%s/base_%s_%sO%s.RDS',type,type,year,wave)
   }else
     if (year>2003){
 
@@ -57,7 +57,7 @@ get_microdata_internal <- function(year = 2018,
       # assertthat::assert_that(!(year==2007 & trimester==3), msg="INDEC advierte: La informacion correspondiente al tercer trimestre 2007 no esta disponible ya que los aglomerados Mar del Plata-Batan, Bahia Blanca-Cerri y Gran La Plata no fueron relevados por causas de orden administrativo, mientras que los datos correspondientes al Aglomerado Gran Buenos Aires no fueron relevados por paro del personal de la EPH.")
       assertthat::assert_that(!((year==2015 & trimester %in% 3:4)|(year==2016 & trimester ==1)), msg="En el marco de la emergencia estadistica el INDEC no publico la base solicitada.
                             mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_eph_23_08_16.pdf")
-      link = glue::glue('https://github.com/holatam/data/raw/master/eph/{type}/base_{type}_{year}T{trimester}.RDS')
+      link = sprintf('https://github.com/holatam/data/raw/master/eph/%s/base_%s_%sT%s.RDS',type,type,year,trimester)
       if (year %in% 2007:2015) {
         warning("INDEC advierte:
 '''
@@ -72,11 +72,11 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
       if (year==2003) {
         if (!is.na(wave)) {
           assertthat::assert_that(wave ==1, msg = 'La EPH puntual termina en la primera onda de 2003')
-          link = glue::glue('https://github.com/holatam/data/raw/master/eph/{type}/base_{type}_{year}O{wave}.RDS')
+          link = sprintf('https://github.com/holatam/data/raw/master/eph/%s/base_%s_%sO%s.RDS',type,type,year,wave)
         }else
           if (!is.na(trimester)) {
             assertthat::assert_that(trimester %in% 3:4, msg = 'la EPH conitnua comienza en el tercer trimestre de 2003')
-            link = glue::glue('https://github.com/holatam/data/raw/master/eph/{type}/base_{type}_{year}T{trimester}.RDS')
+            link = sprintf('https://github.com/holatam/data/raw/master/eph/%s/base_%s_%sT%s.RDS',type,type,year,trimester)
           }
       }
 
@@ -89,14 +89,14 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
   else{
     if (!is_in_github(year = year, trimester = trimester,type = type)) {
 
-    link= glue::glue('https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_usu_{trimester}_Trim_{year}_txt.zip')
+    link= sprintf('https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_usu_%s_Trim_%s_txt.zip',trimester,year)
 
-    temp <- tempfile(pattern = glue::glue('microdatos_{trimester}_{year}'))
+    temp <- tempfile(pattern = sprintf('microdatos_%s_%s',trimester,year))
 
 
     check <- NA
     try(check <- utils::download.file(link,temp),silent = TRUE)
-    assertthat::assert_that(assertthat::noNA(check),msg = glue::glue("Problema con la descarga {year} trimester {trimester}, wave {wave}"))
+    assertthat::assert_that(assertthat::noNA(check),msg = sprintf("Problema con la descarga %s trimester %s, wave %s",year,trimester,wave))
     nombres <- purrr::as_vector(utils::unzip(temp, list = TRUE)['Name'])
     base_hogar_name <- nombres[grep('hog', nombres, ignore.case = TRUE)]
     base_individual_name <- nombres[grep('ind', nombres, ignore.case = TRUE)]
@@ -170,8 +170,11 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
     chequeo <- vars %in% colnames(base)
 
 
-    assertthat::assert_that(all(chequeo), msg=glue::glue('Las variables: {glue::glue_collapse(vars[!chequeo],sep = ", ", last = ", y ")} no se encuentran disponibles para esta base.
-                             Puede deberse a que son variables de la base individual (hogar) y se quiere descargar la base hogar (individual)'))
+    # assertthat::assert_that(all(chequeo), msg=glue::glue('Las variables: {glue::glue_collapse(vars[!chequeo],sep = ", ", last = ", y ")} no se encuentran disponibles para esta base.
+    #                          Puede deberse a que son variables de la base individual (hogar) y se quiere descargar la base hogar (individual)'))
+    assertthat::assert_that(all(chequeo), msg=sprintf('Las variables: %s no se encuentran disponibles para esta base.
+                             Puede deberse a que son variables de la base individual (hogar) y se quiere descargar la base hogar (individual)',sub(",([^,]*)$", " y\\1", paste0(vars[!chequeo], collapse = ", "))))
+
     base %>%
       dplyr::rename_all(toupper) %>%
       dplyr::select(vars)

@@ -14,7 +14,7 @@ is_in_github <- function(year = 2018,
     result <- TRUE # esto es porque todas las bases de la EPH puntual estan en github
   }else{
 
-    pg <- xml2::read_html(glue::glue('https://github.com/holatam/data/tree/master/eph/{type}'))
+    pg <- xml2::read_html(sprintf('https://github.com/holatam/data/tree/master/eph/%s',type))
     # req <- httr::GET("https://api.github.com/repos/holatam/data/git/trees/master?recursive=1")
 
     filelist <- rvest::html_nodes(pg, "a") %>%
@@ -23,7 +23,7 @@ is_in_github <- function(year = 2018,
       stats::na.omit()
 
     #filelist <- unlist(lapply(httr::content(req)$tree, "[", "path"), use.names = F)
-    looking_for <-glue::glue('/holatam/data/blob/master/eph/{type}/base_{type}_{year}T{trimester}.RDS')
+    looking_for <-sprintf('/holatam/data/blob/master/eph/%s/base_%s_%sT%s.RDS',type,type,year,trimester)
 
     result <- looking_for %in% filelist[,1]
   }

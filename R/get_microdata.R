@@ -81,10 +81,10 @@ get_microdata <- function(year = 2018,
       tidyr::unnest(cols = c(error_message))
 
     if (nrow(errors)>0) {
-      warning(glue::glue('No se pudo descargar la base de year {errors$year},trimester {errors$trimester}, wave {errors$wave}, type {errors$type}.
-    Mensaje: {errors$error_message}
+      warning(sprintf('No se pudo descargar la base de year %s,trimester %s, wave %s, type %s.
+    Mensaje: %s
 
-                       '))
+                       ', errors$year,errors$trimester,errors$wave,errors$type,errors$error_message))
     }
 
     df <- df %>%

@@ -42,7 +42,7 @@ map_agglomerates <- function(.data,agglomerates, indicator, alpha=.75, palette= 
                               stroke=F,
                               label = lapply(labs, htmltools::HTML)) %>%
     leaflet::addLegend("bottomright", pal = pal, values = ~indicator,
-                       title = glue::glue("{dplyr::as_label(indicator)}"),
+                       title = sprintf("%s",dplyr::as_label(indicator)),
                        opacity = 1
     )
 }
