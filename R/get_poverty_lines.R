@@ -16,10 +16,8 @@
 get_poverty_lines <- function(regional = FALSE){
 
   if (regional){
-    temp = tempfile()
+    temp <- tempfile()
     link <- 'https://github.com/holatam/data/raw/master/eph/canasta/canastas.rds'
-
-    #utils::download.file(link,destfile=temp, mode='wb')
 
     check <- NA
     try(check <- utils::download.file(link,destfile=temp, mode='wb'),silent = TRUE)
@@ -31,10 +29,8 @@ get_poverty_lines <- function(regional = FALSE){
     unlink(temp)
 
   }
-  else{temp = tempfile(fileext = ".xls")
+  else{temp <- tempfile(fileext = ".xls")
   dataURL <- "https://www.indec.gob.ar/ftp/cuadros/sociedad/serie_cba_cbt.xls"
-
-  #utils::download.file(dataURL, destfile=temp, mode='wb')
 
   check <- NA
   try(check <-  utils::download.file(dataURL, destfile=temp, mode='wb'),silent = TRUE)

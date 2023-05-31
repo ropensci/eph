@@ -15,7 +15,7 @@ organize_labels <- function(df, type = "individual"){
   assertthat::assert_that(type %in% c("individual", "hogar"),msg = "Elegir alguna de las opciones: 'individual' u 'hogar'.")
 
   if(type == "hogar"){
-    df = expss::apply_labels(df,
+    df <- expss::apply_labels(df,
                              CODUSU = 'Codigo para distinguir VIVIENDAS, permite aparearlas con Hogares y Personas. Ademas permite hacer el seguimiento a traves de los trimestres',
                              ANO4 = 'Anio de relevamiento',
                              TRIMESTRE = 'Ventana de Observacion',
@@ -283,7 +283,7 @@ organize_labels <- function(df, type = "individual"){
   }
 
   else if(type == "individual"){
-    df = expss::apply_labels(df,
+    df <- expss::apply_labels(df,
                              CODUSU = 'Codigo para distinguir VIVIENDAS, permite aparearlas con Hogares y Personas. Ademas permite hacer el seguimiento a traves de los trimestres',
                              NRO_HOGAR = ' Codigo para distinguir HOGARES, permite aparearlos con Personas',
                              COMPONENTE = 'Numero de componente: N\u00b0 de orden que se asigna a las personas que conforman cada hogar de la vivienda',

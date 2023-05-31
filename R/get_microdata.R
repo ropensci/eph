@@ -47,7 +47,6 @@ get_microdata <- function(year = 2018,
 
   if (is.na(destfile) | !destfile_exists) {
     attempt::stop_if_not(.x = is_online(),
-                          #.x = curl::has_internet(),
                          msg = "No se detecto acceso a internet. Por favor checkea tu conexion.")
 
     df <- tibble::as_tibble(expand.grid(year=year,
@@ -98,9 +97,10 @@ get_microdata <- function(year = 2018,
   }
 
   if (nrow(df)==1) {
-    df$microdata[[1]]
+    return(df$microdata[[1]])
   }else{
-    df %>% tidyr::unnest(microdata) %>%
+    df %>%
+      tidyr::unnest(microdata) %>%
       dplyr::select(-c(year, trimester, wave, type))
   }
 }

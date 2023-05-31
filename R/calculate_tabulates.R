@@ -75,7 +75,7 @@ calculate_tabulates <- function(base,
 
   } else {
 
-    y_vec = NULL
+    y_vec <- NULL
   }
 
 
@@ -94,7 +94,7 @@ calculate_tabulates <- function(base,
 
   } else {
 
-    weights_vec = NULL
+    weights_vec <- NULL
   }
 
 

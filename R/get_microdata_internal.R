@@ -18,7 +18,6 @@ get_microdata_internal <- function(year = 2018,
   #controles de los parametros
   assertthat::assert_that(is.numeric(year))
   assertthat::assert_that((is.numeric(trimester)|is.numeric(wave)))
-  # assertthat::assert_that(assertthat::is.flag(labels), msg = "Por favor ingresa TRUE o FALSE")
   assertthat::assert_that((is.na(trimester)|is.na(wave)), msg = 'Por favor seleccionar onda o trimestre, no ambas')
   if (!is.na(trimester)) {
     assertthat::assert_that(trimester %in% 1:4, msg = "Por favor ingresa un numero de trimeste valido: 1,2,3,4")
@@ -29,7 +28,7 @@ get_microdata_internal <- function(year = 2018,
   assertthat::assert_that(type %in% c('individual','hogar'))
   if (year<2003) {
     assertthat::assert_that(!is.na(wave), msg='Para antes de 2003, es necesario definir la onda (wave) de la EPH puntual')
-    link = sprintf('https://github.com/holatam/data/raw/master/eph/%s/base_%s_%sO%s.RDS',type,type,year,wave)
+    link <- sprintf('https://github.com/holatam/data/raw/master/eph/%s/base_%s_%sO%s.RDS',type,type,year,wave)
   }else
     if (year>2003){
 
@@ -52,12 +51,10 @@ get_microdata_internal <- function(year = 2018,
 
         return(tibble::tibble())
       }
-      #
-      # assertthat::assert_that(!is.na(trimester), msg='para despues de 2003, es necesario definir el trimestre de la EPH continua')
-      # assertthat::assert_that(!(year==2007 & trimester==3), msg="INDEC advierte: La informacion correspondiente al tercer trimestre 2007 no esta disponible ya que los aglomerados Mar del Plata-Batan, Bahia Blanca-Cerri y Gran La Plata no fueron relevados por causas de orden administrativo, mientras que los datos correspondientes al Aglomerado Gran Buenos Aires no fueron relevados por paro del personal de la EPH.")
+
       assertthat::assert_that(!((year==2015 & trimester %in% 3:4)|(year==2016 & trimester ==1)), msg="En el marco de la emergencia estadistica el INDEC no publico la base solicitada.
-                            mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_eph_23_08_16.pdf")
-      link = sprintf('https://github.com/holatam/data/raw/master/eph/%s/base_%s_%sT%s.RDS',type,type,year,trimester)
+                            Mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_eph_23_08_16.pdf")
+      link <- sprintf('https://github.com/holatam/data/raw/master/eph/%s/base_%s_%sT%s.RDS',type,type,year,trimester)
       if (year %in% 2007:2015) {
         warning("INDEC advierte:
 '''
@@ -65,18 +62,18 @@ get_microdata_internal <- function(year = 2018,
 
 Se advierte que las series estadisticas publicadas con posterioridad a enero 2007 y hasta diciembre 2015 deben ser consideradas con reservas, excepto las que ya hayan sido revisadas en 2016 y su difusion lo consigne expresamente. El INDEC, en el marco de las atribuciones conferidas por los decretos 181/15 y 55/16, dispuso las investigaciones requeridas para establecer la regularidad de procedimientos de obtencion de datos, su procesamiento, elaboracion de indicadores y difusion.
 '''
-mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_eph_23_08_16.pdf
+Mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_eph_23_08_16.pdf
 ")
       }
     }else
       if (year==2003) {
         if (!is.na(wave)) {
           assertthat::assert_that(wave ==1, msg = 'La EPH puntual termina en la primera onda de 2003')
-          link = sprintf('https://github.com/holatam/data/raw/master/eph/%s/base_%s_%sO%s.RDS',type,type,year,wave)
+          link <- sprintf('https://github.com/holatam/data/raw/master/eph/%s/base_%s_%sO%s.RDS',type,type,year,wave)
         }else
           if (!is.na(trimester)) {
             assertthat::assert_that(trimester %in% 3:4, msg = 'la EPH conitnua comienza en el tercer trimestre de 2003')
-            link = sprintf('https://github.com/holatam/data/raw/master/eph/%s/base_%s_%sT%s.RDS',type,type,year,trimester)
+            link <- sprintf('https://github.com/holatam/data/raw/master/eph/%s/base_%s_%sT%s.RDS',type,type,year,trimester)
           }
       }
 
@@ -89,7 +86,7 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
   else{
     if (!is_in_github(year = year, trimester = trimester,type = type)) {
 
-    link= sprintf('https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_usu_%s_Trim_%s_txt.zip',trimester,year)
+    link <- sprintf('https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_usu_%s_Trim_%s_txt.zip',trimester,year)
 
     temp <- tempfile(pattern = sprintf('microdatos_%s_%s',trimester,year))
 
@@ -102,58 +99,44 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
     base_individual_name <- nombres[grep('ind', nombres, ignore.case = TRUE)]
 
     if (type=='individual') {
-      base <- utils::read.table(unz(temp,base_individual_name), sep=";", dec=",", header = TRUE, fill = TRUE)
-
-      base <- base %>% dplyr::mutate(CH14 = as.character(.data$CH14),
-                                     PP04B_COD = as.character(.data$PP04B_COD),
-                                     PP04D_COD = as.character(.data$PP04D_COD),
-                                     PP11B_COD = as.character(.data$PP11B_COD),
-                                     PP11D_COD = as.character(.data$PP11D_COD),
-                                     DECOCUR   = as.character(.data$DECOCUR),
-                                     IDECOCUR  = as.character(.data$IDECOCUR),
-                                     RDECOCUR  = as.character(.data$RDECOCUR),
-                                     GDECOCUR  = as.character(.data$GDECOCUR),
-                                     PDECOCUR  = as.character(.data$PDECOCUR),
-                                     ADECOCUR  = as.character(.data$ADECOCUR),
-                                     DECINDR   = as.character(.data$DECINDR),
-                                     IDECINDR   = as.character(.data$IDECINDR),
-                                     RDECINDR   = as.character(.data$RDECINDR),
-                                     GDECINDR   = as.character(.data$GDECINDR),
-                                     PDECINDR   = as.character(.data$PDECINDR),
-                                     ADECINDR   = as.character(.data$ADECINDR),
-                                     DECIFR    = as.character(.data$DECIFR),
-                                     IDECIFR   = as.character(.data$IDECIFR),
-                                     RDECIFR   = as.character(.data$RDECIFR),
-                                     GDECIFR   = as.character(.data$GDECIFR),
-                                     PDECIFR   = as.character(.data$PDECIFR),
-                                     ADECIFR   = as.character(.data$ADECIFR),
-                                     DECCFR    = as.character(.data$DECCFR),
-                                     IDECCFR   = as.character(.data$IDECCFR),
-                                     RDECCFR   = as.character(.data$RDECCFR),
-                                     GDECCFR   = as.character(.data$GDECCFR),
-                                     PDECCFR   = as.character(.data$PDECCFR),
-                                     ADECCFR   = as.character(.data$ADECCFR)
-                                     ) %>%
+      base <- utils::read.table(unz(temp,base_individual_name), sep=";", dec=",", header = TRUE, fill = TRUE,
+        colClasses = c(CH14 = "character",
+                       PP04B_COD = "character",
+                       PP04D_COD = "character",
+                       PP11B_COD = "character",
+                       PP11D_COD = "character",
+                       DECOCUR   = "character",
+                       IDECOCUR  = "character",
+                       RDECOCUR  = "character",
+                       GDECOCUR  = "character",
+                       PDECOCUR  = "character",
+                       ADECOCUR  = "character",
+                       DECINDR   = "character",
+                       IDECINDR   = "character",
+                       RDECINDR   = "character",
+                       GDECINDR   = "character",
+                       PDECINDR   = "character",
+                       ADECINDR   = "character",
+                       DECIFR    = "character",
+                       IDECIFR   = "character",
+                       RDECIFR   = "character",
+                       GDECIFR   = "character",
+                       PDECIFR   = "character",
+                       ADECIFR   = "character",
+                       DECCFR    = "character",
+                       IDECCFR   = "character",
+                       RDECCFR   = "character",
+                       GDECCFR   = "character",
+                       PDECCFR   = "character",
+                       ADECCFR   = "character")
+          )%>%
         tidyr::as_tibble()
 
 
     }
     if (type=='hogar') {
-      base <- utils::read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE)
-
-      base <- base %>%
-        dplyr::mutate(DECIFR =  as.character(.data$DECIFR),
-                      IDECIFR = as.character(.data$IDECIFR),
-                      GDECIFR = as.character(.data$GDECIFR),
-                      PDECIFR = as.character(.data$PDECIFR),
-                      ADECIFR = as.character(.data$ADECIFR),
-                      DECCFR  = as.character(.data$DECCFR),
-                      IDECCFR = as.character(.data$IDECCFR),
-                      RDECCFR = as.character(.data$RDECCFR),
-                      GDECCFR = as.character(.data$GDECCFR),
-                      PDECCFR = as.character(.data$PDECCFR),
-                      ADECCFR = as.character(.data$ADECCFR),
-                      RDECIFR = as.character(.data$RDECIFR)) %>%
+      base <- utils::read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE,colClasses = c(DECIFR =  "character",                                                                       IDECIFR = "character",                                                                       GDECIFR = "character",                                                                       PDECIFR = "character",                                                                       ADECIFR = "character",                                                                       DECCFR  = "character",                                                                       IDECCFR = "character",                                                                       RDECCFR = "character",                                                                       GDECCFR = "character",                                                                       PDECCFR = "character",                                                                       ADECCFR = "character",                                                                       RDECIFR = "character")
+                                )%>%
         tidyr::as_tibble()
 
 
@@ -170,8 +153,6 @@ mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
     chequeo <- vars %in% colnames(base)
 
 
-    # assertthat::assert_that(all(chequeo), msg=glue::glue('Las variables: {glue::glue_collapse(vars[!chequeo],sep = ", ", last = ", y ")} no se encuentran disponibles para esta base.
-    #                          Puede deberse a que son variables de la base individual (hogar) y se quiere descargar la base hogar (individual)'))
     assertthat::assert_that(all(chequeo), msg=sprintf('Las variables: %s no se encuentran disponibles para esta base.
                              Puede deberse a que son variables de la base individual (hogar) y se quiere descargar la base hogar (individual)',sub(",([^,]*)$", " y\\1", paste0(vars[!chequeo], collapse = ", "))))
 
