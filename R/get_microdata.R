@@ -26,14 +26,22 @@
 #'
 #'@export
 
-get_microdata <- function(year = 2018,
+get_microdata <- function(year,
                           trimester = NA,
                           wave = NA,
                           type='individual',
                           vars = 'all',
-                          destfile = NA){
+                          destfile = NULL){
+
+  if (missing(year)) {
+    cli::cli_abort(c(
+      "Es obligatorio ingresar por lo menos un anio.",
+      "i" = "La funcion puede descargar bases publicadas desde 1996"
+    ))
+  }
+
   destfile_exists <- FALSE
-  if (!is.na(destfile)) {
+  if (!is.null(destfile)) {
     destfile_exists <- file.exists(destfile)
   }
 
@@ -45,7 +53,7 @@ get_microdata <- function(year = 2018,
   }
 
 
-  if (is.na(destfile) | !destfile_exists) {
+  if (is.null(destfile) | !destfile_exists) {
     attempt::stop_if_not(.x = is_online(),
                          msg = "No se detecto acceso a internet. Por favor checkea tu conexion.")
 
@@ -89,7 +97,7 @@ get_microdata <- function(year = 2018,
     df <- df %>%
       dplyr::select(-error)
 
-  if (!is.na(destfile) & !destfile_exists) {
+  if (!is.null(destfile) & !destfile_exists) {
 
     saveRDS(df,file = destfile)
 

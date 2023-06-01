@@ -5,12 +5,12 @@
 \title{Descarga de Bases de EPH}
 \usage{
 get_microdata(
-  year = 2018,
+  year,
   trimester = NA,
   wave = NA,
   type = "individual",
   vars = "all",
-  destfile = NA
+  destfile = NULL
 )
 }
 \arguments{
