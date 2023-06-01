@@ -72,7 +72,7 @@ Mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
           link <- sprintf('https://github.com/holatam/data/raw/master/eph/%s/base_%s_%sO%s.RDS',type,type,year,wave)
         }else
           if (!is.na(trimester)) {
-            assertthat::assert_that(trimester %in% 3:4, msg = 'la EPH conitnua comienza en el tercer trimestre de 2003')
+            assertthat::assert_that(trimester %in% 3:4, msg = 'la EPH continua comienza en el tercer trimestre de 2003')
             link <- sprintf('https://github.com/holatam/data/raw/master/eph/%s/base_%s_%sT%s.RDS',type,type,year,trimester)
           }
       }
