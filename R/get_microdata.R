@@ -2,24 +2,25 @@
 #'@description
 #'Funcion que descarga bases de la Encuesta Permanente de Hogares del INDEC a partir de 1996
 #'@param year un integer o vector de integers a partir de 2003
-#'@param trimester un integer o vector de integers con el numero de trimester: 1,2,3,4, para la EPH continua
-#'@param wave un integer o vector de integers con el numero de onda, 1 o 2, para la EPH puntual
+#'@param period un integer o vector de integers con el numero de trimestre u onda: 1,2,3,4, para la EPH continua, y 1 o 2, para la EPH puntual
 #'@param type un character o vector de characters con el tipo de base a descargar: 'individual'; 'hogar', default individual
 #'@param vars opcional: un vector de characters. variables a seleccionar. Default='all' trae todas las variables
 #'@param destfile opcional: un string con la direccion de un archivo .RDS. Si se ingresa un path a un archivo que no existe, se descarga
 #'                el archivo y se graba en esa direccion. Si existe un archivo en ese path, se lee el archivo.
+#'@param ... asegura el funcionamiento de la funcion en su version anterior con los parametros wave o trimester
+#'
 #'@details
-#'Las bases de la EPH puntual utilizan el parametro wave, para referirse a las ondas.
+#'Las bases de la EPH puntual utilizan el parametro period para referirse a las ondas.
 #'Su alcance es entre la onda 1 de 1996 y la onda 1 de 2003.
 #'
-#'Las bases de la EPH continua utilizan el parametro trimester, para referirse a los trimestres.
+#'Las bases de la EPH continua utilizan el parametro period para referirse a los trimestres.
 #'Su alcance es entre tercer trimestre de 2003 a la actualidad
 #'disclaimer: El script no es un producto oficial de INDEC.
 #'
 #'@examples
 #'
 #'base_individual <- get_microdata(year = 2018:2019,
-#'                                  trimester = 1,
+#'                                  period = 1,
 #'                                  type='individual',
 #'                                  vars = c('PONDERA','ESTADO','CAT_OCUP'))
 #'
@@ -27,17 +28,25 @@
 #'@export
 
 get_microdata <- function(year,
-                          trimester = NA,
-                          wave = NA,
+                          period = 1,
                           type='individual',
                           vars = 'all',
-                          destfile = NULL){
+                          destfile = NULL,...){
 
   if (missing(year)) {
     cli::cli_abort(c(
       "Es obligatorio ingresar por lo menos un anio.",
       "i" = "La funcion puede descargar bases publicadas desde 1996"
     ))
+  }
+
+  dots <- list(...)
+
+  if("trimester" %in% names(dots)){
+    period <- dots$trimester
+  }
+  if("wave" %in% names(dots)){
+    period <- dots$wave
   }
 
   destfile_exists <- FALSE
@@ -58,22 +67,20 @@ get_microdata <- function(year,
                          msg = "No se detecto acceso a internet. Por favor checkea tu conexion.")
 
     df <- tibble::as_tibble(expand.grid(year=year,
-                                        trimester=trimester,
-                                        wave=wave,
+                                        period=period,
                                         type=type))
 
 
     df <- df %>%
       dplyr::mutate(microdata=
-        purrr::pmap(list('year' = year,
-                         'trimester' = trimester,
-                         'wave' = wave,
-                         'type' = type),
-                    purrr::safely(.f = get_microdata_internal,
-                                    otherwise = tibble::tibble(),
-                                    quiet = TRUE), vars
-                    )
-        )
+                      purrr::pmap(list('year' = year,
+                                       'period' = period,
+                                       'type' = type),
+                                  purrr::safely(.f = get_microdata_internal,
+                                                otherwise = tibble::tibble(),
+                                                quiet = TRUE), vars
+                      )
+      )
 
 
     df <- df %>%
@@ -88,20 +95,20 @@ get_microdata <- function(year,
       tidyr::unnest(cols = c(error_message))
 
     if (nrow(errors)>0) {
-      warning(sprintf('No se pudo descargar la base de year %s,trimester %s, wave %s, type %s.
+      warning(sprintf('No se pudo descargar la base de year %s,period %s, type %s.
     Mensaje: %s
 
-                       ', errors$year,errors$trimester,errors$wave,errors$type,errors$error_message))
+                       ', errors$year,errors$period,errors$type,errors$error_message))
     }
 
     df <- df %>%
       dplyr::select(-error)
 
-  if (!is.null(destfile) & !destfile_exists) {
+    if (!is.null(destfile) & !destfile_exists) {
 
-    saveRDS(df,file = destfile)
+      saveRDS(df,file = destfile)
 
-  }
+    }
   }
 
   if (nrow(df)==1) {
@@ -109,6 +116,6 @@ get_microdata <- function(year,
   }else{
     df %>%
       tidyr::unnest(microdata) %>%
-      dplyr::select(-c(year, trimester, wave, type))
+      dplyr::select(-c(year, period, type))
   }
 }
