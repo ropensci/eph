@@ -174,7 +174,7 @@ calculate_tabulates <- function(base,
       totales <- data.frame("label" = "Total",
                             "var" = names(tabulado)[2:ncol(tabulado)],
                             "valor" =colSums(tabulado[2:ncol(tabulado)])) %>%
-        tidyr::pivot_wider(names_from = .data$var, values_from = .data$valor)
+        tidyr::pivot_wider(names_from = var, values_from = valor)
 
       names(totales)[1] <- paste0(names(tabulado)[1])
 
@@ -203,7 +203,7 @@ calculate_tabulates <- function(base,
       totales_r <- data.frame("label" = "Total",
                               "var" = names(tab_intermedio)[2:ncol(tab_intermedio)],
                               "valor" =colSums(tab_intermedio[2:ncol(tab_intermedio)])) %>%
-        tidyr::pivot_wider(names_from = .data$var, values_from = .data$valor)
+        tidyr::pivot_wider(names_from = var, values_from = valor)
 
       names(totales_r)[1] <- paste0(names(tab_intermedio)[1])
 
@@ -222,12 +222,12 @@ calculate_tabulates <- function(base,
     perc_col <- tabulado %>%
       dplyr::mutate(Total = rowSums(dplyr::across(dplyr::where(is.numeric)))) %>%
       tidyr::pivot_longer(cols = !names(tabulado)[1],names_to = "var", values_to = "valor") %>%
-      dplyr::group_by(.data$var) %>%
-      dplyr::mutate(aux = sum(.data$valor, na.rm = T)) %>%
+      dplyr::group_by(var) %>%
+      dplyr::mutate(aux = sum(valor, na.rm = T)) %>%
       dplyr::ungroup() %>%
-      dplyr::mutate(prop = round((.data$valor/.data$aux)*100,digits)) %>%
-      dplyr::select(-.data$valor,-.data$aux) %>%
-      tidyr::pivot_wider(names_from = .data$var, values_from = .data$prop)
+      dplyr::mutate(prop = round((valor/aux)*100,digits)) %>%
+      dplyr::select(-valor,-aux) %>%
+      tidyr::pivot_wider(names_from = var, values_from = prop)
 
     if (add.totals=='col'){
       tabulado <- perc_col
@@ -240,7 +240,7 @@ calculate_tabulates <- function(base,
       totales <- data.frame("label" = "Total",
                             "var" = names(perc_col)[2:ncol(perc_col)],
                             "valor" = round(100,digits)) %>%
-        tidyr::pivot_wider(names_from = .data$var, values_from = .data$valor)
+        tidyr::pivot_wider(names_from = var, values_from = valor)
 
       names(totales)[1] <- paste0(names(perc_col)[1])
 
@@ -259,7 +259,7 @@ calculate_tabulates <- function(base,
       totales <- data.frame("label" = "Total",
                             "var" = names(perc_col)[2:ncol(perc_col)],
                             "valor" = round(100,digits)) %>%
-        tidyr::pivot_wider(names_from = .data$var, values_from = .data$valor)
+        tidyr::pivot_wider(names_from = var, values_from = valor)
 
       names(totales)[1] <- paste0(names(perc_col)[1])
 
@@ -274,7 +274,7 @@ calculate_tabulates <- function(base,
     totales <- data.frame("label" = "Total",
                           "var" = names(tabulado)[2:ncol(tabulado)],
                           "valor" =colSums(tabulado[2:ncol(tabulado)])) %>%
-      tidyr::pivot_wider(names_from = .data$var, values_from = .data$valor)
+      tidyr::pivot_wider(names_from = var, values_from = valor)
 
     names(totales)[1] <- paste0(names(tabulado)[1])
 
@@ -282,8 +282,8 @@ calculate_tabulates <- function(base,
 
     perc_row <- tabulado%>%
       dplyr::mutate(aux = rowSums(dplyr::across(dplyr::where(is.numeric)))) %>%
-      dplyr::mutate(dplyr::across(c(names(tabulado)[2:ncol(tabulado)]), function(x) round((x/.data$aux)*100,digits))) %>%
-      dplyr::select(-.data$aux)
+      dplyr::mutate(dplyr::across(c(names(tabulado)[2:ncol(tabulado)]), function(x) round((x/aux)*100,digits))) %>%
+      dplyr::select(-aux)
 
 
     if (add.totals=='col'){

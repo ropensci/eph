@@ -6,19 +6,17 @@
 \usage{
 get_microdata(
   year,
-  trimester = NA,
-  wave = NA,
+  period = 1,
   type = "individual",
   vars = "all",
-  destfile = NULL
+  destfile = NULL,
+  ...
 )
 }
 \arguments{
 \item{year}{un integer o vector de integers a partir de 2003}
 
-\item{trimester}{un integer o vector de integers con el numero de trimester: 1,2,3,4, para la EPH continua}
-
-\item{wave}{un integer o vector de integers con el numero de onda, 1 o 2, para la EPH puntual}
+\item{period}{un integer o vector de integers con el numero de trimestre u onda: 1,2,3,4, para la EPH continua, y 1 o 2, para la EPH puntual}
 
 \item{type}{un character o vector de characters con el tipo de base a descargar: 'individual'; 'hogar', default individual}
 
@@ -26,22 +24,24 @@ get_microdata(
 
 \item{destfile}{opcional: un string con la direccion de un archivo .RDS. Si se ingresa un path a un archivo que no existe, se descarga
 el archivo y se graba en esa direccion. Si existe un archivo en ese path, se lee el archivo.}
+
+\item{...}{asegura el funcionamiento de la funcion en su version anterior con los parametros wave o trimester}
 }
 \description{
 Funcion que descarga bases de la Encuesta Permanente de Hogares del INDEC a partir de 1996
 }
 \details{
-Las bases de la EPH puntual utilizan el parametro wave, para referirse a las ondas.
+Las bases de la EPH puntual utilizan el parametro period para referirse a las ondas.
 Su alcance es entre la onda 1 de 1996 y la onda 1 de 2003.
 
-Las bases de la EPH continua utilizan el parametro trimester, para referirse a los trimestres.
+Las bases de la EPH continua utilizan el parametro period para referirse a los trimestres.
 Su alcance es entre tercer trimestre de 2003 a la actualidad
 disclaimer: El script no es un producto oficial de INDEC.
 }
 \examples{
 
 base_individual <- get_microdata(year = 2018:2019,
-                                 trimester = 1,
+                                 period = 1,
                                  type='individual',
                                  vars = c('PONDERA','ESTADO','CAT_OCUP'))
 

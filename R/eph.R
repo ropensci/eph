@@ -64,7 +64,11 @@ if(getRversion() >= "2.15.1") utils::globalVariables(c(".",
                                                        "PP04B_CAES",
                                                        "PP04B_COD",
                                                        "caes",
-                                                       "SEMESTRE"))
+                                                       "SEMESTRE",
+                                                       "var",
+                                                       "valor",
+                                                       "aux",
+                                                       "prop"))
 
 
 

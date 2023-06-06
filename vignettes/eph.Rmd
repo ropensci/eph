@@ -56,23 +56,14 @@ Obtengamos la base de microdatos de individuos para el tercer trimestre de 2018:
 
 ```{r}
 ind_3_18 <- get_microdata(year = 2018, 
-                          trimester = 2, 
+                          period = 2, 
                           type = 'individual')
 ```
 Puede verse que la función requiere tres argumentos básicos:
 
 - `year`: un valor numérico entero con el año de la encuesta que se desea descargar
-- `trimester`: un valor numérico entero con el trimestre (este argumento es válido para la EPH continua, 2004-actualidad)
+- `period`: un valor numérico entero con el trimestre (en caso de que se trate de la EPH continua, 2004-actualidad) o la onda (EPH puntual)
 - `type`: un valor character `"individual"`, para descargar la base de invidividuos y `"hogar"`, para la de hogar.
-
-Si se deseara descargar una base de la EPH puntual, será necesario reemplazar el argumento `trimester` por `wave` que define la onda de la EPH puntual que se desea descargar. Por ejemplo, si se buscara descargar la base individual de la segunda onda del año 2002, debería escribirse
-
-```{r message=FALSE, warning=FALSE}
-ind_2_02 <- get_microdata(year = 2001, 
-                          wave = 2, 
-                          type = 'individual')
-```
-
 
 ### Etiquetado: `organize_labels()`
 
@@ -93,7 +84,7 @@ Descarguemos y etiquetemos la base de hogares del 3 trimestre de 2018. Podemos h
 
 ```{r}
 hog_3_18 <- get_microdata(year = 2018, 
-                          trimester = 3, 
+                          period = 3, 
                           type='hogar') %>%
   organize_labels(., 
                   type = 'hogar')
@@ -146,11 +137,11 @@ variables <- c('CODUSU','NRO_HOGAR','COMPONENTE','ANO4',
                'ESTADO','PONDERA') #variables que nos interesan en nuestro análisis
   
 ### Descargo la base individual para el 2018_t1
-base_2018t1 <- get_microdata(year = 2018,  trimester = 1,  type = 'individual', 
+base_2018t1 <- get_microdata(year = 2018,  period = 1,  type = 'individual', 
                        vars = variables) 
 
 ### Descargo la base individual para el 2018_t2
-base_2018t2 <- get_microdata(year = 2018,  trimester = 2,  type = 'individual', 
+base_2018t2 <- get_microdata(year = 2018,  period = 2,  type = 'individual', 
                        vars = variables) 
 
 ### Armo el panel
@@ -190,7 +181,7 @@ Dado que levantar muchas bases al mismo tiempo puede superar el espacio disponib
 
 ```{r message=FALSE, warning=FALSE}
 df <- get_microdata(year = 2017:2019, 
-                    trimester = 1:4,
+                    period = 1:4,
                     type = 'individual',
                     vars = c('ANO4', 'TRIMESTRE', 'PONDERA','ESTADO','CAT_OCUP'))
 
