@@ -10,8 +10,16 @@ get_total_urbano_internal <- function(year,
                                       type,
                                       vars = 'all'){
 
-  assertthat::assert_that(is.numeric(year))
-  assertthat::assert_that(type %in% c('individual','hogar'))
+  if(!is.numeric(year)){
+    cli::cli_abort(c(
+      "year debe ser numeric"
+    ))
+  }
+  if(!type %in% c("individual", "hogar")){
+    cli::cli_abort(c(
+      "Elegir alguna de las opciones de type: 'individual' u 'hogar'."
+    ))
+  }
 
   if(year <2016){
 
@@ -45,31 +53,31 @@ get_total_urbano_internal <- function(year,
     }
 
     unlink(temp)
-    
+
     if (all(vars == 'all')) {
       base <- base %>%
         dplyr::rename_all(toupper)
-      
+
       return(base)
-      
+
     }
     if (nrow(base)>0) {
-      
+
       chequeo <- vars %in% colnames(base)
-      
+
       assertthat::assert_that(all(chequeo), msg=sprintf('Las variables: %s no se encuentran disponibles para esta base.
                              Puede deberse a que son variables de la base individual (hogar) y se quiere descargar la base hogar (individual)',sub(",([^,]*)$", " y\\1", paste0(vars[!chequeo], collapse = ", "))))
-      
+
       base <- base %>%
         dplyr::rename_all(toupper) %>%
         dplyr::select(vars)
-      
+
       return(base)
-      
-    } 
+
+    }
 
 
-  
+
 }
 
 
