@@ -1,16 +1,16 @@
 #' Check if file is in github repo
 #'
 #' @param year el parametro de get_microdata_internal
-#' @param trimester el parametro de get_microdata_internal
+#' @param period el parametro de get_microdata_internal
 #' @param type el parametro de get_microdata_internal
 #'
 #'
 #' @noRd
 is_in_github <- function(year = 2018,
-                         trimester = NA,
+                         period = 1,
                          type='individual'){
 
-  if (is.na(trimester)) {
+  if (year < 2003 | (year == 2003 & period == 1)) {
     result <- TRUE # esto es porque todas las bases de la EPH puntual estan en github
   }else{
 
@@ -23,7 +23,7 @@ is_in_github <- function(year = 2018,
       stats::na.omit()
 
     #filelist <- unlist(lapply(httr::content(req)$tree, "[", "path"), use.names = F)
-    looking_for <-sprintf('/holatam/data/blob/master/eph/%s/base_%s_%sT%s.RDS',type,type,year,trimester)
+    looking_for <-sprintf('/holatam/data/blob/master/eph/%s/base_%s_%sT%s.RDS',type,type,year,period)
 
     result <- looking_for %in% filelist[,1]
   }
