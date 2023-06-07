@@ -14,15 +14,28 @@ get_microdata_internal <- function(year = 2018,
                                    vars = 'all'){
 
   #controles de los parametros
-  assertthat::assert_that(is.numeric(year))
-  assertthat::assert_that((is.numeric(period)))
+
+  if(!is.numeric(year)){
+    cli::cli_abort(c(
+      "year debe ser numeric"
+    ))
+  }
+  if(!is.numeric(period)){
+    cli::cli_abort(c(
+      "period debe ser numeric"
+    ))
+  }
   if (any(!period%in%c(1,2,3,4))) {
     cli::cli_abort(c(
       "Por favor ingrese un numero de periodo valido: 1,2,3,4",
       "i" = "El periodo refiere a la onda o el trimestre dependiendo del anio"
     ))
   }
-  assertthat::assert_that(type %in% c('individual','hogar'))
+  if(!type %in% c("individual", "hogar")){
+    cli::cli_abort(c(
+      "Elegir alguna de las opciones de type: 'individual' u 'hogar'."
+    ))
+  }
 
 
   if (year<2003) {
