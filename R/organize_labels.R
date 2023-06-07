@@ -11,8 +11,17 @@
 
 organize_labels <- function(df, type = "individual"){
 
-  assertthat::assert_that(is.data.frame(df),msg = "Indique la base de datos que quiere etiquetar.")
-  assertthat::assert_that(type %in% c("individual", "hogar"),msg = "Elegir alguna de las opciones: 'individual' u 'hogar'.")
+
+  if(!is.data.frame(df)){
+    cli::cli_abort(c(
+      "Indique la base de datos que quiere etiquetar."
+    ))
+  }
+  if(!type %in% c("individual", "hogar")){
+    cli::cli_abort(c(
+      "Elegir alguna de las opciones: 'individual' u 'hogar'."
+    ))
+  }
 
   if(type == "hogar"){
     df <- expss::apply_labels(df,
