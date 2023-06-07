@@ -33,13 +33,31 @@
 calculate_errors <- function(value, codigo_aglo = "Total", periodo_eph = "2014.03", measure = "cv") {
 
   # Controles de los parametros
-  assertthat::assert_that(is.numeric(value))
-  assertthat::assert_that(codigo_aglo %in% c("Total", "Gran Buenos Aires", "2", "3", "5", "4", "6", "7",
-                                             "8", "9", "10", "12", "13", "14", "15", "17", "18", "19", "20",
-                                             "22", "23", "25", "26", "27", "29", "30", "31", "32", "33", "34",
-                                             "36", "38", "91", "93"))
-  assertthat::assert_that(periodo_eph %in% c("2014.03", "2003.03_2014.02"))
-  assertthat::assert_that(measure %in% c("cv","ds"))
+
+  if(!is.numeric(value)){
+    cli::cli_abort(c(
+      "value debe ser numeric"
+    ))
+  }
+   if(!codigo_aglo %in% c("Total", "Gran Buenos Aires", "2", "3", "5", "4", "6", "7",
+                         "8", "9", "10", "12", "13", "14", "15", "17", "18", "19", "20",
+                         "22", "23", "25", "26", "27", "29", "30", "31", "32", "33", "34",
+                         "36", "38", "91", "93")){
+    cli::cli_abort(c(
+      "Elegir alguna de las opciones de codigo_aglo: el código numerico del aglomerado al que
+pertenecen las estimaciones o 'Total' para trabajar estimaciones del conjunto de 31 aglomerados urbanos."
+    ))
+  }
+  if(!periodo_eph %in% c("2014.03", "2003.03_2014.02")){
+    cli::cli_abort(c(
+      "Elegir alguna de las opciones de periodo_eph: '2014.03' o '2003.03_2014.02'."
+    ))
+  }
+  if(!measure %in% c("cv","ds")){
+    cli::cli_abort(c(
+      "Elegir alguna de las opciones de measure: 'cv' o 'ds'."
+    ))
+  }
 
   # Operacion
   tabla_referencia <- eph::errores_muestrales %>%
