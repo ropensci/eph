@@ -10,8 +10,16 @@ get_eahu_internal <- function(year,
                               type,
                               vars = 'all'){
 
-  assertthat::assert_that(is.numeric(year))
-  assertthat::assert_that(type %in% c('individual','hogar'))
+  if(!is.numeric(year)){
+    cli::cli_abort(c(
+      "year debe ser numeric"
+    ))
+  }
+  if(!type %in% c("individual", "hogar")){
+    cli::cli_abort(c(
+      "Elegir alguna de las opciones de type: 'individual' u 'hogar'."
+    ))
+  }
 
   if(!year %in% 2010:2014){
 
