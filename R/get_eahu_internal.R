@@ -12,7 +12,7 @@ get_eahu_internal <- function(year,
 
   if(!is.numeric(year)){
     cli::cli_abort(c(
-      "year debe ser numeric"
+      "El argumento year debe ser numeric"
     ))
   }
   if(!type %in% c("individual", "hogar")){

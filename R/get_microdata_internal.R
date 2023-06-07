@@ -17,12 +17,12 @@ get_microdata_internal <- function(year = 2018,
 
   if(!is.numeric(year)){
     cli::cli_abort(c(
-      "year debe ser numeric"
+      "El argumento year debe ser numeric"
     ))
   }
   if(!is.numeric(period)){
     cli::cli_abort(c(
-      "period debe ser numeric"
+      "El argumento period debe ser numeric"
     ))
   }
   if (any(!period%in%c(1,2,3,4))) {

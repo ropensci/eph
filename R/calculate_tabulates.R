@@ -67,7 +67,7 @@ calculate_tabulates <- function(base,
 
   if(!is.numeric(digits)){
     cli::cli_abort(c(
-      "digits debe ser numeric."
+      "El argumento digits debe ser numeric."
     ))
   }
 
