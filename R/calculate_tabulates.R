@@ -46,10 +46,30 @@ calculate_tabulates <- function(base,
 
 
   # Controles de los parametros
-  assertthat::assert_that(is.vector(x))
-  assertthat::assert_that(add.totals %in% c('none','row','col','both'),msg = "Elegir alguna de las opciones de add.totals: 'none','row', 'col' o 'both'.")
-  assertthat::assert_that(add.percentage %in% c('none','row','col'),msg = "Elegir alguna de las opciones de add.percentage: 'none','row' o 'col'.")
-  assertthat::assert_that(is.numeric(digits),msg = "digits debe ser numeric.")
+  if(!is.vector(x)){
+    cli::cli_abort(c(
+      "El formato de la variable a tabular no es valido.",
+      "i" = "Ingrese un string"
+    ))
+  }
+
+  if(!add.totals %in% c('none','row','col','both')){
+    cli::cli_abort(c(
+      "Elegir alguna de las opciones de add.totals: 'none','row', 'col' o 'both'."
+    ))
+  }
+
+  if(!add.percentage %in% c('none','row','col')){
+    cli::cli_abort(c(
+      "Elegir alguna de las opciones de add.percentage: 'none','row' o 'col'."
+    ))
+  }
+
+  if(!is.numeric(digits)){
+    cli::cli_abort(c(
+      "digits debe ser numeric."
+    ))
+  }
 
   if (x %in% names(base)) {
     x_vec <- base[[x]]
