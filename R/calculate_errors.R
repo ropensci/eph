@@ -44,8 +44,7 @@ calculate_errors <- function(value, codigo_aglo = "Total", periodo_eph = "2014.0
                          "22", "23", "25", "26", "27", "29", "30", "31", "32", "33", "34",
                          "36", "38", "91", "93")){
     cli::cli_abort(c(
-      "Elegir alguna de las opciones de codigo_aglo: el código numerico del aglomerado al que
-pertenecen las estimaciones o 'Total' para trabajar estimaciones del conjunto de 31 aglomerados urbanos."
+      "Elegir alguna de las opciones de codigo_aglo: el codigo numerico del aglomerado al que pertenecen las estimaciones o 'Total' para trabajar estimaciones del conjunto de 31 aglomerados urbanos."
     ))
   }
   if(!periodo_eph %in% c("2014.03", "2003.03_2014.02")){
