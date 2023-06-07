@@ -20,10 +20,17 @@
 
 organize_panels <- function(bases,variables,window = "anual"){
 
-  assertthat::assert_that(is.list(bases),
-                          msg = "El argumento bases requiere un objeto de tipo lista")
-  assertthat::assert_that(window %in% c("anual", "trimestral"),
-                          msg = "Las opciones para window son: anual y trimestral")
+
+  if(!is.list(bases)){
+    cli::cli_abort(c(
+      "El argumento bases requiere un objeto de tipo lista."
+    ))
+  }
+  if(!window %in% c("anual", "trimestral")){
+    cli::cli_abort(c(
+      "Elegir alguna de las opciones de window: 'anual' u 'trimestral'."
+    ))
+  }
 
   bases_continua <- dplyr::bind_rows(bases) %>%
     dplyr::select(CODUSU,NRO_HOGAR,COMPONENTE,ANO4,TRIMESTRE,CH04,CH06,variables) %>%
