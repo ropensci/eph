@@ -24,7 +24,7 @@ organize_labels <- function(df, type = "individual"){
   }
 
   if(type == "hogar"){
-    df <- expss::apply_labels(df,
+    df <- suppressWarnings(expss::apply_labels(df,
                              CODUSU = 'Codigo para distinguir VIVIENDAS, permite aparearlas con Hogares y Personas. Ademas permite hacer el seguimiento a traves de los trimestres',
                              ANO4 = 'Anio de relevamiento',
                              TRIMESTRE = 'Ventana de Observacion',
@@ -288,11 +288,11 @@ organize_labels <- function(df, type = "individual"){
                              VII2_4 =		'Otras personas que ayudan en las tareas de la casa - Numero de componente del hogar',
                              VII2_4 = c("Servicio domestico" = 96,
                                         "Otra persona que no vive en el hogar" = 97,
-                                        "Ninguna." = 98))
+                                        "Ninguna." = 98)))
   }
 
   else if(type == "individual"){
-    df <- expss::apply_labels(df,
+    df <- suppressWarnings(expss::apply_labels(df,
                              CODUSU = 'Codigo para distinguir VIVIENDAS, permite aparearlas con Hogares y Personas. Ademas permite hacer el seguimiento a traves de los trimestres',
                              NRO_HOGAR = ' Codigo para distinguir HOGARES, permite aparearlos con Personas',
                              COMPONENTE = 'Numero de componente: N\u00b0 de orden que se asigna a las personas que conforman cada hogar de la vivienda',
@@ -1091,7 +1091,7 @@ organize_labels <- function(df, type = "individual"){
                              GDECCFR = 'Nro de decil de ingreso per capita familiar del CONJUNTO DE AGLOMERADOS DE 500 MIL Y MAS HABITANTES.',
                              PDECCFR = 'Nro de decil de ingreso per capita familiar del CONJUNTO DE AGLOMERADOS DE MENOS DE 500 MIL HABITANTES.',
                              ADECCFR = 'Nro de decil de ingreso per capita familiar del AGLOMERADO.',
-                             PONDIH = 'Ponderador del ingreso total familiar y del ingreso per capita familiar, para hogares.')
+                             PONDIH = 'Ponderador del ingreso total familiar y del ingreso per capita familiar, para hogares.'))
   }
 
 
