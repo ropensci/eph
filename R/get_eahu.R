@@ -1,6 +1,6 @@
 #' Descarga de Bases de la Encuesta anual de hogares urbanos
 #'@description
-#'Funcion que descarga bases de la Encuesta Permanente de Hogares total urbano del INDEC a partir de 2016
+#'Funcion que descarga bases de la Encuesta anual de hogares urbanos del INDEC entre 2010 y 2014
 #' @param year un integer o vector de integers entre 2010 y 2014
 #' @param type tipo de base a descargar: 'individual' ; 'hogar'
 #' @param vars opcional: un vector de characters. variables a seleccionar. Default = 'all' trae todas las variables
@@ -25,7 +25,7 @@ get_eahu <- function(year,
   if (missing(year)) {
     cli::cli_abort(c(
       "Es obligatorio ingresar por lo menos un anio.",
-      "i" = "La funcion puede descargar bases publicadas desde 2016"
+      "i" = "La funcion puede descargar bases publicadas entre 2010 y 2014"
     ))
   }
 

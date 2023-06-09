@@ -17,7 +17,7 @@ get_eahu(year, type = "individual", vars = "all", destfile = NULL)
 el archivo y se graba en esa direccion. Si existe un archivo en ese path, se lee el archivo.}
 }
 \description{
-Funcion que descarga bases de la Encuesta Permanente de Hogares total urbano del INDEC a partir de 2016
+Funcion que descarga bases de la Encuesta anual de hogares urbanos del INDEC entre 2010 y 2014
 }
 \details{
 disclaimer: El script no es un producto oficial de INDEC.

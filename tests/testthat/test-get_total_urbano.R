@@ -21,6 +21,6 @@ test_that("antes de 2016", {
 })
 
 test_that("errores", {
-  expect_error(df <- get_total_urbano(year,type="individual"))
+  expect_error(df <- get_total_urbano(type="individual"))
   expect_warning(df <- get_total_urbano(year=2016,type="individu"))
 })

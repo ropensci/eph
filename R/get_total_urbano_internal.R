@@ -34,10 +34,21 @@ get_total_urbano_internal <- function(year,
 
     temp <- tempfile(pattern = sprintf('microdatos_%s',year))
 
-    check <- NA
     try(check <- utils::download.file(link,temp),silent = TRUE)
-    assertthat::assert_that(assertthat::noNA(check),msg = sprintf("Problema con la descarga %s",year))
-    nombres <- purrr::as_vector(utils::unzip(temp, list = TRUE)['Name'])
+    if (rlang::is_empty(check)) {
+      cli::cli_abort(c(
+        sprintf("Problema con la descarga %s. Puede deberse a que la base solicitada no exista.",year)
+      ))
+    }
+
+    nombres <- NA
+    try(nombres <- purrr::as_vector(utils::unzip(temp, list = TRUE)['Name']),silent = TRUE)
+    if (all(is.na(nombres))) {
+      cli::cli_abort(c(
+        sprintf("Problema con la descarga %s. Puede deberse a que la base solicitada no exista.",year)
+      ))
+    }
+
     base_hogar_name <- nombres[grep('hog', nombres, ignore.case = TRUE)]
     base_individual_name <- nombres[grep('pers', nombres, ignore.case = TRUE)]
 
@@ -65,8 +76,11 @@ get_total_urbano_internal <- function(year,
 
       chequeo <- vars %in% colnames(base)
 
-      assertthat::assert_that(all(chequeo), msg=sprintf('Las variables: %s no se encuentran disponibles para esta base.
-                             Puede deberse a que son variables de la base individual (hogar) y se quiere descargar la base hogar (individual)',sub(",([^,]*)$", " y\\1", paste0(vars[!chequeo], collapse = ", "))))
+      if (!all(chequeo)) {
+        cli::cli_abort(sprintf('Las variables: %s no se encuentran disponibles para esta base.
+                             Puede deberse a que son variables de la base individual (hogar) y se quiere descargar la base hogar (individual)',sub(",([^,]*)$", " y\\1", paste0(vars[!chequeo], collapse = ", "))
+        ))
+      }
 
       base <- base %>%
         dplyr::rename_all(toupper) %>%

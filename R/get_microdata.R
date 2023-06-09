@@ -95,7 +95,7 @@ get_microdata <- function(year,
       tidyr::unnest(cols = c(error_message))
 
     if (nrow(errors)>0) {
-      warning(sprintf('No se pudo descargar la base de year %s,period %s, type %s.
+      warning(sprintf('No se pudo descargar la base de year %s, period %s, type %s.
     Mensaje: %s
 
                        ', errors$year,errors$period,errors$type,errors$error_message))

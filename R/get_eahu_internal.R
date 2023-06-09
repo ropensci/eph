@@ -36,7 +36,11 @@ get_eahu_internal <- function(year,
     base <- emptyenv()
     try(base <- readRDS(gzcon(url(link))),silent = TRUE)
 
-    assertthat::assert_that(assertthat::not_empty(base),msg = "Problema con la descarga. Posiblemente un error de la conexion a internet")
+    if (rlang::is_empty(base)) {
+      cli::cli_abort(c(
+        "Problema con la descarga. Posiblemente un error de la conexion a internet"
+      ))
+    }
 
 
     if (all(vars == 'all')) {
@@ -52,9 +56,11 @@ get_eahu_internal <- function(year,
 
       chequeo <- vars %in% toupper(colnames(base))
 
-      assertthat::assert_that(all(chequeo),
-      msg=sprintf('Las variables: %s no se encuentran disponibles para esta base.
-                             Puede deberse a que son variables de la base individual (hogar) y se quiere descargar la base hogar (individual)',sub(",([^,]*)$", " y\\1", paste0(vars[!chequeo], collapse = ", "))))
+      if (!all(chequeo)) {
+        cli::cli_abort(sprintf('Las variables: %s no se encuentran disponibles para esta base.
+                             Puede deberse a que son variables de la base individual (hogar) y se quiere descargar la base hogar (individual)',sub(",([^,]*)$", " y\\1", paste0(vars[!chequeo], collapse = ", "))
+        ))
+      }
 
       base <- base %>%
         dplyr::rename_all(toupper) %>%

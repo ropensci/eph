@@ -62,14 +62,12 @@ get_microdata_internal <- function(year = 2018,
       }
 
       if ((year==2015 & period %in% 3:4)|(year==2016 & period ==1)) {
-        warning("En el marco de la emergencia estadistica el INDEC no publico la base solicitada.
-                 mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_eph_23_08_16.pdf")
+        cli::cli_abort("En el marco de la emergencia estadistica el INDEC no publico la base solicitada.
+                 Mas informacion en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_eph_23_08_16.pdf")
 
         return(tibble::tibble())
       }
 
-      assertthat::assert_that(!((year==2015 & period %in% 3:4)|(year==2016 & period ==1)), msg="En el marco de la emergencia estadistica el INDEC no publico la base solicitada.
-                            Mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_eph_23_08_16.pdf")
       link <- sprintf('https://github.com/holatam/data/raw/master/eph/%s/base_%s_%sT%s.RDS',type,type,year,period)
       if (year %in% 2007:2015) {
         warning("INDEC advierte:
@@ -105,7 +103,12 @@ Mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
     base <- emptyenv()
     try(base <- readRDS(gzcon(url(link))),silent = TRUE)
 
-    assertthat::assert_that(assertthat::not_empty(base),msg = "Problema con la descarga. Posiblemente un error de la conexion a internet")
+    if (rlang::is_empty(base)) {
+      cli::cli_abort(c(
+        "Problema con la descarga. Posiblemente un error de la conexion a internet"
+      ))
+    }
+
   }
   else{
     if (!is_in_github(year = year, period = period,type = type)) {
@@ -114,11 +117,16 @@ Mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
 
       temp <- tempfile(pattern = sprintf('microdatos_%s_%s',period,year))
 
-
-      check <- NA
       try(check <- utils::download.file(link,temp),silent = TRUE)
-      assertthat::assert_that(assertthat::noNA(check),msg = sprintf("Problema con la descarga %s periodo %s",year,period))
-      nombres <- purrr::as_vector(utils::unzip(temp, list = TRUE)['Name'])
+
+      nombres <- NA
+      try(nombres <- purrr::as_vector(utils::unzip(temp, list = TRUE)['Name']),silent = TRUE)
+      if (all(is.na(nombres))) {
+        cli::cli_abort(c(
+          sprintf("Problema con la descarga %s period %s. Puede deberse a que la base solicitada no exista.",year,period)
+        ))
+      }
+
       base_hogar_name <- nombres[grep('hog', nombres, ignore.case = TRUE)]
       base_individual_name <- nombres[grep('ind', nombres, ignore.case = TRUE)]
 
@@ -159,7 +167,19 @@ Mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
 
       }
       if (type=='hogar') {
-        base <- utils::read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE,colClasses = c(DECIFR =  "character",                                                                       IDECIFR = "character",                                                                       GDECIFR = "character",                                                                       PDECIFR = "character",                                                                       ADECIFR = "character",                                                                       DECCFR  = "character",                                                                       IDECCFR = "character",                                                                       RDECCFR = "character",                                                                       GDECCFR = "character",                                                                       PDECCFR = "character",                                                                       ADECCFR = "character",                                                                       RDECIFR = "character")
+        base <- utils::read.table(unz(temp,base_hogar_name), sep=";", dec=",", header = TRUE, fill = TRUE,
+                                  colClasses = c(DECIFR =  "character",
+                                                 IDECIFR = "character",
+                                                 GDECIFR = "character",
+                                                 PDECIFR = "character",
+                                                 ADECIFR = "character",
+                                                 DECCFR  = "character",
+                                                 IDECCFR = "character",
+                                                 RDECCFR = "character",
+                                                 GDECCFR = "character",
+                                                 PDECCFR = "character",
+                                                 ADECCFR = "character",
+                                                 RDECIFR = "character")
         )%>%
           tidyr::as_tibble()
 
@@ -176,9 +196,11 @@ Mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
 
     chequeo <- vars %in% colnames(base)
 
-
-    assertthat::assert_that(all(chequeo), msg=sprintf('Las variables: %s no se encuentran disponibles para esta base.
-                             Puede deberse a que son variables de la base individual (hogar) y se quiere descargar la base hogar (individual)',sub(",([^,]*)$", " y\\1", paste0(vars[!chequeo], collapse = ", "))))
+    if (!all(chequeo)) {
+      cli::cli_abort(sprintf('Las variables: %s no se encuentran disponibles para esta base.
+                             Puede deberse a que son variables de la base individual (hogar) y se quiere descargar la base hogar (individual)',sub(",([^,]*)$", " y\\1", paste0(vars[!chequeo], collapse = ", "))
+      ))
+    }
 
     base %>%
       dplyr::rename_all(toupper) %>%

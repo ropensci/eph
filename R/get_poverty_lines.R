@@ -15,15 +15,20 @@
 
 get_poverty_lines <- function(regional = FALSE){
 
+  attempt::stop_if_not(.x = is_online(),
+                       msg = "No se detecto acceso a internet. Por favor checkea tu conexion.")
+
   if (regional){
     temp <- tempfile()
     link <- 'https://github.com/holatam/data/raw/master/eph/canasta/canastas.rds'
 
     check <- NA
     try(check <- utils::download.file(link,destfile=temp, mode='wb'),silent = TRUE)
-    assertthat::assert_that(assertthat::noNA(check),msg = "Problema con la descarga")
-
-
+    if (is.na(check)) {
+      cli::cli_abort(c(
+        "Problema con la descarga"
+      ))
+    }
 
     canasta <- readRDS(temp)
     unlink(temp)
@@ -34,9 +39,11 @@ get_poverty_lines <- function(regional = FALSE){
 
   check <- NA
   try(check <-  utils::download.file(dataURL, destfile=temp, mode='wb'),silent = TRUE)
-  assertthat::assert_that(assertthat::noNA(check),msg = "Problema con la descarga")
-
-
+  if (is.na(check)) {
+    cli::cli_abort(c(
+      "Problema con la descarga"
+    ))
+  }
 
   suppressWarnings({canasta <- readxl::read_excel(temp, sheet =1, skip = 6,col_names = c('periodo', 'CBA', 'ICE', 'CBT'),
                                                   col_types = c('date','numeric','numeric','numeric')) %>% stats::na.omit()})

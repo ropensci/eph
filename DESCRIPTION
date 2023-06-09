@@ -21,7 +21,6 @@ BugReports: https://github.com/holatam/eph/issues
 Imports:
     dplyr,
     expss,
-    assertthat,
     purrr,
     tibble,
     stringr,
