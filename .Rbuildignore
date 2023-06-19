@@ -13,3 +13,5 @@
 ^pkgdown$
 ^\.github$
 ^CRAN-SUBMISSION$
+^codemeta\.json
+^\.DS_Store
