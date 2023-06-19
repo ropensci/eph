@@ -4,6 +4,9 @@
 #'@param regional booleano, default = FALSE. Si es TRUE, descarga los datos de canastas regionales
 #'       que se utilizan para el calculo de pobreza. Si es FALSE, descarga la serie de GBA
 #'       provista por indec en https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149
+#'
+#'@return Devuelve una tabla con la CBA y CBT a partir de abril 2016
+#'
 #'@details
 #'Disclaimer: El script no es un producto oficial de INDEC.
 #'
