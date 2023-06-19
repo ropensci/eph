@@ -361,7 +361,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1224.163KB",
+  "fileSize": "1224.367KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -402,7 +402,7 @@
   ],
   "releaseNotes": "https://github.com/holatam/eph/blob/master/NEWS.md",
   "readme": "https://github.com/holatam/eph/blob/master/README.md",
-  "contIntegration": ["https://github.com/holatam/eph/actions", "https://app.codecov.io/gh/holatam/eph?branch=master"],
+  "contIntegration": ["https://github.com/holatam/eph/actions", "https://app.codecov.io/gh/holatam/eph?branch=master", "https://github.com/holatam/eph/actions/workflows/R-CMD-check.yaml"],
   "keywords": ["rstats", "rstatses", "eph", "indec", "mercado-de-trabajo"],
   "relatedLink": "https://CRAN.R-project.org/package=eph"
 }

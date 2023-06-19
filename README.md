@@ -10,6 +10,7 @@ status](https://codecov.io/gh/holatam/eph/branch/master/graph/badge.svg)](https:
 [![](http://cranlogs.r-pkg.org/badges/last-month/eph?color=blue)](https://cran.r-project.org/package=eph)
 [![DOI](https://zenodo.org/badge/142294444.svg)](https://zenodo.org/badge/latestdoi/142294444)
 
+[![R-CMD-check](https://github.com/holatam/eph/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/holatam/eph/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 # Caja de Herramientas para el procesamiento de la Encuesta Permanente de Hogares
