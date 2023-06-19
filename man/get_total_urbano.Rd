@@ -16,6 +16,9 @@ get_total_urbano(year, type = "individual", vars = "all", destfile = NULL)
 \item{destfile}{opcional: un string con la direccion de un archivo .RDS. Si se ingresa un path a un archivo que no existe, se descarga
 el archivo y se graba en esa direccion. Si existe un archivo en ese path, se lee el archivo.}
 }
+\value{
+Devuelve la o las bases de la EPH total urbano solicitadas
+}
 \description{
 Funcion que descarga bases de la Encuesta Permanente de Hogares total urbano del INDEC a partir de 2016
 }

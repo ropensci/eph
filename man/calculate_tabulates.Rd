@@ -32,6 +32,9 @@ calculate_tabulates(
 
 \item{add.percentage}{toma los valores c('none','row','col'), para agregar porcentajes por fila y columna}
 }
+\value{
+Devuelve un tabulado uni o bivariado con ponderacion, totales parciales y porcentajes.
+}
 \description{
 Funcion para crear tabulados uni o bivariados con ponderacion, totales parciales y porcentajes.
 }

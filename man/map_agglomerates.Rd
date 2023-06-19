@@ -23,6 +23,9 @@ map_agglomerates(
 
 \item{palette}{Paleta de colores a utilizar, incluye "viridis", "magma", "inferno", or "plasma". Para mas opciones, ver \link[leaflet]{colorNumeric}}
 }
+\value{
+Devuelve un mapa de indicadores por aglomerado
+}
 \description{
 Mapa de indicadores por aglomerado
 }

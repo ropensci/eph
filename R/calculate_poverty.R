@@ -7,6 +7,9 @@
 #'@param window default = "quarter". Opcion para cambiar el lapso del calculo que se imprime en consola.
 #' "quarter" (para estimacion trimestral) o "semester" (estimacion semestral)
 #'@param group_vars Opcion para agregar variables agrupadoras para el calculo que se imprime en consola.
+#'
+#'@return Devuelve la base agregando informacion respecto a la situacion de cada hogar en terminos de sus ingresos: indigente, pobre o no pobre (a estos fines, se agregan 5 columnas nuevas).
+#'
 #'@details disclaimer: El script no es un producto oficial de INDEC.
 #'
 #'@examples

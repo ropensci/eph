@@ -27,6 +27,9 @@ el archivo y se graba en esa direccion. Si existe un archivo en ese path, se lee
 
 \item{...}{asegura el funcionamiento de la funcion en su version anterior con los parametros wave o trimester}
 }
+\value{
+Devuelve la o las bases de la EPH solicitadas
+}
 \description{
 Funcion que descarga bases de la Encuesta Permanente de Hogares del INDEC a partir de 1996
 }

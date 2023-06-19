@@ -7,6 +7,8 @@
 #' @param destfile opcional: un string con la direccion de un archivo .RDS. Si se ingresa un path a un archivo que no existe, se descarga
 #'                el archivo y se graba en esa direccion. Si existe un archivo en ese path, se lee el archivo.
 #'
+#'@return Devuelve la o las bases de la EPH total urbano solicitadas
+#'
 #'@details
 #'disclaimer: El script no es un producto oficial de INDEC.
 #'

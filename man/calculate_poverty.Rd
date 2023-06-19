@@ -24,6 +24,9 @@ calculate_poverty(
 
 \item{group_vars}{Opcion para agregar variables agrupadoras para el calculo que se imprime en consola.}
 }
+\value{
+Devuelve la base agregando informacion respecto a la situacion de cada hogar en terminos de sus ingresos: indigente, pobre o no pobre (a estos fines, se agregan 5 columnas nuevas).
+}
 \description{
 Funcion para calcular la pobreza e indigencia siguiendo la metodologia de linea.
 }

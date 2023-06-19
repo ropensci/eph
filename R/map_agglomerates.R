@@ -6,6 +6,8 @@
 #' @param alpha Opacidad de los puntos
 #' @param palette Paleta de colores a utilizar, incluye "viridis", "magma", "inferno", or "plasma". Para mas opciones, ver \link[leaflet]{colorNumeric}
 #'
+#' @return Devuelve un mapa de indicadores por aglomerado
+#'
 #' @examples
 #'
 #'toybase_individual_2016_04 %>%
@@ -39,7 +41,7 @@ map_agglomerates <- function(.data,agglomerates, indicator, alpha=.75, palette= 
     leaflet::addProviderTiles(leaflet::providers$Wikimedia) %>%
     leaflet::addCircleMarkers(fillColor = ~pal(indicator),
                               fillOpacity = alpha,
-                              stroke=F,
+                              stroke=FALSE,
                               label = lapply(labs, htmltools::HTML)) %>%
     leaflet::addLegend("bottomright", pal = pal, values = ~indicator,
                        title = sprintf("%s",dplyr::as_label(indicator)),

@@ -11,6 +11,9 @@ organize_labels(df, type = "individual")
 
 \item{type}{(string) aclaracion sobre si la base a etiquetar es de tipo 'individual' u 'hogar'}
 }
+\value{
+Devuelve la base con sus variables etiquetadas
+}
 \description{
 Funcion para etiquetar las bases de la Encuesta Permanente de Hogares.
 }

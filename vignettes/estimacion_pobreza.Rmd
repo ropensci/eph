@@ -197,7 +197,7 @@ Como se dijo, luego de valorizarse con precios de GBA, se multiplican por el PPC
 Se puede observar que si bien todas las canastas tienen por composición un mayor valor que la canasta de GBA, al multiplicarlas por el PPPC tan sólo la región Patagónica conserva una canasta con mayor valor.
 
 ```{r, fig.height=5, fig.width=7, eval=LOCAL}
-ppcc = data.frame(
+ppcc <- data.frame(
 region = c('Cuyo','GBA','Noreste','Noroeste','Pampeana','Patagonia'),
 ppcc = c(.872,1,.886,.865,.904,.949)
 )

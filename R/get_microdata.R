@@ -9,6 +9,8 @@
 #'                el archivo y se graba en esa direccion. Si existe un archivo en ese path, se lee el archivo.
 #'@param ... asegura el funcionamiento de la funcion en su version anterior con los parametros wave o trimester
 #'
+#'@return Devuelve la o las bases de la EPH solicitadas
+#'
 #'@details
 #'Las bases de la EPH puntual utilizan el parametro period para referirse a las ondas.
 #'Su alcance es entre la onda 1 de 1996 y la onda 1 de 2003.

@@ -10,6 +10,9 @@
 #'@param affix_sign si es TRUE agrega el signo \% al final
 #'@param add.totals  toma los valores c('none','row','col','both'), para agregar totales por fila, columna o ambos
 #'@param add.percentage toma los valores c('none','row','col'), para agregar porcentajes por fila y columna
+#'
+#'@return Devuelve un tabulado uni o bivariado con ponderacion, totales parciales y porcentajes.
+#'
 #'@examples
 #'
 #'
@@ -243,7 +246,7 @@ calculate_tabulates <- function(base,
       dplyr::mutate(Total = rowSums(dplyr::across(dplyr::where(is.numeric)))) %>%
       tidyr::pivot_longer(cols = !names(tabulado)[1],names_to = "var", values_to = "valor") %>%
       dplyr::group_by(var) %>%
-      dplyr::mutate(aux = sum(valor, na.rm = T)) %>%
+      dplyr::mutate(aux = sum(valor, na.rm = TRUE)) %>%
       dplyr::ungroup() %>%
       dplyr::mutate(prop = round((valor/aux)*100,digits)) %>%
       dplyr::select(-valor,-aux) %>%

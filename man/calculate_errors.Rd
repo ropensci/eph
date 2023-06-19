@@ -25,6 +25,9 @@ para los errores muestrales del tercer trimestre del 2003 al segundo trimestre d
 \item{measure}{default = "cv". String indicando la medida que se desea obtener. "cv" para obtener el coeficiente de variación
 correspondiente a las estimaciones o "ds" para obtener el desvío estándar.}
 }
+\value{
+Devuelve la estimacion de un total poblacional agregando el desvio estandar o el coeficiente de variacion correspondiente segun las tablas de error muestral de INDEC para EPH continua a partir del segundo trimestre 2003
+}
 \description{
 Asigna a una estimación de un total poblacional el desvío estándar o el coeficiente de variación
 correspondiente según las tablas de error muestral de INDEC para EPH continua
