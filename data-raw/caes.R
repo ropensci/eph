@@ -148,7 +148,7 @@ caesv0 <- caesv0 %>%
          caes_division_label = NA)
 
 #Asigno Letra y su etiqueta #
-for(i in 1:nrow(caesv0)){
+for(i in seq_len(nrow(caesv0))){
   if(caesv0$Codigo[i] %in% LETTERS) {
     letra <- caesv0$Codigo[i]
     label <- caesv0$Descripcion[i]
@@ -161,7 +161,7 @@ for(i in 1:nrow(caesv0)){
 
 
 #Asigno Letra y su etiqueta #
-for(i in 1:nrow(caesv0)){
+for(i in seq_len(nrow(caesv0))){
   if(nchar(caesv0$Codigo[i]) %in% 1:2) {
     cod <- caesv0$Codigo[i]
     label <- caesv0$Descripcion[i]

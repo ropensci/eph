@@ -419,7 +419,7 @@ clean_table <- function(df){
 }
 
 errores_muestrales_clean <- list()
-for (i in 1:nrow(errores_muestrales_2014.03)) {
+for (i in seq_len(nrow(errores_muestrales_2014.03))) {
 
   print(errores_muestrales_2014.03$aglomerados[i])
   tmp_table <- errores_muestrales_2014.03$table[i]
