@@ -63,8 +63,8 @@ calculate_errors <- function(value, codigo_aglo = "Total", periodo_eph = "2014.0
 
   # Operacion
   tabla_referencia <- eph::errores_muestrales %>%
-    dplyr::filter(.data$codigo == codigo_aglo & .data$periodo == periodo_eph)  %>%
-    dplyr::select(.data$x, measure)
+    dplyr::filter(codigo == codigo_aglo & periodo == periodo_eph)  %>%
+    dplyr::select(x, measure)
 
   find_closest <-function(y) {
     tabla_referencia[[measure]][which.min(abs(tabla_referencia[["x"]] - y))]
