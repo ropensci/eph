@@ -42,7 +42,7 @@ disclaimer: El script no es un producto oficial de INDEC.
 tabla <- eph::toybase_individual_2016_03 \%>\%
   eph::organize_labels() \%>\%
   dplyr::filter(AGLOMERADO == 32) \%>\%
-  calculate_tabulates(x = "CH03",
+  eph::calculate_tabulates(x = "CH03",
                          weights = "PONDERA",
                          add.totals = "row")
 tabla \%>\%

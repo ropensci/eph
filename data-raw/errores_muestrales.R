@@ -471,7 +471,7 @@ usethis::use_data(errores_muestrales, overwrite = TRUE)
 
 data_frame_roxygen <- function(obj) {
   if (inherits(obj, c("data.frame", "tibble"))) {
-    cl <- sapply(obj, typeof)
+    cl <- vapply(obj, FUN = typeof, FUN.VALUE = character(1))
 
     items <- paste0(sprintf("#'   \\item{\\code{%s}}{%s ---DESCRIPTION---}", names(cl), cl))
 

@@ -23,7 +23,7 @@
 #'tabla <- eph::toybase_individual_2016_03 %>%
 #'   eph::organize_labels() %>%
 #'   dplyr::filter(AGLOMERADO == 32) %>%
-#'   calculate_tabulates(x = "CH03",
+#'   eph::calculate_tabulates(x = "CH03",
 #'                          weights = "PONDERA",
 #'                          add.totals = "row")
 #'tabla %>%
@@ -39,7 +39,7 @@ calculate_errors <- function(value, codigo_aglo = "Total", periodo_eph = "2014.0
 
   if(!is.numeric(value)){
     cli::cli_abort(c(
-      "value debe ser numeric"
+      "El argumento value debe ser numeric"
     ))
   }
    if(!codigo_aglo %in% c("Total", "Gran Buenos Aires", "2", "3", "5", "4", "6", "7",
@@ -70,5 +70,5 @@ calculate_errors <- function(value, codigo_aglo = "Total", periodo_eph = "2014.0
     tabla_referencia[[measure]][which.min(abs(tabla_referencia[["x"]] - y))]
   }
 
-  sapply(value, find_closest)
+  vapply(value, FUN = find_closest, FUN.VALUE = numeric(1))
 }
