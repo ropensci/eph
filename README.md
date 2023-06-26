@@ -105,4 +105,4 @@ base_individual <- get_microdata(year = 2018:2019,   # especifco el año
 
 Este paquete se propone incorporar cualquier función de propósitos generales que utilice como base los datos de la Encuesta Permanente de Hogares. Todos los aportes en este sentido son bienvenidos.
 
-Si trabajas con la EPH y querés agregar tu función, te recomendamos que leas el siguiente [issue](https://github.com/holatam/eph/issues/5#issue-407890587) con consejos de como colaborar
+Si trabajas con la EPH y querés agregar tu función, te recomendamos que leas los siguientes [consejos](https://github.com/holatam/eph/blob/master/docs/CONTRIBUTING.md) sobre cómo como colaborar
