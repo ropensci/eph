@@ -8,7 +8,7 @@ Authors@R: c(
     person("Natsumi", "Shokida", email = "natsumi.shokida@gmail.com", role = "aut"),
     person("German", "Rosati", email = "german.rosati@gmail.com", role = "aut", comment = c(ORCID = "0000-0002-9775-0435")),
     person("Juan Gabriel", "Juara", email = "jg.juara@gmail.com", role = "ctb"),
-    person("Carolina", "Pradier", email = "carolinapradier@gmail.com", role = c("aut","cre")))
+    person("Carolina", "Pradier", email = "carolinapradier@gmail.com", role = c("aut","cre"), comment = c(ORCID = "0009-0007-5058-6352")))
 Description: Tools to download and manipulate the Permanent Household Survey from Argentina
     (EPH is the Spanish acronym for Permanent Household Survey).
     e.g: get_microdata() for downloading the datasets, get_poverty_lines() for downloading the official poverty baskets,
