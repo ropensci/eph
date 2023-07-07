@@ -49,6 +49,7 @@ library(ggplot2)
 ```
 
 ```{r include=FALSE}
+library(devtools)
 devtools::load_all()
 ```
 
