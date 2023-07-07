@@ -1,4 +1,4 @@
-#' \code{eph} package
+#' `eph` package
 #'
 #' Caja de Herramientas para el procesamiento de la Encuesta Permanente de Hogares
 #'

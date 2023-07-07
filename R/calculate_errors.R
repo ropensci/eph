@@ -3,7 +3,7 @@
 #'Asigna a una estimación de un total poblacional el desvío estándar o el coeficiente de variación
 #' correspondiente según las tablas de error muestral de INDEC para EPH continua
 #'  a partir del segundo trimestre 2003.
-#' (Ver \code{\link{errores_muestrales}})
+#' (Ver `errores_muestrales`)
 #'@param value Vector numérico de las estimaciones de población para las
 #' que se desea hallar el desvío estándar o el coeficiente de variación.
 #'@param codigo_aglo default = "Total". String con el código numerico del aglomerado al que

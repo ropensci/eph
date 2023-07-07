@@ -6,7 +6,7 @@
 #'
 #' @param base  Base individual de uno o mas periodos
 #'
-#' @return Devuelve la base con 8 columnas nuevas (ver \code{\link{caes}})
+#' @return Devuelve la base con 8 columnas nuevas (ver `caes`)
 #'
 #'@details disclaimer: El script no es un producto oficial de INDEC.
 #'

@@ -2,7 +2,7 @@
 #'@description
 #'Funcion para calcular la pobreza e indigencia siguiendo la metodologia de linea.
 #'@param base Base individual de uno o mas periodos
-#'@param basket canasta basica alimentaria y total, con la estructura de la canasta de ejemplo (ver \code{\link{canastas_reg_example}})
+#'@param basket canasta basica alimentaria y total, con la estructura de la canasta de ejemplo (ver `canastas_reg_example`)
 #'@param print_summary default = TRUE. Opcion para imprimir las tasas de pobreza e indigencia (proporcion de individuos)
 #'@param window default = "quarter". Opcion para cambiar el lapso del calculo que se imprime en consola.
 #' "quarter" (para estimacion trimestral) o "semester" (estimacion semestral)

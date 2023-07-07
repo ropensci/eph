@@ -4,7 +4,7 @@
 #' (CNO 2001)
 #'@param base Base individual de uno o mas periodos
 #'
-#'@return Devuelve la base con 4 columnas nuevas (ver \code{\link{CNO}})
+#'@return Devuelve la base con 4 columnas nuevas (ver `CNO`)
 #'
 #'@details  Disclaimer: El script no es un producto oficial de INDEC.
 #'
