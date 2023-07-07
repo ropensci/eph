@@ -1,11 +1,7 @@
 ---
 title: "Ejemplo de uso del paquete `eph`"
 author: 
-  - Germán Rosati
-  - Diego Kozlowski
-  - Pablo Tiscornia
-  - Guido Weksler
-  - Natsumi Shokida
+  - Diego Kozlowski, Pablo Tiscornia, Guido Weksler, Germán Rosati, Natsumi Shokida y  Carolina Pradier
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -52,6 +48,11 @@ library(purrr)
 library(ggplot2)
 ```
 
+```{r include=FALSE}
+devtools::load_all()
+```
+
+
 Obtengamos la base de microdatos de individuos para el tercer trimestre de 2018:
 
 ```{r}
@@ -59,28 +60,20 @@ ind_3_18 <- get_microdata(year = 2018,
                           period = 2, 
                           type = 'individual')
 ```
-Puede verse que la función requiere tres argumentos básicos:
 
-- `year`: un valor numérico entero con el año de la encuesta que se desea descargar
-- `period`: un valor numérico entero con el trimestre (en caso de que se trate de la EPH continua, 2004-actualidad) o la onda (EPH puntual)
-- `type`: un valor character `"individual"`, para descargar la base de invidividuos y `"hogar"`, para la de hogar.
+Puede verse que la función requiere tres argumentos básicos que definen cuál es la encuesta que se desea descargar.
 
 ### Etiquetado: `organize_labels()`
 
-Es posible etiquetar de forma automática el dataset llamando a la función `organize_labels()`:
+Es posible etiquetar de forma automática el dataset descargado previamente usando `get_microdata()` llamando a la función `organize_labels()`:
 
 ```{r}
 ind_3_18 <- organize_labels(df = ind_3_18, 
                             type='individual')
 ```
 
-La función toma dos argumentos:
 
-- `df`: el data.frame que se quiere etiquetar, debe ser producto de `get_microdata()`
-- `type`: string; cuál es el tipo de datatset que se quiere etiquetar, `"individual"` o `"hogar"`
-
-
-Descarguemos y etiquetemos la base de hogares del 3 trimestre de 2018. Podemos hacer uso de los `%>%` pipes de `magritte`:
+Descarguemos y etiquetemos la base de hogares del 3 trimestre de 2018. Podemos hacer uso de los `%>%` pipes de `magrittr`:
 
 ```{r}
 hog_3_18 <- get_microdata(year = 2018, 
@@ -104,15 +97,6 @@ calculate_tabulates(base = ind_3_18,
                     add.totals = 'row', 
                     add.percentage='col')
 ```
-
-Los argumentos principales de la función son:
-
-- `base`: un data.frame
-- `x`: string con el nombre de la variable a tabular
-- `y`: otro string (opcional) con el nombre de una segunda variable, para una tabla de doble entrada. Tiene que ser de igual largo que `x`
-- `weights`: string con el nombre de la variable que contiene los pesos
-- `add.totals`: agrega maginales por fila (`row`), columnas (`col`) o ambas (`both`)
-- `add.percentage`: calcula porcentajes por fila (`row`), columnas (`col`) o ambas (`both`)
 
 Así, si quisiéramos la misma tabla sin ponderar:
 
@@ -150,18 +134,14 @@ pool <- organize_panels(bases = list(base_2018t1, base_2018t2),
                         window = 'trimestral')
 ```
 
-Los argumentos principales de la función `organize_panels`son:  
-
-- `bases`: una lista con las bases de datos a poolear
-- `variables`: string con los nombres de las variables de interés
-- `window`: un string que indique la ventana de distancia de las observaciones (`anual`) o  (`trimestral`)
 
 ```{r}
 pool
 ```
+
 La función nos devuelve un data.frame similar a la base original, en el cual cada fila es un registro individual, que consta de las observaciones de las variables de interés especificadas, en dos periodos de tiempo. En el período inicial las mismas conservan su nombre, y en el siguiente (año o trimestre) aparecen renombradas con el agregado del string `_t1`.             
 
-El trabajo que realiza la función es concatenar todas las bases espeficadas en el argumento `list=` y hacer un `join`, conservando sólo aquellos individuos encuestados en los diferentes trimestres. La columna `consistencia` evalúa si entre ambas observaciones un mismo individuo figura con distinto sexo o con una diferencia absoluta de 2 años de edad.        
+El trabajo que realiza la función es concatenar todas las bases espeficadas y hacer un `join`, conservando sólo aquellos individuos encuestados en los diferentes trimestres. La columna `consistencia` evalúa si entre ambas observaciones un mismo individuo figura con distinto sexo o con una diferencia absoluta de 2 años de edad.        
 
 ```{r message=FALSE, warning=FALSE}
 pool %>% 
@@ -171,12 +151,13 @@ pool %>%
                       weights = "PONDERA",  
                       add.percentage='row')
 ```
+
 Un indicador frecuente construido con esta información es la _Matriz de Transición_. Ella refleja como los individuos que ocupaban una determinada categoría en el período inicial, se distribuyen en cada una de las categorías en el período siguiente. La misma puede construirse sencillamente utilizando la función `calculate_tabulates`. En este ejemplo, la información refleja que durante 2018, un 3.7% de los ocupados perdió su empleo en el trimestre siguiente. 
 
 
 ### Iterando en varias bases
 
-Dado que levantar muchas bases al mismo tiempo puede superar el espacio disponible en memoria, es posible utilizar el parametro `vars` para hacer una selección de variables al mismo tiempo que se levantan las bases.
+Dado que levantar muchas bases al mismo tiempo puede superar el espacio disponible en memoria, es posible hacer una selección de variables al mismo tiempo que se levantan las bases:
 
 
 ```{r message=FALSE, warning=FALSE}

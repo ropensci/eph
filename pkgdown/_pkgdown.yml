@@ -1,6 +1,24 @@
 url: https://rindec.github.io/eph/
+
+
 home:
   title: Paquete de herramientas para la Encuesta Permanente de Hogares
+
+authors:
+  Diego Kozlowski:
+    href: "https://github.com/DiegoKoz"
+  Pablo Tiscornia:
+    href: "https://github.com/pablotis"
+  Guido Weksler:
+    href: "https://github.com/Guidowe"
+  Natsumi Shokida:
+    href: "https://github.com/natsushok"
+  German Rosati:
+    href: "https://github.com/gefero"
+  Carolina Pradier:
+    href: "https://github.com/caropradier"
+  Juan Gabriel Juara:
+    href: "https://github.com/jgjuara"
 
 destination: docs
 
@@ -13,12 +31,15 @@ template:
 navbar:
   type: inverse
 
+
 reference:
 - title: Descarga y recodificación
   desc:  Funciones para descargar los datos de la encuesta y recodificar sus variables.
   contents:
   - get_microdata
   - starts_with("organize")
+  - get_total_urbano
+  - get_eahu
 - title: Tablas auxiliares
   desc:  Tablas auxiliares para la recodificacion y otros calculos frecuentes.
   contents:
