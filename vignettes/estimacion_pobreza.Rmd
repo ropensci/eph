@@ -10,15 +10,11 @@ vignette: >
 ```{r, echo = FALSE}
 LOCAL <- TRUE
   #identical(Sys.getenv("LOCAL"), "TRUE")
-knitr::opts_chunk$set(purl = LOCAL)
+knitr::opts_chunk$set(purl = LOCAL,
+                      collapse = TRUE,
+                      comment = "#>")
 ```
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
 
 En esta vignette mostraremos como utilizar las funciones `get_poverty_lines()` y `calculate_poverty()` para calcular la pobreza aproximando la [metodología oficial](http://www.indec.gob.ar/ftp/cuadros/sociedad/EPH_metodologia_22_pobreza.pdf) de INDEC.
 
