@@ -32,10 +32,9 @@ Imports:
     leaflet,
     htmltools,
     rlang,
-    rvest,
-    xml2,
     stats,
-    cli
+    cli,
+    httr
 Depends: R (>= 2.10)
 License: MIT + file LICENSE
 Encoding: UTF-8

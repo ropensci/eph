@@ -1,6 +1,6 @@
 context("test-get_microdata")
 
-test_that("EPH punutal", {
+test_that("EPH puntual", {
   skip_if_offline()
   skip_on_cran()
   df <- get_microdata(year = 1996, period = 1, vars = c('CODUSU','AGLOMERADO','IPCF'))
