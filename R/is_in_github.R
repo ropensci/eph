@@ -10,8 +10,8 @@ is_in_github <- function(year = 2018,
                          period = 1,
                          type='individual'){
 
-  if (year < 2003 | (year == 2003 & period == 1)) {
-    result <- TRUE # esto es porque todas las bases de la EPH puntual estan en github
+  if (year < 2023) {
+    result <- TRUE # esto es porque todas las bases de la EPH hasta 2022 estan en github
   }else{
 
     #pg <- xml2::read_html(sprintf('https://github.com/holatam/data/tree/master/eph/%s',type))
