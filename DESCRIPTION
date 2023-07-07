@@ -49,6 +49,5 @@ Suggests:
     rmarkdown,
     ggplot2,
     readr,
-    forcats,
-    janitor
+    forcats
 VignetteBuilder: knitr
