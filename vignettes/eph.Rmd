@@ -189,7 +189,7 @@ Existen dos funciones núcleo:
 
 ```{r}
 lineas <- get_poverty_lines()
-lineas %>% head()
+lineas 
 ```
 
 Esta función descarga los valores de las canastas alimentaria, básica (CBA y CBT) y la inversa del coeficiente de Engels... perdón, Engel (ICE) de [la serie provista por INDEC](https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149). Esta es la serie para GBA, y es la que publica regularmente INDEC. 
@@ -209,13 +209,13 @@ Para el calculo de la Pobreza e Indigencia se utilizan canastas regionales, que 
 A modo de ejemplo, en la librería `eph` se encuentra la base `canastas_reg_example` con la información necesaria para realizar el cálculo
 
 ```{r}
-canastas_reg_example %>% head()
+canastas_reg_example 
 ```
 
 A su vez, también se encuentra la tabla de `adulto_equivalente` que permite construir la cantidad de adultos equivalentes a nivel hogar, para multiplicar al mismo por la canasta regional correspondiente, a fin de definir la línea a nivel hogar.
 
 ```{r}
-adulto_equivalente %>% head()
+adulto_equivalente 
 ```
 
 
