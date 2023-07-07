@@ -48,17 +48,11 @@ library(purrr)
 library(ggplot2)
 ```
 
-```{r include=FALSE}
-library(devtools)
-devtools::load_all()
-```
-
-
 Obtengamos la base de microdatos de individuos para el tercer trimestre de 2018:
 
 ```{r}
 ind_3_18 <- get_microdata(year = 2018, 
-                          period = 2, 
+                          trimester = 2, 
                           type = 'individual')
 ```
 
