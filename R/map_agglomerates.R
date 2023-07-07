@@ -26,9 +26,6 @@ map_agglomerates <- function(.data,agglomerates, indicator, alpha=.75, palette= 
     dplyr::select('AGLOMERADO'=!!agglomerates,'indicator'=!!indicator) %>%
     dplyr::left_join(centroides_aglomerados, by = "AGLOMERADO")
 
-   # df <- .data %>%
-   #   dplyr::left_join(centroides_aglomerados, by = "AGLOMERADO")
-
   pal <- leaflet::colorNumeric(
     palette = "viridis",
     domain = df$indicator)

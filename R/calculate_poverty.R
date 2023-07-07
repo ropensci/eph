@@ -39,7 +39,9 @@ calculate_poverty <- function(base,basket,print_summary=TRUE,window = "quarter",
                   situacion = dplyr::case_when(ITF<CBA_hogar            ~ 'indigente',
                                                ITF>=CBA_hogar & ITF<CBT_hogar ~ 'pobre',
                                                ITF>=CBT_hogar           ~ 'no_pobre'),
-                  situacion = dplyr::case_when(PONDIH==0 ~ NA_character_, #excluyo los casos que no tienen respuesta en ITF
+                  #excluyo los casos que no tienen respuesta en ITF
+                  situacion = dplyr::case_when(PONDIH==0 ~ NA_character_,
+
                                                TRUE ~ situacion)) %>%
     dplyr::select(-adequi,-periodo,-CBA, -CBT)
 
