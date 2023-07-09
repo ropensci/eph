@@ -49,5 +49,6 @@ Suggests:
     rmarkdown,
     ggplot2,
     readr,
-    forcats
+    forcats,
+    httptest
 VignetteBuilder: knitr
