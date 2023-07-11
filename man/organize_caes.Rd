@@ -10,7 +10,7 @@ organize_caes(base)
 \item{base}{Base individual de uno o mas periodos}
 }
 \value{
-Devuelve la base con 8 columnas nuevas (ver \code{\link{caes}})
+Devuelve la base con 8 columnas nuevas (ver `caes`)
 }
 \description{
 Funcion para clasificar las actividades economicas segun el

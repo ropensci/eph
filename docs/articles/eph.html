@@ -96,18 +96,11 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Ejemplo de uso del paquete <code>eph</code>
 </h1>
-                        <h4 data-toc-skip class="author">Germán
-Rosati</h4>
                         <h4 data-toc-skip class="author">Diego
-Kozlowski</h4>
-                        <h4 data-toc-skip class="author">Pablo
-Tiscornia</h4>
-                        <h4 data-toc-skip class="author">Guido
-Weksler</h4>
-                        <h4 data-toc-skip class="author">Natsumi
-Shokida</h4>
+Kozlowski, Pablo Tiscornia, Guido Weksler, Germán Rosati, Natsumi
+Shokida y Carolina Pradier</h4>
             
-            <h4 data-toc-skip class="date">2023-05-11</h4>
+            <h4 data-toc-skip class="date">2023-07-11</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/holatam/eph/blob/HEAD/vignettes/eph.Rmd" class="external-link"><code>vignettes/eph.Rmd</code></a></small>
       <div class="hidden name"><code>eph.Rmd</code></div>
@@ -149,52 +142,22 @@ trimestre de 2018:</p>
 <code class="sourceCode R"><span><span class="va">ind_3_18</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_microdata.html">get_microdata</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2018</span>, </span>
 <span>                          trimester <span class="op">=</span> <span class="fl">2</span>, </span>
 <span>                          type <span class="op">=</span> <span class="st">'individual'</span><span class="op">)</span></span></code></pre></div>
-<p>Puede verse que la función requiere tres argumentos básicos:</p>
-<ul>
-<li>
-<code>year</code>: un valor numérico entero con el año de la
-encuesta que se desea descargar</li>
-<li>
-<code>trimester</code>: un valor numérico entero con el trimestre
-(este argumento es válido para la EPH continua, 2004-actualidad)</li>
-<li>
-<code>type</code>: un valor character <code>"individual"</code>,
-para descargar la base de invidividuos y <code>"hogar"</code>, para la
-de hogar.</li>
-</ul>
-<p>Si se deseara descargar una base de la EPH puntual, será necesario
-reemplazar el argumento <code>trimester</code> por <code>wave</code> que
-define la onda de la EPH puntual que se desea descargar. Por ejemplo, si
-se buscara descargar la base individual de la segunda onda del año 2002,
-debería escribirse</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ind_2_02</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_microdata.html">get_microdata</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2001</span>, </span>
-<span>                          wave <span class="op">=</span> <span class="fl">2</span>, </span>
-<span>                          type <span class="op">=</span> <span class="st">'individual'</span><span class="op">)</span></span></code></pre></div>
+<p>Puede verse que la función requiere tres argumentos básicos que
+definen cuál es la encuesta que se desea descargar.</p>
 </div>
 <div class="section level3">
 <h3 id="etiquetado-organize_labels">Etiquetado: <code>organize_labels()</code><a class="anchor" aria-label="anchor" href="#etiquetado-organize_labels"></a>
 </h3>
-<p>Es posible etiquetar de forma automática el dataset llamando a la
-función <code><a href="../reference/organize_labels.html">organize_labels()</a></code>:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<p>Es posible etiquetar de forma automática el dataset descargado
+previamente usando <code><a href="../reference/get_microdata.html">get_microdata()</a></code> llamando a la función
+<code><a href="../reference/organize_labels.html">organize_labels()</a></code>:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ind_3_18</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/organize_labels.html">organize_labels</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">ind_3_18</span>, </span>
 <span>                            type<span class="op">=</span><span class="st">'individual'</span><span class="op">)</span></span></code></pre></div>
-<p>La función toma dos argumentos:</p>
-<ul>
-<li>
-<code>df</code>: el data.frame que se quiere etiquetar, debe ser
-producto de <code><a href="../reference/get_microdata.html">get_microdata()</a></code>
-</li>
-<li>
-<code>type</code>: string; cuál es el tipo de datatset que se quiere
-etiquetar, <code>"individual"</code> o <code>"hogar"</code>
-</li>
-</ul>
 <p>Descarguemos y etiquetemos la base de hogares del 3 trimestre de
 2018. Podemos hacer uso de los <code>%&gt;%</code> pipes de
-<code>magritte</code>:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code>magrittr</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">hog_3_18</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_microdata.html">get_microdata</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2018</span>, </span>
 <span>                          trimester <span class="op">=</span> <span class="fl">3</span>, </span>
 <span>                          type<span class="op">=</span><span class="st">'hogar'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
@@ -210,7 +173,7 @@ tabulados uni y bivariados. Para ello, el paquete cuenta con la función
 obtener tanto resultados en valores absolutos como porcentuales, como
 así también contar con la posibilidad de extrapolar los datos según el
 factor de ponderación correspondiente:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/calculate_tabulates.html">calculate_tabulates</a></span><span class="op">(</span>base <span class="op">=</span> <span class="va">ind_3_18</span>, </span>
 <span>                    x <span class="op">=</span> <span class="st">'NIVEL_ED'</span>, </span>
 <span>                    y <span class="op">=</span> <span class="st">'CH04'</span>, </span>
@@ -226,31 +189,8 @@ factor de ponderación correspondiente:</p>
 <span><span class="co">#&gt;                   Superior universitaria completa  10.4  14.6</span></span>
 <span><span class="co">#&gt;                                   Sin instruccion   9.6   8.0</span></span>
 <span><span class="co">#&gt;                                             Total 100.0 100.0</span></span></code></pre></div>
-<p>Los argumentos principales de la función son:</p>
-<ul>
-<li>
-<code>base</code>: un data.frame</li>
-<li>
-<code>x</code>: string con el nombre de la variable a tabular</li>
-<li>
-<code>y</code>: otro string (opcional) con el nombre de una segunda
-variable, para una tabla de doble entrada. Tiene que ser de igual largo
-que <code>x</code>
-</li>
-<li>
-<code>weights</code>: string con el nombre de la variable que
-contiene los pesos</li>
-<li>
-<code>add.totals</code>: agrega maginales por fila
-(<code>row</code>), columnas (<code>col</code>) o ambas
-(<code>both</code>)</li>
-<li>
-<code>add.percentage</code>: calcula porcentajes por fila
-(<code>row</code>), columnas (<code>col</code>) o ambas
-(<code>both</code>)</li>
-</ul>
 <p>Así, si quisiéramos la misma tabla sin ponderar:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/calculate_tabulates.html">calculate_tabulates</a></span><span class="op">(</span>base <span class="op">=</span> <span class="va">ind_3_18</span>, </span>
 <span>                    x <span class="op">=</span> <span class="st">'NIVEL_ED'</span>, </span>
 <span>                    y <span class="op">=</span> <span class="st">'CH04'</span>,</span>
@@ -279,7 +219,7 @@ generarse, para las bases individuales en <code>eph</code> con la
 función <code><a href="../reference/organize_panels.html">organize_panels()</a></code>. Para ello es necesario contar
 previamente con las múltiples bases de datos que se deseen poolear, y
 armar un objeto de tipo lista que las contenga.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">### Armo vector con el nombre de las variables de interés</span></span>
 <span><span class="va">variables</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'CODUSU'</span>,<span class="st">'NRO_HOGAR'</span>,<span class="st">'COMPONENTE'</span>,<span class="st">'ANO4'</span>,</span>
 <span>               <span class="st">'TRIMESTRE'</span>,<span class="st">'CH04'</span>, <span class="st">'CH06'</span>, <span class="co">#variables necesarias para hacer el panel</span></span>
@@ -297,24 +237,11 @@ armar un objeto de tipo lista que las contenga.</p>
 <span><span class="va">pool</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/organize_panels.html">organize_panels</a></span><span class="op">(</span>bases <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">base_2018t1</span>, <span class="va">base_2018t2</span><span class="op">)</span>, </span>
 <span>                        variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'ESTADO'</span>,<span class="st">'PONDERA'</span><span class="op">)</span>,</span>
 <span>                        window <span class="op">=</span> <span class="st">'trimestral'</span><span class="op">)</span></span></code></pre></div>
-<p>Los argumentos principales de la función
-<code>organize_panels</code>son:</p>
-<ul>
-<li>
-<code>bases</code>: una lista con las bases de datos a poolear</li>
-<li>
-<code>variables</code>: string con los nombres de las variables de
-interés</li>
-<li>
-<code>window</code>: un string que indique la ventana de distancia
-de las observaciones (<code>anual</code>) o
-(<code>trimestral</code>)</li>
-</ul>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pool</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 25,411 × 17</span></span></span>
 <span><span class="co">#&gt;    CODUSU       NRO_H…¹ COMPO…²  ANO4 TRIME…³  CH04  CH06 ESTADO PONDERA Periodo</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;yearq&gt;</span></span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;yearq&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> TQRMNORUTHM…       1       1  <span style="text-decoration: underline;">2</span>018       1     2    67      3    <span style="text-decoration: underline;">1</span>008 2018 Q1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> TQRMNORUTHM…       1       2  <span style="text-decoration: underline;">2</span>018       1     1    81      1    <span style="text-decoration: underline;">1</span>008 2018 Q1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> TQRMNORUTHM…       1       3  <span style="text-decoration: underline;">2</span>018       1     2    22      2    <span style="text-decoration: underline;">1</span>008 2018 Q1</span></span>
@@ -336,12 +263,12 @@ de tiempo. En el período inicial las mismas conservan su nombre, y en el
 siguiente (año o trimestre) aparecen renombradas con el agregado del
 string <code>_t1</code>.</p>
 <p>El trabajo que realiza la función es concatenar todas las bases
-espeficadas en el argumento <code>list=</code> y hacer un
-<code>join</code>, conservando sólo aquellos individuos encuestados en
-los diferentes trimestres. La columna <code>consistencia</code> evalúa
-si entre ambas observaciones un mismo individuo figura con distinto sexo
-o con una diferencia absoluta de 2 años de edad.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+espeficadas y hacer un <code>join</code>, conservando sólo aquellos
+individuos encuestados en los diferentes trimestres. La columna
+<code>consistencia</code> evalúa si entre ambas observaciones un mismo
+individuo figura con distinto sexo o con una diferencia absoluta de 2
+años de edad.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pool</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/organize_labels.html">organize_labels</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/calculate_tabulates.html">calculate_tabulates</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">'ESTADO'</span>, </span>
@@ -366,10 +293,9 @@ trimestre siguiente.</p>
 <h3 id="iterando-en-varias-bases">Iterando en varias bases<a class="anchor" aria-label="anchor" href="#iterando-en-varias-bases"></a>
 </h3>
 <p>Dado que levantar muchas bases al mismo tiempo puede superar el
-espacio disponible en memoria, es posible utilizar el parametro
-<code>vars</code> para hacer una selección de variables al mismo tiempo
-que se levantan las bases.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+espacio disponible en memoria, es posible hacer una selección de
+variables al mismo tiempo que se levantan las bases:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_microdata.html">get_microdata</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2017</span><span class="op">:</span><span class="fl">2019</span>, </span>
 <span>                    trimester <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,</span>
 <span>                    type <span class="op">=</span> <span class="st">'individual'</span>,</span>
@@ -380,16 +306,16 @@ que se levantan las bases.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 5</span></span></span>
 <span><span class="co">#&gt;    ANO4 TRIMESTRE PONDERA ESTADO CAT_OCUP</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  <span style="text-decoration: underline;">2</span>017         4     230      3        0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>  <span style="text-decoration: underline;">2</span>018         1     267      3        0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>  <span style="text-decoration: underline;">2</span>019         1     138      3        0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>  <span style="text-decoration: underline;">2</span>019         2     280      3        0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>  <span style="text-decoration: underline;">2</span>017         1     103      3        0</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  <span style="text-decoration: underline;">2</span>019         4     155      3        0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>  <span style="text-decoration: underline;">2</span>018         2     588      1        2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>  <span style="text-decoration: underline;">2</span>017         4     138      1        3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>  <span style="text-decoration: underline;">2</span>017         2     325      3        0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>  <span style="text-decoration: underline;">2</span>019         3     107      1        3</span></span></code></pre></div>
 <p>Con estos datos podemos crear por ejemplo la serie de
 asalarización</p>
 <p><span class="math inline">\(SO_{t} = \frac{\sum_{i=1}^n
 w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}\)</span></p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ANO4</span>, <span class="va">TRIMESTRE</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>indicador <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">PONDERA</span><span class="op">[</span><span class="va">CAT_OCUP</span><span class="op">==</span><span class="fl">3</span> <span class="op">&amp;</span> <span class="va">ESTADO</span><span class="op">==</span><span class="fl">1</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">PONDERA</span><span class="op">[</span><span class="va">ESTADO</span><span class="op">==</span><span class="fl">1</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">)</span> </span>
@@ -397,22 +323,21 @@ w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}\)</span></p>
 <span><span class="co">#&gt; `.groups` argument.</span></span>
 <span></span>
 <span><span class="va">df</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 12 × 3</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 11 × 3</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># Groups:   ANO4 [3]</span></span></span>
 <span><span class="co">#&gt;     ANO4 TRIMESTRE indicador</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>  <span style="text-decoration: underline;">2</span>017         1     0.742</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  <span style="text-decoration: underline;">2</span>017         2     0.751</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  <span style="text-decoration: underline;">2</span>017         3     0.745</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  <span style="text-decoration: underline;">2</span>017         4     0.748</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  <span style="text-decoration: underline;">2</span>018         1     0.752</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  <span style="text-decoration: underline;">2</span>018         2     0.740</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  <span style="text-decoration: underline;">2</span>018         3     0.741</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">2</span>018         4     0.745</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">2</span>019         1     0.745</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  <span style="text-decoration: underline;">2</span>019         2     0.741</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>  <span style="text-decoration: underline;">2</span>019         3     0.726</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span>  <span style="text-decoration: underline;">2</span>019         4     0.726</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>  <span style="text-decoration: underline;">2</span>017         2     0.751</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  <span style="text-decoration: underline;">2</span>017         3     0.745</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  <span style="text-decoration: underline;">2</span>017         4     0.748</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  <span style="text-decoration: underline;">2</span>018         1     0.752</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  <span style="text-decoration: underline;">2</span>018         2     0.740</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  <span style="text-decoration: underline;">2</span>018         3     0.741</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  <span style="text-decoration: underline;">2</span>018         4     0.745</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">2</span>019         1     0.745</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">2</span>019         2     0.741</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  <span style="text-decoration: underline;">2</span>019         3     0.726</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>  <span style="text-decoration: underline;">2</span>019         4     0.726</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="cálculo-de-pobreza">Cálculo de pobreza:<a class="anchor" aria-label="anchor" href="#c%C3%A1lculo-de-pobreza"></a>
@@ -427,53 +352,64 @@ disponibles dichos datos, podrían calcular de forma automática los
 valores de pobreza e indigencia. Mostraremos un ejemplo de juguete con
 dos datasets de la CABA y sus respectivos valores de canastas.</p>
 <p>Existen dos funciones núcleo:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lineas</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_poverty_lines.html">get_poverty_lines</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">lineas</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 4</span></span></span>
-<span><span class="co">#&gt;   periodo               CBA   ICE   CBT</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2016-04-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>515.  2.42 <span style="text-decoration: underline;">3</span>664.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2016-05-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>561.  2.45 <span style="text-decoration: underline;">3</span>831.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2016-06-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>614.  2.44 <span style="text-decoration: underline;">3</span>943.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2016-07-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>666.  2.42 <span style="text-decoration: underline;">4</span>034.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2016-08-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>675.  2.41 <span style="text-decoration: underline;">4</span>042.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2016-09-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>711.  2.39 <span style="text-decoration: underline;">4</span>090.</span></span></code></pre></div>
+<span><span class="va">lineas</span> </span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 86 × 4</span></span></span>
+<span><span class="co">#&gt;    periodo               CBA   ICE   CBT</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2016-04-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>515.  2.42 <span style="text-decoration: underline;">3</span>664.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2016-05-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>561.  2.45 <span style="text-decoration: underline;">3</span>831.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2016-06-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>614.  2.44 <span style="text-decoration: underline;">3</span>943.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 2016-07-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>666.  2.42 <span style="text-decoration: underline;">4</span>034.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2016-08-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>675.  2.41 <span style="text-decoration: underline;">4</span>042.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2016-09-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>711.  2.39 <span style="text-decoration: underline;">4</span>090.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2016-10-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>739.  2.41 <span style="text-decoration: underline;">4</span>192.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2016-11-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>763.  2.41 <span style="text-decoration: underline;">4</span>248.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2016-12-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>767.  2.41 <span style="text-decoration: underline;">4</span>258.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2017-01-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>789.  2.41 <span style="text-decoration: underline;">4</span>312.</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 76 more rows</span></span></span></code></pre></div>
 <p>Esta función descarga los valores de las canastas alimentaria, básica
 (CBA y CBT) y la inversa del coeficiente de Engels… perdón, Engel (ICE)
 de <a href="https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149" class="external-link">la
 serie provista por INDEC</a>. Esta es la serie para GBA, y es la que
 publica regularmente INDEC.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lineas</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">ICE</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"CBA"</span>, <span class="st">"CBT"</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">"canasta"</span>, values_to <span class="op">=</span> <span class="st">"valor"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">periodo</span>, y<span class="op">=</span><span class="va">valor</span>, col<span class="op">=</span><span class="va">canasta</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="eph_files/figure-html/unnamed-chunk-14-1.png" width="672"></p>
+<p><img src="eph_files/figure-html/unnamed-chunk-13-1.png" width="672"></p>
 <p>Para el calculo de la Pobreza e Indigencia se utilizan canastas
 regionales, que sólo aparecen en los <a href="https://www.indec.gob.ar/uploads/informesdeprensa/eph_pobreza_01_19422F5FC20A.pdf" class="external-link">informes
 Técnicos</a>.</p>
 <p>A modo de ejemplo, en la librería <code>eph</code> se encuentra la
 base <code>canastas_reg_example</code> con la información necesaria para
 realizar el cálculo</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">canastas_reg_example</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 5</span></span></span>
-<span><span class="co">#&gt;   region  periodo   CBA   CBT codigo</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Cuyo    2016.3  <span style="text-decoration: underline;">1</span>509. <span style="text-decoration: underline;">3</span>872.     42</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Cuyo    2016.4  <span style="text-decoration: underline;">1</span>570. <span style="text-decoration: underline;">4</span>030.     42</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> GBA     2016.3  <span style="text-decoration: underline;">1</span>684. <span style="text-decoration: underline;">4</span>053.      1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> GBA     2016.4  <span style="text-decoration: underline;">1</span>756. <span style="text-decoration: underline;">4</span>232.      1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Noreste 2016.3  <span style="text-decoration: underline;">1</span>513. <span style="text-decoration: underline;">3</span>414.     41</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Noreste 2016.4  <span style="text-decoration: underline;">1</span>568. <span style="text-decoration: underline;">3</span>539.     41</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">canastas_reg_example</span> </span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 12 × 5</span></span></span>
+<span><span class="co">#&gt;    region    periodo   CBA   CBT codigo</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Cuyo      2016.3  <span style="text-decoration: underline;">1</span>509. <span style="text-decoration: underline;">3</span>872.     42</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Cuyo      2016.4  <span style="text-decoration: underline;">1</span>570. <span style="text-decoration: underline;">4</span>030.     42</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> GBA       2016.3  <span style="text-decoration: underline;">1</span>684. <span style="text-decoration: underline;">4</span>053.      1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> GBA       2016.4  <span style="text-decoration: underline;">1</span>756. <span style="text-decoration: underline;">4</span>232.      1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Noreste   2016.3  <span style="text-decoration: underline;">1</span>513. <span style="text-decoration: underline;">3</span>414.     41</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Noreste   2016.4  <span style="text-decoration: underline;">1</span>568. <span style="text-decoration: underline;">3</span>539.     41</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Noroeste  2016.3  <span style="text-decoration: underline;">1</span>472. <span style="text-decoration: underline;">3</span>292.     40</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Noroeste  2016.4  <span style="text-decoration: underline;">1</span>525. <span style="text-decoration: underline;">3</span>412.     40</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Pampeana  2016.3  <span style="text-decoration: underline;">1</span>676. <span style="text-decoration: underline;">4</span>034.     43</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Pampeana  2016.4  <span style="text-decoration: underline;">1</span>746. <span style="text-decoration: underline;">4</span>209.     43</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> Patagonia 2016.3  <span style="text-decoration: underline;">1</span>735. <span style="text-decoration: underline;">4</span>742.     44</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> Patagonia 2016.4  <span style="text-decoration: underline;">1</span>813. <span style="text-decoration: underline;">4</span>963.     44</span></span></code></pre></div>
 <p>A su vez, también se encuentra la tabla de
 <code>adulto_equivalente</code> que permite construir la cantidad de
 adultos equivalentes a nivel hogar, para multiplicar al mismo por la
 canasta regional correspondiente, a fin de definir la línea a nivel
 hogar.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">adulto_equivalente</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   CH04 CH06 adequi</span></span>
 <span><span class="co">#&gt; 1    1   -1   0.35</span></span>
@@ -485,7 +421,7 @@ hogar.</p>
 <p>La función <code>calculate_poverty</code> calcula la pertenencia a
 situaciones de pobreza e indigencia a nivel de los individuos siguiendo
 la metodología de línea:</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bases</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html" class="external-link">bind_rows</a></span><span class="op">(</span><span class="va">toybase_individual_2016_03</span>, <span class="va">toybase_individual_2016_04</span><span class="op">)</span></span>
 <span><span class="va">base_pobreza</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calculate_poverty.html">calculate_poverty</a></span><span class="op">(</span>base <span class="op">=</span> <span class="va">bases</span>, </span>
 <span>                                  basket <span class="op">=</span> <span class="va">canastas_reg_example</span>,</span>
@@ -496,23 +432,23 @@ la metodología de línea:</p>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  <span style="text-decoration: underline;">2</span>016         3       0.029<span style="text-decoration: underline;">6</span>          0.013<span style="text-decoration: underline;">6</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>  <span style="text-decoration: underline;">2</span>016         4       0.032<span style="text-decoration: underline;">4</span>          0.012<span style="text-decoration: underline;">2</span></span></span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">base_pobreza</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">CODUSU</span>, <span class="va">ITF</span>, <span class="va">region</span>, <span class="va">adequi_hogar</span>, <span class="va">CBA_hogar</span>, <span class="va">CBT_hogar</span>, <span class="va">situacion</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 7</span></span></span>
 <span><span class="co">#&gt;    CODUSU                          ITF region    adequ…¹ CBA_h…² CBT_h…³ situa…⁴</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> TQRMNOPRWHLMKNCDEFKID00470123     0 Pampeana     1      <span style="text-decoration: underline;">1</span>676.   <span style="text-decoration: underline;">4</span>034. <span style="color: #BB0000;">NA</span>     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> TQRMNOQVPHJMLRCDEHNHB00480093  <span style="text-decoration: underline;">4</span>000 Cuyo         0.67   <span style="text-decoration: underline;">1</span>011.   <span style="text-decoration: underline;">2</span>594. no_pob…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> TQRMNORWQHJMKNCDEOJAH00507686     0 Patagonia    0.83   <span style="text-decoration: underline;">1</span>505.   <span style="text-decoration: underline;">4</span>119. <span style="color: #BB0000;">NA</span>     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> TQRMNORRWHJMLTCDEGJBF00501008 <span style="text-decoration: underline;">36</span>000 Pampeana     1      <span style="text-decoration: underline;">1</span>746.   <span style="text-decoration: underline;">4</span>209. no_pob…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> TQRMNOSWQHLLLLCDEHPJB00503936 <span style="text-decoration: underline;">52</span>000 Noroeste     0.77   <span style="text-decoration: underline;">1</span>175.   <span style="text-decoration: underline;">2</span>627. no_pob…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> TQRMNOSSTHKKNMCDEIIAD00504606 <span style="text-decoration: underline;">12</span>300 GBA          0.77   <span style="text-decoration: underline;">1</span>352.   <span style="text-decoration: underline;">3</span>259. no_pob…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> TQRMNORSTHMNLPCDEFOCD00489522 <span style="text-decoration: underline;">10</span>600 Noreste      0.46    696.   <span style="text-decoration: underline;">1</span>570. no_pob…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> TQRMNOQVRHKLKTCDEGJBF00490436 <span style="text-decoration: underline;">72</span>000 Pampeana     0.67   <span style="text-decoration: underline;">1</span>170.   <span style="text-decoration: underline;">2</span>820. no_pob…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> TQRMNOQTRHMOLPCDEGOIH00491668     0 Noroeste     0.63    961.   <span style="text-decoration: underline;">2</span>149. <span style="color: #BB0000;">NA</span>     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> TQRMNORQYHMMKNCDEGGFB00489974 <span style="text-decoration: underline;">21</span>000 Cuyo         0.77   <span style="text-decoration: underline;">1</span>209.   <span style="text-decoration: underline;">3</span>103. no_pob…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> TQRMNOQXYHLOKNCDEGJBF00474687  <span style="text-decoration: underline;">9</span>000 Pampeana     0.77   <span style="text-decoration: underline;">1</span>291.   <span style="text-decoration: underline;">3</span>106. no_pob…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> TQRMNOPPRHJOMMCDEFIAH00498028  <span style="text-decoration: underline;">7</span>800 Pampeana     0.46    803.   <span style="text-decoration: underline;">1</span>936. no_pob…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> TQRMNOTPUHMOKTCDEGNFJ00491433 <span style="text-decoration: underline;">16</span>050 Patagonia    0.37    671.   <span style="text-decoration: underline;">1</span>836. no_pob…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> TQRMNOPRUHMOKRCDEGNFJ00491318 <span style="text-decoration: underline;">25</span>000 Patagonia    1.74   <span style="text-decoration: underline;">3</span>019.   <span style="text-decoration: underline;">8</span>252. no_pob…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> TQRMNOQYRHMOLMCDEFMDB00488866 <span style="text-decoration: underline;">15</span>000 Pampeana     1      <span style="text-decoration: underline;">1</span>746.   <span style="text-decoration: underline;">4</span>209. no_pob…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> TQRMNORVPHLKKUCDEIIAD00481768     0 GBA          0.85   <span style="text-decoration: underline;">1</span>432.   <span style="text-decoration: underline;">3</span>445. <span style="color: #BB0000;">NA</span>     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> TQRMNOPVYHLMQNCDEIJAH00495307 <span style="text-decoration: underline;">35</span>000 GBA          1      <span style="text-decoration: underline;">1</span>684.   <span style="text-decoration: underline;">4</span>053. no_pob…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> TQRMNOQUTHMOKUCDEIOAH00497416     0 Pampeana     0.76   <span style="text-decoration: underline;">1</span>274.   <span style="text-decoration: underline;">3</span>066. <span style="color: #BB0000;">NA</span>     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> TQRMNOQPVHKMROCDEIJAH00495457 <span style="text-decoration: underline;">10</span>000 GBA          1.5    <span style="text-decoration: underline;">2</span>634.   <span style="text-decoration: underline;">6</span>349. no_pob…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> TQRMNOQXSHMKMPCDEIIAD00494796     0 GBA          1.69   <span style="text-decoration: underline;">2</span>846.   <span style="text-decoration: underline;">6</span>850. <span style="color: #BB0000;">NA</span>     </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># … with abbreviated variable names ¹​adequi_hogar, ²​CBA_hogar, ³​CBT_hogar,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   ⁴​situacion</span></span></span></code></pre></div>
 </div>
@@ -538,7 +474,7 @@ publicadas<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Diego Kozlowski, Pablo Tiscornia, Guido Weksler, Natsumi Shokida, German Rosati, Carolina Pradier.</p>
+<p>Developed by <a href="https://github.com/DiegoKoz" class="external-link">Diego Kozlowski</a>, <a href="https://github.com/pablotis" class="external-link">Pablo Tiscornia</a>, <a href="https://github.com/Guidowe" class="external-link">Guido Weksler</a>, <a href="https://github.com/natsushok" class="external-link">Natsumi Shokida</a>, <a href="https://github.com/gefero" class="external-link">German Rosati</a>, <a href="https://github.com/caropradier" class="external-link">Carolina Pradier</a>.</p>
 </div>
 
 <div class="pkgdown">

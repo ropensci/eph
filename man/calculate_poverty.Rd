@@ -15,7 +15,7 @@ calculate_poverty(
 \arguments{
 \item{base}{Base individual de uno o mas periodos}
 
-\item{basket}{canasta basica alimentaria y total, con la estructura de la canasta de ejemplo (ver \code{\link{canastas_reg_example}})}
+\item{basket}{canasta basica alimentaria y total, con la estructura de la canasta de ejemplo (ver `canastas_reg_example`)}
 
 \item{print_summary}{default = TRUE. Opcion para imprimir las tasas de pobreza e indigencia (proporcion de individuos)}
 

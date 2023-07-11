@@ -102,8 +102,7 @@
   <div class="contents col-md-9">
 
 <div class="section level1">
-<div class="page-header"><h1 id="eph-">eph <a><img src="reference/figures/logo.png" align="right" height="250"></a>
-<a class="anchor" aria-label="anchor" href="#eph-"></a>
+<div class="page-header"><h1 id="eph-">eph <img src="reference/figures/logo.png" align="right" height="200" style="float:right; height:200px;"><a class="anchor" aria-label="anchor" href="#eph-"></a>
 </h1></div>
 <!-- badges: start -->
 
@@ -115,7 +114,8 @@
 <div class="section level2">
 <h2 id="descripción">Descripción<a class="anchor" aria-label="anchor" href="#descripci%C3%B3n"></a>
 </h2>
-<p>La librería <code>eph</code> tiene por objecto facilitar el trabajo de aquellos usuarios y usuarias de la <a href="https://www.indec.gob.ar/bases-de-datos.asp" class="external-link">Encuesta Permanente de Hogares - INDEC</a> que deseen procesar datos de la misma mediante el lenguaje de programación <a href="https://www.r-project.org/" class="external-link">R</a>.</p>
+<p>Si querés procesar datos de la <a href="https://www.indec.gob.ar/bases-de-datos.asp" class="external-link">Encuesta Permanente de Hogares - INDEC</a> mediante el lenguaje de programación <a href="https://www.r-project.org/" class="external-link">R</a>, la librería <code>eph</code> tiene por objeto facilitar tu trabajo.</p>
+<p>El paquete cumple un rol fundamental en la democratización de la posibilidad de procesar los datos publicados por INDEC y así obtener conclusiones independientes de aquellas publicadas en los informes elaborados por el organismo. Dado que la información de la EPH constituye una de las principales fuentes para el análisis de las problemáticas sociales presentes en Argentina, el paquete no sólo posibilita investigaciones académicas y periodísticas, sino que también contribuye a la formulación de políticas públicas fundamentadas en evidencia.</p>
 <p>Algunas de sus funciones son:</p>
 <ul>
 <li><p><strong><code><a href="reference/get_microdata.html">get_microdata()</a></code></strong>: Descarga las bases de microdatos,</p></li>
@@ -134,29 +134,14 @@
 </ul>
 </div>
 <div class="section level2">
-<h2 id="cómo-citar-este-paquete">Cómo citar este paquete<a class="anchor" aria-label="anchor" href="#c%C3%B3mo-citar-este-paquete"></a>
-</h2>
-<p>Podés citar este paquete como “se obtuvieron y/o normalizaron los datos de la Encuesta Permanente de Hogares (EPH-INDEC) utilizando el paquete de R ‘eph’ (Kozlowski et al, 2020)”.</p>
-<p>La referencia completa para incluir en la bibliografía es:</p>
-<pre><code>Diego Kozlowski, Pablo Tiscornia, Guido Weksler, German Rosati and Natsumi Shokida (2020). eph: Argentina's Permanent Household Survey Data and Manipulation Utilities. R package version https://doi.org/10.5281/zenodo.3462677</code></pre>
-<p>Si necesitás la entrada bib:</p>
-<pre class="{bib}"><code>@Manual{kozlowski2020,
-    title = {eph: Argentina's Permanent Household Survey Data and Manipulation Utilities},
-    author = {Diego Kozlowski and Pablo Tiscornia and Guido Weksler and German Rosati and Natsumi Shokida},
-    year = {2020},
-    doi = {10.5281/zenodo.3462677},
-    url = {https://holatam.github.io/eph/},
-  }</code></pre>
-</div>
-<div class="section level2">
 <h2 id="instalación">Instalación<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n"></a>
 </h2>
 <p>Para la versión estable</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'eph'</span><span class="op">)</span></span></code></pre></div>
 <p>Para la versión en desarrollo</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># install.packages('devtools') </span></span>
 <span><span class="co"># si no tiene instalado devtools</span></span>
@@ -167,7 +152,7 @@
 <h2 id="modo-de-uso">Modo de uso<a class="anchor" aria-label="anchor" href="#modo-de-uso"></a>
 </h2>
 <p>Ejemplo de descarga de microdatos</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Cargo la libreria</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/holatam/eph" class="external-link">eph</a></span><span class="op">)</span></span>
@@ -175,13 +160,46 @@
 <span><span class="va">base_individual</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_microdata.html">get_microdata</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2018</span><span class="op">:</span><span class="fl">2019</span>,   <span class="co"># especifco el año</span></span>
 <span>                                  trimester <span class="op">=</span> <span class="fl">1</span>,     <span class="co"># el trimestre</span></span>
 <span>                                  type<span class="op">=</span><span class="st">'individual'</span>, <span class="co"># y el tipo de base</span></span>
-<span>                                  vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'PONDERA'</span>,<span class="st">'ESTADO'</span>,<span class="st">'CAT_OCUP'</span><span class="op">)</span><span class="op">)</span> <span class="co"># opcionalmente, puedo especificar las variables que deseo utilizar.</span></span></code></pre></div>
+<span>                                  vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'PONDERA'</span>,<span class="st">'ESTADO'</span>,<span class="st">'CAT_OCUP'</span><span class="op">)</span><span class="op">)</span> <span class="co"># opcionalmente, puedo especificar las variables que deseo utilizar.</span></span>
+<span></span>
+<span><span class="va">base_individual</span></span>
+<span><span class="co">#&gt; # A tibble: 117,320 × 3</span></span>
+<span><span class="co">#&gt;    PONDERA ESTADO CAT_OCUP</span></span>
+<span><span class="co">#&gt;      &lt;int&gt;  &lt;int&gt;    &lt;int&gt;</span></span>
+<span><span class="co">#&gt;  1     684      4        0</span></span>
+<span><span class="co">#&gt;  2    1008      3        0</span></span>
+<span><span class="co">#&gt;  3    1008      1        1</span></span>
+<span><span class="co">#&gt;  4    1008      2        0</span></span>
+<span><span class="co">#&gt;  5     886      1        2</span></span>
+<span><span class="co">#&gt;  6     594      3        0</span></span>
+<span><span class="co">#&gt;  7     594      3        0</span></span>
+<span><span class="co">#&gt;  8     546      3        0</span></span>
+<span><span class="co">#&gt;  9     509      1        3</span></span>
+<span><span class="co">#&gt; 10     509      1        3</span></span>
+<span><span class="co">#&gt; # … with 117,310 more rows</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="cómo-citar-este-paquete">Cómo citar este paquete<a class="anchor" aria-label="anchor" href="#c%C3%B3mo-citar-este-paquete"></a>
+</h2>
+<p>Podés citar este paquete como “se obtuvieron y/o normalizaron los datos de la Encuesta Permanente de Hogares (EPH-INDEC) utilizando el paquete de R ‘eph’ (Kozlowski et al, 2020)”.</p>
+<p>La referencia completa para incluir en la bibliografía es:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>Diego Kozlowski, Pablo Tiscornia, Guido Weksler, German Rosati and Natsumi <span class="fu">Shokida</span> (<span class="dv">2020</span>). eph<span class="sc">:</span> Argentina<span class="st">'s Permanent Household Survey Data and Manipulation Utilities. R package version https://doi.org/10.5281/zenodo.3462677</span></span></code></pre></div>
+<p>Si necesitás la entrada bib:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bib"><code class="sourceCode bibtex"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="va">@Manual</span>{<span class="ot">kozlowski2020</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>    <span class="dt">title</span> = {eph: Argentina's Permanent Household Survey Data and Manipulation Utilities},</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>    <span class="dt">author</span> = {Diego Kozlowski and Pablo Tiscornia and Guido Weksler and German Rosati and Natsumi Shokida},</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>    <span class="dt">year</span> = {2020},</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>    <span class="dt">doi</span> = {10.5281/zenodo.3462677},</span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>    <span class="dt">url</span> = {https://holatam.github.io/eph/},</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>  }</span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">  </span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="aportes-de-la-comunidad">Aportes de la comunidad<a class="anchor" aria-label="anchor" href="#aportes-de-la-comunidad"></a>
 </h2>
 <p>Este paquete se propone incorporar cualquier función de propósitos generales que utilice como base los datos de la Encuesta Permanente de Hogares. Todos los aportes en este sentido son bienvenidos.</p>
-<p>Si trabajas con la EPH y querés agregar tu función, te recomendamos que leas el siguiente <a href="https://github.com/holatam/eph/issues/5#issue-407890587" class="external-link">issue</a> con consejos de como colaborar</p>
+<p>Si trabajas con la EPH y querés agregar tu función, te recomendamos que leas los siguientes <a href="https://github.com/holatam/eph/blob/master/docs/CONTRIBUTING.md" class="external-link">consejos</a> sobre cómo como colaborar</p>
 </div>
 </div>
 
@@ -216,12 +234,18 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Diego Kozlowski <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-5396-3471" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Pablo Tiscornia <br><small class="roles"> Author </small>  </li>
-<li>Guido Weksler <br><small class="roles"> Author </small>  </li>
-<li>Natsumi Shokida <br><small class="roles"> Author </small>  </li>
-<li>German Rosati <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-9775-0435" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Carolina Pradier <br><small class="roles"> Author, maintainer </small>  </li>
+<li>
+<a href="https://github.com/DiegoKoz" class="external-link">Diego Kozlowski</a> <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-5396-3471" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>
+<a href="https://github.com/pablotis" class="external-link">Pablo Tiscornia</a> <br><small class="roles"> Author </small>  </li>
+<li>
+<a href="https://github.com/Guidowe" class="external-link">Guido Weksler</a> <br><small class="roles"> Author </small>  </li>
+<li>
+<a href="https://github.com/natsushok" class="external-link">Natsumi Shokida</a> <br><small class="roles"> Author </small>  </li>
+<li>
+<a href="https://github.com/gefero" class="external-link">German Rosati</a> <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-9775-0435" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>
+<a href="https://github.com/caropradier" class="external-link">Carolina Pradier</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0009-0007-5058-6352" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
@@ -244,7 +268,7 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Diego Kozlowski, Pablo Tiscornia, Guido Weksler, Natsumi Shokida, German Rosati, Carolina Pradier.</p>
+<p>Developed by <a href="https://github.com/DiegoKoz" class="external-link">Diego Kozlowski</a>, <a href="https://github.com/pablotis" class="external-link">Pablo Tiscornia</a>, <a href="https://github.com/Guidowe" class="external-link">Guido Weksler</a>, <a href="https://github.com/natsushok" class="external-link">Natsumi Shokida</a>, <a href="https://github.com/gefero" class="external-link">German Rosati</a>, <a href="https://github.com/caropradier" class="external-link">Carolina Pradier</a>.</p>
 </div>
 
 <div class="pkgdown">

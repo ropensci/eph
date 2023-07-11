@@ -31,7 +31,10 @@ status](https://codecov.io/gh/holatam/eph/branch/master/graph/badge.svg)](https:
 # Caja de Herramientas para el procesamiento de la Encuesta Permanente de Hogares
 
 ## Descripción
-La librería `eph` tiene por objeto facilitar el trabajo de aquellos usuarios y usuarias de la [Encuesta Permanente de Hogares - INDEC](https://www.indec.gob.ar/bases-de-datos.asp) que deseen procesar datos de la misma mediante el lenguaje de programación [R](https://www.r-project.org/).
+
+Si querés procesar datos de la [Encuesta Permanente de Hogares - INDEC](https://www.indec.gob.ar/bases-de-datos.asp)  mediante el lenguaje de programación [R](https://www.r-project.org/), la librería `eph` tiene por objeto facilitar tu trabajo.
+
+El paquete cumple un rol fundamental en la democratización de la posibilidad de procesar los datos publicados por INDEC y así obtener conclusiones independientes de aquellas publicadas en los informes elaborados por el organismo. Dado que la información de la EPH constituye una de las principales fuentes para el análisis de las problemáticas sociales presentes en Argentina, el paquete no sólo posibilita investigaciones académicas y periodísticas, sino que también contribuye a la formulación de políticas públicas fundamentadas en evidencia.
 
 
 Algunas de sus funciones son:

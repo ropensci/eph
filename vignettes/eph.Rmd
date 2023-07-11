@@ -1,7 +1,7 @@
 ---
 title: "Ejemplo de uso del paquete `eph`"
 author: 
-  - Diego Kozlowski, Pablo Tiscornia, Guido Weksler, Germán Rosati, Natsumi Shokida y  Carolina Pradier
+  - Diego Kozlowski, Pablo Tiscornia, Guido Weksler, Germán Rosati, Natsumi Shokida y Carolina Pradier
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -72,7 +72,7 @@ Descarguemos y etiquetemos la base de hogares del 3 trimestre de 2018. Podemos h
 
 ```{r}
 hog_3_18 <- get_microdata(year = 2018, 
-                          period = 3, 
+                          trimester = 3, 
                           type='hogar') %>%
   organize_labels(., 
                   type = 'hogar')
@@ -116,11 +116,11 @@ variables <- c('CODUSU','NRO_HOGAR','COMPONENTE','ANO4',
                'ESTADO','PONDERA') #variables que nos interesan en nuestro análisis
   
 ### Descargo la base individual para el 2018_t1
-base_2018t1 <- get_microdata(year = 2018,  period = 1,  type = 'individual', 
+base_2018t1 <- get_microdata(year = 2018,  trimester = 1,  type = 'individual', 
                        vars = variables) 
 
 ### Descargo la base individual para el 2018_t2
-base_2018t2 <- get_microdata(year = 2018,  period = 2,  type = 'individual', 
+base_2018t2 <- get_microdata(year = 2018,  trimester = 2,  type = 'individual', 
                        vars = variables) 
 
 ### Armo el panel
@@ -157,7 +157,7 @@ Dado que levantar muchas bases al mismo tiempo puede superar el espacio disponib
 
 ```{r message=FALSE, warning=FALSE}
 df <- get_microdata(year = 2017:2019, 
-                    period = 1:4,
+                    trimester = 1:4,
                     type = 'individual',
                     vars = c('ANO4', 'TRIMESTRE', 'PONDERA','ESTADO','CAT_OCUP'))
 
@@ -215,7 +215,7 @@ canastas_reg_example
 A su vez, también se encuentra la tabla de `adulto_equivalente` que permite construir la cantidad de adultos equivalentes a nivel hogar, para multiplicar al mismo por la canasta regional correspondiente, a fin de definir la línea a nivel hogar.
 
 ```{r}
-adulto_equivalente 
+adulto_equivalente %>% head()
 ```
 
 

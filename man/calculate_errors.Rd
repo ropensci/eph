@@ -32,7 +32,7 @@ Devuelve la estimacion de un total poblacional agregando el desvio estandar o el
 Asigna a una estimación de un total poblacional el desvío estándar o el coeficiente de variación
 correspondiente según las tablas de error muestral de INDEC para EPH continua
  a partir del segundo trimestre 2003.
-(Ver \code{\link{errores_muestrales}})
+(Ver `errores_muestrales`)
 }
 \details{
 disclaimer: El script no es un producto oficial de INDEC.
