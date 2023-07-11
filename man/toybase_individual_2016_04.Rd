@@ -5,7 +5,7 @@
 \alias{toybase_individual_2016_04}
 \title{Seleccion aleatoria de casos de la base 2016 trimestre 4 para la base individual}
 \format{
-A data frame with 2000 rows and 177 variables
+Un data frame con 2000 filas y 177 variables
 
 \describe{
 \item{CODUSU}{'Codigo para distinguir VIVIENDAS, permite aparearlas con Hogares y Personas. Ademas permite hacer el seguimiento a traves de los trimestres'}

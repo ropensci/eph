@@ -5,7 +5,7 @@
 \alias{canastas_reg_example}
 \title{Canastas Basicas Alimentarias y Canastas Basicas Totales segun region y trimestre}
 \format{
-A data frame with 12 rows and 5 variables
+Un data frame con 12 filas y 5 variables
 
 \describe{
 \item{region}{Nombre de region}

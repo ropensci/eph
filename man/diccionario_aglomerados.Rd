@@ -5,7 +5,7 @@
 \alias{diccionario_aglomerados}
 \title{Diccionario de aglomerados segun diseño de registro de la EPH}
 \format{
-A data frame with 32 rows and 2 variables
+Un data frame con 32 filas y 2 variables
 
 \describe{
 \item{codigo}{Codigo de aglomerado}

@@ -5,7 +5,7 @@
 \alias{CNO}
 \title{Categorias de las 4 dimensiones del Clasificador Nacional de Ocupaciones 2001.}
 \format{
-A data frame with 63 rows and 4 variables
+Un data frame con 63 filas y 4 variables
 
 \describe{
 \item{digit}{digito para identificar la dimension del CNO}

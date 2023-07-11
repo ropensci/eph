@@ -21,7 +21,7 @@ Permite armar un pool de datos en panel de la EPH continua a partir
 de especificar una serie consecutiva de bases, variables y el largo de la ventana -window- de observación
 }
 \details{
-Disclaimer: El script no es un producto oficial de INDEC.
+disclaimer: El script no es un producto oficial de INDEC.
 }
 \examples{
 

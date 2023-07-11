@@ -5,7 +5,7 @@
 \alias{centroides_aglomerados}
 \title{Tabla de centroides de los aglomerados}
 \format{
-A data frame with 32 rows and 4 variables:
+Un data frame con 32 filas y 4 variables:
 \describe{
 \item{AGLOMERADO}{(Factor) Codigo de aglomerado EPH}
 \item{nombre_aglomerado}{(Factor) Nombre del aglomerado EPH}

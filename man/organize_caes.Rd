@@ -21,7 +21,7 @@ Funcion para clasificar las actividades economicas segun el
 \details{
 disclaimer: El script no es un producto oficial de INDEC.
 
-El usuario debe contemplar los cambios en la codificacion y categorias de las distintas versiones del clasificador CAES, para la elaboracion de series de largo plazo.
+No olvides contemplar los cambios en la codificacion y categorias de las distintas versiones del clasificador CAES para la elaboracion de series de largo plazo.
 }
 \examples{
 bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)
