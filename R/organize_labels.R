@@ -6,7 +6,7 @@
 #'@return Devuelve la base con sus variables etiquetadas
 #'
 #'@details
-#'Disclaimer: El script no es un producto oficial de INDEC.
+#'disclaimer: El script no es un producto oficial de INDEC.
 #'@examples
 #'df <- organize_labels(toybase_individual_2016_04, type='individual')
 #'@export

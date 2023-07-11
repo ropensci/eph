@@ -10,7 +10,7 @@
 #'
 #'@details disclaimer: El script no es un producto oficial de INDEC.
 #'
-#'El usuario debe contemplar los cambios en la codificacion y categorias de las distintas versiones del clasificador CAES, para la elaboracion de series de largo plazo.
+#'No olvides contemplar los cambios en la codificacion y categorias de las distintas versiones del clasificador CAES para la elaboracion de series de largo plazo.
 #' @export
 #'
 #' @examples

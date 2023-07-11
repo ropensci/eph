@@ -6,9 +6,10 @@
 #'
 #'@return Devuelve la base con 4 columnas nuevas (ver `CNO`)
 #'
-#'@details  Disclaimer: El script no es un producto oficial de INDEC.
+#'@details
+#'Importante: Verificar que el clasificador CNO 2001 sea compatible con la base que estés utilizando.
 #'
-#'Importante: El usuario debe garantizarse que el clasificador CNO 2001 es compatible con la base que esta utilizando
+#'disclaimer: El script no es un producto oficial de INDEC.
 #'
 #'@examples
 #'

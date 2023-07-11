@@ -1,6 +1,6 @@
 #'Tabla de valores de adulto equivalente segun sexo y edad
 #'
-#' @format A data frame with 222 rows and 3 variables
+#' @format Un data frame con 222 filas y 3 variables
 #'
 #'\describe{
 #' \item{CH04}{sexo}

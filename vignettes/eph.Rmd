@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-El paquete `eph` tiene como objetivo facilitar el trabajo de les usuaries que trabajen con los microdatos de la Encuesta Permanente de Hogares. Este tutorial busca ejemplificar un pipeline de trabajo más o menos típico para mostrar el uso de las funciones del paquete.
+El paquete `eph` tiene como objetivo facilitar el trabajo con los microdatos de la Encuesta Permanente de Hogares. Este tutorial busca ejemplificar un pipeline de trabajo más o menos típico para mostrar el uso de las funciones del paquete.
 
 ## Instalación
 

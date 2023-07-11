@@ -8,7 +8,7 @@
 #'@return Devuelve una tabla con la CBA y CBT a partir de abril 2016
 #'
 #'@details
-#'Disclaimer: El script no es un producto oficial de INDEC.
+#'disclaimer: El script no es un producto oficial de INDEC.
 #'
 #'@examples
 #'

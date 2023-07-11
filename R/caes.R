@@ -5,16 +5,16 @@
 #'              https://www.indec.gob.ar/ftp/cuadros/menusuperior/clasificadores/caes_v2018.xls,
 #'              obtenidos de
 #'              https://www.indec.gob.ar/indec/web/Institucional-Indec-Clasificadores
-#' @format A data frame with 140 rows and 8 variables:
+#' @format Un data frame con 140 filas y 8 variables:
 #' \describe{
-#'   \item{caes_version}{(character) Version del CAES utilizada}
-#'   \item{PP04B_COD}{(character) Codigo clase CAES. 4 digitos (nivel 3) Variable que aparece en microdatos EPH}
-#'   \item{PP04B_label}{(character) Etiqueta clase CAES}
-#'   \item{caes_seccion_cod}{(character) Codigo seccion CAES. 2 digitos (nivel 2)}
-#'   \item{caes_seccion_label}{(character) Etiqueta seccion CAES}
-#'   \item{caes_division_cod}{(character) Codigo division CAES. Letra (nivel 1)}
-#'   \item{caes_division_label}{(character) Etiqueta division CAES}
-#'   \item{caes_eph_cod}{(character) Codigo reagrupamiento de CAES utilizado por EPH (nivel 1)}
-#'   \item{caes_eph_label}{(factor) Etiqueta reagrupamiento de CAES utilizado por EPH (nivel 1)}
+#'   * `caes_version`{character ---Version del CAES utilizada---}
+#'   * `PP04B_COD`{character ---Codigo clase CAES. 4 digitos (nivel 3) Variable que aparece en microdatos EPH---}
+#'   * `PP04B_label`{character ---Etiqueta clase CAES---}
+#'   * `caes_seccion_cod`{character ---Codigo seccion CAES. 2 digitos (nivel 2)---}
+#'   * `caes_seccion_label`{character ---Etiqueta seccion CAES---}
+#'   * `caes_division_cod`{character ---Codigo division CAES. Letra (nivel 1)---}
+#'   * `caes_division_label`{character ---Etiqueta division CAES---}
+#'   * `caes_eph_cod`{character ---Codigo reagrupamiento de CAES utilizado por EPH (nivel 1)---}
+#'   * `caes_eph_label`{factor ---Etiqueta reagrupamiento de CAES utilizado por EPH (nivel 1)---}
 #'}
 "caes"

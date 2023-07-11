@@ -2,7 +2,7 @@
 #'
 #'Esta base tiene el formato necesario para el calculo de pobreza
 #'
-#' @format  A data frame with 12 rows and 5 variables
+#' @format  Un data frame con 12 filas y 5 variables
 #'
 #'\describe{
 #' \item{region}{Nombre de region}

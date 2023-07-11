@@ -16,25 +16,25 @@
 #'@examples
 #'
 #'
-#'### tabla simple ###
+#'### Tabla simple ###
 #'
 #'calculate_tabulates(base = toybase_individual_2016_04,
 #'                     x = 'REGION', y = 'CH04',
 #'                     weights = 'PONDERA')
 #'
-#'### para ver los totales por fila ###
+#'### Totales por fila ###
 #'
 #'calculate_tabulates(base = toybase_individual_2016_04,
 #'                     x = 'REGION', y = 'CH04',
 #'                     weights = 'PONDERA', add.totals = 'row')
 #'
-#'### para ver los totales por columna ###
+#'### Totales por columna ###
 #'
 #'calculate_tabulates(base = toybase_individual_2016_04,
 #'                     x = 'REGION', y = 'CH04',
 #'                     weights = 'PONDERA', add.totals = 'col')
 #'
-#'### para ver porcentajes por fila ###
+#'### Porcentajes por fila ###
 #'
 #'calculate_tabulates(base = toybase_individual_2016_04,
 #'                     x = 'REGION', y = 'CH04',
