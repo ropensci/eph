@@ -1,10 +1,10 @@
-#'Diccionario de aglomerados segun diseño de registro de la EPH
+#' Diccionario de aglomerados segun diseño de registro de la EPH
 #'
 #' @format  Un data frame con 32 filas y 2 variables
 #'
-#'\describe{
+#' \describe{
 #' \item{codigo}{Codigo de aglomerado}
 #' \item{aglo}{Nombre del aglomerado}
 #'
-#'}
+#' }
 "diccionario_aglomerados"

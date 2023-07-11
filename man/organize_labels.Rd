@@ -21,5 +21,5 @@ Funcion para etiquetar las bases de la Encuesta Permanente de Hogares.
 disclaimer: El script no es un producto oficial de INDEC.
 }
 \examples{
-df <- organize_labels(toybase_individual_2016_04, type='individual')
+df <- organize_labels(toybase_individual_2016_04, type = "individual")
 }

@@ -35,13 +35,17 @@ disclaimer: El script no es un producto oficial de INDEC.
 }
 \examples{
 
-bases <- dplyr::bind_rows(toybase_individual_2016_03,
-                         toybase_individual_2016_04)
+bases <- dplyr::bind_rows(
+  toybase_individual_2016_03,
+  toybase_individual_2016_04
+)
 
-base_pobreza <- calculate_poverty(base = bases,
-                                 basket = canastas_reg_example,
-                                 print_summary=TRUE,
-                                 group_vars = c(CH04,NIVEL_ED),
-                                 window = "semestral")
+base_pobreza <- calculate_poverty(
+  base = bases,
+  basket = canastas_reg_example,
+  print_summary = TRUE,
+  group_vars = c(CH04, NIVEL_ED),
+  window = "semestral"
+)
 
 }

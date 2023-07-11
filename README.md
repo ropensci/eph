@@ -67,15 +67,13 @@ EPH. Algunos de estos son:
 Para la versión estable
 
 ``` r
-
-install.packages('eph')
+install.packages("eph")
 ```
 
 Para la versión en desarrollo
 
 ``` r
-
-# install.packages('devtools') 
+# install.packages('devtools')
 # si no tiene instalado devtools
 
 devtools::install_github("holatam/eph")
@@ -86,14 +84,15 @@ devtools::install_github("holatam/eph")
 Ejemplo de descarga de microdatos
 
 ``` r
-
 # Cargo la libreria
 library(eph)
 
-base_individual <- get_microdata(year = 2018:2019,   # especifco el año
-                                  trimester = 1,     # el trimestre
-                                  type='individual', # y el tipo de base
-                                  vars = c('PONDERA','ESTADO','CAT_OCUP')) # opcionalmente, puedo especificar las variables que deseo utilizar.
+base_individual <- get_microdata(
+  year = 2018:2019, # especifco el año
+  trimester = 1, # el trimestre
+  type = "individual", # y el tipo de base
+  vars = c("PONDERA", "ESTADO", "CAT_OCUP")
+) # opcionalmente, puedo especificar las variables que deseo utilizar.
 
 base_individual
 #> # A tibble: 117,320 × 3

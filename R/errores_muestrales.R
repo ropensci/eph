@@ -13,6 +13,6 @@
 #'   * `x`{double ---Estimación de población para la cual se desea conocer el error muestral---}
 #'   *`ds`{double ---Desvío Estándar correspondiente a la estimación de población en el aglomerado---}
 #'   * `cv`{double ---Coeficiente de Variación correspondiente a la estimación de población en el aglomerado---}
-#'}
+#' }
 
 "errores_muestrales"

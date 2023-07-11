@@ -3,26 +3,26 @@ context("test-get_microdata")
 test_that("EPH puntual", {
   skip_if_offline()
   skip_on_cran()
-  df <- get_microdata(year = 1996, period = 1, vars = c('CODUSU','AGLOMERADO','IPCF'))
+  df <- get_microdata(year = 1996, period = 1, vars = c("CODUSU", "AGLOMERADO", "IPCF"))
   dimensiones <- dim(df)
-  expect_equal(dimensiones, c(113209,3))
+  expect_equal(dimensiones, c(113209, 3))
 })
 
 
 test_that("EPH continua", {
   skip_if_offline()
   skip_on_cran()
-  expect_warning(df <- get_microdata(year = 2015, period = 2,vars =  c('PONDERA','ESTADO','CAT_OCUP')))
+  expect_warning(df <- get_microdata(year = 2015, period = 2, vars = c("PONDERA", "ESTADO", "CAT_OCUP")))
   dimensiones <- dim(df)
-  expect_equal(dimensiones, c(60028,3))
+  expect_equal(dimensiones, c(60028, 3))
 })
 
 
 test_that("Sin data", {
   skip_if_offline()
   expect_warning(df <- get_microdata(year = 2015, period = 4))
-  expect_length(df,0)
-  })
+  expect_length(df, 0)
+})
 
 # test_that("muchas bases", {
 #   skip_if_offline()

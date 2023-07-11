@@ -16,5 +16,5 @@
 #'   * `caes_division_label`{character ---Etiqueta division CAES---}
 #'   * `caes_eph_cod`{character ---Codigo reagrupamiento de CAES utilizado por EPH (nivel 1)---}
 #'   * `caes_eph_label`{factor ---Etiqueta reagrupamiento de CAES utilizado por EPH (nivel 1)---}
-#'}
+#' }
 "caes"

@@ -43,26 +43,34 @@ Funcion para crear tabulados uni o bivariados con ponderacion, totales parciales
 
 ### Tabla simple ###
 
-calculate_tabulates(base = toybase_individual_2016_04,
-                    x = 'REGION', y = 'CH04',
-                    weights = 'PONDERA')
+calculate_tabulates(
+  base = toybase_individual_2016_04,
+  x = "REGION", y = "CH04",
+  weights = "PONDERA"
+)
 
 ### Totales por fila ###
 
-calculate_tabulates(base = toybase_individual_2016_04,
-                    x = 'REGION', y = 'CH04',
-                    weights = 'PONDERA', add.totals = 'row')
+calculate_tabulates(
+  base = toybase_individual_2016_04,
+  x = "REGION", y = "CH04",
+  weights = "PONDERA", add.totals = "row"
+)
 
 ### Totales por columna ###
 
-calculate_tabulates(base = toybase_individual_2016_04,
-                    x = 'REGION', y = 'CH04',
-                    weights = 'PONDERA', add.totals = 'col')
+calculate_tabulates(
+  base = toybase_individual_2016_04,
+  x = "REGION", y = "CH04",
+  weights = "PONDERA", add.totals = "col"
+)
 
 ### Porcentajes por fila ###
 
-calculate_tabulates(base = toybase_individual_2016_04,
-                    x = 'REGION', y = 'CH04',
-                    weights = 'PONDERA', add.percentage ='row')
+calculate_tabulates(
+  base = toybase_individual_2016_04,
+  x = "REGION", y = "CH04",
+  weights = "PONDERA", add.percentage = "row"
+)
 
 }

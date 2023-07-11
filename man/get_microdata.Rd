@@ -43,10 +43,11 @@ disclaimer: El script no es un producto oficial de INDEC.
 }
 \examples{
 
-base_individual <- get_microdata(year = 2018:2019,
-                                 period = 1,
-                                 type='individual',
-                                 vars = c('PONDERA','ESTADO','CAT_OCUP'))
-
+base_individual <- get_microdata(
+  year = 2018:2019,
+  period = 1,
+  type = "individual",
+  vars = c("PONDERA", "ESTADO", "CAT_OCUP")
+)
 
 }

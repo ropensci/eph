@@ -24,7 +24,7 @@ disclaimer: El script no es un producto oficial de INDEC.
 No olvides contemplar los cambios en la codificacion y categorias de las distintas versiones del clasificador CAES para la elaboracion de series de largo plazo.
 }
 \examples{
-bases <- dplyr::bind_rows(toybase_individual_2016_03,toybase_individual_2016_04)
+bases <- dplyr::bind_rows(toybase_individual_2016_03, toybase_individual_2016_04)
 organize_caes(base = bases)
 
 }

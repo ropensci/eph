@@ -25,8 +25,10 @@ disclaimer: El script no es un producto oficial de INDEC.
 }
 \examples{
 
-lista_bases <- list(toybase_individual_2016_03,toybase_individual_2016_04)
-pool_trimestral <- organize_panels(bases = lista_bases,
-                    variables =c("P21","ESTADO"),
-                    window = "trimestral")
+lista_bases <- list(toybase_individual_2016_03, toybase_individual_2016_04)
+pool_trimestral <- organize_panels(
+  bases = lista_bases,
+  variables = c("P21", "ESTADO"),
+  window = "trimestral"
+)
 }

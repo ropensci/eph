@@ -12,5 +12,5 @@ test_that("test regiones", {
   skip_if_offline()
   canasta <- get_poverty_lines(regional = TRUE)
   expect_equal(canasta$CBA[1], 1224.64)
-  expect_equal(unique(canasta$region), c( "Cuyo" , "GBA", "Noreste", "Noroeste", "Pampeana", "Patagonia"))
+  expect_equal(unique(canasta$region), c("Cuyo", "GBA", "Noreste", "Noroeste", "Pampeana", "Patagonia"))
 })

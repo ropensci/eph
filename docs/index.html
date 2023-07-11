@@ -138,12 +138,10 @@
 </h2>
 <p>Para la versión estable</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'eph'</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"eph"</span><span class="op">)</span></span></code></pre></div>
 <p>Para la versión en desarrollo</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># install.packages('devtools') </span></span>
+<code class="sourceCode R"><span><span class="co"># install.packages('devtools')</span></span>
 <span><span class="co"># si no tiene instalado devtools</span></span>
 <span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"holatam/eph"</span><span class="op">)</span></span></code></pre></div>
@@ -153,14 +151,15 @@
 </h2>
 <p>Ejemplo de descarga de microdatos</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># Cargo la libreria</span></span>
+<code class="sourceCode R"><span><span class="co"># Cargo la libreria</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/holatam/eph" class="external-link">eph</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">base_individual</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_microdata.html">get_microdata</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2018</span><span class="op">:</span><span class="fl">2019</span>,   <span class="co"># especifco el año</span></span>
-<span>                                  trimester <span class="op">=</span> <span class="fl">1</span>,     <span class="co"># el trimestre</span></span>
-<span>                                  type<span class="op">=</span><span class="st">'individual'</span>, <span class="co"># y el tipo de base</span></span>
-<span>                                  vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'PONDERA'</span>,<span class="st">'ESTADO'</span>,<span class="st">'CAT_OCUP'</span><span class="op">)</span><span class="op">)</span> <span class="co"># opcionalmente, puedo especificar las variables que deseo utilizar.</span></span>
+<span><span class="va">base_individual</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_microdata.html">get_microdata</a></span><span class="op">(</span></span>
+<span>  year <span class="op">=</span> <span class="fl">2018</span><span class="op">:</span><span class="fl">2019</span>, <span class="co"># especifco el año</span></span>
+<span>  trimester <span class="op">=</span> <span class="fl">1</span>, <span class="co"># el trimestre</span></span>
+<span>  type <span class="op">=</span> <span class="st">"individual"</span>, <span class="co"># y el tipo de base</span></span>
+<span>  vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"PONDERA"</span>, <span class="st">"ESTADO"</span>, <span class="st">"CAT_OCUP"</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="co"># opcionalmente, puedo especificar las variables que deseo utilizar.</span></span>
 <span></span>
 <span><span class="va">base_individual</span></span>
 <span><span class="co">#&gt; # A tibble: 117,320 × 3</span></span>

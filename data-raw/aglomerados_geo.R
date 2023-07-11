@@ -1,16 +1,18 @@
 library(sf)
 library(tidyverse)
 
-aglos <- sf::st_read('../data/eph/georef/aglomerados_eph.json')
+aglos <- sf::st_read("../data/eph/georef/aglomerados_eph.json")
 # entidades <- sf::st_read('../data/eph/georef/entidades_eph.json')
 # radios <- sf::st_read('../data/eph/georef/radios_eph.json')
 
 
-centroides_aglomerados <-  aglos %>%
+centroides_aglomerados <- aglos %>%
   filter(!st_is_empty(geometry)) %>%
   group_by(eph_codagl) %>%
-  summarise(AGLOMERADO = as.integer(paste(unique(eph_codagl))),
-            nombre_aglomerado = unique(eph_aglome)[1]) %>%
+  summarise(
+    AGLOMERADO = as.integer(paste(unique(eph_codagl))),
+    nombre_aglomerado = unique(eph_aglome)[1]
+  ) %>%
   st_centroid() %>%
   select(AGLOMERADO, nombre_aglomerado, geometry)
 
@@ -18,14 +20,15 @@ centroides_aglomerados <-  aglos %>%
 #   geom_sf(data = centroides_aglomerados )
 
 
-centroides_aglomerados <- centroides_aglomerados %>% st_transform('+proj=longlat +datum=WGS84')
+centroides_aglomerados <- centroides_aglomerados %>% st_transform("+proj=longlat +datum=WGS84")
 
-#remove geometry because of incompatibility with dplyr 1.0
+# remove geometry because of incompatibility with dplyr 1.0
 centroides_aglomerados <- centroides_aglomerados %>%
   bind_cols(
-sf::st_coordinates(centroides_aglomerados) %>%
-  as_tibble() %>%
-  rename(lon=X, lat=Y)) %>%
+    sf::st_coordinates(centroides_aglomerados) %>%
+      as_tibble() %>%
+      rename(lon = X, lat = Y)
+  ) %>%
   as_tibble() %>%
   select(-geometry)
 
