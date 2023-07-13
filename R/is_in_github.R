@@ -22,7 +22,7 @@ is_in_github <- function(year = 2018,
     #   rvest::html_attr(name = "href" ) %>%
     #   stringr::str_match('.*RDS') %>%
     #   stats::na.omit()
-    # looking_for <-sprintf('/holatam/data/blob/master/eph/%s/base_%s_%sT%s.RDS',type,type,year,period)
+    # looking_for <-sprintf('/holatam/data/blob/master/eph/%s/base_%s_%sT%s.RDS',type,type,year,trimester)
     # result <- looking_for %in% filelist[,1]
 
     result <- tryCatch(
@@ -31,7 +31,7 @@ is_in_github <- function(year = 2018,
 
         filelist <- unlist(lapply(httr::content(req)$tree, "[", "path"), use.names = F)
 
-        looking_for <- sprintf("eph/%s/base_%s_%sT%s.RDS", type, type, year, period)
+        looking_for <- sprintf("eph/%s/base_%s_%sT%s.RDS", type, type, year, trimester)
 
         result <- looking_for %in% filelist
       },
