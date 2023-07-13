@@ -1,5 +1,5 @@
 # eph 0.6.1
-* fixed bug created by a change in INDEC's URL (old datasets are now directly downloaded from a stable github repo)
+* fixed bug in get_microdata() originated in a change in INDEC's URL (old datasets are now directly downloaded from a stable github repo)
 
 # eph 0.6.0
 * removed 'readr' and 'tidyverse'from Imports. readr was reclassified as a Suggest (because it was only used in a vignette) and tidyverse was replaced by the tidyverse packages actually required.
