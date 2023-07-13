@@ -13,3 +13,6 @@
 ^pkgdown$
 ^\.github$
 ^CRAN-SUBMISSION$
+tests/testthat/test-get_eahu.R
+tests/testthat/test-get_total_urbano.R
+tests/testthat/test-is_in_github.R
