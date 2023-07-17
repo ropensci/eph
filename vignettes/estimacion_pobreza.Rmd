@@ -17,12 +17,15 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r setup, eval=LOCAL,include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, results = "hide")
+```
 
 En esta vignette mostraremos como utilizar las funciones `get_poverty_lines()` y `calculate_poverty()` para calcular la pobreza aproximando la [metodología oficial](http://www.indec.gob.ar/ftp/cuadros/sociedad/EPH_metodologia_22_pobreza.pdf) de INDEC.
 
 Primero cargamos el paquete `eph` junto con otros paquetes que serán de utilidad
-```{r setup, eval=LOCAL}
-knitr::opts_chunk$set(warning = FALSE, message = FALSE, results = "hide")
+
+```{r results='hide',warning=FALSE}
 library(eph)
 library(dplyr)
 library(tidyr)

@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eph</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1</span>
       </span>
     </div>
 
@@ -85,16 +85,20 @@
 <dd><p>(string) aclaracion sobre si la base a etiquetar es de tipo 'individual' u 'hogar'</p></dd>
 
 </dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    
+
+<p>Devuelve la base con sus variables etiquetadas</p>
+    </div>
     <div id="details">
     <h2>Details</h2>
-    <p>Disclaimer: El script no es un producto oficial de INDEC.</p>
+    <p>disclaimer: El script no es un producto oficial de INDEC.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">organize_labels</span><span class="op">(</span><span class="va">toybase_individual_2016_04</span>, type<span class="op">=</span><span class="st">'individual'</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>You are trying to put value labels on factor. It can lead to unexpected results. Factor will be converted to character.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>You are trying to put value labels on factor. It can lead to unexpected results. Factor will be converted to character.</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">organize_labels</span><span class="op">(</span><span class="va">toybase_individual_2016_04</span>, type <span class="op">=</span> <span class="st">"individual"</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -105,7 +109,7 @@
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Diego Kozlowski, Pablo Tiscornia, Guido Weksler, Natsumi Shokida, German Rosati, Carolina Pradier.</p>
+  <p></p><p>Developed by <a href="https://github.com/DiegoKoz" class="external-link">Diego Kozlowski</a>, <a href="https://github.com/pablotis" class="external-link">Pablo Tiscornia</a>, <a href="https://github.com/Guidowe" class="external-link">Guido Weksler</a>, <a href="https://github.com/natsushok" class="external-link">Natsumi Shokida</a>, <a href="https://github.com/gefero" class="external-link">German Rosati</a>, <a href="https://github.com/caropradier" class="external-link">Carolina Pradier</a>.</p>
 </div>
 
 <div class="pkgdown">

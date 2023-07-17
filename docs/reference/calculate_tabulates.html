@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eph</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1</span>
       </span>
     </div>
 
@@ -79,7 +79,6 @@
 <span>  weights <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  affix_sign <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  digits <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  addNA <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  add.totals <span class="op">=</span> <span class="st">"none"</span>,</span>
 <span>  add.percentage <span class="op">=</span> <span class="st">"none"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -111,10 +110,6 @@
 <dd><p>numero de digitos significativos</p></dd>
 
 
-<dt>addNA</dt>
-<dd><p>de haber, cuenta valores NA</p></dd>
-
-
 <dt>add.totals</dt>
 <dd><p>toma los valores c('none','row','col','both'), para agregar totales por fila, columna o ambos</p></dd>
 
@@ -123,19 +118,27 @@
 <dd><p>toma los valores c('none','row','col'), para agregar porcentajes por fila y columna</p></dd>
 
 </dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    
+
+<p>Devuelve un tabulado uni o bivariado con ponderacion, totales parciales y porcentajes.</p>
+    </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">### tabla simple ###</span></span></span>
+<span class="r-in"><span><span class="co">### Tabla simple ###</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">calculate_tabulates</span><span class="op">(</span>base <span class="op">=</span> <span class="va">toybase_individual_2016_04</span>,</span></span>
-<span class="r-in"><span>                    x <span class="op">=</span> <span class="st">'REGION'</span>, y <span class="op">=</span> <span class="st">'CH04'</span>,</span></span>
-<span class="r-in"><span>                    weights <span class="op">=</span> <span class="st">'PONDERA'</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">calculate_tabulates</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  base <span class="op">=</span> <span class="va">toybase_individual_2016_04</span>,</span></span>
+<span class="r-in"><span>  x <span class="op">=</span> <span class="st">"REGION"</span>, y <span class="op">=</span> <span class="st">"CH04"</span>,</span></span>
+<span class="r-in"><span>  weights <span class="op">=</span> <span class="st">"PONDERA"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   `REGION/CH04`    `1`    `2`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 1             <span style="text-decoration: underline;">245</span>400 <span style="text-decoration: underline;">236</span>187</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 40             <span style="text-decoration: underline;">41</span>706  <span style="text-decoration: underline;">49</span>796</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 41             <span style="text-decoration: underline;">22</span>680  <span style="text-decoration: underline;">19</span>816</span>
@@ -143,45 +146,57 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 43            <span style="text-decoration: underline;">103</span>892 <span style="text-decoration: underline;">119</span>361</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> 44             <span style="text-decoration: underline;">19</span>250  <span style="text-decoration: underline;">17</span>926</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">### para ver los totales por fila ###</span></span></span>
+<span class="r-in"><span><span class="co">### Totales por fila ###</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">calculate_tabulates</span><span class="op">(</span>base <span class="op">=</span> <span class="va">toybase_individual_2016_04</span>,</span></span>
-<span class="r-in"><span>                    x <span class="op">=</span> <span class="st">'REGION'</span>, y <span class="op">=</span> <span class="st">'CH04'</span>,</span></span>
-<span class="r-in"><span>                    weights <span class="op">=</span> <span class="st">'PONDERA'</span>, add.totals <span class="op">=</span> <span class="st">'row'</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  REGION/CH04      1      2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            1 245400 236187</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           40  41706  49796</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           41  22680  19816</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           42  23028  30712</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           43 103892 119361</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           44  19250  17926</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        Total 455956 473798</span>
+<span class="r-in"><span><span class="fu">calculate_tabulates</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  base <span class="op">=</span> <span class="va">toybase_individual_2016_04</span>,</span></span>
+<span class="r-in"><span>  x <span class="op">=</span> <span class="st">"REGION"</span>, y <span class="op">=</span> <span class="st">"CH04"</span>,</span></span>
+<span class="r-in"><span>  weights <span class="op">=</span> <span class="st">"PONDERA"</span>, add.totals <span class="op">=</span> <span class="st">"row"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   `REGION/CH04`    `1`    `2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 1             <span style="text-decoration: underline;">245</span>400 <span style="text-decoration: underline;">236</span>187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 40             <span style="text-decoration: underline;">41</span>706  <span style="text-decoration: underline;">49</span>796</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 41             <span style="text-decoration: underline;">22</span>680  <span style="text-decoration: underline;">19</span>816</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 42             <span style="text-decoration: underline;">23</span>028  <span style="text-decoration: underline;">30</span>712</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 43            <span style="text-decoration: underline;">103</span>892 <span style="text-decoration: underline;">119</span>361</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> 44             <span style="text-decoration: underline;">19</span>250  <span style="text-decoration: underline;">17</span>926</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> Total         <span style="text-decoration: underline;">455</span>956 <span style="text-decoration: underline;">473</span>798</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">### para ver los totales por columna ###</span></span></span>
+<span class="r-in"><span><span class="co">### Totales por columna ###</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">calculate_tabulates</span><span class="op">(</span>base <span class="op">=</span> <span class="va">toybase_individual_2016_04</span>,</span></span>
-<span class="r-in"><span>                    x <span class="op">=</span> <span class="st">'REGION'</span>, y <span class="op">=</span> <span class="st">'CH04'</span>,</span></span>
-<span class="r-in"><span>                    weights <span class="op">=</span> <span class="st">'PONDERA'</span>, add.totals <span class="op">=</span> <span class="st">'col'</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  REGION/CH04      1      2  Total</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            1 245400 236187 481587</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           40  41706  49796  91502</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           41  22680  19816  42496</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           42  23028  30712  53740</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           43 103892 119361 223253</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           44  19250  17926  37176</span>
+<span class="r-in"><span><span class="fu">calculate_tabulates</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  base <span class="op">=</span> <span class="va">toybase_individual_2016_04</span>,</span></span>
+<span class="r-in"><span>  x <span class="op">=</span> <span class="st">"REGION"</span>, y <span class="op">=</span> <span class="st">"CH04"</span>,</span></span>
+<span class="r-in"><span>  weights <span class="op">=</span> <span class="st">"PONDERA"</span>, add.totals <span class="op">=</span> <span class="st">"col"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   `REGION/CH04`    `1`    `2`  Total</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 1             <span style="text-decoration: underline;">245</span>400 <span style="text-decoration: underline;">236</span>187 <span style="text-decoration: underline;">481</span>587</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 40             <span style="text-decoration: underline;">41</span>706  <span style="text-decoration: underline;">49</span>796  <span style="text-decoration: underline;">91</span>502</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 41             <span style="text-decoration: underline;">22</span>680  <span style="text-decoration: underline;">19</span>816  <span style="text-decoration: underline;">42</span>496</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 42             <span style="text-decoration: underline;">23</span>028  <span style="text-decoration: underline;">30</span>712  <span style="text-decoration: underline;">53</span>740</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 43            <span style="text-decoration: underline;">103</span>892 <span style="text-decoration: underline;">119</span>361 <span style="text-decoration: underline;">223</span>253</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> 44             <span style="text-decoration: underline;">19</span>250  <span style="text-decoration: underline;">17</span>926  <span style="text-decoration: underline;">37</span>176</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">### para ver porcentajes por fila ###</span></span></span>
+<span class="r-in"><span><span class="co">### Porcentajes por fila ###</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">calculate_tabulates</span><span class="op">(</span>base <span class="op">=</span> <span class="va">toybase_individual_2016_04</span>,</span></span>
-<span class="r-in"><span>                    x <span class="op">=</span> <span class="st">'REGION'</span>, y <span class="op">=</span> <span class="st">'CH04'</span>,</span></span>
-<span class="r-in"><span>                    weights <span class="op">=</span> <span class="st">'PONDERA'</span>, add.percentage <span class="op">=</span><span class="st">'row'</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  REGION/CH04    1    2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            1 51.0 49.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           40 45.6 54.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           41 53.4 46.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           42 42.9 57.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           43 46.5 53.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           44 51.8 48.2</span>
+<span class="r-in"><span><span class="fu">calculate_tabulates</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  base <span class="op">=</span> <span class="va">toybase_individual_2016_04</span>,</span></span>
+<span class="r-in"><span>  x <span class="op">=</span> <span class="st">"REGION"</span>, y <span class="op">=</span> <span class="st">"CH04"</span>,</span></span>
+<span class="r-in"><span>  weights <span class="op">=</span> <span class="st">"PONDERA"</span>, add.percentage <span class="op">=</span> <span class="st">"row"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   `REGION/CH04`   `1`   `2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 1              51    49  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 40             45.6  54.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 41             53.4  46.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 42             42.9  57.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 43             46.5  53.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> 44             51.8  48.2</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -193,7 +208,7 @@
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Diego Kozlowski, Pablo Tiscornia, Guido Weksler, Natsumi Shokida, German Rosati, Carolina Pradier.</p>
+  <p></p><p>Developed by <a href="https://github.com/DiegoKoz" class="external-link">Diego Kozlowski</a>, <a href="https://github.com/pablotis" class="external-link">Pablo Tiscornia</a>, <a href="https://github.com/Guidowe" class="external-link">Guido Weksler</a>, <a href="https://github.com/natsushok" class="external-link">Natsumi Shokida</a>, <a href="https://github.com/gefero" class="external-link">German Rosati</a>, <a href="https://github.com/caropradier" class="external-link">Carolina Pradier</a>.</p>
 </div>
 
 <div class="pkgdown">

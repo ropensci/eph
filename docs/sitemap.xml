@@ -64,6 +64,9 @@
     <loc>https://rindec.github.io/eph/reference/errores_muestrales.html</loc>
   </url>
   <url>
+    <loc>https://rindec.github.io/eph/reference/get_eahu.html</loc>
+  </url>
+  <url>
     <loc>https://rindec.github.io/eph/reference/get_microdata.html</loc>
   </url>
   <url>
@@ -71,6 +74,9 @@
   </url>
   <url>
     <loc>https://rindec.github.io/eph/reference/get_poverty_lines.html</loc>
+  </url>
+  <url>
+    <loc>https://rindec.github.io/eph/reference/get_total_urbano.html</loc>
   </url>
   <url>
     <loc>https://rindec.github.io/eph/reference/index.html</loc>

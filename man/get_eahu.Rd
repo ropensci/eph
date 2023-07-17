@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_eahu.R
 \name{get_eahu}
 \alias{get_eahu}
-\title{Descarga de Bases de la Encuesta anual de hogares urbanos}
+\title{(coming soon!) Descarga de Bases de la Encuesta anual de hogares urbanos}
 \usage{
 get_eahu(year, type = "individual", vars = "all", destfile = NULL)
 }

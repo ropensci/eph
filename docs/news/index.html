@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eph</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1</span>
       </span>
     </div>
 
@@ -67,9 +67,13 @@
     </div>
 
     <div class="section level2">
+<h2 class="page-header" data-toc-text="0.6.1" id="eph-061">eph 0.6.1<small>2023-07-17</small><a class="anchor" aria-label="anchor" href="#eph-061"></a></h2>
+<ul><li>fixed bug in get_microdata() originated in a change in INDEC’s URL (old datasets are now directly downloaded from a stable github repo)</li>
+</ul></div>
+    <div class="section level2">
 <h2 class="page-header" data-toc-text="0.6.0" id="eph-060">eph 0.6.0<small>2023-04-14</small><a class="anchor" aria-label="anchor" href="#eph-060"></a></h2>
-<ul><li>removed ‘readr’ and ’tidyverse’from Imports. readr was reclassified as a Suggest (because it was only used in a vignette) and tidyverse was replaced by the tidyverse packages actually required.</li>
-<li>improved error messages in calculate_tabulates() function.</li>
+<ul><li>removed ‘readr’ and ‘tidyverse’ from Imports. readr was reclassified as a Suggest (because it was only used in a vignette) and tidyverse was replaced by the tidyverse packages actually required.</li>
+<li>improved error messages in <code><a href="../reference/calculate_tabulates.html">calculate_tabulates()</a></code> function.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.5.1" id="eph-051">eph 0.5.1<small>2022-08-29</small><a class="anchor" aria-label="anchor" href="#eph-051"></a></h2>
@@ -80,41 +84,48 @@
 <ul><li>improve <code><a href="../reference/get_microdata.html">get_microdata()</a></code> internals</li>
 <li>remove <code>questionr</code> dependency</li>
 <li>add group_vars and window argument to calculate_poverty</li>
-<li>add function calculate_errors</li>
-<li>add affix_sign argument to calculate_tabulates</li>
+<li>add function <code><a href="../reference/calculate_errors.html">calculate_errors()</a></code>
+</li>
+<li>add affix_sign argument to <code><a href="../reference/calculate_tabulates.html">calculate_tabulates()</a></code>
+</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.0" id="eph-040">eph 0.4.0<small>2020-06-25</small><a class="anchor" aria-label="anchor" href="#eph-040"></a></h2>
-<ul><li>add option destfile to get_microdata</li>
+<ul><li>add option destfile to <code><a href="../reference/get_microdata.html">get_microdata()</a></code>
+</li>
 <li>add vignettes on poverty calculations</li>
-<li>add option to get_poverty_lines to download regional baskets</li>
+<li>add option to <code><a href="../reference/get_poverty_lines.html">get_poverty_lines()</a></code> to download regional baskets</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3.1" id="eph-031">eph 0.3.1<small>2020-05-24</small><a class="anchor" aria-label="anchor" href="#eph-031"></a></h2>
-<ul><li>rename organize_ocupations –&gt; organize_cno for consistency</li>
-<li>add function organize_caes</li>
+<ul><li>rename organize_ocupations –&gt; <code><a href="../reference/organize_cno.html">organize_cno()</a></code> for consistency</li>
+<li>add function <code><a href="../reference/organize_caes.html">organize_caes()</a></code>
+</li>
 <li>fixed compatibility with dplyr 1.0</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3.0" id="eph-030">eph 0.3.0<small>2020-03-08</small><a class="anchor" aria-label="anchor" href="#eph-030"></a></h2>
-<ul><li>improve get_microdata_internal internals</li>
+<ul><li>improve <code>get_microdata_internal()</code> internals</li>
 <li>fixed compatibility with tibble 3.0.0</li>
 <li>add dataset on centroids of aglomerates of the survey</li>
-<li>add function map_agglomerates for mapping indicators</li>
+<li>add function <code><a href="../reference/map_agglomerates.html">map_agglomerates()</a></code> for mapping indicators</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.0" id="eph-020">eph 0.2.0<small>2019-11-26</small><a class="anchor" aria-label="anchor" href="#eph-020"></a></h2>
-<ul><li>enhace get_microdata. Now downloads multiple datasets and allows to pre-select variables</li>
+<ul><li>enhace <code><a href="../reference/get_microdata.html">get_microdata()</a></code>. Now downloads multiple datasets and allows to pre-select variables</li>
 <li>add skip_if_offline and some skip_on_cran for time-consuming tests</li>
-<li>add stop if there is no internet connection for get_microdata</li>
+<li>add stop if there is no internet connection for <code><a href="../reference/get_microdata.html">get_microdata()</a></code>
+</li>
 <li>add vignettes</li>
-<li>simplify output in organize_panels</li>
+<li>simplify output in <code><a href="../reference/organize_panels.html">organize_panels()</a></code>
+</li>
 <li>add function organize_ocupations</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.1" id="eph-011">eph 0.1.1<small>2019-09-07</small><a class="anchor" aria-label="anchor" href="#eph-011"></a></h2>
 <ul><li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
-<li>Bug fix in get_microdata</li>
+<li>Bug fix in <code><a href="../reference/get_microdata.html">get_microdata()</a></code>
+</li>
 <li>Added Authors@ information (orcid)</li>
 <li>add bugreport to DESCRIPTION</li>
 </ul></div>
@@ -128,7 +139,7 @@
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Diego Kozlowski, Pablo Tiscornia, Guido Weksler, Natsumi Shokida, German Rosati, Carolina Pradier.</p>
+  <p></p><p>Developed by <a href="https://github.com/DiegoKoz" class="external-link">Diego Kozlowski</a>, <a href="https://github.com/pablotis" class="external-link">Pablo Tiscornia</a>, <a href="https://github.com/Guidowe" class="external-link">Guido Weksler</a>, <a href="https://github.com/natsushok" class="external-link">Natsumi Shokida</a>, <a href="https://github.com/gefero" class="external-link">German Rosati</a>, <a href="https://github.com/caropradier" class="external-link">Carolina Pradier</a>.</p>
 </div>
 
 <div class="pkgdown">

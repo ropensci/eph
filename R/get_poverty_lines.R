@@ -13,6 +13,7 @@
 #' @examples
 #'
 #' canasta <- get_poverty_lines(regional = TRUE)
+#' canasta
 #'
 #' @export
 

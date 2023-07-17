@@ -15,7 +15,7 @@
 #'
 #'
 #' bases <- dplyr::bind_rows(toybase_individual_2016_03, toybase_individual_2016_04)
-#' bases_clasif <- organize_cno(base = bases)
+#' bases_clasificadas <- organize_cno(base = bases)
 #'
 #' @export
 organize_cno <- function(base) {

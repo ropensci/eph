@@ -23,5 +23,6 @@ disclaimer: El script no es un producto oficial de INDEC.
 \examples{
 
 canasta <- get_poverty_lines(regional = TRUE)
+canasta
 
 }

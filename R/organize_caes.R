@@ -15,7 +15,7 @@
 #'
 #' @examples
 #' bases <- dplyr::bind_rows(toybase_individual_2016_03, toybase_individual_2016_04)
-#' organize_caes(base = bases)
+#' bases_clasificadas <- organize_caes(base = bases)
 #'
 organize_caes <- function(base) {
   if ("PP04B_CAES" %in% names(base)) {

@@ -25,6 +25,6 @@ No olvides contemplar los cambios en la codificacion y categorias de las distint
 }
 \examples{
 bases <- dplyr::bind_rows(toybase_individual_2016_03, toybase_individual_2016_04)
-organize_caes(base = bases)
+bases_clasificadas <- organize_caes(base = bases)
 
 }

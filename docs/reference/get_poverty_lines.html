@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eph</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1</span>
       </span>
     </div>
 
@@ -83,15 +83,37 @@ que se utilizan para el calculo de pobreza. Si es FALSE, descarga la serie de GB
 provista por indec en https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149</p></dd>
 
 </dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    
+
+<p>Devuelve una tabla con la CBA y CBT a partir de abril 2016</p>
+    </div>
     <div id="details">
     <h2>Details</h2>
-    <p>Disclaimer: El script no es un producto oficial de INDEC.</p>
+    <p>disclaimer: El script no es un producto oficial de INDEC.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">canasta</span> <span class="op">&lt;-</span> <span class="fu">get_poverty_lines</span><span class="op">(</span>regional <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">canasta</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 174 × 5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># Groups:   region [6]</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    region periodo   CBA   CBT codigo</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Cuyo   2015.4  <span style="text-decoration: underline;">1</span>225. <span style="text-decoration: underline;">2</span>951.     42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Cuyo   2016.1  <span style="text-decoration: underline;">1</span>315. <span style="text-decoration: underline;">3</span>219.     42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Cuyo   2016.2  <span style="text-decoration: underline;">1</span>401. <span style="text-decoration: underline;">3</span>637.     42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Cuyo   2016.3  <span style="text-decoration: underline;">1</span>509. <span style="text-decoration: underline;">3</span>872.     42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Cuyo   2016.4  <span style="text-decoration: underline;">1</span>570. <span style="text-decoration: underline;">4</span>030.     42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Cuyo   2017.1  <span style="text-decoration: underline;">1</span>635. <span style="text-decoration: underline;">4</span>219.     42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Cuyo   2017.2  <span style="text-decoration: underline;">1</span>731. <span style="text-decoration: underline;">4</span>513.     42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Cuyo   2017.3  <span style="text-decoration: underline;">1</span>802. <span style="text-decoration: underline;">4</span>690.     42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Cuyo   2017.4  <span style="text-decoration: underline;">1</span>894. <span style="text-decoration: underline;">4</span>975.     42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Cuyo   2018.1  <span style="text-decoration: underline;">2</span>013. <span style="text-decoration: underline;">5</span>374.     42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 164 more rows</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -103,7 +125,7 @@ provista por indec en https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149</p
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Diego Kozlowski, Pablo Tiscornia, Guido Weksler, Natsumi Shokida, German Rosati, Carolina Pradier.</p>
+  <p></p><p>Developed by <a href="https://github.com/DiegoKoz" class="external-link">Diego Kozlowski</a>, <a href="https://github.com/pablotis" class="external-link">Pablo Tiscornia</a>, <a href="https://github.com/Guidowe" class="external-link">Guido Weksler</a>, <a href="https://github.com/natsushok" class="external-link">Natsumi Shokida</a>, <a href="https://github.com/gefero" class="external-link">German Rosati</a>, <a href="https://github.com/caropradier" class="external-link">Carolina Pradier</a>.</p>
 </div>
 
 <div class="pkgdown">
