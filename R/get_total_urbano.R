@@ -40,7 +40,7 @@ get_total_urbano <- function(year = 2016,
 
   if (is.null(destfile) | !destfile_exists) {
     attempt::stop_if_not(
-      .x = is_online(),
+      .x = curl::has_internet(),
       msg = "No se detecto acceso a internet. Por favor checkea tu conexion."
     )
 

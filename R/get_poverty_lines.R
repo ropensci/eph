@@ -19,7 +19,7 @@
 
 get_poverty_lines <- function(regional = FALSE) {
   attempt::stop_if_not(
-    .x = is_online(),
+    .x = curl::has_internet(),
     msg = "No se detecto acceso a internet. Por favor checkea tu conexion."
   )
 
