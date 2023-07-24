@@ -4,7 +4,12 @@
 \alias{get_total_urbano}
 \title{(coming soon!) Descarga de Bases de EPH total urbano}
 \usage{
-get_total_urbano(year, type = "individual", vars = "all", destfile = NULL)
+get_total_urbano(
+  year = 2016,
+  type = "individual",
+  vars = "all",
+  destfile = NULL
+)
 }
 \arguments{
 \item{year}{un integer o vector de integers a partir de 2016}

@@ -21,6 +21,5 @@ test_that("fuera de 2010/2014", {
 })
 
 test_that("errores", {
-  expect_error(df <- get_eahu(type = "individual"))
   expect_warning(df <- get_eahu(year = 2011, type = "individu"))
 })

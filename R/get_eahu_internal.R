@@ -6,12 +6,17 @@
 #'
 #' @noRd
 
-get_eahu_internal <- function(year,
-                              type,
+get_eahu_internal <- function(year = 2010,
+                              type = "individual",
                               vars = "all") {
   if (!is.numeric(year)) {
     cli::cli_abort(c(
       "El argumento year debe ser numeric"
+    ))
+  }
+  if (year < 2010|year > 2014) {
+    cli::cli_alert_warning(c(
+      "La funcion puede descargar bases publicadas entre 2010 y 2014."
     ))
   }
   if (!type %in% c("individual", "hogar")) {

@@ -21,17 +21,10 @@
 #'
 #' @export
 
-get_total_urbano <- function(year,
+get_total_urbano <- function(year = 2016,
                              type = "individual",
                              vars = "all",
                              destfile = NULL) {
-  if (missing(year)) {
-    cli::cli_abort(c(
-      "Es obligatorio ingresar por lo menos un anio.",
-      "i" = "La funcion puede descargar bases publicadas desde 2016"
-    ))
-  }
-
 
   destfile_exists <- FALSE
   if (!is.null(destfile)) {

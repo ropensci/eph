@@ -5,7 +5,7 @@
 \title{Descarga de Bases de EPH}
 \usage{
 get_microdata(
-  year,
+  year = 2018,
   period = 1,
   type = "individual",
   vars = "all",

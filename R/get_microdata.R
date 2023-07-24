@@ -30,17 +30,11 @@
 #'
 #' @export
 
-get_microdata <- function(year,
+get_microdata <- function(year = 2018,
                           period = 1,
                           type = "individual",
                           vars = "all",
                           destfile = NULL, ...) {
-  if (missing(year)) {
-    cli::cli_abort(c(
-      "Es obligatorio ingresar por lo menos un anio.",
-      "i" = "La funcion puede descargar bases publicadas desde 1996"
-    ))
-  }
 
   dots <- list(...)
 

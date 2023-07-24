@@ -19,6 +19,11 @@ get_microdata_internal <- function(year = 2018,
       "El argumento year debe ser numeric"
     ))
   }
+  if (year < 1996) {
+    cli::cli_alert_warning(c(
+      "La funcion puede descargar bases publicadas desde 1996."
+    ))
+  }
   if (!is.numeric(period)) {
     cli::cli_abort(c(
       "El argumento period debe ser numeric"

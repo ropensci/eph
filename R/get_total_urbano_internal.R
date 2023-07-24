@@ -6,12 +6,17 @@
 #'
 #' @noRd
 
-get_total_urbano_internal <- function(year,
-                                      type,
+get_total_urbano_internal <- function(year = 2016,
+                                      type = "individual",
                                       vars = "all") {
   if (!is.numeric(year)) {
     cli::cli_abort(c(
       "El argumento year debe ser numeric"
+    ))
+  }
+  if (year < 2016) {
+    cli::cli_alert_warning(c(
+      "La funcion puede descargar bases publicadas desde 2016."
     ))
   }
   if (!type %in% c("individual", "hogar")) {

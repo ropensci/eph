@@ -21,17 +21,10 @@
 #'
 #' @export
 
-get_eahu <- function(year,
+get_eahu <- function(year = 2010,
                      type = "individual",
                      vars = "all",
                      destfile = NULL) {
-  if (missing(year)) {
-    cli::cli_abort(c(
-      "Es obligatorio ingresar por lo menos un anio.",
-      "i" = "La funcion puede descargar bases publicadas entre 2010 y 2014"
-    ))
-  }
-
 
   destfile_exists <- FALSE
   if (!is.null(destfile)) {
