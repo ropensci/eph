@@ -28,7 +28,7 @@ map_agglomerates <- function(.data, agglomerates, indicator, alpha = .75, palett
     dplyr::left_join(centroides_aglomerados, by = "AGLOMERADO")
 
   pal <- leaflet::colorNumeric(
-    palette = "viridis",
+    palette = palette,
     domain = df$indicator
   )
 
@@ -37,7 +37,7 @@ map_agglomerates <- function(.data, agglomerates, indicator, alpha = .75, palett
 
   leaflet::leaflet(df) %>%
     leaflet::addTiles() %>%
-    leaflet::addProviderTiles(leaflet::providers$Wikimedia) %>%
+    #leaflet::addProviderTiles(leaflet::providers$Wikimedia) %>%
     leaflet::addCircleMarkers(
       fillColor = ~ pal(indicator),
       fillOpacity = alpha,
