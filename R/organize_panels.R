@@ -32,8 +32,8 @@ organize_panels <- function(bases, variables, window = "anual") {
   }
 
   bases_continua <- dplyr::bind_rows(bases) %>%
-    dplyr::select(CODUSU, NRO_HOGAR, COMPONENTE,
-                  ANO4, TRIMESTRE, CH04, CH06, variables) %>%
+    dplyr::select(all_of(c("CODUSU", "NRO_HOGAR", "COMPONENTE",
+                  "ANO4", "TRIMESTRE", "CH04", "CH06", variables))) %>%
     dplyr::filter(ESTADO != 0) %>%
     dplyr::mutate(Periodo = zoo::as.yearqtr(paste0(ANO4, " Q", TRIMESTRE)))
 

@@ -64,7 +64,7 @@ organize_cno <- function(base) {
     dplyr::left_join(., calificacion,
       by = c("DIGIT5" = "value")
     ) %>%
-    dplyr::select(-c(CLASIF_CNO, DIGIT12, DIGIT3, DIGIT4, DIGIT5))
+    dplyr::select(-any_of(c("CLASIF_CNO", "DIGIT12", "DIGIT3", "DIGIT4", "DIGIT5")))
 
 
 

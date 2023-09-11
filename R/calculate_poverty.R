@@ -51,7 +51,7 @@ calculate_poverty <- function(base, basket, print_summary = TRUE, window = "quar
         TRUE ~ situacion
       )
     ) %>%
-    dplyr::select(-adequi, -periodo, -CBA, -CBT)
+    dplyr::select(-any_of(c("adequi", "periodo", "CBA", "CBT")))
 
   if (print_summary) {
     if (window == "quarter") {

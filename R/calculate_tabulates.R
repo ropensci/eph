@@ -244,7 +244,7 @@ calculate_tabulates <- function(base,
       dplyr::mutate(aux = sum(valor, na.rm = TRUE)) %>%
       dplyr::ungroup() %>%
       dplyr::mutate(prop = round((valor / aux) * 100, digits)) %>%
-      dplyr::select(-valor, -aux) %>%
+      dplyr::select(-any_of(c("valor", "aux"))) %>%
       tidyr::pivot_wider(names_from = var, values_from = prop)
 
     if (add.totals == "col") {
@@ -299,7 +299,7 @@ calculate_tabulates <- function(base,
     perc_row <- tabulado %>%
       dplyr::mutate(aux = rowSums(dplyr::across(dplyr::where(is.numeric)))) %>%
       dplyr::mutate(dplyr::across(c(names(tabulado)[2:ncol(tabulado)]), function(x) round((x / aux) * 100, digits))) %>%
-      dplyr::select(-aux)
+      dplyr::select(-any_of(c("aux")))
 
 
     if (add.totals == "col") {

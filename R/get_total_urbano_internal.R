@@ -81,7 +81,7 @@ get_total_urbano_internal <- function(year = 2016,
 
     base <- base %>%
       dplyr::rename_all(toupper) %>%
-      dplyr::select(vars)
+      dplyr::select(all_of(vars))
 
     return(base)
   }
