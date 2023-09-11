@@ -17,7 +17,7 @@ Funcion para clasificar las ocupaciones segun las 4 dimensiones del Clasificador
 (CNO 2001)
 }
 \details{
-Importante: Verificar que el clasificador CNO 2001 sea compatible con la base que estés utilizando.
+Importante: Verificar que el clasificador CNO 2001 sea compatible con la base que estes utilizando.
 
 disclaimer: El script no es un producto oficial de INDEC.
 }

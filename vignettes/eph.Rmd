@@ -237,7 +237,7 @@ A modo de ejemplo, en la librería `eph` se encuentra la base `canastas_reg_exam
 canastas_reg_example
 ```
 
-A su vez, también se encuentra la tabla de `adulto_equivalente` que permite construir la cantidad de adultos equivalentes a nivel hogar, para multiplicar al mismo por la canasta regional correspondiente, a fin de definir la línea a nivel hogar.
+A su vez, también se encuentra la tabla de `adulto_equivalente` que permite construir la cantidad de adultos equivalentes a nivel hogar, para multiplicar al mismo por la canasta regional correspondiente, a fin de definir la línea a nivel hogar (de acuerdo con la metodología propuesta por [INDEC](https://www.indec.gob.ar/ftp/cuadros/sociedad/preguntas_frecuentes_cba_cbt.pdf): para identificar la unidad consumidora de referencia, o adulto equivalente, se analizó en qué grupo de edad se ubicaba la mayor concentración de población activa, y fue la categoría de hombres de 30 a 60 años de edad la que presentaba el mayor peso relativo dentro del conjunto total de la población de referencia).
 
 ```{r}
 adulto_equivalente %>% head()

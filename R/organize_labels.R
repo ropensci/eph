@@ -3,7 +3,7 @@
 #' @param df type de microdatos de la EPH
 #' @param type (string) aclaracion sobre si la base a etiquetar es de tipo 'individual' u 'hogar'
 #'
-#' @return Devuelve la base con sus variables etiquetadas
+#' @return Devuelve la base con sus variables etiquetadas de acuerdo con el disenio de registro de la EPH (no renombra los valores o nombres de las columnas, agrega etiquetas con esta información)
 #'
 #' @details
 #' disclaimer: El script no es un producto oficial de INDEC.

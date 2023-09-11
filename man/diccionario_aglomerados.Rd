@@ -3,7 +3,7 @@
 \docType{data}
 \name{diccionario_aglomerados}
 \alias{diccionario_aglomerados}
-\title{Diccionario de aglomerados segun diseño de registro de la EPH}
+\title{Diccionario de aglomerados segun diseno de registro de la EPH}
 \format{
 Un data frame con 32 filas y 2 variables
 
@@ -17,6 +17,6 @@ Un data frame con 32 filas y 2 variables
 diccionario_aglomerados
 }
 \description{
-Diccionario de aglomerados segun diseño de registro de la EPH
+Diccionario de aglomerados segun diseno de registro de la EPH
 }
 \keyword{datasets}

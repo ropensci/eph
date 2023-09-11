@@ -18,7 +18,7 @@ Devuelve el pool de datos de panel
 }
 \description{
 Permite armar un pool de datos en panel de la EPH continua a partir
-de especificar una serie consecutiva de bases, variables y el largo de la ventana -window- de observación
+de especificar una serie consecutiva de bases, variables y el largo de la ventana -window- de observacion
 }
 \details{
 disclaimer: El script no es un producto oficial de INDEC.
