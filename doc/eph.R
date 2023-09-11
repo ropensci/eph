@@ -12,57 +12,57 @@ library(purrr)
 library(ggplot2)
 
 ## -----------------------------------------------------------------------------
-ind_3_18 <- get_microdata(year = 2018, 
-                          trimester = 2, 
+ind_3_18 <- get_microdata(year = 2018,
+                          trimester = 2,
                           type = 'individual')
 
 ## ----message=FALSE, warning=FALSE---------------------------------------------
-ind_2_02 <- get_microdata(year = 2001, 
-                          wave = 2, 
+ind_2_02 <- get_microdata(year = 2001,
+                          wave = 2,
                           type = 'individual')
 
 ## -----------------------------------------------------------------------------
-ind_3_18 <- organize_labels(df = ind_3_18, 
+ind_3_18 <- organize_labels(df = ind_3_18,
                             type='individual')
 
 ## -----------------------------------------------------------------------------
-hog_3_18 <- get_microdata(year = 2018, 
-                          trimester = 3, 
+hog_3_18 <- get_microdata(year = 2018,
+                          trimester = 3,
                           type='hogar') %>%
-  organize_labels(., 
+  organize_labels(.,
                   type = 'hogar')
 
 ## -----------------------------------------------------------------------------
-calculate_tabulates(base = ind_3_18, 
-                    x = 'NIVEL_ED', 
-                    y = 'CH04', 
+calculate_tabulates(base = ind_3_18,
+                    x = 'NIVEL_ED',
+                    y = 'CH04',
                     weights = 'PONDERA',
-                    add.totals = 'row', 
+                    add.totals = 'row',
                     add.percentage='col')
 
 ## -----------------------------------------------------------------------------
-calculate_tabulates(base = ind_3_18, 
-                    x = 'NIVEL_ED', 
+calculate_tabulates(base = ind_3_18,
+                    x = 'NIVEL_ED',
                     y = 'CH04',
-                    add.totals = 'row', 
+                    add.totals = 'row',
                     add.percentage = 'col')
 
 ## -----------------------------------------------------------------------------
-### Armo vector con el nombre de las variables de interés
+### Armo vector con el nombre de las variables de interes
 variables <- c('CODUSU','NRO_HOGAR','COMPONENTE','ANO4',
                'TRIMESTRE','CH04', 'CH06', #variables necesarias para hacer el panel
-               'ESTADO','PONDERA') #variables que nos interesan en nuestro análisis
-  
+               'ESTADO','PONDERA') #variables que nos interesan en nuestro analisis
+
 ### Descargo la base individual para el 2018_t1
-base_2018t1 <- get_microdata(year = 2018,  trimester = 1,  type = 'individual', 
-                       vars = variables) 
+base_2018t1 <- get_microdata(year = 2018,  trimester = 1,  type = 'individual',
+                       vars = variables)
 
 ### Descargo la base individual para el 2018_t2
-base_2018t2 <- get_microdata(year = 2018,  trimester = 2,  type = 'individual', 
-                       vars = variables) 
+base_2018t2 <- get_microdata(year = 2018,  trimester = 2,  type = 'individual',
+                       vars = variables)
 
 ### Armo el panel
-pool <- organize_panels(bases = list(base_2018t1, base_2018t2), 
+pool <- organize_panels(bases = list(base_2018t1, base_2018t2),
                         variables = c('ESTADO','PONDERA'),
                         window = 'trimestral')
 
@@ -70,26 +70,26 @@ pool <- organize_panels(bases = list(base_2018t1, base_2018t2),
 pool
 
 ## ----message=FALSE, warning=FALSE---------------------------------------------
-pool %>% 
-  organize_labels(.) %>% 
-  calculate_tabulates(x = 'ESTADO', 
+pool %>%
+  organize_labels(.) %>%
+  calculate_tabulates(x = 'ESTADO',
                       y = 'ESTADO_t1',
-                      weights = "PONDERA",  
+                      weights = "PONDERA",
                       add.percentage='row')
 
 ## ----message=FALSE, warning=FALSE---------------------------------------------
-df <- get_microdata(year = 2017:2019, 
+df <- get_microdata(year = 2017:2019,
                     trimester = 1:4,
                     type = 'individual',
                     vars = c('ANO4', 'TRIMESTRE', 'PONDERA','ESTADO','CAT_OCUP'))
 
-df %>% 
+df %>%
   sample_n(5)
 
 ## -----------------------------------------------------------------------------
-df <- df %>% 
-  group_by(ANO4, TRIMESTRE) %>% 
-  summarise(indicador = sum(PONDERA[CAT_OCUP==3 & ESTADO==1], na.rm = T) / sum(PONDERA[ESTADO==1], na.rm = T)) 
+df <- df %>%
+  group_by(ANO4, TRIMESTRE) %>%
+  summarise(indicador = sum(PONDERA[CAT_OCUP==3 & ESTADO==1], na.rm = T) / sum(PONDERA[ESTADO==1], na.rm = T))
 
 df
 
@@ -100,7 +100,7 @@ lineas %>% head()
 ## ---- fig.width=7, fig.height=5-----------------------------------------------
 lineas %>%
   select(-ICE) %>%
-  pivot_longer(cols = c("CBA", "CBT"), names_to = "canasta", values_to = "valor") %>% 
+  pivot_longer(cols = c("CBA", "CBT"), names_to = "canasta", values_to = "valor") %>%
   ggplot() +
     geom_line(aes(x=periodo, y=valor, col=canasta))
 
@@ -112,12 +112,12 @@ adulto_equivalente %>% head()
 
 ## ----warning=FALSE------------------------------------------------------------
 bases <- bind_rows(toybase_individual_2016_03, toybase_individual_2016_04)
-base_pobreza <- calculate_poverty(base = bases, 
+base_pobreza <- calculate_poverty(base = bases,
                                   basket = canastas_reg_example,
                                   print_summary = TRUE)
 
 ## -----------------------------------------------------------------------------
-base_pobreza %>% 
-  select(CODUSU, ITF, region, adequi_hogar, CBA_hogar, CBT_hogar, situacion) %>% 
+base_pobreza %>%
+  select(CODUSU, ITF, region, adequi_hogar, CBA_hogar, CBT_hogar, situacion) %>%
   sample_n(10)
 

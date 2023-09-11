@@ -198,7 +198,7 @@ Mas informacon en: https://www.indec.gob.ar/ftp/cuadros/sociedad/anexo_informe_e
 
     base %>%
       dplyr::rename_all(toupper) %>%
-      dplyr::select(all_of(vars))
+      dplyr::select(tidyselect::all_of(vars))
   } else {
     base
   }

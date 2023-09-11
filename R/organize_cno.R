@@ -7,7 +7,7 @@
 #' @return Devuelve la base con 4 columnas nuevas (ver `CNO`)
 #'
 #' @details
-#' Importante: Verificar que el clasificador CNO 2001 sea compatible con la base que estés utilizando.
+#' Importante: Verificar que el clasificador CNO 2001 sea compatible con la base que estes utilizando.
 #'
 #' disclaimer: El script no es un producto oficial de INDEC.
 #'
@@ -64,7 +64,7 @@ organize_cno <- function(base) {
     dplyr::left_join(., calificacion,
       by = c("DIGIT5" = "value")
     ) %>%
-    dplyr::select(-any_of(c("CLASIF_CNO", "DIGIT12", "DIGIT3", "DIGIT4", "DIGIT5")))
+    dplyr::select(-tidyselect::any_of(c("CLASIF_CNO", "DIGIT12", "DIGIT3", "DIGIT4", "DIGIT5")))
 
 
 

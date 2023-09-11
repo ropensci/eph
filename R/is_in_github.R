@@ -28,7 +28,7 @@ is_in_github <- function(year = 2018,
       {
         req <- httr::GET("https://api.github.com/repos/holatam/data/git/trees/master?recursive=1")
 
-        filelist <- unlist(lapply(httr::content(req)$tree, "[", "path"), use.names = F)
+        filelist <- unlist(lapply(httr::content(req)$tree, "[", "path"), use.names = FALSE)
 
         looking_for <- sprintf("eph/%s/base_%s_%sT%s.RDS", type, type, year, period)
 

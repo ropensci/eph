@@ -77,7 +77,7 @@ get_total_urbano <- function(year = 2016,
       dplyr::mutate(filter_col = purrr::map_lgl(error, ~ !is.null(.x))) %>%
       dplyr::filter(filter_col) %>%
       dplyr::mutate(error_message = purrr::map(error, ~ purrr::pluck(.x, 1))) %>%
-      dplyr::select(-any_of(c("microdata", "error"))) %>%
+      dplyr::select(-tidyselect::any_of(c("microdata", "error"))) %>%
       tidyr::unnest(cols = c(error_message))
 
     if (nrow(errors) > 0) {
@@ -88,7 +88,7 @@ get_total_urbano <- function(year = 2016,
     }
 
     df <- df %>%
-      dplyr::select(-any_of(c("error")))
+      dplyr::select(-tidyselect::any_of(c("error")))
 
     if (!is.null(destfile) & !destfile_exists) {
       saveRDS(df, file = destfile)
@@ -100,6 +100,6 @@ get_total_urbano <- function(year = 2016,
   } else {
     df %>%
       tidyr::unnest(microdata) %>%
-      dplyr::select(-any_of(c("year", "type")))
+      dplyr::select(-tidyselect::any_of(c("year", "type")))
   }
 }

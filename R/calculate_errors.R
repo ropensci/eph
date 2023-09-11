@@ -1,18 +1,18 @@
-#' Calculo del desvío estándar y el coeficiente de variación
+#' Calculo del desvio estandar y el coeficiente de variacion
 #' @description
-#' Asigna a una estimación de un total poblacional el desvío estándar o el coeficiente de variación
-#' correspondiente según las tablas de error muestral de INDEC para EPH continua
+#' Asigna a una estimacion de un total poblacional el desvio estandar o el coeficiente de variacion
+#' correspondiente segun las tablas de error muestral de INDEC para EPH continua
 #'  a partir del segundo trimestre 2003.
 #' (Ver `errores_muestrales`)
-#' @param value Vector numérico de las estimaciones de población para las
-#' que se desea hallar el desvío estándar o el coeficiente de variación.
-#' @param codigo_aglo default = "Total". String con el código numerico del aglomerado al que
+#' @param value Vector numerico de las estimaciones de poblacion para las
+#' que se desea hallar el desvio estandar o el coeficiente de variacion.
+#' @param codigo_aglo default = "Total". String con el codigo numerico del aglomerado al que
 #' pertenecen las estimaciones. "Total" para trabajar estimaciones del conjunto de 31 aglomerados urbanos.
 #' @param periodo_eph default = "2014.03". String indicando el periodo al que corresponde la EPH. "2014.03" para
 #' obtener los errores muestrales correspondientes al tercer trimestre de 2014 en adelante. "2003.03_2014.02"
 #' para los errores muestrales del tercer trimestre del 2003 al segundo trimestre del 2014.
-#' @param measure default = "cv". String indicando la medida que se desea obtener. "cv" para obtener el coeficiente de variación
-#' correspondiente a las estimaciones o "ds" para obtener el desvío estándar.
+#' @param measure default = "cv". String indicando la medida que se desea obtener. "cv" para obtener el coeficiente de variacion
+#' correspondiente a las estimaciones o "ds" para obtener el desvio estandar.
 #'
 #' @return Devuelve la estimacion de un total poblacional agregando el desvio estandar o el coeficiente de variacion correspondiente segun las tablas de error muestral de INDEC para EPH continua a partir del segundo trimestre 2003
 #'
@@ -69,7 +69,7 @@ calculate_errors <- function(value, codigo_aglo = "Total", periodo_eph = "2014.0
   # Operacion
   tabla_referencia <- eph::errores_muestrales %>%
     dplyr::filter(codigo == codigo_aglo & periodo == periodo_eph) %>%
-    dplyr::select(all_of(c("x", measure)))
+    dplyr::select(tidyselect::all_of(c("x", measure)))
 
   find_closest <- function(y) {
     tabla_referencia[[measure]][which.min(abs(tabla_referencia[["x"]] - y))]

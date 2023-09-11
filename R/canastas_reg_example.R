@@ -6,7 +6,7 @@
 #'
 #' \describe{
 #' \item{region}{Nombre de region}
-#' \item{periodo}{Año.trimestre}
+#' \item{periodo}{Anio.trimestre}
 #' \item{CBA}{canasta basica alimentaria}
 #' \item{CBT}{inversa del coeficiente de engels}
 #' \item{codigo}{codigo de region}

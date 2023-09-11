@@ -1,7 +1,7 @@
 #'  Pool de Datos en Panel - Base Individudal EPH continua
 #'
 #' Permite armar un pool de datos en panel de la EPH continua a partir
-#' de especificar una serie consecutiva de bases, variables y el largo de la ventana -window- de observación
+#' de especificar una serie consecutiva de bases, variables y el largo de la ventana -window- de observacion
 #'
 #' @param bases Lista de bases de microdatos a utilizar para armar el pool de datos
 #' @param variables Vector con nombres de las variables de interes
@@ -32,7 +32,7 @@ organize_panels <- function(bases, variables, window = "anual") {
   }
 
   bases_continua <- dplyr::bind_rows(bases) %>%
-    dplyr::select(all_of(c("CODUSU", "NRO_HOGAR", "COMPONENTE",
+    dplyr::select(tidyselect::all_of(c("CODUSU", "NRO_HOGAR", "COMPONENTE",
                   "ANO4", "TRIMESTRE", "CH04", "CH06", variables))) %>%
     dplyr::filter(ESTADO != 0) %>%
     dplyr::mutate(Periodo = zoo::as.yearqtr(paste0(ANO4, " Q", TRIMESTRE)))
@@ -43,7 +43,7 @@ organize_panels <- function(bases, variables, window = "anual") {
     paste0(x, "_t1")
   }
 
-  ## En Base a la amplitud del panel que especificaré al correr en la funcion resto en la Base
+  ## En Base a la amplitud del panel que especificare al correr en la funcion resto en la Base
   ## Replica el identificador de Trimestre construido, para hacer un join  con la Base.
 
   bases_continua_join <- bases_continua %>%
