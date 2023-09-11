@@ -4,7 +4,7 @@
 #' (CNO 2001)
 #' @param base Base individual de uno o mas periodos
 #'
-#' @return Devuelve la base con 4 columnas nuevas (ver `CNO`)
+#' @return Devuelve la base con 4 columnas nuevas (que indican la informacion correspondiente al Clasificador Nacional de Ocupaciones)
 #'
 #' @details
 #' Importante: Verificar que el clasificador CNO 2001 sea compatible con la base que estes utilizando.

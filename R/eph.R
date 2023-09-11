@@ -7,6 +7,7 @@
 #'
 #' @docType package
 #' @name eph
+#' @aliases eph-package
 #'
 #' @noRd
 NULL

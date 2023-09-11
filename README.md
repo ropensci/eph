@@ -21,10 +21,12 @@ status](https://www.r-pkg.org/badges/version/eph)](https://cran.r-project.org/pa
 
 ## Descripción
 
-Si querés procesar datos de la [Encuesta Permanente de Hogares -
-INDEC](https://www.indec.gob.ar/bases-de-datos.asp) mediante el lenguaje
-de programación [R](https://www.r-project.org/), la librería `eph` tiene
-por objeto facilitar tu trabajo.
+Si querés procesar datos de la [Encuesta Permanente de Hogares (EPH)
+elaborada por el Instituto Nacional de Estadística y Censos de la
+República Argentina
+(INDEC)](https://www.indec.gob.ar/bases-de-datos.asp) mediante el
+lenguaje de programación [R](https://www.r-project.org/), la librería
+`eph` tiene por objeto facilitar tu trabajo.
 
 El paquete cumple un rol fundamental en la democratización de la
 posibilidad de procesar los datos publicados por INDEC y así obtener
@@ -43,10 +45,12 @@ Algunas de sus funciones son:
 - **`organize_panels()`**: Permite armar un pool de datos en panel de la
   EPH continua,
 
-- **`organize_cno()`**: Clasifica las ocupaciones según el CNO 2001
+- **`organize_cno()`**: Clasifica las ocupaciones según el Clasificador
+  Nacional de Ocupaciones (CNO) 2001
 
-- **`organize_caes()`**: Clasifica las actividades económicas según CAES
-  Mercosur 1.0 y CAES Mercosur
+- **`organize_caes()`**: Clasifica las actividades económicas según el
+  Clasificador de Actividades Economicas para encuestas
+  Sociodemograficas (CAES) Mercosur 1.0 y el CAES Mercosur
 
 - **`organize_labels()`**: Etiqueta las bases siguiendo el último
   [diseño de
@@ -57,10 +61,18 @@ Algunas de sus funciones son:
 El paquete también cuenta con dataframes útiles para el trabajo con la
 EPH. Algunos de estos son:
 
-- **`diccionario_regiones`**
-- **`diccionario_aglomerados`**
-- **`centroides_aglomerados`**
-- **`adulto_equivalente`**
+- **`diccionario_regiones`**: Diccionario de regiones según el diseño de
+  registro de la EPH
+
+- **`diccionario_aglomerados`**: Diccionario de aglomerados según el
+  diseño de registro de la EPH
+
+- **`centroides_aglomerados`**: Tabla de centroides de los aglomerados
+  (basado en <https://www.indec.gob.ar/indec/web/Nivel4-Tema-1-39-120>)
+
+- **`adulto_equivalente`**: Tabla de valores de adulto equivalente segun
+  sexo y edad ([ver definición
+  mtodológica](https://www.indec.gob.ar/ftp/cuadros/sociedad/preguntas_frecuentes_cba_cbt.pdf))
 
 ## Instalación
 
@@ -108,7 +120,7 @@ base_individual
 #>  8     546      3        0
 #>  9     509      1        3
 #> 10     509      1        3
-#> # … with 117,310 more rows
+#> # ℹ 117,310 more rows
 ```
 
 ## Cómo citar este paquete

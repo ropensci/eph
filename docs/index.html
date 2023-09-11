@@ -114,23 +114,23 @@
 <div class="section level2">
 <h2 id="descripción">Descripción<a class="anchor" aria-label="anchor" href="#descripci%C3%B3n"></a>
 </h2>
-<p>Si querés procesar datos de la <a href="https://www.indec.gob.ar/bases-de-datos.asp" class="external-link">Encuesta Permanente de Hogares - INDEC</a> mediante el lenguaje de programación <a href="https://www.r-project.org/" class="external-link">R</a>, la librería <code>eph</code> tiene por objeto facilitar tu trabajo.</p>
+<p>Si querés procesar datos de la <a href="https://www.indec.gob.ar/bases-de-datos.asp" class="external-link">Encuesta Permanente de Hogares (EPH) elaborada por el Instituto Nacional de Estadística y Censos de la República Argentina (INDEC)</a> mediante el lenguaje de programación <a href="https://www.r-project.org/" class="external-link">R</a>, la librería <code>eph</code> tiene por objeto facilitar tu trabajo.</p>
 <p>El paquete cumple un rol fundamental en la democratización de la posibilidad de procesar los datos publicados por INDEC y así obtener conclusiones independientes de aquellas publicadas en los informes elaborados por el organismo. Dado que la información de la EPH constituye una de las principales fuentes para el análisis de las problemáticas sociales presentes en Argentina, el paquete no sólo posibilita investigaciones académicas y periodísticas, sino que también contribuye a la formulación de políticas públicas fundamentadas en evidencia.</p>
 <p>Algunas de sus funciones son:</p>
 <ul>
 <li><p><strong><code><a href="reference/get_microdata.html">get_microdata()</a></code></strong>: Descarga las bases de microdatos,</p></li>
 <li><p><strong><code><a href="reference/organize_panels.html">organize_panels()</a></code></strong>: Permite armar un pool de datos en panel de la EPH continua,</p></li>
-<li><p><strong><code><a href="reference/organize_cno.html">organize_cno()</a></code></strong>: Clasifica las ocupaciones según el CNO 2001</p></li>
-<li><p><strong><code><a href="reference/organize_caes.html">organize_caes()</a></code></strong>: Clasifica las actividades económicas según CAES Mercosur 1.0 y CAES Mercosur</p></li>
+<li><p><strong><code><a href="reference/organize_cno.html">organize_cno()</a></code></strong>: Clasifica las ocupaciones según el Clasificador Nacional de Ocupaciones (CNO) 2001</p></li>
+<li><p><strong><code><a href="reference/organize_caes.html">organize_caes()</a></code></strong>: Clasifica las actividades económicas según el Clasificador de Actividades Economicas para encuestas Sociodemograficas (CAES) Mercosur 1.0 y el CAES Mercosur</p></li>
 <li><p><strong><code><a href="reference/organize_labels.html">organize_labels()</a></code></strong>: Etiqueta las bases siguiendo el último <a href="https://www.indec.gob.ar/ftp/cuadros/menusuperior/eph/EPH_registro_t218.pdf" class="external-link">diseño de registro</a></p></li>
 <li><p><strong><code><a href="reference/map_agglomerates.html">map_agglomerates()</a></code></strong>: Mapa de indicadores por aglomerado</p></li>
 </ul>
 <p>El paquete también cuenta con dataframes útiles para el trabajo con la EPH. Algunos de estos son:</p>
 <ul>
-<li><strong><code>diccionario_regiones</code></strong></li>
-<li><strong><code>diccionario_aglomerados</code></strong></li>
-<li><strong><code>centroides_aglomerados</code></strong></li>
-<li><strong><code>adulto_equivalente</code></strong></li>
+<li><p><strong><code>diccionario_regiones</code></strong>: Diccionario de regiones según el diseño de registro de la EPH</p></li>
+<li><p><strong><code>diccionario_aglomerados</code></strong>: Diccionario de aglomerados según el diseño de registro de la EPH</p></li>
+<li><p><strong><code>centroides_aglomerados</code></strong>: Tabla de centroides de los aglomerados (basado en <a href="https://www.indec.gob.ar/indec/web/Nivel4-Tema-1-39-120" class="external-link uri">https://www.indec.gob.ar/indec/web/Nivel4-Tema-1-39-120</a>)</p></li>
+<li><p><strong><code>adulto_equivalente</code></strong>: Tabla de valores de adulto equivalente segun sexo y edad (<a href="https://www.indec.gob.ar/ftp/cuadros/sociedad/preguntas_frecuentes_cba_cbt.pdf" class="external-link">ver definición mtodológica</a>)</p></li>
 </ul>
 </div>
 <div class="section level2">
@@ -175,7 +175,7 @@
 <span><span class="co">#&gt;  8     546      3        0</span></span>
 <span><span class="co">#&gt;  9     509      1        3</span></span>
 <span><span class="co">#&gt; 10     509      1        3</span></span>
-<span><span class="co">#&gt; # … with 117,310 more rows</span></span></code></pre></div>
+<span><span class="co">#&gt; # ℹ 117,310 more rows</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="cómo-citar-este-paquete">Cómo citar este paquete<a class="anchor" aria-label="anchor" href="#c%C3%B3mo-citar-este-paquete"></a>

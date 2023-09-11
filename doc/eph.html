@@ -10,13 +10,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<meta name="author" content="Germán Rosati" />
-<meta name="author" content="Diego Kozlowski" />
-<meta name="author" content="Pablo Tiscornia" />
-<meta name="author" content="Guido Weksler" />
-<meta name="author" content="Natsumi Shokida" />
+<meta name="author" content="Diego Kozlowski, Pablo Tiscornia, Guido Weksler, Germán Rosati, Natsumi Shokida y Carolina Pradier" />
 
-<meta name="date" content="2022-11-08" />
+<meta name="date" content="2023-09-11" />
 
 <title>Ejemplo de uso del paquete eph</title>
 
@@ -35,23 +31,23 @@ document.addEventListener('DOMContentLoaded', function(e) {
 </script>
 
 <style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
 
 
 
 <style type="text/css">
-  code {
-    white-space: pre;
-  }
-  .sourceCode {
-    overflow: visible;
-  }
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
@@ -69,55 +65,54 @@ pre > code.sourceCode { white-space: pre-wrap; }
 pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
-  { counter-reset: source-line 0; }
+{ counter-reset: source-line 0; }
 pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
+{ position: relative; left: -4em; counter-increment: source-line; }
 pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {   }
+{ }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
 </style>
 <script>
 // apply pandoc div.sourceCode style to pre.sourceCode instead
@@ -345,20 +340,16 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Ejemplo de uso del paquete
 <code>eph</code></h1>
-<h4 class="author">Germán Rosati</h4>
-<h4 class="author">Diego Kozlowski</h4>
-<h4 class="author">Pablo Tiscornia</h4>
-<h4 class="author">Guido Weksler</h4>
-<h4 class="author">Natsumi Shokida</h4>
-<h4 class="date">2022-11-08</h4>
+<h4 class="author">Diego Kozlowski, Pablo Tiscornia, Guido Weksler,
+Germán Rosati, Natsumi Shokida y Carolina Pradier</h4>
+<h4 class="date">2023-09-11</h4>
 
 
 
 <p>El paquete <code>eph</code> tiene como objetivo facilitar el trabajo
-de les usuaries que trabajen con los microdatos de la Encuesta
-Permanente de Hogares. Este tutorial busca ejemplificar un pipeline de
-trabajo más o menos típico para mostrar el uso de las funciones del
-paquete.</p>
+con los microdatos de la Encuesta Permanente de Hogares. Este tutorial
+busca ejemplificar un pipeline de trabajo más o menos típico para
+mostrar el uso de las funciones del paquete.</p>
 <div id="instalación" class="section level2">
 <h2>Instalación</h2>
 <p>Para instalar la versión estable del paquete usar:</p>
@@ -372,56 +363,43 @@ devtools::install_github(&quot;holatam/eph&quot;)</code></pre>
 <h2>Ejemplo de flujo de trabajo</h2>
 <div id="descarga-de-datos-get_microdata" class="section level3">
 <h3>Descarga de datos: <code>get_microdata()</code></h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(eph)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">library</span>(eph)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 <p>Obtengamos la base de microdatos de individuos para el tercer
 trimestre de 2018:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ind_3_18 <span class="ot">&lt;-</span> <span class="fu">get_microdata</span>(<span class="at">year =</span> <span class="dv">2018</span>, </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">trimester =</span> <span class="dv">2</span>, </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">type =</span> <span class="st">&#39;individual&#39;</span>)</span></code></pre></div>
-<p>Puede verse que la función requiere tres argumentos básicos:</p>
-<ul>
-<li><code>year</code>: un valor numérico entero con el año de la
-encuesta que se desea descargar</li>
-<li><code>trimester</code>: un valor numérico entero con el trimestre
-(este argumento es válido para la EPH continua, 2004-actualidad)</li>
-<li><code>type</code>: un valor character <code>&quot;individual&quot;</code>,
-para descargar la base de invidividuos y <code>&quot;hogar&quot;</code>, para la
-de hogar.</li>
-</ul>
-<p>Si se deseara descargar una base de la EPH puntual, será necesario
-reemplazar el argumento <code>trimester</code> por <code>wave</code> que
-define la onda de la EPH puntual que se desea descargar. Por ejemplo, si
-se buscara descargar la base individual de la segunda onda del año 2002,
-debería escribirse</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ind_2_02 <span class="ot">&lt;-</span> <span class="fu">get_microdata</span>(<span class="at">year =</span> <span class="dv">2001</span>, </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">wave =</span> <span class="dv">2</span>, </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">type =</span> <span class="st">&#39;individual&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>ind_3_18 <span class="ot">&lt;-</span> <span class="fu">get_microdata</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2018</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>  <span class="at">trimester =</span> <span class="dv">3</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;individual&quot;</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>)</span></code></pre></div>
+<p>Puede verse que la función requiere tres argumentos básicos que
+definen cuál es la encuesta que se desea descargar.</p>
 </div>
 <div id="etiquetado-organize_labels" class="section level3">
 <h3>Etiquetado: <code>organize_labels()</code></h3>
-<p>Es posible etiquetar de forma automática el dataset llamando a la
-función <code>organize_labels()</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ind_3_18 <span class="ot">&lt;-</span> <span class="fu">organize_labels</span>(<span class="at">df =</span> ind_3_18, </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">type=</span><span class="st">&#39;individual&#39;</span>)</span></code></pre></div>
-<p>La función toma dos argumentos:</p>
-<ul>
-<li><code>df</code>: el data.frame que se quiere etiquetar, debe ser
-producto de <code>get_microdata()</code></li>
-<li><code>type</code>: string; cuál es el tipo de datatset que se quiere
-etiquetar, <code>&quot;individual&quot;</code> o <code>&quot;hogar&quot;</code></li>
-</ul>
+<p>Es posible etiquetar de forma automática el dataset descargado
+previamente usando <code>get_microdata()</code> llamando a la función
+<code>organize_labels()</code> (el resultado de esta operación no es
+renombrar los valores o nombres de las columnas, sino agregar etiquetas
+con esta información):</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>ind_3_18 <span class="ot">&lt;-</span> <span class="fu">organize_labels</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  <span class="at">df =</span> ind_3_18,</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;individual&quot;</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>)</span></code></pre></div>
 <p>Descarguemos y etiquetemos la base de hogares del 3 trimestre de
 2018. Podemos hacer uso de los <code>%&gt;%</code> pipes de
-<code>magritte</code>:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>hog_3_18 <span class="ot">&lt;-</span> <span class="fu">get_microdata</span>(<span class="at">year =</span> <span class="dv">2018</span>, </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">trimester =</span> <span class="dv">3</span>, </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">type=</span><span class="st">&#39;hogar&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">organize_labels</span>(., </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">type =</span> <span class="st">&#39;hogar&#39;</span>)</span></code></pre></div>
+<code>magrittr</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>hog_3_18 <span class="ot">&lt;-</span> <span class="fu">get_microdata</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2018</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="at">trimester =</span> <span class="dv">3</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;hogar&quot;</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  <span class="fu">organize_labels</span>(.,</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&quot;hogar&quot;</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>  )</span></code></pre></div>
 </div>
 <div id="tabulados-ponderados-calculate_tabulates" class="section level3">
 <h3>Tabulados ponderados: <code>calculate_tabulates()</code></h3>
@@ -431,52 +409,44 @@ tabulados uni y bivariados. Para ello, el paquete cuenta con la función
 obtener tanto resultados en valores absolutos como porcentuales, como
 así también contar con la posibilidad de extrapolar los datos según el
 factor de ponderación correspondiente:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">calculate_tabulates</span>(<span class="at">base =</span> ind_3_18, </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">x =</span> <span class="st">&#39;NIVEL_ED&#39;</span>, </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">y =</span> <span class="st">&#39;CH04&#39;</span>, </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">weights =</span> <span class="st">&#39;PONDERA&#39;</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">add.totals =</span> <span class="st">&#39;row&#39;</span>, </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">add.percentage=</span><span class="st">&#39;col&#39;</span>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                     NIVEL_ED/CH04 Varon Mujer</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Primaria incompleta (incluye educacion especial)  14.9  14.0</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                 Primaria completa  12.9  13.3</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                             Secundaria incompleta  22.7  18.8</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                               Secundaria completa  18.8  18.7</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                 Superior universitaria incompleta  10.8  12.6</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   Superior universitaria completa  10.4  14.6</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                   Sin instruccion   9.6   8.0</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                             Total 100.0 100.0</span></span></code></pre></div>
-<p>Los argumentos principales de la función son:</p>
-<ul>
-<li><code>base</code>: un data.frame</li>
-<li><code>x</code>: string con el nombre de la variable a tabular</li>
-<li><code>y</code>: otro string (opcional) con el nombre de una segunda
-variable, para una tabla de doble entrada. Tiene que ser de igual largo
-que <code>x</code></li>
-<li><code>weights</code>: string con el nombre de la variable que
-contiene los pesos</li>
-<li><code>add.totals</code>: agrega maginales por fila
-(<code>row</code>), columnas (<code>col</code>) o ambas
-(<code>both</code>)</li>
-<li><code>add.percentage</code>: calcula porcentajes por fila
-(<code>row</code>), columnas (<code>col</code>) o ambas
-(<code>both</code>)</li>
-</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">calculate_tabulates</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  <span class="at">base =</span> ind_3_18,</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">&quot;NIVEL_ED&quot;</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">&quot;CH04&quot;</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>  <span class="at">weights =</span> <span class="st">&quot;PONDERA&quot;</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>  <span class="at">add.totals =</span> <span class="st">&quot;row&quot;</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>  <span class="at">add.percentage =</span> <span class="st">&quot;col&quot;</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>)</span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#&gt; # A tibble: 8 × 3</span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt;   `NIVEL_ED/CH04`                                  Varon Mujer</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;                                            &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co">#&gt; 1 Primaria incompleta (incluye educacion especial)  15.1  13.7</span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt; 2 Primaria completa                                 12.7  13.2</span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt; 3 Secundaria incompleta                             22.9  18.5</span></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co">#&gt; 4 Secundaria completa                               19.1  19  </span></span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="co">#&gt; 5 Superior universitaria incompleta                 10.4  12.4</span></span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="co">#&gt; 6 Superior universitaria completa                   10.3  14.7</span></span>
+<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="co">#&gt; 7 Sin instruccion                                    9.6   8.6</span></span>
+<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="co">#&gt; 8 Total                                            100   100</span></span></code></pre></div>
 <p>Así, si quisiéramos la misma tabla sin ponderar:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">calculate_tabulates</span>(<span class="at">base =</span> ind_3_18, </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">x =</span> <span class="st">&#39;NIVEL_ED&#39;</span>, </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">y =</span> <span class="st">&#39;CH04&#39;</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">add.totals =</span> <span class="st">&#39;row&#39;</span>, </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">add.percentage =</span> <span class="st">&#39;col&#39;</span>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                     NIVEL_ED/CH04 Varon Mujer</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Primaria incompleta (incluye educacion especial)  15.2  14.0</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                 Primaria completa  13.2  13.1</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                             Secundaria incompleta  22.6  18.8</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                               Secundaria completa  19.2  18.8</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                 Superior universitaria incompleta  10.4  12.6</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   Superior universitaria completa   9.6  14.1</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                   Sin instruccion   9.8   8.5</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                             Total 100.0 100.0</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">calculate_tabulates</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="at">base =</span> ind_3_18,</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">&quot;NIVEL_ED&quot;</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">&quot;CH04&quot;</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>  <span class="at">add.totals =</span> <span class="st">&quot;row&quot;</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>  <span class="at">add.percentage =</span> <span class="st">&quot;col&quot;</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>)</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt; # A tibble: 8 × 3</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt;   `NIVEL_ED/CH04`                                  Varon Mujer</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;                                            &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co">#&gt; 1 Primaria incompleta (incluye educacion especial)  15.3  14  </span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="co">#&gt; 2 Primaria completa                                 12.7  12.9</span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co">#&gt; 3 Secundaria incompleta                             22.9  18.8</span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="co">#&gt; 4 Secundaria completa                               19.4  19.1</span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co">#&gt; 5 Superior universitaria incompleta                 10.3  12.2</span></span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="co">#&gt; 6 Superior universitaria completa                    9.5  14.1</span></span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="co">#&gt; 7 Sin instruccion                                   10     8.9</span></span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="co">#&gt; 8 Total                                            100   100</span></span></code></pre></div>
 </div>
 <div id="armando-pools-de-datos-análisis-de-panel-organize_panels" class="section level3">
 <h3>Armando pools de datos (“análisis de panel”):
@@ -490,51 +460,51 @@ generarse, para las bases individuales en <code>eph</code> con la
 función <code>organize_panels()</code>. Para ello es necesario contar
 previamente con las múltiples bases de datos que se deseen poolear, y
 armar un objeto de tipo lista que las contenga.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Armo vector con el nombre de las variables de interés</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>variables <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;CODUSU&#39;</span>,<span class="st">&#39;NRO_HOGAR&#39;</span>,<span class="st">&#39;COMPONENTE&#39;</span>,<span class="st">&#39;ANO4&#39;</span>,</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>               <span class="st">&#39;TRIMESTRE&#39;</span>,<span class="st">&#39;CH04&#39;</span>, <span class="st">&#39;CH06&#39;</span>, <span class="co">#variables necesarias para hacer el panel</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>               <span class="st">&#39;ESTADO&#39;</span>,<span class="st">&#39;PONDERA&#39;</span>) <span class="co">#variables que nos interesan en nuestro análisis</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="do">### Descargo la base individual para el 2018_t1</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>base_2018t1 <span class="ot">&lt;-</span> <span class="fu">get_microdata</span>(<span class="at">year =</span> <span class="dv">2018</span>,  <span class="at">trimester =</span> <span class="dv">1</span>,  <span class="at">type =</span> <span class="st">&#39;individual&#39;</span>, </span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">vars =</span> variables) </span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="do">### Descargo la base individual para el 2018_t2</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>base_2018t2 <span class="ot">&lt;-</span> <span class="fu">get_microdata</span>(<span class="at">year =</span> <span class="dv">2018</span>,  <span class="at">trimester =</span> <span class="dv">2</span>,  <span class="at">type =</span> <span class="st">&#39;individual&#39;</span>, </span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>                       <span class="at">vars =</span> variables) </span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="do">### Armo el panel</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>pool <span class="ot">&lt;-</span> <span class="fu">organize_panels</span>(<span class="at">bases =</span> <span class="fu">list</span>(base_2018t1, base_2018t2), </span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>                        <span class="at">variables =</span> <span class="fu">c</span>(<span class="st">&#39;ESTADO&#39;</span>,<span class="st">&#39;PONDERA&#39;</span>),</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>                        <span class="at">window =</span> <span class="st">&#39;trimestral&#39;</span>)</span></code></pre></div>
-<p>Los argumentos principales de la función
-<code>organize_panels</code>son:</p>
-<ul>
-<li><code>bases</code>: una lista con las bases de datos a poolear</li>
-<li><code>variables</code>: string con los nombres de las variables de
-interés</li>
-<li><code>window</code>: un string que indique la ventana de distancia
-de las observaciones (<code>anual</code>) o
-(<code>trimestral</code>)</li>
-</ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pool</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 25,411 x 17</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    CODUSU       NRO_H~1 COMPO~2  ANO4 TRIME~3  CH04  CH06 ESTADO PONDERA Periodo</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;fct&gt;          &lt;int&gt;   &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;   &lt;int&gt; &lt;yearq&gt;</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 TQRMNORUTHM~       1       1  2018       1     2    67      3    1008 2018 Q1</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 TQRMNORUTHM~       1       2  2018       1     1    81      1    1008 2018 Q1</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 TQRMNORUTHM~       1       3  2018       1     2    22      2    1008 2018 Q1</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 TQRMNOVQVHM~       1       1  2018       1     1    62      1     886 2018 Q1</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 TQRMNORPYHM~       1       1  2018       1     1    83      3     594 2018 Q1</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 TQRMNORPYHM~       1       2  2018       1     2    79      3     594 2018 Q1</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 TQRMNOTSYHK~       1       1  2018       1     2    79      3     700 2018 Q1</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 TQRMNOQTTHK~       1       1  2018       1     1    38      1     700 2018 Q1</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 TQRMNOQTTHK~       1       2  2018       1     2    33      1     700 2018 Q1</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 TQRMNOQRVHM~       1       1  2018       1     1    64      1     546 2018 Q1</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 25,401 more rows, 7 more variables: ANO4_t1 &lt;int&gt;,</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   TRIMESTRE_t1 &lt;int&gt;, CH04_t1 &lt;int&gt;, CH06_t1 &lt;int&gt;, ESTADO_t1 &lt;int&gt;,</span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   PONDERA_t1 &lt;int&gt;, consistencia &lt;lgl&gt;, and abbreviated variable names</span></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   1: NRO_HOGAR, 2: COMPONENTE, 3: TRIMESTRE</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="do">### Armo vector con el nombre de las variables de interés incluyendo</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># -variables necesarias para hacer el panel</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co"># -variables que nos interesan en nuestro análisis</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>variables <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>  <span class="st">&quot;CODUSU&quot;</span>, <span class="st">&quot;NRO_HOGAR&quot;</span>, <span class="st">&quot;COMPONENTE&quot;</span>, <span class="st">&quot;ANO4&quot;</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>  <span class="st">&quot;TRIMESTRE&quot;</span>, <span class="st">&quot;CH04&quot;</span>, <span class="st">&quot;CH06&quot;</span>, </span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>  <span class="st">&quot;ESTADO&quot;</span>, <span class="st">&quot;PONDERA&quot;</span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>) </span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="do">### Descargo la base individual para el 2018_t1</span></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a>base_2018t1 <span class="ot">&lt;-</span> <span class="fu">get_microdata</span>(</span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2018</span>, <span class="at">trimester =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">&quot;individual&quot;</span>,</span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a>  <span class="at">vars =</span> variables</span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a>)</span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a><span class="do">### Descargo la base individual para el 2018_t2</span></span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a>base_2018t2 <span class="ot">&lt;-</span> <span class="fu">get_microdata</span>(</span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2018</span>, <span class="at">trimester =</span> <span class="dv">2</span>, <span class="at">type =</span> <span class="st">&quot;individual&quot;</span>,</span>
+<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a>  <span class="at">vars =</span> variables</span>
+<span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a>)</span>
+<span id="cb9-21"><a href="#cb9-21" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="#cb9-22" tabindex="-1"></a><span class="do">### Armo el panel</span></span>
+<span id="cb9-23"><a href="#cb9-23" tabindex="-1"></a>pool <span class="ot">&lt;-</span> <span class="fu">organize_panels</span>(</span>
+<span id="cb9-24"><a href="#cb9-24" tabindex="-1"></a>  <span class="at">bases =</span> <span class="fu">list</span>(base_2018t1, base_2018t2),</span>
+<span id="cb9-25"><a href="#cb9-25" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(<span class="st">&quot;ESTADO&quot;</span>, <span class="st">&quot;PONDERA&quot;</span>),</span>
+<span id="cb9-26"><a href="#cb9-26" tabindex="-1"></a>  <span class="at">window =</span> <span class="st">&quot;trimestral&quot;</span></span>
+<span id="cb9-27"><a href="#cb9-27" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>pool</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co">#&gt; # A tibble: 25,411 × 17</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co">#&gt;    CODUSU        NRO_HOGAR COMPONENTE  ANO4 TRIMESTRE  CH04  CH06 ESTADO PONDERA</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co">#&gt;    &lt;fct&gt;             &lt;int&gt;      &lt;int&gt; &lt;int&gt;     &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;   &lt;int&gt;</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="co">#&gt;  1 TQRMNORUTHMK…         1          1  2018         1     2    67      3    1008</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="co">#&gt;  2 TQRMNORUTHMK…         1          2  2018         1     1    81      1    1008</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="co">#&gt;  3 TQRMNORUTHMK…         1          3  2018         1     2    22      2    1008</span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="co">#&gt;  4 TQRMNOVQVHMO…         1          1  2018         1     1    62      1     886</span></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="co">#&gt;  5 TQRMNORPYHMM…         1          1  2018         1     1    83      3     594</span></span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="co">#&gt;  6 TQRMNORPYHMM…         1          2  2018         1     2    79      3     594</span></span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="co">#&gt;  7 TQRMNOTSYHKM…         1          1  2018         1     2    79      3     700</span></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="co">#&gt;  8 TQRMNOQTTHKM…         1          1  2018         1     1    38      1     700</span></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="co">#&gt;  9 TQRMNOQTTHKM…         1          2  2018         1     2    33      1     700</span></span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a><span class="co">#&gt; 10 TQRMNOQRVHMM…         1          1  2018         1     1    64      1     546</span></span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="co">#&gt; # ℹ 25,401 more rows</span></span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a><span class="co">#&gt; # ℹ 8 more variables: Periodo &lt;yearqtr&gt;, ANO4_t1 &lt;int&gt;, TRIMESTRE_t1 &lt;int&gt;,</span></span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a><span class="co">#&gt; #   CH04_t1 &lt;int&gt;, CH06_t1 &lt;int&gt;, ESTADO_t1 &lt;int&gt;, PONDERA_t1 &lt;int&gt;,</span></span>
+<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a><span class="co">#&gt; #   consistencia &lt;lgl&gt;</span></span></code></pre></div>
 <p>La función nos devuelve un data.frame similar a la base original, en
 el cual cada fila es un registro individual, que consta de las
 observaciones de las variables de interés especificadas, en dos periodos
@@ -542,22 +512,26 @@ de tiempo. En el período inicial las mismas conservan su nombre, y en el
 siguiente (año o trimestre) aparecen renombradas con el agregado del
 string <code>_t1</code>.</p>
 <p>El trabajo que realiza la función es concatenar todas las bases
-espeficadas en el argumento <code>list=</code> y hacer un
-<code>join</code>, conservando sólo aquellos individuos encuestados en
-los diferentes trimestres. La columna <code>consistencia</code> evalúa
-si entre ambas observaciones un mismo individuo figura con distinto sexo
-o con una diferencia absoluta de 2 años de edad.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pool <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">organize_labels</span>(.) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate_tabulates</span>(<span class="at">x =</span> <span class="st">&#39;ESTADO&#39;</span>, </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">y =</span> <span class="st">&#39;ESTADO_t1&#39;</span>,</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">weights =</span> <span class="st">&quot;PONDERA&quot;</span>,  </span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">add.percentage=</span><span class="st">&#39;row&#39;</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    ESTADO/ESTADO_t1    1    2    3    4</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Ocupado 88.7  4.0  7.3  0.0</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          Desocupado 36.2 34.7 29.0  0.0</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            Inactivo  7.5  3.5 88.8  0.2</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Menor de 10 anios.  0.0  0.0  3.7 96.3</span></span></code></pre></div>
+espeficadas y hacer un <code>join</code>, conservando sólo aquellos
+individuos encuestados en los diferentes trimestres. La columna
+<code>consistencia</code> evalúa si entre ambas observaciones un mismo
+individuo figura con distinto sexo o con una diferencia absoluta de 2
+años de edad.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>pool <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="fu">organize_labels</span>(.) <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="fu">calculate_tabulates</span>(</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;ESTADO&quot;</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;ESTADO_t1&quot;</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>    <span class="at">weights =</span> <span class="st">&quot;PONDERA&quot;</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>    <span class="at">add.percentage =</span> <span class="st">&quot;row&quot;</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>  )</span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4 × 5</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="co">#&gt;   `ESTADO/ESTADO_t1`   `1`   `2`   `3`   `4`</span></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a><span class="co">#&gt; 1 Ocupado             88.7   4     7.3   0  </span></span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a><span class="co">#&gt; 2 Desocupado          36.2  34.7  29     0  </span></span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a><span class="co">#&gt; 3 Inactivo             7.5   3.5  88.8   0.2</span></span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a><span class="co">#&gt; 4 Menor de 10 anios.   0     0     3.7  96.3</span></span></code></pre></div>
 <p>Un indicador frecuente construido con esta información es la
 <em>Matriz de Transición</em>. Ella refleja como los individuos que
 ocupaban una determinada categoría en el período inicial, se distribuyen
@@ -570,51 +544,52 @@ trimestre siguiente.</p>
 <div id="iterando-en-varias-bases" class="section level3">
 <h3>Iterando en varias bases</h3>
 <p>Dado que levantar muchas bases al mismo tiempo puede superar el
-espacio disponible en memoria, es posible utilizar el parametro
-<code>vars</code> para hacer una selección de variables al mismo tiempo
-que se levantan las bases.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">get_microdata</span>(<span class="at">year =</span> <span class="dv">2017</span><span class="sc">:</span><span class="dv">2019</span>, </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">trimester =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">type =</span> <span class="st">&#39;individual&#39;</span>,</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">&#39;ANO4&#39;</span>, <span class="st">&#39;TRIMESTRE&#39;</span>, <span class="st">&#39;PONDERA&#39;</span>,<span class="st">&#39;ESTADO&#39;</span>,<span class="st">&#39;CAT_OCUP&#39;</span>))</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">5</span>)</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 5</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    ANO4 TRIMESTRE PONDERA ESTADO CAT_OCUP</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt;     &lt;int&gt;   &lt;int&gt;  &lt;int&gt;    &lt;int&gt;</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  2017         4     200      3        0</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  2017         4     222      4        0</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  2019         2     107      1        3</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  2019         4      87      3        0</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  2018         4     119      3        0</span></span></code></pre></div>
+espacio disponible en memoria, es posible hacer una selección de
+variables al mismo tiempo que se levantan las bases:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">get_microdata</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2017</span><span class="sc">:</span><span class="dv">2019</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="at">trimester =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;individual&quot;</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>  <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">&quot;ANO4&quot;</span>, <span class="st">&quot;TRIMESTRE&quot;</span>, <span class="st">&quot;PONDERA&quot;</span>, <span class="st">&quot;ESTADO&quot;</span>, <span class="st">&quot;CAT_OCUP&quot;</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>)</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">5</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 5</span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="co">#&gt;    ANO4 TRIMESTRE PONDERA ESTADO CAT_OCUP</span></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt;     &lt;int&gt;   &lt;int&gt;  &lt;int&gt;    &lt;int&gt;</span></span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="co">#&gt; 1  2019         3     423      3        0</span></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="co">#&gt; 2  2018         1    1076      1        3</span></span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a><span class="co">#&gt; 3  2017         1     913      3        0</span></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a><span class="co">#&gt; 4  2018         2     121      1        2</span></span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a><span class="co">#&gt; 5  2019         2    2032      1        3</span></span></code></pre></div>
 <p>Con estos datos podemos crear por ejemplo la serie de
 asalarización</p>
 <p><span class="math inline">\(SO_{t} = \frac{\sum_{i=1}^n
 w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}\)</span></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ANO4, TRIMESTRE) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">indicador =</span> <span class="fu">sum</span>(PONDERA[CAT_OCUP<span class="sc">==</span><span class="dv">3</span> <span class="sc">&amp;</span> ESTADO<span class="sc">==</span><span class="dv">1</span>], <span class="at">na.rm =</span> T) <span class="sc">/</span> <span class="fu">sum</span>(PONDERA[ESTADO<span class="sc">==</span><span class="dv">1</span>], <span class="at">na.rm =</span> T)) </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;ANO4&#39;. You can override using the</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `.groups` argument.</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>df</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 12 x 3</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   ANO4 [3]</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     ANO4 TRIMESTRE indicador</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;int&gt;     &lt;int&gt;     &lt;dbl&gt;</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1  2017         1     0.742</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2  2017         2     0.751</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3  2017         3     0.745</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4  2017         4     0.748</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5  2018         1     0.752</span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6  2018         2     0.740</span></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7  2018         3     0.741</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8  2018         4     0.745</span></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9  2019         1     0.745</span></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10  2019         2     0.741</span></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11  2019         3     0.726</span></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12  2019         4     0.726</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>  <span class="fu">group_by</span>(ANO4, TRIMESTRE) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">indicador =</span> <span class="fu">sum</span>(PONDERA[CAT_OCUP <span class="sc">==</span> <span class="dv">3</span> <span class="sc">&amp;</span> ESTADO <span class="sc">==</span> <span class="dv">1</span>], <span class="at">na.rm =</span> T) <span class="sc">/</span> <span class="fu">sum</span>(PONDERA[ESTADO <span class="sc">==</span> <span class="dv">1</span>], <span class="at">na.rm =</span> T))</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;ANO4&#39;. You can override using the</span></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="co">#&gt; `.groups` argument.</span></span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>df</span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="co">#&gt; # A tibble: 12 × 3</span></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="co">#&gt; # Groups:   ANO4 [3]</span></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a><span class="co">#&gt;     ANO4 TRIMESTRE indicador</span></span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="co">#&gt;    &lt;int&gt;     &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="co">#&gt;  1  2017         1     0.742</span></span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a><span class="co">#&gt;  2  2017         2     0.751</span></span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="co">#&gt;  3  2017         3     0.745</span></span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a><span class="co">#&gt;  4  2017         4     0.748</span></span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a><span class="co">#&gt;  5  2018         1     0.752</span></span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a><span class="co">#&gt;  6  2018         2     0.740</span></span>
+<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="co">#&gt;  7  2018         3     0.741</span></span>
+<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="co">#&gt;  8  2018         4     0.745</span></span>
+<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="co">#&gt;  9  2019         1     0.745</span></span>
+<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="co">#&gt; 10  2019         2     0.741</span></span>
+<span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a><span class="co">#&gt; 11  2019         3     0.726</span></span>
+<span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a><span class="co">#&gt; 12  2019         4     0.726</span></span></code></pre></div>
 </div>
 <div id="cálculo-de-pobreza" class="section level3">
 <h3>Cálculo de pobreza:</h3>
@@ -628,88 +603,104 @@ disponibles dichos datos, podrían calcular de forma automática los
 valores de pobreza e indigencia. Mostraremos un ejemplo de juguete con
 dos datasets de la CABA y sus respectivos valores de canastas.</p>
 <p>Existen dos funciones núcleo:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>lineas <span class="ot">&lt;-</span> <span class="fu">get_poverty_lines</span>()</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>lineas <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 4</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   periodo               CBA   ICE   CBT</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2016-04-01 00:00:00 1515.  2.42 3664.</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2016-05-01 00:00:00 1561.  2.45 3831.</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2016-06-01 00:00:00 1614.  2.44 3943.</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2016-07-01 00:00:00 1666.  2.42 4034.</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2016-08-01 00:00:00 1675.  2.41 4042.</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 2016-09-01 00:00:00 1711.  2.39 4090.</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>lineas <span class="ot">&lt;-</span> <span class="fu">get_poverty_lines</span>()</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>lineas</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co">#&gt; # A tibble: 88 × 4</span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co">#&gt;    periodo               CBA   ICE   CBT</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="co">#&gt;    &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co">#&gt;  1 2016-04-01 00:00:00 1515.  2.42 3664.</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co">#&gt;  2 2016-05-01 00:00:00 1561.  2.45 3831.</span></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co">#&gt;  3 2016-06-01 00:00:00 1614.  2.44 3943.</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co">#&gt;  4 2016-07-01 00:00:00 1666.  2.42 4034.</span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co">#&gt;  5 2016-08-01 00:00:00 1675.  2.41 4042.</span></span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="co">#&gt;  6 2016-09-01 00:00:00 1711.  2.39 4090.</span></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="co">#&gt;  7 2016-10-01 00:00:00 1739.  2.41 4192.</span></span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="co">#&gt;  8 2016-11-01 00:00:00 1763.  2.41 4248.</span></span>
+<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="co">#&gt;  9 2016-12-01 00:00:00 1767.  2.41 4258.</span></span>
+<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a><span class="co">#&gt; 10 2017-01-01 00:00:00 1789.  2.41 4312.</span></span>
+<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a><span class="co">#&gt; # ℹ 78 more rows</span></span></code></pre></div>
 <p>Esta función descarga los valores de las canastas alimentaria, básica
 (CBA y CBT) y la inversa del coeficiente de Engels… perdón, Engel (ICE)
 de <a href="https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149">la
 serie provista por INDEC</a>. Esta es la serie para GBA, y es la que
 publica regularmente INDEC.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>lineas <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>ICE) <span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;CBA&quot;</span>, <span class="st">&quot;CBT&quot;</span>), <span class="at">names_to =</span> <span class="st">&quot;canasta&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;valor&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>periodo, <span class="at">y=</span>valor, <span class="at">col=</span>canasta))</span></code></pre></div>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>lineas <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>ICE) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;CBA&quot;</span>, <span class="st">&quot;CBT&quot;</span>), <span class="at">names_to =</span> <span class="st">&quot;canasta&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;valor&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> periodo, <span class="at">y =</span> valor, <span class="at">col =</span> canasta))</span></code></pre></div>
+<p><img src="data:image/png;base64,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AcrbgARIICYIZGVlSfXq1UPnWrt2bSvv2bPHutTVGikQqWoJDS133HGHtGzZMlQnMzMzVA4vuF3yDRo0CF8tdevWFXjLqwVV0KVeWFhYantycnLoM7ruy6uPHXAMJhIgARIggYME6AV/kAVLJEACHiaQk5NjVkiM8UTSrnNJTU0V7Ro3KyjGecLiiPGfSBB906dPL2WltA3l/HPKKaeY5RLjPC+55JLQHnAiatu2rY05xbhTOCG5Vti///5bVq1aFdq3adOmgvrhCZ8hjFu1ahW+mmUSIAES8D0BWkB9fwsQAAnEDoHx48dLbm6uLFu2TKZNmyY33nijWTs7duxoQnTs2LGyevVqKSgokAcffFBGjRolOgbziBeYmJgoQ4YMkZkzZ5oT0d69e+Xll1+2GJ89e/a0+vguHWMqOqbUHI7GjRtn3f7uwW+55RZZv369PPHEE2YxXbx4sUydOtUckmCZZSIBEiABEjhIgBbQgyxYIgES8DCBjIwMC6cEayW62eHhPmnSJDtjdIUjLNPAgQPNcx1d9W3atJEZM2aIOioJuumPlB599FFRZyETjLBaossfgeZ79+5tVR9++GEbc9qlSxezrmIMKrze3dShQwcTxSNGjJAxY8aY5bNHjx62zt2HOQmQAAmQQJBAAK5YhEECJEACXiYAITl8+HATgNu2bbOxoCkpKeWeMsZiYqxmpPGe5VYKW4mYoehez87ODlt7sAjrKgQthG15CY9UDBdAl334GNHy9uU6EiABEvArAVpA/dryvG4SiFECRxKWsJRWJKG7PJL4xHGrVatmS6TvCAQC0rBhw0ibuZ4ESIAESEAJcAwobwMSIAHPE4DoQ5c4EwmQAAmQQHwQYBd8fLQjr4IESIAESIAESIAEYoYALaAx01Q8URIgARIgARIgARKIDwIUoPHRjrwKEiABEiABEiABEogZAhSgMdNUPFESIAESIAESIAESiA8CFKDx0Y68ChIgARIgARIgARKIGQIUoDHTVDxREiABEiABEiABEogPAhSg8dGOvAoSIAESIAESIAESiBkC/w+MZCOILu8YvwAAAABJRU5ErkJggg==" /><!-- --></p>
 <p>Para el calculo de la Pobreza e Indigencia se utilizan canastas
 regionales, que sólo aparecen en los <a href="https://www.indec.gob.ar/uploads/informesdeprensa/eph_pobreza_01_19422F5FC20A.pdf">informes
 Técnicos</a>.</p>
 <p>A modo de ejemplo, en la librería <code>eph</code> se encuentra la
 base <code>canastas_reg_example</code> con la información necesaria para
 realizar el cálculo</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>canastas_reg_example <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 5</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   region  periodo   CBA   CBT codigo</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Cuyo    2016.3  1509. 3872.     42</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Cuyo    2016.4  1570. 4030.     42</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 GBA     2016.3  1684. 4053.      1</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 GBA     2016.4  1756. 4232.      1</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Noreste 2016.3  1513. 3414.     41</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Noreste 2016.4  1568. 3539.     41</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>canastas_reg_example</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="co">#&gt; # A tibble: 12 × 5</span></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="co">#&gt;    region    periodo   CBA   CBT codigo</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="co">#&gt;  1 Cuyo      2016.3  1509. 3872.     42</span></span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a><span class="co">#&gt;  2 Cuyo      2016.4  1570. 4030.     42</span></span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a><span class="co">#&gt;  3 GBA       2016.3  1684. 4053.      1</span></span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a><span class="co">#&gt;  4 GBA       2016.4  1756. 4232.      1</span></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a><span class="co">#&gt;  5 Noreste   2016.3  1513. 3414.     41</span></span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a><span class="co">#&gt;  6 Noreste   2016.4  1568. 3539.     41</span></span>
+<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a><span class="co">#&gt;  7 Noroeste  2016.3  1472. 3292.     40</span></span>
+<span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a><span class="co">#&gt;  8 Noroeste  2016.4  1525. 3412.     40</span></span>
+<span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a><span class="co">#&gt;  9 Pampeana  2016.3  1676. 4034.     43</span></span>
+<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a><span class="co">#&gt; 10 Pampeana  2016.4  1746. 4209.     43</span></span>
+<span id="cb16-15"><a href="#cb16-15" tabindex="-1"></a><span class="co">#&gt; 11 Patagonia 2016.3  1735. 4742.     44</span></span>
+<span id="cb16-16"><a href="#cb16-16" tabindex="-1"></a><span class="co">#&gt; 12 Patagonia 2016.4  1813. 4963.     44</span></span></code></pre></div>
 <p>A su vez, también se encuentra la tabla de
 <code>adulto_equivalente</code> que permite construir la cantidad de
 adultos equivalentes a nivel hogar, para multiplicar al mismo por la
 canasta regional correspondiente, a fin de definir la línea a nivel
-hogar.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>adulto_equivalente <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   CH04 CH06 adequi</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    1   -1   0.35</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    1    1   0.37</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    1    2   0.46</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    1    3   0.51</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    1    4   0.55</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6    1    5   0.60</span></span></code></pre></div>
+hogar (de acuerdo con la metodología propuesta por <a href="https://www.indec.gob.ar/ftp/cuadros/sociedad/preguntas_frecuentes_cba_cbt.pdf">INDEC</a>:
+para identificar la unidad consumidora de referencia, o adulto
+equivalente, se analizó en qué grupo de edad se ubicaba la mayor
+concentración de población activa, y fue la categoría de hombres de 30 a
+60 años de edad la que presentaba el mayor peso relativo dentro del
+conjunto total de la población de referencia).</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>adulto_equivalente <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="co">#&gt;   CH04 CH06 adequi</span></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="co">#&gt; 1    1   -1   0.35</span></span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a><span class="co">#&gt; 2    1    1   0.37</span></span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a><span class="co">#&gt; 3    1    2   0.46</span></span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a><span class="co">#&gt; 4    1    3   0.51</span></span>
+<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a><span class="co">#&gt; 5    1    4   0.55</span></span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a><span class="co">#&gt; 6    1    5   0.60</span></span></code></pre></div>
 <p>La función <code>calculate_poverty</code> calcula la pertenencia a
 situaciones de pobreza e indigencia a nivel de los individuos siguiendo
 la metodología de línea:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>bases <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(toybase_individual_2016_03, toybase_individual_2016_04)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>base_pobreza <span class="ot">&lt;-</span> <span class="fu">calculate_poverty</span>(<span class="at">base =</span> bases, </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">basket =</span> canastas_reg_example,</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">print_summary =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 4</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   ANO4 [1]</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    ANO4 TRIMESTRE Tasa_pobreza Tasa_indigencia</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt;     &lt;int&gt;        &lt;dbl&gt;           &lt;dbl&gt;</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  2016         3       0.0296          0.0136</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  2016         4       0.0324          0.0122</span></span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>base_pobreza <span class="sc">%&gt;%</span> </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(CODUSU, ITF, region, adequi_hogar, CBA_hogar, CBT_hogar, situacion) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 10 x 7</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    CODUSU                          ITF region    adequ~1 CBA_h~2 CBT_h~3 situa~4</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;fct&gt;                         &lt;int&gt; &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  </span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 TQRMNOSWYHKMKQCDEGKDB00490852     0 Pampeana     0.77   1291.   3106. &lt;NA&gt;   </span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 TQRMNOPSQHLMKMCDEGJBF00474588 28000 Pampeana     1.73   2900.   6978. no_pob~</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 TQRMNOQTUHLMKQCDEFPCH00499933 70000 Patagonia    1.02   1850.   5062. no_pob~</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 TQRMNOQWWHJMLPCDEFLID00498902 13300 Pampeana     1.02   1781.   4293. no_pob~</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 TQRMNOQTTHKNNOCDEIJAH00495578     0 GBA          1      1756.   4232. &lt;NA&gt;   </span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 TQRMNORPQHLMKOCDEIHJF00504496 52000 Patagonia    0.83   1505.   4119. no_pob~</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 TQRMNOQPVHJMKRCDEFNFF00499491 30000 Noreste      0.9    1411.   3185. no_pob~</span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 TQRMNORSPHKKKOCDEIMBF00497136  9700 Pampeana     1.83   3196.   7702. no_pob~</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 TQRMNOPYUHMMSSCDEIJAH00505210 46500 GBA          0.77   1352.   3259. no_pob~</span></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 TQRMNORQXHKNKNCDEGKDB00490875 17000 Pampeana     1      1676.   4034. no_pob~</span></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with abbreviated variable names 1: adequi_hogar, 2: CBA_hogar,</span></span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   3: CBT_hogar, 4: situacion</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>bases <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(toybase_individual_2016_03, toybase_individual_2016_04)</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>base_pobreza <span class="ot">&lt;-</span> <span class="fu">calculate_poverty</span>(</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>  <span class="at">base =</span> bases,</span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>  <span class="at">basket =</span> canastas_reg_example,</span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>  <span class="at">print_summary =</span> <span class="cn">TRUE</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>)</span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 × 4</span></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co">#&gt; # Groups:   ANO4 [1]</span></span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="co">#&gt;    ANO4 TRIMESTRE Tasa_pobreza Tasa_indigencia</span></span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt;     &lt;int&gt;        &lt;dbl&gt;           &lt;dbl&gt;</span></span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="co">#&gt; 1  2016         3       0.0296          0.0136</span></span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a><span class="co">#&gt; 2  2016         4       0.0324          0.0122</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>base_pobreza <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>  <span class="fu">select</span>(CODUSU, ITF, region, adequi_hogar, CBA_hogar, CBT_hogar, situacion) <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="co">#&gt; # A tibble: 10 × 7</span></span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a><span class="co">#&gt;    CODUSU                  ITF region adequi_hogar CBA_hogar CBT_hogar situacion</span></span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a><span class="co">#&gt;    &lt;fct&gt;                 &lt;int&gt; &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;    </span></span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a><span class="co">#&gt;  1 TQRMNOQQPHJOLRCDEIIA… 26880 GBA            0.67     1128.     2716. no_pobre </span></span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a><span class="co">#&gt;  2 TQRMNOQQWHLOKUCDEGNF… 38000 Patag…         1.02     1850.     5062. no_pobre </span></span>
+<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a><span class="co">#&gt;  3 TQRMNOPYYHKOLPCDEIKA… 34000 Pampe…         1        1676.     4034. no_pobre </span></span>
+<span id="cb19-10"><a href="#cb19-10" tabindex="-1"></a><span class="co">#&gt;  4 TQRMNOSRXHMNLTCDEHJG…  8500 Noroe…         1.02     1556.     3480. no_pobre </span></span>
+<span id="cb19-11"><a href="#cb19-11" tabindex="-1"></a><span class="co">#&gt;  5 TQRMNOURYHMMKOCDEIOA… 10750 Pampe…         0.96     1677.     4040. no_pobre </span></span>
+<span id="cb19-12"><a href="#cb19-12" tabindex="-1"></a><span class="co">#&gt;  6 TQRMNOQQQHMOKRCDEGIB…     0 Nores…         0.96     1505.     3397. &lt;NA&gt;     </span></span>
+<span id="cb19-13"><a href="#cb19-13" tabindex="-1"></a><span class="co">#&gt;  7 TQRMNOPYPHMLLLCDEGPD… 19000 Noroe…         1.02     1502.     3358. no_pobre </span></span>
+<span id="cb19-14"><a href="#cb19-14" tabindex="-1"></a><span class="co">#&gt;  8 TQRMNORPQHKLLPCDEHNH… 32300 Cuyo           1.77     2779.     7134. no_pobre </span></span>
+<span id="cb19-15"><a href="#cb19-15" tabindex="-1"></a><span class="co">#&gt;  9 TQRMNOPPSHLOKSCDEGOI…     0 Noroe…         0.76     1119.     2502. &lt;NA&gt;     </span></span>
+<span id="cb19-16"><a href="#cb19-16" tabindex="-1"></a><span class="co">#&gt; 10 TQRMNOPQUHKLLPCDEHNH… 26100 Cuyo           0.7      1099.     2821. no_pobre</span></span></code></pre></div>
 </div>
 </div>
 <div class="footnotes footnotes-end-of-document">

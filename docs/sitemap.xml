@@ -4,6 +4,12 @@
     <loc>https://rindec.github.io/eph/404.html</loc>
   </url>
   <url>
+    <loc>https://rindec.github.io/eph/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://rindec.github.io/eph/LICENSE.html</loc>
+  </url>
+  <url>
     <loc>https://rindec.github.io/eph/articles/eph.html</loc>
   </url>
   <url>
@@ -19,13 +25,10 @@
     <loc>https://rindec.github.io/eph/index.html</loc>
   </url>
   <url>
-    <loc>https://rindec.github.io/eph/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://rindec.github.io/eph/LICENSE.html</loc>
-  </url>
-  <url>
     <loc>https://rindec.github.io/eph/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://rindec.github.io/eph/reference/CNO.html</loc>
   </url>
   <url>
     <loc>https://rindec.github.io/eph/reference/adulto_equivalente.html</loc>
@@ -47,9 +50,6 @@
   </url>
   <url>
     <loc>https://rindec.github.io/eph/reference/centroides_aglomerados.html</loc>
-  </url>
-  <url>
-    <loc>https://rindec.github.io/eph/reference/CNO.html</loc>
   </url>
   <url>
     <loc>https://rindec.github.io/eph/reference/diccionario_aglomerados.html</loc>

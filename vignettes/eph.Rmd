@@ -62,7 +62,7 @@ Puede verse que la función requiere tres argumentos básicos que definen cuál 
 
 ### Etiquetado: `organize_labels()`
 
-Es posible etiquetar de forma automática el dataset descargado previamente usando `get_microdata()` llamando a la función `organize_labels()`:
+Es posible etiquetar de forma automática el dataset descargado previamente usando `get_microdata()` llamando a la función `organize_labels()` (el resultado de esta operación no es renombrar los valores o nombres de las columnas, sino agregar etiquetas con esta información):
 
 ```{r}
 ind_3_18 <- organize_labels(
@@ -203,7 +203,7 @@ df <- df %>%
 df
 ```
 
-### Cálculo de pobreza:
+### Cálculo de pobreza: `calculate_poverty()`
 
 Un objetivo del paquete `eph`, es lograr automatizar el cálculo de pobreza e indigencia del INDEC para las bases trimestrales^[El calculo oficial se realiza sobre bases semestrales no publicadas]. El gran problema es que no existe información publicada fuera de los informes de prensa en formato pdf sobre los valores de las canastas básicas y alimentarias. 
 

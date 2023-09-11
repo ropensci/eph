@@ -10,7 +10,7 @@ organize_cno(base)
 \item{base}{Base individual de uno o mas periodos}
 }
 \value{
-Devuelve la base con 4 columnas nuevas (ver `CNO`)
+Devuelve la base con 4 columnas nuevas (que indican la informacion correspondiente al Clasificador Nacional de Ocupaciones)
 }
 \description{
 Funcion para clasificar las ocupaciones segun las 4 dimensiones del Clasificador Nacional de Ocupaciones

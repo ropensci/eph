@@ -100,7 +100,7 @@
 Kozlowski, Pablo Tiscornia, Guido Weksler, Germán Rosati, Natsumi
 Shokida y Carolina Pradier</h4>
             
-            <h4 data-toc-skip class="date">2023-07-31</h4>
+            <h4 data-toc-skip class="date">2023-09-11</h4>
       
       <small class="dont-index">Código: <a href="https://github.com/holatam/eph/blob/HEAD/vignettes/eph.Rmd" class="external-link"><code>vignettes/eph.Rmd</code></a></small>
       <div class="hidden name"><code>eph.Rmd</code></div>
@@ -151,7 +151,9 @@ definen cuál es la encuesta que se desea descargar.</p>
 </h3>
 <p>Es posible etiquetar de forma automática el dataset descargado
 previamente usando <code><a href="../reference/get_microdata.html">get_microdata()</a></code> llamando a la función
-<code><a href="../reference/organize_labels.html">organize_labels()</a></code>:</p>
+<code><a href="../reference/organize_labels.html">organize_labels()</a></code> (el resultado de esta operación no es
+renombrar los valores o nombres de las columnas, sino agregar etiquetas
+con esta información):</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ind_3_18</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/organize_labels.html">organize_labels</a></span><span class="op">(</span></span>
 <span>  df <span class="op">=</span> <span class="va">ind_3_18</span>,</span>
@@ -336,11 +338,11 @@ variables al mismo tiempo que se levantan las bases:</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 5</span></span></span>
 <span><span class="co">#&gt;    ANO4 TRIMESTRE PONDERA ESTADO CAT_OCUP</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  <span style="text-decoration: underline;">2</span>017         4     649      1        3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>  <span style="text-decoration: underline;">2</span>017         3     324      1        2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>  <span style="text-decoration: underline;">2</span>017         4     104      3        0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>  <span style="text-decoration: underline;">2</span>019         2     226      1        2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>  <span style="text-decoration: underline;">2</span>018         2     108      1        3</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  <span style="text-decoration: underline;">2</span>018         1     125      4        0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>  <span style="text-decoration: underline;">2</span>018         2     232      1        3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>  <span style="text-decoration: underline;">2</span>017         3    <span style="text-decoration: underline;">1</span>484      3        0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>  <span style="text-decoration: underline;">2</span>019         3     725      3        0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>  <span style="text-decoration: underline;">2</span>019         2     106      3        0</span></span></code></pre></div>
 <p>Con estos datos podemos crear por ejemplo la serie de
 asalarización</p>
 <p><span class="math inline">\(SO_{t} = \frac{\sum_{i=1}^n
@@ -371,7 +373,7 @@ w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}\)</span></p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span>  <span style="text-decoration: underline;">2</span>019         4     0.726</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="cálculo-de-pobreza">Cálculo de pobreza:<a class="anchor" aria-label="anchor" href="#c%C3%A1lculo-de-pobreza"></a>
+<h3 id="cálculo-de-pobreza-calculate_poverty">Cálculo de pobreza: <code>calculate_poverty()</code><a class="anchor" aria-label="anchor" href="#c%C3%A1lculo-de-pobreza-calculate_poverty"></a>
 </h3>
 <p>Un objetivo del paquete <code>eph</code>, es lograr automatizar el
 cálculo de pobreza e indigencia del INDEC para las bases trimestrales<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. El gran
@@ -386,7 +388,7 @@ dos datasets de la CABA y sus respectivos valores de canastas.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lineas</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_poverty_lines.html">get_poverty_lines</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">lineas</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 87 × 4</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 88 × 4</span></span></span>
 <span><span class="co">#&gt;    periodo               CBA   ICE   CBT</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2016-04-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>515.  2.42 <span style="text-decoration: underline;">3</span>664.</span></span>
@@ -399,7 +401,7 @@ dos datasets de la CABA y sus respectivos valores de canastas.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2016-11-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>763.  2.41 <span style="text-decoration: underline;">4</span>248.</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2016-12-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>767.  2.41 <span style="text-decoration: underline;">4</span>258.</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2017-01-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>789.  2.41 <span style="text-decoration: underline;">4</span>312.</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 77 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 78 more rows</span></span></span></code></pre></div>
 <p>Esta función descarga los valores de las canastas alimentaria, básica
 (CBA y CBT) y la inversa del coeficiente de Engels… perdón, Engel (ICE)
 de <a href="https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149" class="external-link">la
@@ -439,7 +441,12 @@ realizar el cálculo</p>
 <code>adulto_equivalente</code> que permite construir la cantidad de
 adultos equivalentes a nivel hogar, para multiplicar al mismo por la
 canasta regional correspondiente, a fin de definir la línea a nivel
-hogar.</p>
+hogar (de acuerdo con la metodología propuesta por <a href="https://www.indec.gob.ar/ftp/cuadros/sociedad/preguntas_frecuentes_cba_cbt.pdf" class="external-link">INDEC</a>:
+para identificar la unidad consumidora de referencia, o adulto
+equivalente, se analizó en qué grupo de edad se ubicaba la mayor
+concentración de población activa, y fue la categoría de hombres de 30 a
+60 años de edad la que presentaba el mayor peso relativo dentro del
+conjunto total de la población de referencia).</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">adulto_equivalente</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   CH04 CH06 adequi</span></span>
@@ -472,16 +479,16 @@ la metodología de línea:</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 7</span></span></span>
 <span><span class="co">#&gt;    CODUSU                  ITF region adequi_hogar CBA_hogar CBT_hogar situacion</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> TQRMNOSYTHMOKSCDEFLI…     0 Pampe…         0.76     <span style="text-decoration: underline;">1</span>274.     <span style="text-decoration: underline;">3</span>066. <span style="color: #BB0000;">NA</span>       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> TQRMNOQVTHKMKOCDEOJA…     0 Patag…         0.77     <span style="text-decoration: underline;">1</span>396.     <span style="text-decoration: underline;">3</span>821. <span style="color: #BB0000;">NA</span>       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> TQRMNOQVSHKMLRCDEGJB… <span style="text-decoration: underline;">17</span>660 Pampe…         0.83     <span style="text-decoration: underline;">1</span>391.     <span style="text-decoration: underline;">3</span>348. no_pobre </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> TQRMNORVWHKNKQCDEIKA…     0 Pampe…         0.77     <span style="text-decoration: underline;">1</span>345.     <span style="text-decoration: underline;">3</span>241. <span style="color: #BB0000;">NA</span>       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> TQRMNOPVPHJMKTCDEFLI… <span style="text-decoration: underline;">30</span>000 Pampe…         0.77     <span style="text-decoration: underline;">1</span>291.     <span style="text-decoration: underline;">3</span>106. no_pobre </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> TQRMNOSPWHKMKQCDEIJA…     0 GBA            0.6      <span style="text-decoration: underline;">1</span>011.     <span style="text-decoration: underline;">2</span>432. <span style="color: #BB0000;">NA</span>       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> TQRMNOQUSHLLKOCDEGLD…     0 Nores…         0.77     <span style="text-decoration: underline;">1</span>165.     <span style="text-decoration: underline;">2</span>629. <span style="color: #BB0000;">NA</span>       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> TQRMNOQWQHJMLNCDEGIB…  <span style="text-decoration: underline;">6</span>250 Nores…         0.37      560.     <span style="text-decoration: underline;">1</span>263. no_pobre </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> TQRMNORWRHKOKRCDEGOI… <span style="text-decoration: underline;">10</span>600 Noroe…         0.79     <span style="text-decoration: underline;">1</span>205.     <span style="text-decoration: underline;">2</span>695. no_pobre </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> TQRMNOPQUHKOLOCDEFIA… <span style="text-decoration: underline;">18</span>500 Pampe…         0.9      <span style="text-decoration: underline;">1</span>572.     <span style="text-decoration: underline;">3</span>788. no_pobre</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> TQRMNOPXXHJNMMCDEIKA… <span style="text-decoration: underline;">17</span>900 Pampe…         0.77     <span style="text-decoration: underline;">1</span>345.     <span style="text-decoration: underline;">3</span>241. no_pobre </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> TQRMNOQTTHJMKRCDEHIB…  <span style="text-decoration: underline;">8</span>120 Noroe…         1.32     <span style="text-decoration: underline;">2</span>014.     <span style="text-decoration: underline;">4</span>504. no_pobre </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> TQRMNORXRHJOKNCDEGPD… <span style="text-decoration: underline;">15</span>700 Noroe…         0.76     <span style="text-decoration: underline;">1</span>159.     <span style="text-decoration: underline;">2</span>593. no_pobre </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> TQRMNORQVHMOLSCDEFJA… <span style="text-decoration: underline;">20</span>000 Pampe…         0.76     <span style="text-decoration: underline;">1</span>327.     <span style="text-decoration: underline;">3</span>199. no_pobre </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> TQRMNOQQYHLLKRCDEGPD… <span style="text-decoration: underline;">39</span>000 Noroe…         1.02     <span style="text-decoration: underline;">1</span>556.     <span style="text-decoration: underline;">3</span>480. no_pobre </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> TQRMNOQYPHKOLSCDEHPJ… <span style="text-decoration: underline;">28</span>000 Noroe…         0.77     <span style="text-decoration: underline;">1</span>134.     <span style="text-decoration: underline;">2</span>535. no_pobre </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> TQRMNOPXVHMOLQCDEFPC…     0 Patag…         1        <span style="text-decoration: underline;">1</span>813.     <span style="text-decoration: underline;">4</span>963. <span style="color: #BB0000;">NA</span>       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> TQRMNOPTXHLLMRCDEIIA…     0 GBA            0.76     <span style="text-decoration: underline;">1</span>335.     <span style="text-decoration: underline;">3</span>217. <span style="color: #BB0000;">NA</span>       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> TQRMNOPVQHMOMPCDEFKI…  <span style="text-decoration: underline;">9</span>400 Pampe…         0.76     <span style="text-decoration: underline;">1</span>327.     <span style="text-decoration: underline;">3</span>199. no_pobre </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> TQRMNOQQPHJLKNCDEFMD…     0 Pampe…         0.63     <span style="text-decoration: underline;">1</span>100.     <span style="text-decoration: underline;">2</span>652. <span style="color: #BB0000;">NA</span></span></span></code></pre></div>
 </div>
 </div>
 <div class="footnotes footnotes-end-of-document">
