@@ -53,7 +53,7 @@ Obtengamos la base de microdatos de individuos para el tercer trimestre de 2018:
 ```{r}
 ind_3_18 <- get_microdata(
   year = 2018,
-  trimester = 3,
+  period = 3,
   type = "individual"
 )
 ```
@@ -77,7 +77,7 @@ Descarguemos y etiquetemos la base de hogares del 3 trimestre de 2018. Podemos h
 ```{r}
 hog_3_18 <- get_microdata(
   year = 2018,
-  trimester = 3,
+  period = 3,
   type = "hogar"
 ) %>%
   organize_labels(.,
@@ -132,13 +132,13 @@ variables <- c(
 
 ### Descargo la base individual para el 2018_t1
 base_2018t1 <- get_microdata(
-  year = 2018, trimester = 1, type = "individual",
+  year = 2018, period = 1, type = "individual",
   vars = variables
 )
 
 ### Descargo la base individual para el 2018_t2
 base_2018t2 <- get_microdata(
-  year = 2018, trimester = 2, type = "individual",
+  year = 2018, period = 2, type = "individual",
   vars = variables
 )
 
@@ -181,7 +181,7 @@ Dado que levantar muchas bases al mismo tiempo puede superar el espacio disponib
 ```{r message=FALSE, warning=FALSE}
 df <- get_microdata(
   year = 2017:2019,
-  trimester = 1:4,
+  period = 1:4,
   type = "individual",
   vars = c("ANO4", "TRIMESTRE", "PONDERA", "ESTADO", "CAT_OCUP")
 )
