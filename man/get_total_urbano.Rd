@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_total_urbano.R
 \name{get_total_urbano}
 \alias{get_total_urbano}
-\title{(coming soon!) Descarga de Bases de EPH total urbano}
+\title{Descarga de Bases de EPH total urbano}
 \usage{
 get_total_urbano(
   year = 2016,
