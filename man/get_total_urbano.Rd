@@ -34,7 +34,7 @@ disclaimer: El script no es un producto oficial de INDEC.
 base_individual <- get_total_urbano(
   year = 2016,
   type = "individual",
-  vars = c("AGLOMERADO", "PONDERA", "ESTADO", "CAT_OCUP")
+  vars = c("PONDERA", "ESTADO", "CAT_OCUP")
 )
 
 }
