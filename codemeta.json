@@ -7,13 +7,13 @@
   "codeRepository": "https://github.com/holatam/eph",
   "issueTracker": "https://github.com/holatam/eph/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.6.0",
+  "version": "1.0.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.2.2 (2022-10-31 ucrt)",
+  "runtimePlatform": "R version 4.3.1 (2023-06-16)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -21,6 +21,13 @@
     "url": "https://cran.r-project.org"
   },
   "author": [
+    {
+      "@type": "Person",
+      "givenName": "Carolina",
+      "familyName": "Pradier",
+      "email": "carolinapradier@gmail.com",
+      "@id": "https://orcid.org/0009-0007-5058-6352"
+    },
     {
       "@type": "Person",
       "givenName": "Diego",
@@ -52,13 +59,6 @@
       "familyName": "Rosati",
       "email": "german.rosati@gmail.com",
       "@id": "https://orcid.org/0000-0002-9775-0435"
-    },
-    {
-      "@type": "Person",
-      "givenName": "Carolina",
-      "familyName": "Pradier",
-      "email": "carolinapradier@gmail.com",
-      "@id": "https://orcid.org/0009-0007-5058-6352"
     }
   ],
   "contributor": [
@@ -162,6 +162,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=forcats"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "httptest",
+      "name": "httptest",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=httptest"
     }
   ],
   "softwareRequirements": {
@@ -316,34 +328,10 @@
     },
     "14": {
       "@type": "SoftwareApplication",
-      "identifier": "rvest",
-      "name": "rvest",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=rvest"
-    },
-    "15": {
-      "@type": "SoftwareApplication",
-      "identifier": "xml2",
-      "name": "xml2",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=xml2"
-    },
-    "16": {
-      "@type": "SoftwareApplication",
       "identifier": "stats",
       "name": "stats"
     },
-    "17": {
+    "15": {
       "@type": "SoftwareApplication",
       "identifier": "cli",
       "name": "cli",
@@ -355,7 +343,43 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=cli"
     },
+    "16": {
+      "@type": "SoftwareApplication",
+      "identifier": "httr",
+      "name": "httr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=httr"
+    },
+    "17": {
+      "@type": "SoftwareApplication",
+      "identifier": "curl",
+      "name": "curl",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=curl"
+    },
     "18": {
+      "@type": "SoftwareApplication",
+      "identifier": "tidyselect",
+      "name": "tidyselect",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tidyselect"
+    },
+    "19": {
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
@@ -363,7 +387,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1227.719KB",
+  "fileSize": "1071.528KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

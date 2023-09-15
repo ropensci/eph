@@ -1,3 +1,16 @@
+# eph 1.0.0
+* added new functions: get_total_urbano() and get_eahu() (as well as their auxiliar internal functions)
+* improved documentation and site 
+* added contributing and codemeta.json files
+* improved error messages using cli package
+* reduced dependencies relying on base r and improved deprecated code 
+* re-structured functions using the early return philosophy
+* styled code according to the tidyverse style guide
+* modified get_microdata function to avoid parameter conflicts between trimester and wave
+* fixed map_agglomerates bug
+* added additional tests 
+
+
 # eph 0.6.1
 * fixed bug in get_microdata() originated in a change in INDEC's URL (old datasets are now directly downloaded from a stable github repo)
 

@@ -16,3 +16,4 @@
 ^codemeta\.json
 ^\.DS_Store
 ^README\.Rmd$
+^codemeta\.json$
