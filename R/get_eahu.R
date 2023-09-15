@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' base_individual <- get_eahu(
-#'   year = 2010:2012,
+#'   year = 2010,
 #'   type = "individual",
 #'   vars = c("SUBDOMINIO", "PONDERA", "ESTADO", "CAT_OCUP")
 #' )
