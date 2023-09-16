@@ -13,7 +13,8 @@ status](https://codecov.io/gh/holatam/eph/branch/master/graph/badge.svg)](https:
 status](https://www.r-pkg.org/badges/version/eph)](https://cran.r-project.org/package=eph)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/eph?color=blue)](https://cran.r-project.org/package=eph)
 [![](http://cranlogs.r-pkg.org/badges/last-month/eph?color=blue)](https://cran.r-project.org/package=eph)
-[![DOI](https://zenodo.org/badge/142294444.svg)](https://zenodo.org/badge/latestdoi/142294444)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8352221.svg)](https://doi.org/10.5281/zenodo.8352221)
+
 
 <!-- badges: end -->
 
@@ -131,19 +132,27 @@ de R ‘eph’ (Kozlowski et al, 2020)”.
 
 La referencia completa para incluir en la bibliografía es:
 
-    Diego Kozlowski, Pablo Tiscornia, Guido Weksler, German Rosati and Natsumi Shokida (2020). eph: Argentina's Permanent Household Survey Data and Manipulation Utilities. R package version https://doi.org/10.5281/zenodo.3462677
+    Carolina Pradier, Guido Weksler, Pablo Tiscornia, Natsumi Shokida, Germán Rosati, & Diego Kozlowski. (2023). ropensci/eph V1.0.0 (1.0.0). Zenodo. https://doi.org/10.5281/zenodo.8352221
 
 Si necesitás la entrada bib:
 
 ``` bib
 
-@Manual{kozlowski2020,
-    title = {eph: Argentina's Permanent Household Survey Data and Manipulation Utilities},
-    author = {Diego Kozlowski and Pablo Tiscornia and Guido Weksler and German Rosati and Natsumi Shokida},
-    year = {2020},
-    doi = {10.5281/zenodo.3462677},
-    url = {https://holatam.github.io/eph/},
-  }
+@software{carolina_pradier_2023_8352221,
+  author       = {Carolina Pradier and
+                  Guido Weksler and
+                  Pablo Tiscornia and
+                  Natsumi Shokida and
+                  Germán Rosati and
+                  Diego Kozlowski},
+  title        = {ropensci/eph V1.0.0},
+  month        = sep,
+  year         = 2023,
+  publisher    = {Zenodo},
+  version      = {1.0.0},
+  doi          = {10.5281/zenodo.8352221},
+  url          = {https://doi.org/10.5281/zenodo.8352221}
+}
   
 ```
 
