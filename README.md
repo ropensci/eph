@@ -77,13 +77,19 @@ EPH. Algunos de estos son:
 
 ## Instalación
 
-Para la versión estable
+Para descargar la versión estable desde CRAN:
 
 ``` r
 install.packages("eph")
 ```
 
-Para la versión en desarrollo
+Para descargar desde R-universe:
+
+``` r
+install.packages("eph", repos = "https://ropensci.r-universe.dev")
+```
+
+Para la versión en desarrollo:
 
 ``` r
 # install.packages('devtools')
