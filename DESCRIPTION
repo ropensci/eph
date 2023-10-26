@@ -42,7 +42,7 @@ Depends: R (>= 2.10)
 License: MIT + file LICENSE
 Encoding: UTF-8
 Language: es
-URL: https://github.com/ropensci/eph
+URL: https://ropensci.github.io/eph/, https://github.com/ropensci/eph
 LazyData: true
 RoxygenNote: 7.2.3
 Suggests: 
