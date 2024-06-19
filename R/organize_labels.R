@@ -48,7 +48,7 @@ organize_labels <- function(df, type = "individual") {
         "Nordeste" = 41,
         "Cuyo" = 42,
         "Pampeana" = 43,
-        "Patagonica." = 44
+        "Patagonica" = 44
       ),
       MAS_500 = "Aglomerados segun tamanio",
       AGLOMERADO = "Codigo de Aglomerado",
@@ -428,7 +428,7 @@ organize_labels <- function(df, type = "individual") {
         "Nordeste" = 41,
         "Cuyo" = 42,
         "Pampeana" = 43,
-        "Patagonica"
+        "Patagonica" = 44
       ),
       MAS_500 = "Aglomerados segun tamanio",
       AGLOMERADO = "Codigo de Aglomerado",
