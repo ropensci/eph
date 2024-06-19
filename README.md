@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![R build
-status](https://github.com/holatam/eph/workflows/R-CMD-check/badge.svg)](https://github.com/holatam/eph/actions)
+status](https://github.com/holatam/eph/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/eph/actions)
 [![Coverage
 status](https://codecov.io/gh/holatam/eph/branch/master/graph/badge.svg)](https://app.codecov.io/gh/holatam/eph?branch=master)
 [![CRAN
@@ -14,7 +14,6 @@ status](https://www.r-pkg.org/badges/version/eph)](https://cran.r-project.org/pa
 [![](http://cranlogs.r-pkg.org/badges/grand-total/eph?color=blue)](https://cran.r-project.org/package=eph)
 [![](http://cranlogs.r-pkg.org/badges/last-month/eph?color=blue)](https://cran.r-project.org/package=eph)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8352221.svg)](https://doi.org/10.5281/zenodo.8352221)
-
 
 <!-- badges: end -->
 
@@ -170,5 +169,5 @@ Hogares. Todos los aportes en este sentido son bienvenidos.
 
 Si trabajas con la EPH y querés agregar tu función, te recomendamos que
 leas los siguientes
-[consejos](https://github.com/holatam/eph/blob/master/docs/CONTRIBUTING.md)
+[consejos](https://github.com/ropensci/eph/blob/master/docs/CONTRIBUTING.md)
 sobre cómo como colaborar

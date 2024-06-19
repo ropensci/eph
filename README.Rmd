@@ -17,13 +17,13 @@ knitr::opts_chunk$set(
 # eph <img src='man/figures/logo.png' align="right" height="200" style="float:right; height:200px;" />
 
 <!-- badges: start -->
-[![R build status](https://github.com/holatam/eph/workflows/R-CMD-check/badge.svg)](https://github.com/holatam/eph/actions)
+[![R build status](https://github.com/holatam/eph/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/eph/actions)
 [![Coverage
 status](https://codecov.io/gh/holatam/eph/branch/master/graph/badge.svg)](https://app.codecov.io/gh/holatam/eph?branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/eph)](https://cran.r-project.org/package=eph)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/eph?color=blue)](https://cran.r-project.org/package=eph)
 [![](http://cranlogs.r-pkg.org/badges/last-month/eph?color=blue)](https://cran.r-project.org/package=eph)
-[![DOI](https://zenodo.org/badge/142294444.svg)](https://zenodo.org/badge/latestdoi/142294444)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8352221.svg)](https://doi.org/10.5281/zenodo.8352221)
 
 
 <!-- badges: end -->
@@ -65,13 +65,20 @@ El paquete también cuenta con dataframes útiles para el trabajo con la EPH. Al
 ## Instalación
 
 
-Para la versión estable
+Para descargar la versión estable desde CRAN:
 
 ```{r, eval = FALSE}
 install.packages("eph")
 ```
 
-Para la versión en desarrollo 
+Para descargar desde R-universe:
+
+```{r, eval = FALSE}
+install.packages("eph", repos = "https://ropensci.r-universe.dev")
+```
+
+
+Para la versión en desarrollo: 
 
 ```{r, eval = FALSE}
 # install.packages('devtools')
@@ -105,20 +112,28 @@ Podés citar este paquete como "se obtuvieron y/o normalizaron los datos de la E
 La referencia completa para incluir en la bibliografía es:   
    
 ```
-Diego Kozlowski, Pablo Tiscornia, Guido Weksler, German Rosati and Natsumi Shokida (2020). eph: Argentina's Permanent Household Survey Data and Manipulation Utilities. R package version https://doi.org/10.5281/zenodo.3462677
+Carolina Pradier, Guido Weksler, Pablo Tiscornia, Natsumi Shokida, Germán Rosati, & Diego Kozlowski. (2023). ropensci/eph V1.0.0 (1.0.0). Zenodo. https://doi.org/10.5281/zenodo.8352221
 ```
 
 Si necesitás la entrada bib: 
 
 ```bib
 
-@Manual{kozlowski2020,
-    title = {eph: Argentina's Permanent Household Survey Data and Manipulation Utilities},
-    author = {Diego Kozlowski and Pablo Tiscornia and Guido Weksler and German Rosati and Natsumi Shokida},
-    year = {2020},
-    doi = {10.5281/zenodo.3462677},
-    url = {https://holatam.github.io/eph/},
-  }
+@software{carolina_pradier_2023_8352221,
+  author       = {Carolina Pradier and
+                  Guido Weksler and
+                  Pablo Tiscornia and
+                  Natsumi Shokida and
+                  Germán Rosati and
+                  Diego Kozlowski},
+  title        = {ropensci/eph V1.0.0},
+  month        = sep,
+  year         = 2023,
+  publisher    = {Zenodo},
+  version      = {1.0.0},
+  doi          = {10.5281/zenodo.8352221},
+  url          = {https://doi.org/10.5281/zenodo.8352221}
+}
   
 ```
 
@@ -127,4 +142,4 @@ Si necesitás la entrada bib:
 
 Este paquete se propone incorporar cualquier función de propósitos generales que utilice como base los datos de la Encuesta Permanente de Hogares. Todos los aportes en este sentido son bienvenidos.
 
-Si trabajas con la EPH y querés agregar tu función, te recomendamos que leas los siguientes [consejos](https://github.com/holatam/eph/blob/master/docs/CONTRIBUTING.md) sobre cómo como colaborar
+Si trabajas con la EPH y querés agregar tu función, te recomendamos que leas los siguientes [consejos](https://github.com/ropensci/eph/blob/master/docs/CONTRIBUTING.md) sobre cómo como colaborar

@@ -8,7 +8,7 @@ bibentry(
   year     = 2020,
   DOI  = "10.5281/zenodo.3462677",
 
-  url   = "https://holatam.github.io/eph/",
+  url   = "https://github.com/ropensci/eph",
   textVersion = paste(
   "Diego Kozlowski, Pablo Tiscornia, Guido Weksler, German Rosati and Natsumi Shokida (2020).
   eph: Argentina's Permanent Household Survey Data and Manipulation Utilities. R package
