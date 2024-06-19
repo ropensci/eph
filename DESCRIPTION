@@ -1,6 +1,6 @@
 Package: eph
 Title: Argentina's Permanent Household Survey Data and Manipulation Utilities
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: c(
     person("Carolina", "Pradier", email = "carolinapradier@gmail.com", role = c("aut","cre"), comment = c(ORCID = "0009-0007-5058-6352")),
     person("Diego", "Kozlowski", email = "diegokoz92@gmail.com", role = c("aut"), comment = c(ORCID = "0000-0002-5396-3471")),
