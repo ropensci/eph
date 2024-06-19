@@ -1,4 +1,5 @@
 # eph 1.0.1
+* fixed organize_labels bug
 
 # eph 1.0.0
 * added new functions: get_total_urbano() and get_eahu() (as well as their auxiliar internal functions)

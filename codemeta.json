@@ -4,10 +4,10 @@
   "identifier": "eph",
   "description": "Tools to download and manipulate the Permanent Household Survey from Argentina (EPH is the Spanish acronym for Permanent Household Survey). e.g: get_microdata() for downloading the datasets, get_poverty_lines() for downloading the official poverty baskets, calculate_poverty() for the calculation of stating if a household is in poverty or not, following the official methodology. organize_panels() is used to concatenate observations from different periods, and organize_labels() adds the official labels to the data. The implemented methods are based on INDEC (2016) <http://www.estadistica.ec.gba.gov.ar/dpe/images/SOCIEDAD/EPH_metodologia_22_pobreza.pdf>. As this package works with the argentinian Permanent Household Survey and its main audience is from this country, the documentation was written in Spanish.",
   "name": "eph: Argentina's Permanent Household Survey Data and Manipulation Utilities",
-  "codeRepository": "https://github.com/holatam/eph",
+  "codeRepository": "https://github.com/ropensci/eph",
   "issueTracker": "https://github.com/holatam/eph/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -387,7 +387,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1071.528KB",
+  "fileSize": "1071.789KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -426,8 +426,8 @@
       "sameAs": "https://doi.org/10.5281/zenodo.3462677"
     }
   ],
-  "releaseNotes": "https://github.com/holatam/eph/blob/master/NEWS.md",
-  "readme": "https://github.com/holatam/eph/blob/master/README.md",
+  "releaseNotes": "https://github.com/ropensci/eph/blob/master/NEWS.md",
+  "readme": "https://github.com/ropensci/eph/blob/master/README.md",
   "contIntegration": ["https://github.com/holatam/eph/actions", "https://app.codecov.io/gh/holatam/eph?branch=master"],
   "keywords": ["rstats", "rstatses", "eph", "indec", "mercado-de-trabajo"],
   "relatedLink": "https://CRAN.R-project.org/package=eph"
