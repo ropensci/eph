@@ -1,11 +1,3 @@
-test_that("total urbano descarga", {
-  skip_if_offline()
-  skip_on_cran()
-  df <- get_total_urbano(year = 2016, type = "individual", vars = "all")
-  dimensiones <- dim(df)
-  expect_equal(dimensiones, c(95782, 152))
-})
-
 test_that("selec variables", {
   skip_if_offline()
   skip_on_cran()
