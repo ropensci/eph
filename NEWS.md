@@ -1,3 +1,5 @@
+# eph 1.0.2
+
 # eph 1.0.1
 * fixed organize_labels bug
 
