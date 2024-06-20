@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eph</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -76,7 +76,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/holatam/eph/" class="external-link">
+  <a href="https://github.com/ropensci/eph/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -97,7 +97,7 @@
       <h1 data-toc-skip>Estimación de Pobreza e Indigencia</h1>
             
       
-      <small class="dont-index">Código: <a href="https://github.com/holatam/eph/blob/HEAD/vignettes/estimacion_pobreza.Rmd" class="external-link"><code>vignettes/estimacion_pobreza.Rmd</code></a></small>
+      <small class="dont-index">Código: <a href="https://github.com/ropensci/eph/blob/HEAD/vignettes/estimacion_pobreza.Rmd" class="external-link"><code>vignettes/estimacion_pobreza.Rmd</code></a></small>
       <div class="hidden name"><code>estimacion_pobreza.Rmd</code></div>
 
     </div>
@@ -106,12 +106,12 @@
     
 <p>En esta vignette mostraremos como utilizar las funciones
 <code><a href="../reference/get_poverty_lines.html">get_poverty_lines()</a></code> y <code><a href="../reference/calculate_poverty.html">calculate_poverty()</a></code> para
-calcular la pobreza aproximando la <a href="http://www.indec.gob.ar/ftp/cuadros/sociedad/EPH_metodologia_22_pobreza.pdf" class="external-link">metodología
+calcular la pobreza aproximando la <a href="https://www.indec.gob.ar:443/ftp/cuadros/sociedad/EPH_metodologia_22_pobreza.pdf" class="external-link">metodología
 oficial</a> de INDEC.</p>
 <p>Primero cargamos el paquete <code>eph</code> junto con otros paquetes
 que serán de utilidad</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/holatam/eph" class="external-link">eph</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/eph" class="external-link">eph</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span><span class="op">)</span></span>

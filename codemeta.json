@@ -5,7 +5,7 @@
   "description": "Tools to download and manipulate the Permanent Household Survey from Argentina (EPH is the Spanish acronym for Permanent Household Survey). e.g: get_microdata() for downloading the datasets, get_poverty_lines() for downloading the official poverty baskets, calculate_poverty() for the calculation of stating if a household is in poverty or not, following the official methodology. organize_panels() is used to concatenate observations from different periods, and organize_labels() adds the official labels to the data. The implemented methods are based on INDEC (2016) <http://www.estadistica.ec.gba.gov.ar/dpe/images/SOCIEDAD/EPH_metodologia_22_pobreza.pdf>. As this package works with the argentinian Permanent Household Survey and its main audience is from this country, the documentation was written in Spanish.",
   "name": "eph: Argentina's Permanent Household Survey Data and Manipulation Utilities",
   "codeRepository": "https://github.com/ropensci/eph",
-  "issueTracker": "https://github.com/holatam/eph/issues",
+  "issueTracker": "https://github.com/ropensci/eph/issues",
   "license": "https://spdx.org/licenses/MIT",
   "version": "1.0.1",
   "programmingLanguage": {
@@ -268,18 +268,6 @@
     },
     "9": {
       "@type": "SoftwareApplication",
-      "identifier": "attempt",
-      "name": "attempt",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=attempt"
-    },
-    "10": {
-      "@type": "SoftwareApplication",
       "identifier": "zoo",
       "name": "zoo",
       "provider": {
@@ -290,7 +278,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=zoo"
     },
-    "11": {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "leaflet",
       "name": "leaflet",
@@ -302,7 +290,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=leaflet"
     },
-    "12": {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "htmltools",
       "name": "htmltools",
@@ -314,7 +302,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=htmltools"
     },
-    "13": {
+    "12": {
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
@@ -326,12 +314,12 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rlang"
     },
-    "14": {
+    "13": {
       "@type": "SoftwareApplication",
       "identifier": "stats",
       "name": "stats"
     },
-    "15": {
+    "14": {
       "@type": "SoftwareApplication",
       "identifier": "cli",
       "name": "cli",
@@ -343,7 +331,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=cli"
     },
-    "16": {
+    "15": {
       "@type": "SoftwareApplication",
       "identifier": "httr",
       "name": "httr",
@@ -355,7 +343,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=httr"
     },
-    "17": {
+    "16": {
       "@type": "SoftwareApplication",
       "identifier": "curl",
       "name": "curl",
@@ -367,7 +355,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=curl"
     },
-    "18": {
+    "17": {
       "@type": "SoftwareApplication",
       "identifier": "tidyselect",
       "name": "tidyselect",
@@ -379,7 +367,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyselect"
     },
-    "19": {
+    "18": {
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
@@ -387,7 +375,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1071.789KB",
+  "fileSize": "1072.568KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -421,14 +409,14 @@
       ],
       "name": "eph: Argentina's Permanent Household Survey Data and Manipulation Utilities",
       "identifier": "10.5281/zenodo.3462677",
-      "url": "https://holatam.github.io/eph/",
+      "url": "https://github.com/ropensci/eph",
       "@id": "https://doi.org/10.5281/zenodo.3462677",
       "sameAs": "https://doi.org/10.5281/zenodo.3462677"
     }
   ],
   "releaseNotes": "https://github.com/ropensci/eph/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/eph/blob/master/README.md",
-  "contIntegration": ["https://github.com/holatam/eph/actions", "https://app.codecov.io/gh/holatam/eph?branch=master"],
+  "contIntegration": ["https://github.com/ropensci/eph/actions", "https://app.codecov.io/gh/holatam/eph?branch=master"],
   "keywords": ["rstats", "rstatses", "eph", "indec", "mercado-de-trabajo"],
   "relatedLink": "https://CRAN.R-project.org/package=eph"
 }

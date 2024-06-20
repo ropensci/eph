@@ -18,10 +18,14 @@
 #' @export
 
 get_poverty_lines <- function(regional = FALSE) {
-  attempt::stop_if_not(
-    .x = curl::has_internet(),
-    msg = "No se detecto acceso a internet. Por favor checkea tu conexion."
-  )
+  # attempt::stop_if_not(
+  #   .x = curl::has_internet(),
+  #   msg = "No se detecto acceso a internet. Por favor checkea tu conexion."
+  # )
+  if (!curl::has_internet()) { # network is down = message (not an error anymore)
+    message("No se detecto acceso a internet. Por favor checkea tu conexion.")
+    return(NULL)
+  }
 
   if (regional) {
     temp <- tempfile()

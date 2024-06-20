@@ -28,7 +28,6 @@ Imports:
     readxl,
     tidyr,
     utils,
-    attempt,
     zoo,
     leaflet,
     htmltools,
