@@ -31,10 +31,12 @@ Funcion que descarga bases de la Encuesta Permanente de Hogares total urbano del
 disclaimer: El script no es un producto oficial de INDEC.
 }
 \examples{
+\dontrun{
 base_individual <- get_total_urbano(
   year = 2016,
   type = "hogar",
   vars = c("PONDERA", "IV1", "IV2")
 )
+}
 
 }

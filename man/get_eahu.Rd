@@ -26,10 +26,12 @@ Funcion que descarga bases de la Encuesta anual de hogares urbanos del INDEC ent
 disclaimer: El script no es un producto oficial de INDEC.
 }
 \examples{
+\dontrun{
 base_individual <- get_eahu(
   year = 2010,
   type = "individual",
   vars = c("SUBDOMINIO", "PONDERA", "ESTADO", "CAT_OCUP")
 )
+}
 
 }

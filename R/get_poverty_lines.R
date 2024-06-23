@@ -34,9 +34,10 @@ get_poverty_lines <- function(regional = FALSE) {
     check <- NA
     try(check <- utils::download.file(link, destfile = temp, mode = "wb"), silent = TRUE)
     if (is.na(check)) {
-      cli::cli_abort(c(
+      cli::cli_inform(c(
         "Problema con la descarga"
       ))
+      return(NULL)
     }
 
     canasta <- readRDS(temp)
@@ -48,9 +49,10 @@ get_poverty_lines <- function(regional = FALSE) {
     check <- NA
     try(check <- utils::download.file(dataURL, destfile = temp, mode = "wb"), silent = TRUE)
     if (is.na(check)) {
-      cli::cli_abort(c(
+      cli::cli_inform(c(
         "Problema con la descarga"
       ))
+      return(NULL)
     }
 
     suppressWarnings({
