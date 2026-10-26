@@ -1,3 +1,6 @@
+# eph (development version)
+* added new function organize_comparability() to rebuild the aggregate variables removed from the user databases by the 2024-Q4 questionnaire redesign (V5/V11/V21/V22, V2_M/V5_M/V11_M/V21_M/V22_M) and fix the PP11L1/PP11L2 inversion (@germantessmer, B. Boggiano, #70)
+
 # eph 1.0.2
 * better adjusted to CRAN's policy 'Packages which use Internet resources should fail gracefully with an informative message if the resource is not available or has changed (and not give a check warning nor error).'
 
