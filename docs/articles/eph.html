@@ -6,20 +6,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ejemplo de uso del paquete `eph` • eph</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- favicons --><link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Ejemplo de uso del paquete `eph`">
-<meta property="og:description" content="eph">
-<meta property="og:image" content="https://rindec.github.io/eph/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -32,7 +29,7 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -61,7 +58,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Artículos
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -78,7 +75,7 @@
 <li>
   <a href="https://github.com/ropensci/eph/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -89,7 +86,7 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
@@ -100,7 +97,7 @@
 Kozlowski, Pablo Tiscornia, Guido Weksler, Germán Rosati, Natsumi
 Shokida y Carolina Pradier</h4>
             
-            <h4 data-toc-skip class="date">2024-08-06</h4>
+            <h4 data-toc-skip class="date">2026-10-27</h4>
       
       <small class="dont-index">Código: <a href="https://github.com/ropensci/eph/blob/HEAD/vignettes/eph.Rmd" class="external-link"><code>vignettes/eph.Rmd</code></a></small>
       <div class="hidden name"><code>eph.Rmd</code></div>
@@ -121,7 +118,7 @@ mostrar el uso de las funciones del paquete.</p>
 <p>Para la versión en desarrollo:</p>
 <pre><code><span><span class="co"># install.packages('devtools') si no tiene instalado devtools</span></span>
 <span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"holatam/eph"</span><span class="op">)</span></span></code></pre>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"holatam/eph"</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="ejemplo-de-flujo-de-trabajo">Ejemplo de flujo de trabajo<a class="anchor" aria-label="anchor" href="#ejemplo-de-flujo-de-trabajo"></a>
@@ -338,23 +335,25 @@ variables al mismo tiempo que se levantan las bases:</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 5</span></span></span>
 <span><span class="co">#&gt;    ANO4 TRIMESTRE PONDERA ESTADO CAT_OCUP</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  <span style="text-decoration: underline;">2</span>019         2      33      4        0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>  <span style="text-decoration: underline;">2</span>017         1     215      3        0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>  <span style="text-decoration: underline;">2</span>018         3    <span style="text-decoration: underline;">1</span>491      3        0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>  <span style="text-decoration: underline;">2</span>018         1     261      3        0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>  <span style="text-decoration: underline;">2</span>017         1     290      3        0</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  <span style="text-decoration: underline;">2</span>018         2      62      3        0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>  <span style="text-decoration: underline;">2</span>019         2     809      2        2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>  <span style="text-decoration: underline;">2</span>018         2    <span style="text-decoration: underline;">1</span>014      3        0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>  <span style="text-decoration: underline;">2</span>019         1     219      3        0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>  <span style="text-decoration: underline;">2</span>018         3     103      3        0</span></span></code></pre></div>
 <p>Con estos datos podemos crear por ejemplo la serie de
 asalarización</p>
-<p><span class="math inline">\(SO_{t} = \frac{\sum_{i=1}^n
-w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}\)</span></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><msub><mi>O</mi><mi>t</mi></msub><mo>=</mo><mfrac><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><msub><mi>w</mi><mi>i</mi></msub><mi>T</mi><mi>C</mi><msub><mi>P</mi><mi>i</mi></msub></mrow><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><msub><mi>w</mi><mi>i</mi></msub><mi>O</mi><mi>C</mi><mi>U</mi><msub><mi>P</mi><mi>i</mi></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">SO_{t} = \frac{\sum_{i=1}^n w_{i}TCP_{i}}{\sum_{i=1}^n w_{i}OCUP_{i}}</annotation></semantics></math></p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ANO4</span>, <span class="va">TRIMESTRE</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>indicador <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">PONDERA</span><span class="op">[</span><span class="va">CAT_OCUP</span> <span class="op">==</span> <span class="fl">3</span> <span class="op">&amp;</span> <span class="va">ESTADO</span> <span class="op">==</span> <span class="fl">1</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">PONDERA</span><span class="op">[</span><span class="va">ESTADO</span> <span class="op">==</span> <span class="fl">1</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; `summarise()` has grouped output by 'ANO4'. You can override using the</span></span>
-<span><span class="co">#&gt; `.groups` argument.</span></span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; `summarise()` has regrouped the output.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Summaries were computed grouped by <span style="color: #0000BB;">ANO4</span> and <span style="color: #0000BB;">TRIMESTRE</span>.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Output is grouped by <span style="color: #0000BB;">ANO4</span>.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `summarise(.groups = "drop_last")` to silence this message.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `summarise(.by = c(ANO4, TRIMESTRE))` for per-operation grouping</span></span>
+<span><span class="co">#&gt;   (`?dplyr::dplyr_by`) instead.</span></span>
+<span></span>
 <span><span class="va">df</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 12 × 3</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># Groups:   ANO4 [3]</span></span></span>
@@ -386,10 +385,10 @@ disponibles dichos datos, podrían calcular de forma automática los
 valores de pobreza e indigencia. Mostraremos un ejemplo de juguete con
 dos datasets de la CABA y sus respectivos valores de canastas.</p>
 <p>Existen dos funciones núcleo:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lineas</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_poverty_lines.html">get_poverty_lines</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">lineas</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 99 × 4</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 126 × 4</span></span></span>
 <span><span class="co">#&gt;    periodo               CBA   ICE   CBT</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2016-04-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>515.  2.42 <span style="text-decoration: underline;">3</span>664.</span></span>
@@ -402,26 +401,26 @@ dos datasets de la CABA y sus respectivos valores de canastas.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2016-11-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>763.  2.41 <span style="text-decoration: underline;">4</span>248.</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2016-12-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>767.  2.41 <span style="text-decoration: underline;">4</span>258.</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2017-01-01 <span style="color: #949494;">00:00:00</span> <span style="text-decoration: underline;">1</span>789.  2.41 <span style="text-decoration: underline;">4</span>312.</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 89 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 116 more rows</span></span></span></code></pre></div>
 <p>Esta función descarga los valores de las canastas alimentaria, básica
 (CBA y CBT) y la inversa del coeficiente de Engels… perdón, Engel (ICE)
 de <a href="https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149" class="external-link">la
 serie provista por INDEC</a>. Esta es la serie para GBA, y es la que
 publica regularmente INDEC.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lineas</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">ICE</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"CBA"</span>, <span class="st">"CBT"</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">"canasta"</span>, values_to <span class="op">=</span> <span class="st">"valor"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">periodo</span>, y <span class="op">=</span> <span class="va">valor</span>, col <span class="op">=</span> <span class="va">canasta</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="eph_files/figure-html/unnamed-chunk-13-1.png" width="672"></p>
+<p><img src="eph_files/figure-html/unnamed-chunk-13-1.png" class="r-plt" alt="" width="672"></p>
 <p>Para el calculo de la Pobreza e Indigencia se utilizan canastas
 regionales, que sólo aparecen en los <a href="https://www.indec.gob.ar/uploads/informesdeprensa/eph_pobreza_01_19422F5FC20A.pdf" class="external-link">informes
 Técnicos</a>.</p>
 <p>A modo de ejemplo, en la librería <code>eph</code> se encuentra la
 base <code>canastas_reg_example</code> con la información necesaria para
 realizar el cálculo</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">canastas_reg_example</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 12 × 5</span></span></span>
 <span><span class="co">#&gt;    region    periodo   CBA   CBT codigo</span></span>
@@ -448,7 +447,7 @@ equivalente, se analizó en qué grupo de edad se ubicaba la mayor
 concentración de población activa, y fue la categoría de hombres de 30 a
 60 años de edad la que presentaba el mayor peso relativo dentro del
 conjunto total de la población de referencia).</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">adulto_equivalente</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   CH04 CH06 adequi</span></span>
 <span><span class="co">#&gt; 1    1   -1   0.35</span></span>
@@ -460,7 +459,7 @@ conjunto total de la población de referencia).</p>
 <p>La función <code>calculate_poverty</code> calcula la pertenencia a
 situaciones de pobreza e indigencia a nivel de los individuos siguiendo
 la metodología de línea:</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bases</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html" class="external-link">bind_rows</a></span><span class="op">(</span><span class="va">toybase_individual_2016_03</span>, <span class="va">toybase_individual_2016_04</span><span class="op">)</span></span>
 <span><span class="va">base_pobreza</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calculate_poverty.html">calculate_poverty</a></span><span class="op">(</span></span>
 <span>  base <span class="op">=</span> <span class="va">bases</span>,</span>
@@ -473,23 +472,23 @@ la metodología de línea:</p>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  <span style="text-decoration: underline;">2</span>016         3       0.029<span style="text-decoration: underline;">6</span>          0.013<span style="text-decoration: underline;">6</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>  <span style="text-decoration: underline;">2</span>016         4       0.032<span style="text-decoration: underline;">4</span>          0.012<span style="text-decoration: underline;">2</span></span></span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">base_pobreza</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">CODUSU</span>, <span class="va">ITF</span>, <span class="va">region</span>, <span class="va">adequi_hogar</span>, <span class="va">CBA_hogar</span>, <span class="va">CBT_hogar</span>, <span class="va">situacion</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 7</span></span></span>
 <span><span class="co">#&gt;    CODUSU                  ITF region adequi_hogar CBA_hogar CBT_hogar situacion</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> TQRMNOQPPHJLKRCDEHMH… <span style="text-decoration: underline;">26</span>000 Cuyo           0.77     <span style="text-decoration: underline;">1</span>162.     <span style="text-decoration: underline;">2</span>982. no_pobre </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> TQRMNOQXXHJMLOCDEHIB… <span style="text-decoration: underline;">35</span>500 Noroe…         0.83     <span style="text-decoration: underline;">1</span>222.     <span style="text-decoration: underline;">2</span>733. no_pobre </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> TQRMNORWTHKLLMCDEIKA… <span style="text-decoration: underline;">92</span>200 Pampe…         0.76     <span style="text-decoration: underline;">1</span>274.     <span style="text-decoration: underline;">3</span>066. no_pobre </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> TQRMNOQRWHLMKUCDEFMD…     0 Pampe…         0.76     <span style="text-decoration: underline;">1</span>274.     <span style="text-decoration: underline;">3</span>066. <span style="color: #BB0000;">NA</span>       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> TQRMNOQWQHKLLLCDEIJA… <span style="text-decoration: underline;">39</span>800 GBA            0.76     <span style="text-decoration: underline;">1</span>335.     <span style="text-decoration: underline;">3</span>217. no_pobre </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> TQRMNORSPHKMKSCDEIHJ… <span style="text-decoration: underline;">21</span>000 Patag…         1        <span style="text-decoration: underline;">1</span>735.     <span style="text-decoration: underline;">4</span>742. no_pobre </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> TQRMNORSPHMOQOCDEIJA…  <span style="text-decoration: underline;">1</span>200 GBA            0.76     <span style="text-decoration: underline;">1</span>335.     <span style="text-decoration: underline;">3</span>217. indigente</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> TQRMNOQXWHLMLOCDEGIB… <span style="text-decoration: underline;">16</span>400 Nores…         1.83     <span style="text-decoration: underline;">2</span>870.     <span style="text-decoration: underline;">6</span>476. no_pobre </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> TQRMNOPQPHKOKSCDEFNF… <span style="text-decoration: underline;">25</span>000 Nores…         0.37      580.     <span style="text-decoration: underline;">1</span>309. no_pobre </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> TQRMNORXSHKOLOCDEHIB… <span style="text-decoration: underline;">21</span>640 Noroe…         0.67     <span style="text-decoration: underline;">1</span>022.     <span style="text-decoration: underline;">2</span>286. no_pobre</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> TQRMNOPWYHKKKMCDEIHJ… <span style="text-decoration: underline;">21</span>000 Patag…         0.76     <span style="text-decoration: underline;">1</span>378.     <span style="text-decoration: underline;">3</span>772. no_pobre </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> TQRMNOQTUHMOLPCDEGOI… <span style="text-decoration: underline;">26</span>000 Noroe…         1.02     <span style="text-decoration: underline;">1</span>502.     <span style="text-decoration: underline;">3</span>358. no_pobre </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> TQRMNOQPRHJLKOCDEOJA…     0 Patag…         0.68     <span style="text-decoration: underline;">1</span>233.     <span style="text-decoration: underline;">3</span>375. <span style="color: #BB0000;">NA</span>       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> TQRMNOQUPHKMKQCDEHIB… <span style="text-decoration: underline;">19</span>000 Noroe…         1        <span style="text-decoration: underline;">1</span>525.     <span style="text-decoration: underline;">3</span>412. no_pobre </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> TQRMNOSTTHKOKUCDEGOI…  <span style="text-decoration: underline;">2</span>500 Noroe…         1.02     <span style="text-decoration: underline;">1</span>556.     <span style="text-decoration: underline;">3</span>480. pobre    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> TQRMNOTTVHLOLSCDEIKA…     0 Pampe…         2.52     <span style="text-decoration: underline;">4</span>224.    <span style="text-decoration: underline;">10</span>165. <span style="color: #BB0000;">NA</span>       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> TQRMNOQWTHJMKSCDEGJB…     0 Pampe…         1        <span style="text-decoration: underline;">1</span>676.     <span style="text-decoration: underline;">4</span>034. <span style="color: #BB0000;">NA</span>       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> TQRMNOPSPHMOKOCDEHJG… <span style="text-decoration: underline;">11</span>000 Noroe…         0.68     <span style="text-decoration: underline;">1</span>001.     <span style="text-decoration: underline;">2</span>239. no_pobre </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> TQRMNORRQHLOKNCDEFOC… <span style="text-decoration: underline;">10</span>000 Nores…         1.03     <span style="text-decoration: underline;">1</span>615.     <span style="text-decoration: underline;">3</span>645. no_pobre </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> TQRMNOPQQHJMTQCDEIJA…     0 GBA            0.9      <span style="text-decoration: underline;">1</span>581.     <span style="text-decoration: underline;">3</span>809. <span style="color: #BB0000;">NA</span></span></span></code></pre></div>
 </div>
 </div>
 <div class="footnotes footnotes-end-of-document">
@@ -503,9 +502,7 @@ publicadas<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 
@@ -513,21 +510,21 @@ publicadas<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 
       <footer><div class="copyright">
   <p></p>
-<p>Desarrollado por <a href="https://github.com/caropradier" class="external-link">Carolina Pradier</a>, <a href="https://github.com/DiegoKoz" class="external-link">Diego Kozlowski</a>, <a href="https://github.com/pablotis" class="external-link">Pablo Tiscornia</a>, <a href="https://github.com/Guidowe" class="external-link">Guido Weksler</a>, <a href="https://github.com/natsushok" class="external-link">Natsumi Shokida</a>, <a href="https://github.com/gefero" class="external-link">German Rosati</a>.</p>
+<p>Desarrollado por <a href="https://github.com/caropradier" class="external-link">Carolina Pradier</a>, <a href="https://github.com/DiegoKoz" class="external-link">Diego Kozlowski</a>, <a href="https://github.com/pablotis" class="external-link">Pablo Tiscornia</a>, <a href="https://github.com/Guidowe" class="external-link">Guido Weksler</a>, <a href="https://github.com/natsushok" class="external-link">Natsumi Shokida</a>, <a href="https://github.com/gefero" class="external-link">German Rosati</a>, <a href="https://github.com/juancamilogutman" class="external-link">Juan Camilo Gutman Gomez</a>.</p>
 </div>
 
 <div class="pkgdown">
   <p></p>
-<p>Sitio creado con <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Sitio creado con <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
       </footer>
 </div>
 
-  
 
 
-  
+
+
 
   </body>
 </html>
