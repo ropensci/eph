@@ -1,4 +1,4 @@
-url: https://rindec.github.io/eph/
+url: https://ropensci.github.io/eph/
 
 lang: es
 
@@ -20,6 +20,8 @@ authors:
     href: "https://github.com/caropradier"
   Juan Gabriel Juara:
     href: "https://github.com/jgjuara"
+  Juan Camilo Gutman Gomez:
+    href: "https://github.com/juancamilogutman"
 
 destination: docs
 
